@@ -7,14 +7,15 @@ title: Hexo
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: chenchih
+language: zh-tw
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://github.com/chenchih/
 permalink: :year/:month/:day/:title/
+root: /hexo-demo2022
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -41,7 +42,7 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
-relative_link: true
+relative_link: false
 future: true
 highlight:
   enable: true
@@ -90,7 +91,7 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
-include:
+include: 
 exclude:
 ignore:
 
@@ -104,4 +105,4 @@ theme: landscape
 deploy:
   type: git
   repo: https://github.com/chenchih/hexo-demo2022.git
-  branch: gh-pages #branch:gh-pages or master
+  branch: gh-pages
