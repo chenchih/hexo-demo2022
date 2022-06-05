@@ -140,9 +140,10 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  #url: #/images/avatar.gif
+  url: /images/profile.jpeg
   # If true, the avatar will be displayed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
   rotated: false
 
@@ -210,12 +211,13 @@ footer:
   # Icon between year and copyright info.
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
-    name: fa fa-heart
+    #name: fa fa-heart
+    name: fa fa-users
     # If you want to animate the icon, set it to true.
-    animated: false
+    animated: true
     # Change the color of icon, using Hex Code.
-    color: "#ff0000"
-
+    #color: "#ff0000"
+    color: "#00cc00"
   # If not defined, `author` from Hexo `_config.yml` will be used.
   copyright:
 
@@ -372,27 +374,30 @@ body_scrollbar:
   # Present the scrollbar even if the content is not overflowing.
   stable: false
 
-codeblock:
+codeblock:  
   # Code Highlight theme
   # All available themes: https://theme-next.js.org/highlight/
-  theme:
-    light: default
+
+  theme: 
+    light: tomorrow-night-blue #default
     dark: stackoverflow-dark
   prism:
     light: prism
     dark: prism-dark
+
+  
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Available values: default | flat | mac
-    style:
+    style: mac
 
 back2top:
   enable: true
   # Back to top in sidebar.
   sidebar: false
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
@@ -417,7 +422,7 @@ bookmark:
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
   enable: false
-  permalink: https://github.com/yourname
+  permalink: https://github.com/chenchih
   title: Follow me on GitHub
 
 
@@ -909,3 +914,4 @@ vendors:
 css: css
 js: js
 images: images
+
