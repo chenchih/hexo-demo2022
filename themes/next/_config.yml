@@ -66,7 +66,7 @@ creative_commons:
   license: by-nc-sa
   # Available values: big | small
   size: small
-  sidebar: false
+  sidebar: true
   post: false
   # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
   # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
@@ -154,16 +154,17 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || fab fa-github
+  GitHub: https://github.com/chenchih || fab fa-github
   #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
-  #Twitter: https://twitter.com/yourname || fab fa-twitter
+  Twitter: https://twitter.com/jacklee26 || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
   #YouTube: https://youtube.com/yourname || fab fa-youtube
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
+  linkedin: https://www.linkedin.com/in/chenchih || fab fa-linkedin-in
 
 social_icons:
   enable: true
@@ -256,9 +257,19 @@ post_meta:
 
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
+
 symbols_count_time:
-  separated_meta: true
-  item_text_total: false
+  symbols: true # 文章字數統計顯示
+  time: true # 文章閱讀時間顯示
+  total_symbols: false # 網頁底部字數統計顯示
+  total_time: false # 網頁底部閱讀時間顯示
+  exclude_codeblock: false # 字數統計是否排除程式碼
+  awl: 4  # 平均文字長度，中文為 2, 英文為 5, 預設為 4
+  wpm: 275  # 一分鐘閱讀字數
+  suffix: "mins."
+
+
+
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -469,7 +480,7 @@ font:
 
 # If true, site-subtitle will be added to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
-index_with_subtitle: false
+index_with_subtitle: true
 
 # Automatically add external URL with Base64 encrypt & decrypt.
 exturl: false
@@ -587,9 +598,9 @@ comments:
 
 # Disqus
 # For more information: https://disqus.com
-disqus:
-  enable: false
-  shortname:
+disqus: 
+  enable: true
+  shortname: chenchih
   count: true
 
 # DisqusJS
@@ -630,7 +641,7 @@ gitalk:
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-  language:
+  language: 
 
 # Utterances
 # For more information: https://utteranc.es

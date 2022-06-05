@@ -4,12 +4,12 @@
 
 # Site
 title: Chen-Chih Blog
-subtitle: ''
+subtitle: 'Tech Note'
 description: ''
 keywords:
 author: chenchih
-language: zh-tw
-timezone: ''
+language: zh-TW
+timezone: Asia/Taipei
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
