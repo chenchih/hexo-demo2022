@@ -75,3 +75,5 @@ grid-gap: 40px 60px
 }
 
 ```
+## output 
+![](/images/gridexample.png)
