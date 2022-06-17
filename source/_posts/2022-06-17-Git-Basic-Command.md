@@ -18,7 +18,9 @@ categories:
 
 ### 1. git init 初始化 git
 Step1: 建立一個資料夾如：`$mkdir test`
+
 Step2: 進去目錄 `cd test`
+
 Step3: 執行 `git init`就會初始化 git。如果你下 `ls-al`就可以看所有資料，會有一個 `.git` 隱藏檔
 
 ### 2. git add 把檔案進索引index
@@ -26,7 +28,7 @@ Step1: 建立檔案 `touch hello.py`
 Step2: 編輯檔案
 - (linux) vim hello.py
 - (window) notepad hello.py
-就加 `print('hello world`)`
+就加 `print("hello world")`
 Step3: 把檔案加進索引 `git add .` 
 Step4: 看git status  `git status`
 他會顯示stage 
@@ -40,10 +42,10 @@ Step4: 看git status  `git status`
 ### 4. git log 
 我們可以用這個指令`git log --oneline` 來看我們有commit 成功嘛。這個指令很常用。我們可以看到我們的commit hash，這可以讓我們環原我們檔案等等。
 有幾個參數可以用：
-- git log ：顯示相細訊息
-- git log --oneline: 只顯示基本信息
-- git log --oneline --graph : 可以顯示你的分支相關圖
-- git log --oneline HEAD -N : HEAD 0 就是最新個commit，N可以顯示最新幾筆
+- `git log` ：顯示相細訊息
+- `git log --oneline`: 只顯示基本信息
+- `git log --oneline --graph` : 可以顯示你的分支相關圖
+- `git log --oneline HEAD -N` : HEAD 0 就是最新個commit，N可以顯示最新幾筆
 
 ### 5. git push
 我們需要去giuthub建立我們自己的repository(專案)。建立完他會給我們一些提示，我們需要把本地跟遠端連再一起。
