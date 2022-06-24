@@ -4,8 +4,6 @@ date: 2022-04-01
 tags: 
 - 前端文
 - 後端文
-categories: 
-- hexo
 # - [hexo, test]
 
 ---

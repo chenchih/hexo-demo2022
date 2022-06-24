@@ -3,7 +3,7 @@ title: CSS LAYOUT - GRID 介紹
 date: 2022-06-11 09:52:52
 tags:
 - 前端文
-- Layout
+- CSS
 categories:
 - WEB
 - [WEB, CSS]
@@ -11,7 +11,6 @@ categories:
 ---
 # CSS Example: GRID
 - 現在我們在做網頁排版，最流行都是用 `GRID` and `Flex`。 我是剛學排版，以前都用`position`
-
 - GRID 主要是 可以控制欄和列。
 
 ## 參數：
