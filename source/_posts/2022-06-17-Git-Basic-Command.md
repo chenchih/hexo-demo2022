@@ -4,7 +4,7 @@ date: 2022-06-17
 tags: 
 - github
 categories: 
-- github
+- devtool
 ---
 
 今天我想在這文章中介紹最常用到的git指令。我會介紹我最常用到的指令有：

@@ -5,7 +5,7 @@ tags:
 - Emmet
 - vscode
 categories:
-- code
+- devtool
 
 ---
 
@@ -188,8 +188,7 @@ categories:
 
 #### **Example1**
 > 指令: `div>ul>li>p`
-
-```html=
+```html=  
 <div>
     <ul>
         <li>
@@ -197,34 +196,33 @@ categories:
         </li>
     </ul>
 </div>
-```    
+``` 
 #### **Example2**
 > 指令: `div#pageId>ul>li`
-```html=
+```html=  
 <div id="pageId">
 <ul>
 <li></li>
 </ul>
 </div
-```    
-
+``` 
 - ### 8.2 兄弟/同級節點指令`+` 
 通過`+`標識元素字元表示生成兄弟/同級級元素
 
 #### **Example1**
 > 指令: `div+ul+p`
-```html=
+```html=  
 <div></div>
 <ul></ul>
 <p></p>
-```    
+```
+
 #### **Example2:** 
 > 指令:`div#pageId+div.child`
-
 ```html=
 <div id="pageId"></div>
 <div class="child"></div>
-```  
+```
 
 #### **Example3:完整架構**
 >指令:`.top+.banner+.box+.footer`
