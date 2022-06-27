@@ -8,7 +8,7 @@ subtitle: 'Tech Note'
 description: ''
 keywords:
 author: chenchih
-language: zh-TW
+language: en  #zh-TW
 timezone: Asia/Taipei
 
 # URL
@@ -20,6 +20,8 @@ permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+
 
 # Directory
 source_dir: source
