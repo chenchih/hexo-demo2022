@@ -48,6 +48,21 @@ CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以�
     - order
     - align-self
 
-## 了解axis main and align axis
-## flex-direction
-## justify-content
+## 基本FLEX相關知識
+### 什麼是FlexBOX
+### AXIS軸
+### Parent Child
+
+
+## 2. Parent Properties
+### 2.1 flex-direction
+### 2.2 wrap
+### 2.3justify-content
+### 2.4 align-items
+### 2.5 align-content
+
+## 3. Child Properties
+### 3.1 order
+### 3.2 Grow
+### 3.3 shrink
+### 3.4 basis

@@ -1,10 +1,10 @@
 ---
-title: Hexo + GitHub Pages 架設個人網誌(Full) (Hexo-1)
+title: Hexo + GitHub Pages 架設個人網誌-完整版-1
 date: 2022-06-21 20:34:18
 tags:
 - Hexo
 categories:
-- blog
+- Hexo
 ---
 ＃ 如何使用 Hexo + GitHub Pages 架設個人網誌
 
