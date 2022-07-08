@@ -4,7 +4,8 @@ date: 2022-07-03 09:00:18
 tags:
 - zsh
 categories:
-- devtool
+- linux
+- ubuntu
 ---
 
 #　前言
