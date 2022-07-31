@@ -5,8 +5,7 @@ tags:
 - Emmet
 - vscode
 categories:
-- devtool
-
+- WebDev
 ---
 
 # Emmet
