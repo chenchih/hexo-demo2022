@@ -6,9 +6,10 @@ type: "about"
 # MY RESUME個人簡介
 
 ## My Intro
-- I am a Software QA in Network industry, and like to explore new skill, such as front end amd back end. 
+- I am a Software QA in Network industry, and like to explore new skill, such as frontend amd backend. 
 - I use to develop webpage use JSP and MYSQL, which cover front and back end. 
-- Even thought I am not in web-development, but i also slef learn many skills. 
+- Even thought I am not in web-development, but I also self learn many skills. 
+
 
 ## Skills
 -  WebDevelop
@@ -23,6 +24,8 @@ type: "about"
     - Linux Shell
     - Window Batch
 - Network 
+    - wifi
+    - network security   
 - Linux (ubuntu/RHEL/CentOS)
 
 
