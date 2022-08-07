@@ -9,96 +9,68 @@ categories:
 
 ---
 # CSS Example: GRID
-- 現在我們在做網頁排版，最流行都是用 `GRID` and `Flex`。 我是剛學排版，以前都用`position`
-- GRID 主要是 可以控制欄和列。
-
-## 參數：
-- `grid-template-columns: auto auto auto;`
-  - 3個 `auto` 就是3 rows
-```css=
-   grid-template-columns: auto auto auto;
-```
-- `grid-template-rows: `
-  - row 高度
-```grid-template-rows: 80px  200px 50px;```
-- `grid-gap`
-  -  間距
-```
-grid-gap: 40px 60px
-```
-
-## Example:
-- HTML: 我宣告一個parent，裡麵包div
-
-```
-<body>
-  <h1> GRID </h1>
-  <div class="container">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-  <div>6</div>
-  <div>7</div>
-  <div>8</div>
-  <div>9</div>
-  </div>
-</body>
-```
-
-- CSS:
-
-```
-.container {
-  background-color: blue;
-  padding: 10px;
-  color: black;
-  /* 格線排版   */
-  display: grid;
-  /*  columns  */
-  grid-template-columns: auto auto auto;
-  /*  row height  */
-   grid-template-rows: 80px  200px 50px;
-   /*  gap  */
-   grid-gap: 40px 60px;  
-}
-
-.container > div{
-   background-color: yellow;
-  padding: 20px 0;
-  font-size: 30px;
-  text-align: center;  
-}
-
-```
-## output 
-![](/images/gridexample.png)
-
-
-## Grid Example:
-我要介紹Flex Example
+- 現在我們在做網頁排版，最流行都是用 `GRID` and `Flex`。想要分享相關Grid 相關設定和用法。，
+以前都用`position`
+- GRID 可以用用二維排版(row and colulmn)，反之Flex只能選用一維(row or colulmn)。
+- 以下是所有GRID的properties，我整理好分類，這樣才好董或記。如果有學會或用過GRID，這會更好理解。
 
 - display
-- grid-tempalte
-  - grid-template-column 
-  - grid-tempalte-row 
-  - grid-tempalte
-- gap 
-  - column-gap
-  - row-gap
-  - gap
-- justify-items
-- align-items
-- place-items 
-- justify-content
-- align-content
-- place-content
-- grid-auto
-  - grid-auto-column
-  - grid-auto-rows
-  - grid-autp-flow 
-### HTML
+- grid Container
+	- grid-template
+	  - grid-template-column 
+	  - grid-template-row 
+	  - grid-template
+	  - grid-template-areas (進行中)	  
+	- gap 
+	  - column-gap
+	  - row-gap
+	  - gap
+	- Alignment & Spacing
+		- within grid cell
+			- justify-items
+			- align-items
+			- place-items 
+		- within grid container
+			- justify-content
+			- align-content
+			- place-content
+	- grid-auto-flow
+	  - grid-auto-column
+	  - grid-auto-rows
+	  - grid-autp-flow 
+- Grid item
+	- Grid-column-start
+	- Grid-column-end
+	- Grid-row-start
+	- Grid-row-end
+	- Grid-column (shorthand)
+	- Grid-row (shorthand)
+- Alignment item within Cell
+	- Justify-self: alignment along the row axis
+	- Align-self: alignment along the column axis
+	- Place-self: shorthand for <align-self> <justify-self>
+	
+## GRID 架構 Structure & Terminology
+### Container And Items
+> `Grid Container`: 盒子的最外層Parent 
+> `Grid items`: 盒內層Children 
+![container and items of GRID](https://i.imgur.com/g882pUK.png)
+
+### 了解以下相關terms
+> Grid line: horizontal or vertical dived line in a grid
+> Grid Cell: intersection of the grid
+> Grid-Track:
+> Grid-Area: 
+
+![terms](https://i.imgur.com/eYFvrl5.png)
+
+
+## GRID Properties
+- 以下會用到的HTML and CSS程式碼
+- Example Code for demo on different properties
+![](https://i.imgur.com/a9h6p6F.png)
+
+- HTML:
 ```
 <body>
     <div class="container"> 
@@ -114,7 +86,8 @@ grid-gap: 40px 60px
     </div>
 </body>
 ```
-### CSS
+
+- CSS:
 ```
 *{
     margin: 0px;
@@ -161,12 +134,15 @@ text-align: center;
     background-color: orange;
 }
 ```
-### 1. Display 
-By default all the content are lay column, which lay like  block element. 
-> `display: grid` lay block level
 
-If you don't want block element then change it to 
-> `display: inline-grid` lay inline level 
+### display
+
+By default all the content are lay column, which lay like  block element. 
+>  Display properties : `<grid>` or `<inline-grid>`
+> `display: grid` : default by row and stretch behave to block element 
+>`dispplay: inline-grid`: will not display in block element 
+
+![](https://i.imgur.com/3golNqE.png)
 
 - code: 
 ```
@@ -176,7 +152,48 @@ border: 6px solid black;
 }
 ```
 
-## 2. grid-template
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- `grid-template-columns: auto auto auto;`
+  - 3個 `auto` 就是3 rows
+```css=
+   grid-template-columns: auto auto auto;
+```
+- `grid-template-rows: `
+  - row 高度
+```grid-template-rows: 80px  200px 50px;```
+- `grid-gap`
+  -  間距
+```
+grid-gap: 40px 60px
+```
+
+
+## grid-template
+
+
+
 we can use `grid-template-row` or `grid-template-column`
 value can be:
 - non-negative length value like `px`, `%`
@@ -284,3 +301,57 @@ value can be non negative value or a perentage
 ### justify-content
 ### align-content
 ### place-content
+
+
+
+
+
+## Example and Layout
+
+### EXample 3 Layout
+- HTML: 我宣告一個parent，裡麵包div
+
+```
+<body>
+  <h1> GRID </h1>
+  <div class="container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+  <div>9</div>
+  </div>
+</body>
+```
+
+- CSS:
+
+```
+.container {
+  background-color: blue;
+  padding: 10px;
+  color: black;
+  /* 格線排版   */
+  display: grid;
+  /*  columns  */
+  grid-template-columns: auto auto auto;
+  /*  row height  */
+   grid-template-rows: 80px  200px 50px;
+   /*  gap  */
+   grid-gap: 40px 60px;  
+}
+
+.container > div{
+   background-color: yellow;
+  padding: 20px 0;
+  font-size: 30px;
+  text-align: center;  
+}
+
+```
+## output 
+![](/images/gridexample.png)
