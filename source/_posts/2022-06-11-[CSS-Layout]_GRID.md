@@ -9,14 +9,14 @@ categories:
 
 ---
 # CSS Example: GRID
-- 現在我們在做網頁排版，最流行都是用 `GRID` and `Flex`。想要分享相關Grid 相關設定和用法。，
-以前都用`position`
-- GRID 可以用用二維排版(row and colulmn)，反之Flex只能選用一維(row or colulmn)。
+- 現在我們在做網頁排版，最流行都是用 `GRID` and `Flex`。想要分享相關Grid 相關設定和用法，在早期都用以前都用`position`
+用`position`或`float`等等排版。
+- GRID 可以用用二維排版(row and colulmn)，反之`Flex`只能選用一維(row or colulmn)。
 ---
 > 以下是所有<font color="red">`GRID` Properties </font>，我整理好分類，這樣才好董或記。如果有學會或用過`GRID`，這會更好理解。
 
 - display (enable grid propertis 啟動GRID)
-- grid Container
+- grid Container(parent父)
 	- grid-template
 	  - grid-template-column 
 	  - grid-template-row 
@@ -39,7 +39,7 @@ categories:
 	  - grid-auto-column
 	  - grid-auto-rows
 	  - grid-autp-flow 
-- Grid item
+- Grid item(Child 子)
 	- Grid-column-start
 	- Grid-column-end
 	- Grid-row-start
@@ -52,13 +52,15 @@ categories:
 	- Place-self: shorthand for <align-self> <justify-self>
 	
 ## GRID 架構 Structure & Terminology
-### Container And Items 差別：
+### Container 和 Items 差別：
 > `Grid Container`: 盒子的最外層Parent 
 > `Grid items`: 盒內層Children 
+> 其實跟Flex一樣，都需要有container and items
+
 ![container and items of GRID](https://i.imgur.com/g882pUK.png)
 
 ### 了解相關GRID terms
-> `Grid line`: horizontal or vertical dived line in a grid
+> `Grid line`: grid的線條之前 horizontal or vertical dived line in a grid
 > `Grid Cell`: intersection of the grid
 > `Grid-Track`:
 > `Grid-Area`: 
@@ -66,7 +68,7 @@ categories:
 ![terms](https://i.imgur.com/eYFvrl5.png)
 
 
-## GRID Properties
+## Grid Container
 - 以下會用到的HTML and CSS程式碼。Example Code for demo on different properties
 ![](https://i.imgur.com/a9h6p6F.png)
 
@@ -138,39 +140,40 @@ text-align: center;
 ### 1. display
 By default all the content are lay column, which lay like  block element. 
 >  Display properties : `<grid>` or `<inline-grid>`
-> `display: grid` : default by row and stretch behave to block element 
->`dispplay: inline-grid`: will not display in block element 
+>> `display: grid` : default by row and stretch behave to block element 
+>> `dispplay: inline-grid`: will not display in block element 
 
-![](https://i.imgur.com/3golNqE.png)
-
-- code: 
+#### Display example:
 ```
 .container{
-display: grid ; 
+display: grid ; //or inline-grid
 border: 6px solid black;
 }
 ```
+
+![](https://i.imgur.com/3golNqE.png)
+
 ## 2. grid-template 
 we can use `grid-template-row` or `grid-template-column`
-value can be:
+
+> 直為以下方式value can be:
 - non-negative length value like `px`, `%`
 - `fraction` of the free space avaiable
-- `repat()` and `minmax()`
+- `repeat()` and `minmax()`
 
-### grid-template-columns
-specifies number of columns in a grid layout, each value represent the size of column. so let set it as below:
->EX: `grid-template-columns:100px 200px 300px`
+### grid-template-columns 欄的寬度
+設定欄為。Specifies number of columns in a grid layout, each value represent the size of column. so let set it as below:
+>EX1: `grid-template-columns:100px 200px 300px` 
+我們也可以這樣設`auto` 不需要設定大小，如下面:
+> Ex2: `grid-template-columns: auto auto auto;`
 
 It will create three column, first column is 100px, second is 200px, and third is 300px. Since we define three column, so the forth items will be in second row. 
 
-> Ex: `grid-template-columns: auto auto auto;`
->> 3個 `auto` 就是3 rows
-
-
 #### value as `repeat` 
+如果有同樣的大小，我們可以用`repeat`這個函數，如下面例子。
 we can also use the `repeat` option, when all column have same width like this:
 > `grid-template-columns: repeat (3, 200px)` 
->> //repeat 3 times 
+>> //repeat 3 times 重複3次 也就是欄設定為200px寬度。
 
 > `grid-template-columns: repeat (6, 200px)` 
 >> //repeat 6 time with 200 px each
@@ -181,20 +184,23 @@ we can also set to `fr` which is fraction value as below:
 This mean: first and third given 25% of space, and second one five 50% of the space
 
 #### value as `minmax`
-> `grid-template-columns: repeat(3, minmax(200px, 1 fr));` 
-we can use minmax 
+We can also set mimmax, which you can provide min and max width. 
+> syntax: minmax(min, max);
+>> ex: `grid-template-columns: repeat(3, minmax(200px, 1 fr));` 
 The column should be at least 200px, once less than 200px, column will start to overflow. 
 
-
-### grid-template-rows 高度
-Specifies the number of rows(height) in a grid layout
-It's same as columnm expect instead set width, we set the height of it
+### grid-template-rows 列的高度
+- Specifies the number of rows(height) in a grid layout
+- It's same as columnm expect instead set width, we set the height of it
 
 > Set the first row to 100px
 >> `grid-template-rows: 100px;`
 
 > set three row of different height
 >> `grid-template-rows: 100px 150px 200px;`
+
+> 也可以這樣設
+>> `grid-template-rows:auto auto auto;`
 
 #### value as `repeat` 
 If we have three row of equal height
@@ -216,7 +222,7 @@ If we have three row of equal height
 ```
 
 ### grid-template (shorthand)
-- shorthand for specifying rows and coluknb
+- shorthand for specifying rows and column
 > syntax: `grid-template: ROW /COLUMN`
 >> ` grid-template: repeat(2, 1fr)/repeat(3, minmax(200px, 1fr));`
 
@@ -234,21 +240,21 @@ If we have three row of equal height
 > specify the gap between columns using `column-gap`
 > specify the gap between columns using `row-gap`
 > value can be non negative value or a perentage 
-> 
+
 ### Example
 ```
 grid-gap: 40px 60px
 ```
 specify both row and column using gap:
 
-### column:
+### column-gap:
 > example: `column-gap: 20px;`
 
-### row:
+### row-gap:
 > example: `column-gap: 20px;`
 
 ### gap: (shorthand for row and column gap)
-> syntax: gap: row gap coluknb gap
+> syntax: gap: row gap column gap
 >> example: `gap: 40px 20px; `
 
 ## 4. aligment and spacing within cell
@@ -258,18 +264,19 @@ specify both row and column using gap:
 
 ### justify-items
 - default the value is `stretch`
-- valu: {stretch, start, end, center}
+- value: {stretch, start, end, center}
+
 ###  align-items
 - default the value is `stretch`
 - value: {stretch, start, end, center}
-
 
 ### place-items
 > shorthand : `<align-items>` `<justify-item>`
 >> example1: place-items: start end
 
-## 
+
 ### justify-content
+
 ### align-content
 ### place-content
 
@@ -278,6 +285,8 @@ specify both row and column using gap:
 
 
 ## Example and Layout
+### EXample 1 Layout
+### EXample 2 Layout
 
 ### EXample 3 Layout
 - HTML: 我宣告一個parent，裡麵包div
@@ -324,5 +333,5 @@ specify both row and column using gap:
 }
 
 ```
-## output 
+#### output 
 ![](/images/gridexample.png)
