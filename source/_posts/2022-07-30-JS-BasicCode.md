@@ -3,7 +3,7 @@ title: JS Basic Code 基本
 date: 2022-07-30 07:59:48
 tags: JS
 categories:
-- [WebDev, CSS]
+- [WebDev, JS]
 ---
 
 ## JS基本須知道

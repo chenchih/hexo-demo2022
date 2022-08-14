@@ -3,7 +3,7 @@ title: JS Advance
 date: 2022-08-11 13:00:48
 tags: JS
 categories:
-- [WebDev, CSS]
+- [WebDev, JS]
 ---
 ## Advance JS
 

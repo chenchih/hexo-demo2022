@@ -7,6 +7,7 @@ tags:
 categories:
 - [WebDev, CSS]
 ---
+# Flex Layout 排版 (CSS 格線佈局)
 
 CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以叫做flexible。Flexbox 是屬於one dimention ，也就去說你只有一個軸，你不是選擇用row or colomn。我會介紹以下的內容：
 - 父元素/容器属性：
