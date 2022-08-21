@@ -62,16 +62,36 @@ categories:
 ![container and items of GRID](https://i.imgur.com/g882pUK.png)
 
 ### 專有名詞Terms
-> - `Grid line`: Grid的線條之間。Horizontal or Vertical divided line in a grid
-> - `Grid Cell`: intersection of the grid. grid 的最小單位
-> - `Grid-Area`: 
-> - `Grid-Track(格線軌道)` 
-    - `explicit-track`: 透過 `grid-template-columns` 與 `grid-template-rows`屬性定義了行與列
-    - `implicit track`: 透過 `grid-auto-rows` 和 `grid-auto-columns` 來定義。
+
+| 名詞 | 說明 Description|圖示|
+| -- | -- | -- |
+| Grid line |  Grid的線條之間。Horizontal or Vertical divided line in a grid ||
+| Grid Cell  |intersection of the grid. grid 的最小單位||
+| Grid-Area  |||
+|Grid-Track|格線軌道，兩條線之間的區域。||
+| explicit-track  |透過 `grid-template-columns` 與 `grid-template-rows`|虛線（dashed line）|
+| implicit-track  |透過 `grid-auto-rows` 和 `grid-auto-columns`|點線（dotted line）|
+|Gap|可以透過 `column-gap`, `row-gap`, 或簡寫的 `gap` 來定義。|斜虛線（diagonal dashed line）|
+
+![terms](https://i.imgur.com/eYFvrl5.png)
+
+#### Grid Track 
+我想分享一下Grid Track 類似相關設定。我們有分兩種Grid Track，請看下面圖更了解他們的差別。我們可以用線來區分它們的差別
+
+>`explicit-track`: 透過 `grid-template-columns` 與 `grid-template-rows`，以虛線（dashed line）
+> `implicit track`: 透過 `grid-auto-rows` 和 `grid-auto-columns` ，以	點線（dotted line）
 
 ![](https://www.quackit.com/pix/stock/css_grid_explicit_and_implicit_track_sizing.png)
 
-![terms](https://i.imgur.com/eYFvrl5.png)
+##### Example:
+![](https://i.imgur.com/inHY2cJ.png)
+
+#### Grid GAP
+spaces between each column/row are called gaps. 欄或列之間的空見。我下面有介紹如何用。
+
+> gap: 可以透過 `column-gap`, `row-gap`, 或簡寫的 `gap` 來定義。|斜虛線（diagonal dashed line）
+
+![](https://i.imgur.com/6dKkLZx.png)
 
 ### GRID程式碼範例 Grid Sample Code 
 - 以下會用到的HTML and CSS程式碼範例。Example Code for demo on different properties
@@ -341,7 +361,16 @@ shorthand for specifying rows and column. 這是上面我們所學的欄與列�
 > syntax: `justify-items: {stretch| start| end | center}`
 >> default the value is `stretch`
 
-![](https://i.imgur.com/IW1UZcX.png)
+```
+.container{
+display: grid ;
+border: 4px solid black;
+grid-template: repeat(3, 1fr)/repeat(3,minmax(200px, 1fr));
+justify-items:end;
+}
+```
+
+![](https://i.imgur.com/2roc6jX.png)
 
 ####  align-items
 
@@ -349,7 +378,18 @@ shorthand for specifying rows and column. 這是上面我們所學的欄與列�
 > syntax: `align-items: {stretch| start| end| center}`
 >> default the value is `stretch`
 
-![](https://i.imgur.com/AUn3KYS.png)
+```
+.container{
+display: grid ;
+height:400px;
+border: 4px solid black;
+grid-template: repeat(3, 1fr)/repeat(3,minmax(200px, 1fr));
+justify-items: center;
+align-items:center;
+}
+```
+
+![](https://i.imgur.com/ajknAkc.png)
 
 
 #### place-items 
@@ -359,7 +399,17 @@ shorthand for specifying rows and column. 這是上面我們所學的欄與列�
 >> example1: `place-items: start end` 
 >> example2: `place-items: center` 
 
-![](https://i.imgur.com/n1mH6JS.png)
+```
+.container{
+display: grid ;
+height:400px;
+border: 4px solid black;
+grid-template: repeat(3, 1fr)/repeat(3,minmax(200px, 1fr));
+place-items: start end
+}
+```
+
+![](https://i.imgur.com/MJnHIYA.png)
 
 
 ---
@@ -394,6 +444,17 @@ The whole grid-item is a group, so when set `justify-content`,  `row`  will be m
 
 The whole grid-item is a group, so when set `align-content`, `column` will move by vertical direction. Please refer below picture for more detail.
 
+```
+.container{
+display: grid ;
+height:800px;
+border: 6px solid black;
+grid-template: repeat(3,200px)/repeat(3,200px);
+justify-content: space-around;
+align-content: space-around;
+}
+```
+
 ![](https://i.imgur.com/I00vot2.png)
 
 #### place-content 
@@ -403,6 +464,16 @@ The whole grid-item is a group, so when set `align-content`, `column` will move 
 >> example2: `place-content: center`
 
 The whole grid-item is a group, so when set `place-content`, all the `row and column` will be move. Please refer below picture for more detail.
+
+```
+.container{
+display: grid ;
+height:800px;
+border: 6px solid black;
+grid-template: repeat(3,200px)/repeat(3,200px);
+place-content: start end;
+}
+```
 
 ![](https://i.imgur.com/rh1SXNT.png)
 
@@ -483,6 +554,31 @@ grid-template: repeat(3, 200px)/repeat(3,200px);
 > syntax: `justify-self: {stretch |start |center|end}`
 >> default the value is `stretch`
 
+```
+.container{
+    display: grid ;
+    border: 6px solid black;
+    grid-template: repeat(3, 200px)/repeat(3,200px);
+}
+
+.grid-item{
+color: #000;
+font-size: 1.5rem;
+padding: 1rem;
+text-align: center;
+}
+.item-1{
+    background-color: red;
+    grid-column: 1/span 2;
+    grid-row: 1/span 2;
+
+}
+.item-2{
+    background-color: yellow;
+   justify-content: stretch;
+}
+```
+
 ![](https://i.imgur.com/RTxjQHM.png)
 
 #### align-self
@@ -490,12 +586,39 @@ grid-template: repeat(3, 200px)/repeat(3,200px);
 > syntax:  `align-self: {stretch |start |center|end}`
 >> default the value is `stretch`
 
+```
+.item-1{
+    background-color: red;
+    grid-column: 1 /span 2;
+    grid-row: 1/span 2;
+
+}
+.item-2{
+    background-color: yellow;
+    justify-self: center;
+   align-self: stretch;
+}
+```
+
 ![](https://i.imgur.com/VdDJcfP.png)
 
 #### place-self
 
 - Shorthand for align-self and justify-self
 > syntax:  `place-self : <align-self>< justify-self> `
+
+```
+.item-1{
+    background-color: red;
+    grid-column: 1 /span 2;
+    grid-row: 1/span 2;
+
+}
+.item-2{
+    background-color: yellow;
+place-items: start end;
+}
+```
 
 ![](https://i.imgur.com/12SyaX5.png)
 
