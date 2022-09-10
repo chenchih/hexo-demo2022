@@ -3,7 +3,7 @@ title: codeTest_and_Interview
 date: 2022-08-21 15:44:18
 tags: python codetest interview
 categories:
-- python
+- interview
 ---
 
 ## Interview Code Test
@@ -66,7 +66,7 @@ class LetterFilter:
 # class LetterFilter:
 #
 ```
-#### Method 1: solution for HackCode
+- #### Method 1: solution for HackCode
 ```
 def eliminate_consonants(x):
         vowels= ['a','e','i','o','u']
@@ -76,7 +76,7 @@ def eliminate_consonants(x):
 eliminate_consonants('mississippi')
 ```
 
-#### Method 2: solution for HackCode
+- #### Method 2: solution for HackCode
 ```
 class LetterFilter:
 
@@ -129,11 +129,12 @@ print(f.filter_consonants())
 ```
 
 ### Q2. Mutations
-Input: 
+```Input: 
 STDIN           Function
 -----           --------
 abracadabra     s = 'abracadabra'
 5 k             position = 5, character = 'k'
+```
 
 #### Solution
 ```
@@ -151,6 +152,7 @@ if __name__ == '__main__':
 
 ### Q3. fizz_buzz
 #### Solution
+- ##### python
 ```
 def fizzBuzz(n): 
     # Write your code here
@@ -168,7 +170,20 @@ if __name__ == '__main__':
     fizzBuzz(n)
 ```
 
-### JS 
-#### Q1.
+- ##### JS
+```
+var output = [];
+var count = 1;
+function fizzBuzz() {
+  if (count % 3 == 0) {
+    output.push("Bizz");
+  } else {
+    output.push(count);
+  }
+  count++;
+  console.log(output);
+}
+
+```
 
 ## LeedCode

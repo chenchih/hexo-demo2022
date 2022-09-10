@@ -15,18 +15,23 @@ categories:
 ---
 > 以下是所有<font color="red">`GRID` Properties </font>，我整理好分類，這樣才懂或記。如果有學會或用過`GRID`，會更好理解。
 
-- display (enable grid propertis 啟動GRID)
+
 - Grid Container(parent Properties)
-	- grid-template
+    - 1.display (enable grid propertis 啟動GRID)
+	- 2.grid-template
 	  - grid-template-column 
 	  - grid-template-row 
 	  - grid-template
-	  - grid-template-areas (進行中)	  
-	- gap 
+	  - grid-template-areas
+    - 3.grid-auto-flow
+	  - grid-auto-column
+	  - grid-auto-rows
+	  - grid-auto-flow 	    
+	- 4.gap 
 	  - column-gap
 	  - row-gap
 	  - gap
-	- Alignment & Spacing
+	- 5.Alignment & Spacing
 		- within grid cell
 			- justify-items
 			- align-items
@@ -35,10 +40,6 @@ categories:
 			- justify-content
 			- align-content
 			- place-content
-	- grid-auto-flow
-	  - grid-auto-column
-	  - grid-auto-rows
-	  - grid-auto-flow 
 - Grid item(Child Properties)
 	- Grid-column-start
 	- Grid-column-end
@@ -163,10 +164,10 @@ text-align: center;
 ```
 
 ## Part 2-1: Grid Container(parent Properties)
-以下我開使介紹Container 和 Items相properties。
+以下我開使介紹Container 和 Items相關　properties。
 
 ### 1. display
-By `default` the content has created single column grid for the items. All of the grid items lay in `row`, which behave like `block element`, so this is why even if you don't add `display: grid` the content will lay block. If you  `don't` wants grid container to `display in block`, you can change it to `inline-block`. There are two properties for display as below:  
+By `default` the content has created single column grid for the items. All of the grid items lay in `row`, which behave like `block element`, so this is why even if you don\'t add `display: grid` the content will lay block. If you  `don't` wants grid container to `display in block`, you can change it to `inline-block`. There are two properties for display as below:  
 
 >  Display properties : `<grid>` or `<inline-grid>`
 >> `display: grid` : default items lay in row and stretch behave to block element 
@@ -185,181 +186,414 @@ border: 6px solid black;
 ### 2. grid-template: set rows or colulmns  
 We have three properties: 
  > - `grid-template-row` : set how many rows 設定列
- > - `grid-template-column` set how many column 設定幾個欄
+ > - `grid-template-column` set how many column 設定欄
  > - `grid-template` shortcut for row and column 列與欄的縮寫
 
-> 他有很多不同方式來設他的值(value)如下面方法:
->>- non-negative length value like 任何正數 `px`, `%` , `rem`等等
->>- `auto`: determined by the size of the container, and on the size of the content of the items。尺寸是以照內容的寬度呈現
->>- `fr`: 就是fraction ，指的是 container扣掉 grid-gap `後的空間加以分配`，用法類似 `flex-grow` 和 `flex-shrink`。 Fraction will take free space avaiable of the container anf gap space , which is related to `flex-grow` 和 `flex-shrink` 
->>- `repeat()`可重複某值 and `minmax()`可將值限定在某區間，傳入兩個參數，最小值與最大值
+以下是設他不同的值(value)的方法 Below are setting value option:
+>- non-negative length value like 任何正數 `px`, `%` , `rem`等等
+>- `auto`: determined by the size of the container, and on the size of the content of the items。尺寸是以照內容的寬度呈現
+>- `fr`: 就是fraction ，指的是 container扣掉 grid-gap `後的空間加以分配`，用法類似 `flex-grow` 和 `flex-shrink`。 Fraction will take free space avaiable of the container anf gap space , which is related to `flex-grow` 和 `flex-shrink` 
+![](https://i.imgur.com/jConRyo.png)
+>- `repeat()`可重複 and `minmax()`可將值限定在某區間，傳入兩個參數，最小值與最大值
+> - `auto-fit` and `auto-fill`: 自動重複網格線(自動填滿網格軌道)
+> -　`fit-content` 貼合內容尺寸貼合內容尺寸
 
-#### grid-template-columns 欄的寬度
-住要是做來設定幾個欄位。Specifies number of columns in a grid layout, each value represent the size of column. 
-> Symtax: grid-template-columns: X-column` 
->> `1 column`:　grid-template-columns: 100px;
->> `3 column`:　grid-template-columns: 100px 100px 300px;
+#### grid-template-columns (column width - 欄的寬度)
+Specifies number of columns in a grid layout, each value represent the size of column; the `width of items`. Column also refer to Y axis vertical axis. 
+
+> **Syntax**: `grid-template-columns: size` 
+>> `1 column` =>　`grid-template-columns: 100px;`
+>> `3 column` =>　`grid-template-columns: 100px 100px 300px;`
+>> the more value you enter the more column will set
 
 ![](https://i.imgur.com/bgApvOe.png)
 
 - ##### value as `PX` or `auto` 
 > - 設定寬度大小以`px`為單位，或 `auto`。
     > - 如果設用寬度大小為`auto`就是內容，會把它展最大寬度。請看我下面圖。We can also set other than px or auto, auto will stretch to max width
-    > - 如果設定單一值(value)，就是1欄，以我的圖設3個px 說明3欄。Value can set with 1 paramter size(for one colulmn), set 3 paramter size (for 3 column)
- 
-- EX1(自訂不同欄的寬度):
-`grid-template-columns:100px 200px 300px` 
-- Ex2: 我們也可以用`auto` 自動調寬度大小，如下面:
-`grid-template-columns: auto auto auto;`
-![](https://i.imgur.com/8txVTrW.png)
+    > - 如果設定單一值(value)，就是`1欄`，以我的圖設`3個px` 說明3欄。Value can set with `1 parameter size(for one colulmn)`, set `3 parameter size (for 3 column)`
+     
+    - **EX1**(自訂不同欄的寬度):
+    > `grid-template-columns:100px 200px 300px` 
+
+    - **Ex2**: 我們也可以用`auto` 自動調寬度大小，如下面:
+    >`grid-template-columns: auto auto auto;`
+
+    ![](https://i.imgur.com/8txVTrW.png)
 
 
 It will create three column, `first column is 100px`, `second is 200px`, and `third is 300px`. Since we define three column, so the forth items will be in second row. 
+以上面的例子我們設3個PX就說明3欄，所以第4欄就換行就變成第2列。
 
-- #### value as `repeat` 
-> - 如果有`同樣的大小`，我們可以用`repeat`這個函數，如下面例子。 We can also use the `repeat` option, to set all column with the same width, pelase refer below example. 
-
-> - EX1: `grid-template-columns: repeat (3, 200px)`
-repeat 3 times 重複3次 也就是欄設定為200px寬度。
-
-> - EX2: `grid-template-columns: repeat (6, 200px)` 
-repeat 6 time with 200 px each 重複6次 每欄為200px
-
-![](https://i.imgur.com/DA2zo9D.png)
+- ##### value as `repeat()` 
+    > - 如果有`同樣的大小`，我們可以用`repeat`這個函數，如下面例子。 We can also use the `repeat` option, to set all column with the same width, pelase refer below example. 
 
 
-- ####  value as fraction  `fr `
+    - **EX1**: `grid-template-columns: repeat (3, 200px)`
+    repeat 3 times 重複3次 也就是欄設定為200px寬度。 
+
+    - **EX2**: `grid-template-columns: repeat (6, 200px)` 
+    `repeat 6 time with 200px each 重複6次 每欄為200px
+
+    ![](https://i.imgur.com/DA2zo9D.png)
+
+
+- #####  value as fraction  `fr `
 we can also set to `fr` which is fraction value as below:
+    - **EX**:  `grid-template-columns: 1fr 2fr 1fr` 
+    We have 100%, the `first and third given 25%` of space, and `second one five 50%` of the space
+    ![](https://i.imgur.com/Jha0Hdv.png)
 
-> - `grid-template-columns: 1fr 2fr 1fr` 
-
-We have 100%, the `first and third given 25%` of space, and `second one five 50%` of the space
-
-![](https://i.imgur.com/Jha0Hdv.png)
-
-- #### value as `minmax`
+- ##### value as `minmax`
 We can also set `mimmax`, which you can provide `min` and `max width`. 
-> syntax: `minmax(min, max);`
->> `grid-template-columns: repeat(3, minmax(200px, 1 fr));` 
-The column should be at least 200px, once less than 200px, column will start to overflow. 
+> `syntax`: `minmax(min, max);`
 
-![](https://i.imgur.com/nOwqXFq.png)
+    - **EX**:  `grid-template-columns: repeat(3, minmax(200px, 1 fr));` 
+    The column should be at least 200px, once less than 200px, column will start to overflow. 
+    ![](https://i.imgur.com/nOwqXFq.png)
 
 
-####  Compare `fr` and `px` different 比較FR 和PX 差別
-> `fr` 是以最大空間為大小， `PX` 是以實際`PIXEL` 為大小。請看圖更詳細看它們的差別
-> `Fraction` value take over all available space just like `%`
-> `Pixel` value will only set according to what you specify 
+- #####  Compare `fr` and `px` different 比較FR 和PX 差別
+    > `fr` 是以最大空間為大小， `PX` 是以實際`PIXEL` 為大小。請看圖更詳細看它們的差別
+    > `Fraction` value take over all available space just like `%`
+    > `Pixel` value will only set according to what you specify 
 
-![](https://i.imgur.com/EP5bnQR.png)
+    ![](https://i.imgur.com/EP5bnQR.png)
 
 --- 
 
-### grid-template-rows 列的高度
+#### grid-template-rows 列的高度 (row height- 列的高度)
 Specifies the number of rows(height) in a grid layout
-It\'s same as columnm expect instead set width, we set the height of it
+It\'s same as columnm expect instead set width, we set the height of it. Column also refer to Y axis vertical axis. 
 
-- #### value as `PX` or `auto` 
+- ##### value as `PX` or `auto` 
 > - 設定高度大小以`px`為單位，或 `auto`。
     > - 如果設用高度大小為`auto`就是內容，會把它展最大高度。請看我下面圖。We can also set other than px or auto, auto will stretch to max height
     > - 如果設定單一值(value)，就是第1列會設高度，其他列會用預設高度。If we set 1 parameter row hight only the first row will be set, the reest will use default height.
 
-- Ex1: (1 value 單一值) Set the first row to 100px
-`grid-template-rows: 100px;`
-- Ex2: (x value 自訂不同列的高度) set three row of different height
-`grid-template-rows: 100px 150px 200px;`
-- Ex3: (auto) set three row same height
-`grid-template-rows: auto auto auto;`
+    - **Ex1**: (1 value 單一值) Set the first row to 100px
+    `grid-template-rows: 100px;`
+    - **Ex2**: (x value 自訂不同列的高度) set three row of different height
+    `grid-template-rows: 100px 150px 200px;`
+    - **Ex3**: (auto) set three row same height
+    `grid-template-rows: auto auto auto;`
 
-![](https://i.imgur.com/GEgbRRR.png)
+    ![](https://i.imgur.com/GEgbRRR.png)
 
 
-- ### value as `repeat` 
+- ##### value as `repeat` 
 > - If we have three row of equal height
 > - 如果有`同樣的大小`，我們可以用`repeat`這個函數，如下面例子。 we can also use the `repeat` option, to set all row with the same height, pelase refer below example. 
 
-> - EX1: `grid-template-rows: repeat (3, 100px)`
-repeat 3 times 100px row height. 重複3次，也就是列設定為200px高度。
-
-> - EX2: `grid-template-rows: repeat (2, 100px)`
-repeat 2 times 100px row height, the rest default. 重複2次，也就是列設定為100px高度。
-
->  - EX3: `grid-template-rows: repeat (3, 100px) 200px`
-
-如果我們多加第4列，會出現一個新的列
-
-![](https://i.imgur.com/11wcFuu.png)
+    - **EX1**: `grid-template-rows: repeat (3, 100px)`
+    repeat 3 times 100px row height. 重複3次，也就是列設定為200px高度。
+    - **EX2**: `grid-template-rows: repeat (2, 100px)`
+    repeat 2 times 100px row height, the rest default. 重複2次，也就是列設定為100px高度。
+    - **EX3**: `grid-template-rows: repeat (3, 100px) 200px`
+    如果我們多加第4列，會出現一個新的列
+    ![](https://i.imgur.com/11wcFuu.png)
 
 
-- ###  compare value `fr ` vs `px`  比較FR 和PX 差別
-we can also set to `fr` which is fraction value as below:
+- #####  compare value `fr ` vs `px` 
+we can also set to `fr` which is fraction value or free space. In this example let assign `container height` to `400px`, `height: 400px`
 
-> set container height:400px: `height: 400px`
-> `grid-template-rows: repeat(3, 1fr);`
-We have set our height to be `400px`, and we also added a `1fr` value in it, which will stretch avaible space to fill up the container. 
-![](https://i.imgur.com/PGsp0sY.png)
+ - **EX1**: `fr` value =>`grid-template-rows: repeat(3, 1fr);`
+     We have set our height to be `400px`, and we also added a `fr` value in it, which will stretch avaible space to fill up the container. 
+ - **EX2**: `px` value => `grid-template-rows: repeat(3, 100px);`
+      We have set our height to be `400px`, and we also added a `px` value in it, which will sonly use the space you assign and left over with aviable space. 
+
+    ![](https://i.imgur.com/PGsp0sY.png)
+
+The biggest differenct between `fr` and `px` is `fr value` will take over all available free space, whereas `px value` won\'t. As you can see above picture, we have add `height` to the container, and apply `3 row with fr` will take all available space, and stretch. In the other side if you set row with px, it will only apply the size, and left out with a available space. 
 
 ---
 
-### grid-template (shorthand)欄與列縮寫
+#### grid-template (shorthand)欄與列縮寫
 shorthand for specifying rows and column. 這是上面我們所學的欄與列的縮寫。
 
-> Symtax: `grid-template: ROW /COLUMN`
->> Ex: ` grid-template: repeat(2, 1fr)/repeat(3, minmax(200px, 1fr));`
+> `Syntax`: `grid-template: ROW /COLUMN`
 
-#### Example 
-```
-.container{
-    display: grid ; 
-    border: 6px solid black;
-   height: 400px;
-   grid-template: repeat(3, 1fr) /repeat(3, minmax(200px, 1fr)); 
-}
-```
+- **Ex:** ` grid-template: repeat(2, 1fr)/repeat(3, minmax(200px, 1fr));`
+
+    ```
+    .container{
+        display: grid ; 
+        border: 6px solid black;
+    height: 400px;
+    grid-template: repeat(3, 1fr) /repeat(3, minmax(200px, 1fr)); 
+    }
+    ```
 
 ![](https://i.imgur.com/9MGfSrA.png)
 
+---
+
+#### auto-fit and auto-fill value 
+
+I wants to talk about this special value, which I didn\'t mention in above which is using auto-fit and auto-fill as a value. 
 
 
-### 3. Gap 間距
+- `auto-fit`:
+Auto-fit: we don\'t tell how many column you wants. See how ,much content is in each one and figure it out how many you can fit in it. 
+
+- `auto-fill`:
+FILLS the row with as many columns as it can fit. 
+
+![](https://i.imgur.com/EdZ8iLr.png)
+
+##### Examples
+
+- **Example1 for auto-fit and auto-full**
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-gap: 10px;  
+}
+
+.item-9{
+grid-column-end: -1;
+}
+```
+![](https://i.imgur.com/fTT6CVy.png)
+
+Resize browser, items will jump into next line when there is no much space left. 
+
+- auto-fit: auto-fit will add one more column
+- auto-fill: auto-fit will not.  
+
+In above picture, as you can see if you wants to move item9 to the end, `auto-fit` will move to the `last new column`, but `auto-fill` will onlky stay on the `last column`. 
+
+- **Example2 for `minmax() + auto-fill` for Responsive Grids**
+> auto-fill+ minmax => autospace
+> auto-fill FILLS the row with as many columns as it can fit.
+
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px; 
+}
+```
+![](https://i.imgur.com/Z02NA5q.png)
+
+
+- **Example3 for `minmax() + auto-fit` for Responsive Grids**
+> auto-fit+ minmax => no autospace
+> auto-fit FITS the CURRENTLY AVAILABLE columns into the space by expanding them so that they take up any available space. 
+
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px; 
+}
+
+```
+
+![](https://i.imgur.com/z0uVd4T.png)
+
+#### fit-content
+It uses this forumular: min(maximum size, max(minimum size, argument)).  The fit-content() property use to defined function to put a limit on the maximum size of the division.
+
+As you can see item-1 no matter how big I set the width, it will only use the width of it\'s content. 
+![](https://i.imgur.com/nLpYhwi.png)
+
+#### auto and fraction 
+> I have mention both `fr` and `auto` in above, but when `fr` and `auto` use together, it will display differently. Both `auto` and `fr` minimum width of the content length, and use the avaiable space, if no space shrink it. 
+
+- when `Auto` and `Fr` use together: 
+Let me show you if `fr` and `auto` use together, `fr` win, they both flight for the remaining space, `auto` loses it/'s width and shrink down to min-with of content width. 
+![](https://i.imgur.com/YB2JkDm.png)
+
+> resource: https://www.rawkblog.com/2018/03/css-grid-understanding-grid-gap-and-fr-vs-auto-units/
+---
+#### grid-template-area
+Let create code like below 
+
+```
+<div class="container"> 
+        <div class="grid-item item-1">Item 1 </div>
+        <div class="grid-item item-2">Item 2</div>
+        <div class="grid-item item-3">Item 3</div>
+        <div class="grid-item item-4">Item 4</div>
+<style>
+
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: 1fr 500px 1fr;
+    grid-template-rows: 150px 150px 100px;
+    grid-gap: 10px;  
+    grid-template-areas: 
+    "sidebar1 content sidebar2"
+    "sidebar1 content sidebar2"
+    "footer footer footer"    
+}
+```
+
+![](https://i.imgur.com/6QBiH0N.png)
+
+Let adjust the grid item like this:
+``` 
+.item-1{
+  grid-area: sidebar1;
+}
+.item-2{
+    grid-area: content;
+
+}
+.item-3{ 
+    grid-area: sidebar2;
+}
+.item-4{ 
+    grid-area: footer;
+}
+```
+![](https://i.imgur.com/E9K9ZGe.png)
+
+> Note: if you wants to leave empty use can use `.` like this: `footer footer .`
+
+![](https://i.imgur.com/WHn0GhQ.png)
+
+### 3. grid-auto-flow
+- row: 排列方向以行為優先
+- column: 排列方向以列為優先
+- dense: 將網格項目非常緊密的排列在一起
+
+#### Implicit and Explicit track 
+
+In the previous properties we have learn grid-template, which you can refer it as explict track. In this section we will mention grid-aut0-flow, which you can refer it as implicit-track. So let dive into more detail between these two track in order to understand what's grid-auto-flow. Honestly this might not be use often, it depend. 
+
+- Implicit: if you do not create it using
+- Explicit: you create it either using grid-template-column or  grid-template-row properties
+
+In the bottom the `first picture` you can see I ONLY `define the column`, the `row` will become `implicit` define by browser. The `second picture`  I `define the row`, so the `row` will become `explicit`. So there is no implicit. 
+![](https://i.imgur.com/iRBkGjR.png)
+
+So If I add `new grid items`, the `new created` items will become `implicit`. Orginal I have Items1~Items4, which i also declare 2 column, and 2 row. Now if I add `New items` (`item4 and item5`), it will become `implicit`, because we only `declare 2 column, and 2 row`, so the `two new extra item`, will become `implicit`. If we create another items 7-item8, it will also be `implicit`. 
+![](https://i.imgur.com/NMd8EUw.png)
+
+You can use the line to distinguish between is it `implict` or `explicit` track. In both picture above I have marked the arrow yo show you the line type.
+![](https://i.imgur.com/SZjqzjC.png)
+
+So we have an understaing of what\'s is `implicit and explicit track`, so let move to `grid-auto-flow` to see more example. 
+
+
+#### grid-auto-flow:
+
+- Control how auto placed items get inserted into the grid
+> `grid-auto-flow` 属性通过控制自动布局算法的运作原理，精确指定自动布局的元素在网格中排列的方向。 **資料來源 - MDN**
+
+> **syntax**: `grid-auto-flow: {row| column| dense| row dense| column dense}`
+>> default the value is `row`
+
+##### grid-auto-flow row and column
+grid-auto-flow 設定，會依照設定的 `grid-template-columns` 數量去設定 column ，但假如是 row 的話
+![](https://i.imgur.com/pVUQGId.png)
+
+ So in below example we only define 2 column, but we have 3 grid item, the third items, will automatic flow to the next line or new row which is default, and it will become implict. So how do we lay next to the item2, so this is where we add grid-auto-flow. All the items in implict will lay in column rather than row(default)
+![](https://i.imgur.com/Y1lv91s.png)
+
+So if we create more grid-item, all the items will position it as colummn, next to each other. 
+
+##### grid-auto-flow dense
+dense is just like a space betwwen the track, so let me show you what's is dense. If we have a code like this: 
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: 1fr 500px 1fr;
+    grid-template-rows: 150px 150px 100px;
+    grid-gap: 10px;  
+}
+```
+
+Let add item with span on it. We will talk about `span` in below section. I just wants to show you what\'s dense.  In order to use `dense`, we need to have an empty spot or 
+ 
+```
+.grid-item:nth-child(4n){
+background-color: yellow;
+grid-column: 2 span;
+}
+```
+
+>`.grid-item:nth-child(4n)` this mean every 4 item will use this styling
+
+So As you can see below picture, item8 will overflow to new line, because there is no spot to store 2 span. 
+![](https://i.imgur.com/xhFU8aB.png)
+
+Now let add `grid-auto-flow` with `dense` and see what will happen.
+    ```
+    .container{
+        display: grid ;  
+        border: 5px black solid;  
+        grid-template-columns: 1fr 500px 1fr;
+        grid-template-rows: 150px 150px 100px;
+        grid-gap: 10px;  
+        grid-auto-flow: dense;
+    }
+    ```
+In above I mention that `item8` have **no space and overflow** to next line. If we add `dense` properties, the **empty spot or track** will be replace by other items. Please refer below pciture for more detail.
+![](https://i.imgur.com/WmP8XN9.png)
+
+#### column and row (set width and height)
+- `Grid-auto-column`: Setting default column width (same width)
+    - **EX1**: `grid-auto-column: 100px`
+    Value: pixel, %, minmax, auto(default)   
+- `Grid-auto-row`: Setting default column height  (same height)
+    - **EX2**: `grid-auto-row: 100px`
+    Value: pixel, %, minmax, auto(default)
+    ![](https://i.imgur.com/fyC05ha.png)
+-  `Grid-auto-column` with different size
+    - **EX3**: `grid-auto-row: 100px 500px 100px`
+    ![](https://i.imgur.com/ZKOTjx5.png)
+
+
+### 4. Gap 間距
 > - Spacing betwwen row and column  `<row gap> <column gap>`
 > - specify the gap between columns using `column-gap`
 > - specify the gap between columns using `row-gap`
 > - value can be non negative value or a perentage 
 
 #### Example gap 
-- 欄之間的距 `column's gap or Space` between each other
-> ex: `column-gap: column-gap: 20px;`
+- **EX1 column gap**: `column-gap: 20px`
+欄之間的距 column's gap or Space between each other
 
-- 列之間的距 `Row's gap or Space` between each other
-> ex: `column-gap: column-gap: 20px;`
+- **EX2 row gap**: `row-gap: 20px;`
+列之間的距 Row\'s gap or Space between each other
 
-- 欄與列間距縮寫 `shorthand for row-gap and column-gap`
-> syntax: gap: row gap column gap
->> ex: `gap: 50px 20px; `
+- **EX3 column and row gap**: `gap: 50px 20px;`
+欄與列間距縮寫 shorthand for row-gap and column-gap
+> **syntax** : `gap: row gap column gap`
 
 ![](https://i.imgur.com/cyDRkxM.png)
 
 
-### 4. aligment and spacing within cell
+### 5. aligment and spacing within cell
 - within grid cell:
-    - justify-item for aligment => row axis
-    - alignment-item for aligment => colummn axis
+    - justify-item for aligment => `row or X axis` 
+    - alignment-item for aligment => `colummn or Y axis `
     - place-item: shorthand for `<align> ` `<justify>`
 
 - within grid container:
-    - justify-content=> row axis
-    - align-content => column axis
+    - justify-content=> `row or X axis` 
+    - align-content => `colummn or Y axis `
     - place-content: shorthand for `<align> ` `<justify>`
 
-![](https://i.imgur.com/upKxT1s.png)
+![](https://i.imgur.com/TvTzvw3.png)
 
 
 #### justify-items
 
-- alignment along the row axis 
+- alignment along the `row or X axis 水平方向走(往右走)`
 > syntax: `justify-items: {stretch| start| end | center}`
 >> default the value is `stretch`
+
+![](https://i.imgur.com/SxJoQTU.png)
 
 ```
 .container{
@@ -374,9 +608,11 @@ justify-items:end;
 
 ####  align-items
 
-- alignment along the column axis 
-> syntax: `align-items: {stretch| start| end| center}`
+- alignment along the `column or Y axis 垂直方向走(往下走)`
+> **syntax:** `align-items: {stretch| start| end| center}`
 >> default the value is `stretch`
+
+![](https://i.imgur.com/xq49IGU.png)
 
 ```
 .container{
@@ -394,55 +630,53 @@ align-items:center;
 
 #### place-items 
 
-- shorthand for align-items justify-item>
-> syntax: `place-items : <align-items> <justify-item>`
->> example1: `place-items: start end` 
->> example2: `place-items: center` 
+- shorthand for align-items and justify-item
+> **syntax**: `place-items : <align-items> <justify-item>`
+There are two way we can set the value, with `2 value (start and end)`, or `1 value`, which both obtain the same value. 
 
-```
-.container{
-display: grid ;
-height:400px;
-border: 4px solid black;
-grid-template: repeat(3, 1fr)/repeat(3,minmax(200px, 1fr));
-place-items: start end
-}
-```
+- **EX1 place with two value**: `place-items: start end`
+- **EX1 place with one value**: `place-items: center`
 
-![](https://i.imgur.com/MJnHIYA.png)
+
+    ```
+    .container{
+    display: grid ;
+    height:400px;
+    border: 4px solid black;
+    grid-template: repeat(3, 1fr)/repeat(3,minmax(200px, 1fr));
+    place-items: start end
+    }
+    ```
+    ![](https://i.imgur.com/MJnHIYA.png)
 
 
 ---
 #### justify-content
 
-- Alignment and spacing alone `row axis`
+- Alignment and spacing alone `row or X axis`
 > syntax: `justify-content: { start |center | end |space-between| space-around |space-evenly }`
 >> default the value is `start`
 
-##### Example: 
-
-```
-.container{
-display: grid ;
-height: 800px;
-border: 6px solid black;
-grid-template: repeat(3, 200px)/ repeat(3, 200px);
-justify-content: start;
-}
-```
-
-The whole grid-item is a group, so when set `justify-content`,  `row`  will be move  by horizontal direction. Please refer below picture for more detail.
-
+    ```
+    .container{
+    display: grid ;
+    height: 800px;
+    border: 6px solid black;
+    grid-template: repeat(3, 200px)/ repeat(3, 200px);
+    justify-content: start;
+    }
+    ```
+The whole grid-item is a group, so when set `justify-content`,  `row`  will be move to `right or horizontal direction`. Please refer below picture for more detail.
 ![](https://i.imgur.com/Omn9ryA.png)
 
 
 ####  align-content
 
-- Alignment and spacing alone `column axis`
+- Alignment and spacing alone `column or Y axis`
 > syntax: `align-content: { start |center | end |space-between| space-around |space-evenly }`
 >> default the value is `start`
 
-The whole grid-item is a group, so when set `align-content`, `column` will move by vertical direction. Please refer below picture for more detail.
+The whole grid-item is a group, so when set `align-content`, `column` will move to `bottom or vertical direction`. Please refer below picture for more detail.
 
 ```
 .container{
@@ -459,56 +693,26 @@ align-content: space-around;
 
 #### place-content 
 - shorthand for align-content justify-content>
-> syntax: `place-content : <align-content> <justify-content>`
->> example1: `place-content: start end` 
->> example2: `place-content: center`
+> **syntax**: `place-content : <align-content> <justify-content>`
 
+- **EX1 place with two value**: `place-content: start end`
+- **EX1 place with one value**: `place-content: center`
 The whole grid-item is a group, so when set `place-content`, all the `row and column` will be move. Please refer below picture for more detail.
-
-```
-.container{
-display: grid ;
-height:800px;
-border: 6px solid black;
-grid-template: repeat(3,200px)/repeat(3,200px);
-place-content: start end;
-}
-```
+    ```
+    .container{
+    display: grid ;
+    height:800px;
+    border: 6px solid black;
+    grid-template: repeat(3,200px)/repeat(3,200px);
+    place-content: start end;
+    }
+    ```
 
 ![](https://i.imgur.com/rh1SXNT.png)
 
-### 5. grid-auto-flow
-- row: 排列方向以行為優先
-- column: 排列方向以列為優先
-- dense: 將網格項目非常緊密的排列在一起
-
-#### grid-auto-flow:
-
-- Control how auto placed items get inserted into the grid
-> grid-auto-flow 属性通过控制自动布局算法的运作原理，精确指定自动布局的元素在网格中排列的方向。
-資料來源 - MDN
-
-grid-auto-flow 設定，會依照設定的 grid-template-columns 數量去設定 column ，但假如是 row 的話
-
-> syntax: `grid-auto-flow: {row| column| dense| row dense| column dense}`
->> default the value is `row`
-
-![](https://i.imgur.com/pVUQGId.png)
-
-#### column and row
-- Grid-auto-column: Setting default column width
-    > EX: `grid-auto-column: 100px`
-    >> Value: pixel, %, minmax, auto(default)
-
-- Grid-auto-row: Setting default column height
-    > EX: `grid-auto-row: 100px`
-    >> Value: pixel, %, minmax, auto(default)
-
-![](https://i.imgur.com/fyC05ha.png)
-
-
 
 ## Part 2-2 Grid Items (Child Properties)
+
 Example code 
 ```
 .container{
@@ -517,30 +721,86 @@ border: 6px solid black;
 grid-template: repeat(3, 200px)/repeat(3,200px);
 }
 ```
-![https://i.imgur.com/IY9O8ZC.png]
+![](https://i.imgur.com/IY9O8ZC.png)
 
 
 ### Items position
-> - Properties control the position of the item in the grid
+> Properties control the position of the item in the grid
 
 > - Items position:
-    - column:
+    - `column`:
         - Grid-column-start
         - Grid-column-end
-    - row
+    - `row`:
         - Grid-row-start
         - Grid-row-end
-    - clumn and row:
-        - Grid-column (shorthand)
-        - Grid-row (shorthand)
-> - Value: 
-    - grid line number　
-    - Number of column or row item has to span
-    ![](https://i.imgur.com/8GdTUK2.png)
+    - column and row（shorthand）:
+        - Grid-column start end
+        - Grid-row start end
+> - `Value`: 
+    - `line` => number　
+     ![](https://i.imgur.com/8GdTUK2.png)
+    - `span`: => span number
+    ![](https://i.imgur.com/rcmyn3D.png)
 
-#### example: 
+Let use some example for more clear understand
 
-![](https://i.imgur.com/JuvoJha.png)
+#### example:
+
+- Grid Line Example
+
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px; 
+}
+
+.item-1{
+grid-column-start: 2; 
+grid-column-end: 3; 
+}
+
+.item-3{
+grid-column: 1/-1; 
+}
+```
+![](https://i.imgur.com/k1zUV7u.png)
+
+
+- span example
+
+> span start and end is auto: ` span 2`
+> span start end with track　or line:`span 2/5`
+
+```
+.container{
+    display: grid ;  
+    border: 5px black solid;  
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px; 
+}
+
+.item-1{
+grid-column: 2 span;
+grid-row:2 span;
+}
+
+.item-2{
+grid-column: 2 span;
+}
+
+.item-4{
+grid-column: 2 span/4;
+}
+```
+![](https://i.imgur.com/bFa3CCp.png)
+
+
+
+- Examples
+ ![](https://i.imgur.com/JuvoJha.png)
 
 
 ### Alignment item (set single grid item)
@@ -578,8 +838,9 @@ text-align: center;
    justify-content: stretch;
 }
 ```
-
 ![](https://i.imgur.com/RTxjQHM.png)
+
+
 
 #### align-self
 
@@ -605,7 +866,7 @@ text-align: center;
 #### place-self
 
 - Shorthand for align-self and justify-self
-> syntax:  `place-self : <align-self>< justify-self> `
+> syntax:  `place-self : <align-self> <justify-self>`
 
 ```
 .item-1{
@@ -753,7 +1014,8 @@ footer{
 }
 ```
 #### Compare with and without grid are
-![](https://i.imgur.com/mbIxcXc.png)
+
+![](https://i.imgur.com/rvmlTEj.png)
 
 ### EXample 2 Layout
 #### HTML:
@@ -808,3 +1070,5 @@ https://www.quackit.com/css/grid/tutorial/explicit_vs_implicit_grid.cfm
 https://pjchender.dev/css/css-grid-layout/
 https://css-tricks.com/snippets/css/complete-guide-grid/
 https://shunnien.github.io/2018/03/18/css-grid-06/
+https://www.geeksforgeeks.org/css-fit-content-property/
+https://www.rawkblog.com/2018/03/css-grid-understanding-grid-gap-and-fr-vs-auto-units/
