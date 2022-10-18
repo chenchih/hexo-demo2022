@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="遠端桌面連線我想分享如何設定無密碼，也可以做遠端桌面連線。正常都是我們電腦帳號如果設定無密碼但又想做遠端，需要作揖些設定。 Step1: 請在鍵盤輸入window + rStep2: 請輸入gpedit.mscStep3: disable Limit account use of blank password, to enable blank password 網路磁碟分享我想分享如何設定無密碼，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="無密碼-遠端桌面連線和分享網路磁碟">
+<meta property="og:url" content="https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="遠端桌面連線我想分享如何設定無密碼，也可以做遠端桌面連線。正常都是我們電腦帳號如果設定無密碼但又想做遠端，需要作揖些設定。 Step1: 請在鍵盤輸入window + rStep2: 請輸入gpedit.mscStep3: disable Limit account use of blank password, to enable blank password 網路磁碟分享我想分享如何設定無密碼，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/TSEfiQi.png">
+<meta property="og:image" content="https://i.imgur.com/TSEfiQi.png">
+<meta property="article:published_time" content="2022-06-25T00:06:54.000Z">
+<meta property="article:modified_time" content="2022-08-05T01:47:35.085Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="window">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/TSEfiQi.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/","path":"2022/06/25/2022-06-25-remotedesktop/","title":"無密碼-遠端桌面連線和分享網路磁碟"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>無密碼-遠端桌面連線和分享網路磁碟 | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%A0%E7%AB%AF%E6%A1%8C%E9%9D%A2%E9%80%A3%E7%B7%9A"><span class="nav-number">1.</span> <span class="nav-text">遠端桌面連線</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E8%AB%8B%E5%9C%A8%E9%8D%B5%E7%9B%A4%E8%BC%B8%E5%85%A5window-r"><span class="nav-number">1.1.</span> <span class="nav-text">Step1: 請在鍵盤輸入window + r</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E8%AB%8B%E8%BC%B8%E5%85%A5gpedit-msc"><span class="nav-number">1.2.</span> <span class="nav-text">Step2: 請輸入gpedit.msc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-disable-Limit-account-use-of-blank-password-to-enable-blank-password"><span class="nav-number">1.3.</span> <span class="nav-text">Step3: disable Limit account use of blank password, to enable blank password</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E7%A3%81%E7%A2%9F%E5%88%86%E4%BA%AB"><span class="nav-number">2.</span> <span class="nav-text">網路磁碟分享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">2.1.</span> <span class="nav-text">Step1: 建立一個資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E6%8A%8A%E8%B3%87%E6%96%99%E5%A4%BE%E8%A8%AD%E5%AE%9A%E6%AC%8A%E9%99%90"><span class="nav-number">2.2.</span> <span class="nav-text">Step2: 把資料夾設定權限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step%EF%BC%93-%E8%A8%AD%E5%AE%9A%E7%84%A1%E5%AF%86%E7%A2%BC%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.3.</span> <span class="nav-text">Step３: 設定無密碼設定</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="無密碼-遠端桌面連線和分享網路磁碟 | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          無密碼-遠端桌面連線和分享網路磁碟
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-25 08:06:54" itemprop="dateCreated datePublished" datetime="2022-06-25T08:06:54+08:00">2022-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/window/" itemprop="url" rel="index"><span itemprop="name">window</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>278</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="遠端桌面連線"><a href="#遠端桌面連線" class="headerlink" title="遠端桌面連線"></a>遠端桌面連線</h2><p>我想分享如何設定<strong>無密碼</strong>，也可以做遠端桌面連線。正常都是我們電腦帳號如果設定無密碼但又想做遠端，需要作揖些設定。</p>
+<h3 id="Step1-請在鍵盤輸入window-r"><a href="#Step1-請在鍵盤輸入window-r" class="headerlink" title="Step1: 請在鍵盤輸入window + r"></a>Step1: 請在鍵盤輸入<code>window + r</code></h3><h3 id="Step2-請輸入gpedit-msc"><a href="#Step2-請輸入gpedit-msc" class="headerlink" title="Step2: 請輸入gpedit.msc"></a>Step2: 請輸入<code>gpedit.msc</code></h3><h3 id="Step3-disable-Limit-account-use-of-blank-password-to-enable-blank-password"><a href="#Step3-disable-Limit-account-use-of-blank-password-to-enable-blank-password" class="headerlink" title="Step3: disable Limit account use of blank password, to enable blank password"></a>Step3: disable Limit account use of blank password, to enable blank password</h3><p><img src="https://i.imgur.com/TSEfiQi.png" alt="blank password"></p>
+<h2 id="網路磁碟分享"><a href="#網路磁碟分享" class="headerlink" title="網路磁碟分享"></a>網路磁碟分享</h2><p>我想分享如何設定<strong>無密碼</strong>，也可以做網路磁碟分享，這樣可以共享資料夾。</p>
+<h3 id="Step1-建立一個資料夾"><a href="#Step1-建立一個資料夾" class="headerlink" title="Step1: 建立一個資料夾"></a>Step1: 建立一個資料夾</h3><h3 id="Step2-把資料夾設定權限"><a href="#Step2-把資料夾設定權限" class="headerlink" title="Step2: 把資料夾設定權限"></a>Step2: 把資料夾設定權限</h3><h3 id="Step３-設定無密碼設定"><a href="#Step３-設定無密碼設定" class="headerlink" title="Step３: 設定無密碼設定"></a>Step３: 設定無密碼設定</h3><p>請到:<code>控制台\所有控制台項目\網路和共用中心\進階共用設定</code>設下面設定<br><img src="https://i.imgur.com/TSEfiQi.png" alt="enable blank password"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/" title="無密碼-遠端桌面連線和分享網路磁碟">https://github.com/chenchih/2022/06/25/2022-06-25-remotedesktop/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/window/" rel="tag"># window</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/24/2022-06-24-Emmet-VSCode/" rel="prev" title="Emmet 指令and VSCode">
+                  <i class="fa fa-chevron-left"></i> Emmet 指令and VSCode
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/25/2022-06-25-windowOS-automation/" rel="next" title="windowOS-製作動畫.xml">
+                  windowOS-製作動畫.xml <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">82k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

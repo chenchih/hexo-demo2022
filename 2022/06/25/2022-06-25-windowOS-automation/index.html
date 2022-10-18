@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="大家有用過自動安裝window 系統嗎？正常我們都用 ISO光碟片，USB和網路方法安裝OS。可這些方法我們可能要一直按下一步等等。今天我想分享如何用自動化安裝，不需要寫程式，只要把unattend.xml放進我們window ISO 或是USB的根目錄就可以。這個自動化工具叫做unattend 如果有興趣可以在網路找相關內容。我會教大家如何建立unattend.xml檔案，他可以幫我們自動建立帳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windowOS-製作動畫.xml">
+<meta property="og:url" content="https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="大家有用過自動安裝window 系統嗎？正常我們都用 ISO光碟片，USB和網路方法安裝OS。可這些方法我們可能要一直按下一步等等。今天我想分享如何用自動化安裝，不需要寫程式，只要把unattend.xml放進我們window ISO 或是USB的根目錄就可以。這個自動化工具叫做unattend 如果有興趣可以在網路找相關內容。我會教大家如何建立unattend.xml檔案，他可以幫我們自動建立帳">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/ikhlwPq.png">
+<meta property="og:image" content="https://i.imgur.com/WDtM0RU.png">
+<meta property="og:image" content="https://i.imgur.com/8PYvDsZ.png">
+<meta property="og:image" content="https://i.imgur.com/kisbiAK.png">
+<meta property="og:image" content="https://i.imgur.com/gcnbsp7.png">
+<meta property="og:image" content="https://i.imgur.com/XZe9UCh.png">
+<meta property="og:image" content="https://i.imgur.com/CEKajae.png">
+<meta property="og:image" content="https://i.imgur.com/hOXuKYP.png">
+<meta property="og:image" content="https://i.imgur.com/VbzK5WA.png">
+<meta property="og:image" content="https://i.imgur.com/W6vgWjo.png">
+<meta property="article:published_time" content="2022-06-25T00:07:07.000Z">
+<meta property="article:modified_time" content="2022-08-05T01:47:35.085Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="window">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/ikhlwPq.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/","path":"2022/06/25/2022-06-25-windowOS-automation/","title":"windowOS-製作動畫.xml"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>windowOS-製作動畫.xml | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-1-%E5%BB%BA%E7%AB%8Bautounattend-xml-%E6%AA%94%E6%A1%88%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">Part 1 : 建立autounattend.xml 檔案。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8E%BBwindowsafg-%E7%B6%B2%E7%AB%99"><span class="nav-number">1.1.</span> <span class="nav-text">1.	去windowsafg 網站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-window-%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">2.	window 相關設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%B8%8B%E8%BC%89autounattend-xml%E6%AA%94%E6%A1%88"><span class="nav-number">1.3.</span> <span class="nav-text">3.下載autounattend.xml檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-2-autounattend-xml-%E6%94%BE%E9%80%B2windowOS%E7%9B%AE%E9%8C%84%EF%BC%88ISO%E6%AA%94%E6%A1%88%E6%88%96%E6%98%AFUSBdisk-%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">Part 2 :autounattend.xml 放進windowOS目錄（ISO檔案或是USBdisk)。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%94%BE%E9%80%B2window-ISO%E6%A8%A3%E6%A1%88"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：放進window ISO樣案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AB%8B%E4%B8%8B%E8%BC%89anyburn%E9%80%99%E5%80%8B%E5%B7%A5%E5%85%B7%E5%86%8D%E5%AE%89%E8%A3%9D%E4%BB%96%E3%80%82-Download-anyburn-tool-and-install-it"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.	請下載anyburn這個工具再安裝他。 Ｄownload anyburn tool and install it</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%95%9F%E5%8B%95anyburn%E5%86%8D%E9%81%B8edit-image-file-Open-the-tool-and-click-on-edit-image-file"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.	啟動anyburn再選edit image file Open the tool and click on edit image file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%81%B8%E5%8F%96%E4%BD%A0%E7%9A%84ISO%E6%AA%94%E6%A1%88-Select-your-window-iso-file"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.	選取你的ISO檔案 Select your window iso file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Select-your-file-autounattend-xml-file-%E9%81%B8%E5%8F%96%E4%BD%A0%E7%9A%84eautounattend-xml%E6%AA%94%E6%A1%88"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.	Select your file autounattend.xml file 選取你的eautounattend.xml檔案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Save-your-iso-name-recommend-change-different-name-%E5%AD%98%E5%8F%96%E6%96%B0%E5%80%8BISO%E6%AA%94%E5%90%8D-%E5%BB%BA%E8%AD%B0%E6%9B%B2%E6%96%B0%E7%9A%84%E5%90%8D%E5%AD%97"><span class="nav-number">2.1.5.</span> <span class="nav-text">5.	Ｓave your iso name (recommend change different name) 存取新個ISO檔名(建議曲新的名字)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%BB%BA%E7%AB%8BwindowOS-USB%E9%96%8B%E6%A9%9F"><span class="nav-number">2.1.6.</span> <span class="nav-text">6.	建立windowOS USB開機</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-You-can-install-OS-already-%E7%8F%BE%E5%9C%A8%E5%8F%AF%E4%BB%A5%E5%AE%89%E8%A3%9DOS"><span class="nav-number">2.1.7.</span> <span class="nav-text">7.	You can install OS already. 現在可以安裝ＯＳ</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%952-%EF%BC%9A%E6%94%BE%E9%80%B2window-USB%E7%A2%9F"><span class="nav-number">2.2.</span> <span class="nav-text">方法2 ：放進window USB碟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-3-bypass-the-os-edition-selection-page"><span class="nav-number">3.</span> <span class="nav-text">Part 3 bypass the os edition selection page</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B7%A8%E8%BC%AF%E6%88%91%E5%80%91%E7%9A%84autounattend-xml%E6%AA%94%E6%A1%88"><span class="nav-number">3.1.</span> <span class="nav-text">1.	編輯我們的autounattend.xml檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Check-window-edition-vlaue-%E6%AA%A2%E6%9F%A5%E6%88%91%E5%80%91window-11-pro%E7%9A%84%E7%9B%B4"><span class="nav-number">3.2.</span> <span class="nav-text">2.	Check window edition vlaue 檢查我們window 11 pro的直</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8A%A0window%E5%AE%89%E8%A3%9DOS%E9%81%B8%E9%A0%85%E9%80%B2autounattend-xml"><span class="nav-number">3.3.</span> <span class="nav-text">3.	加window安裝OS選項進autounattend.xml</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="windowOS-製作動畫.xml | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          windowOS-製作動畫.xml
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-25 08:07:07" itemprop="dateCreated datePublished" datetime="2022-06-25T08:07:07+08:00">2022-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/window/" itemprop="url" rel="index"><span itemprop="name">window</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>大家有用過自動安裝window 系統嗎？正常我們都用 ISO光碟片，USB和網路方法安裝OS。可這些方法我們可能要一直按下一步等等。今天我想分享如何用自動化安裝，不需要寫程式，只要把<code>unattend.xml</code>放進我們window ISO 或是USB的根目錄就可以。<br>這個自動化工具叫做unattend 如果有興趣可以在網路找相關內容。<br>我會教大家如何建立<code>unattend.xml</code>檔案，他可以幫我們自動建立帳號，切磁區等等。在這分享我沒有教如何分切磁區。</p>
+<p>為什麼要做這個？<br>如果你長期在安裝<code>windowOS</code>我建議可以學會這個，非長方便。</p>
+<h2 id="Part-1-建立autounattend-xml-檔案。"><a href="#Part-1-建立autounattend-xml-檔案。" class="headerlink" title="Part 1 : 建立autounattend.xml 檔案。"></a>Part 1 : 建立<code>autounattend.xml</code> 檔案。</h2><h3 id="1-去windowsafg-網站"><a href="#1-去windowsafg-網站" class="headerlink" title="1.	去windowsafg 網站"></a>1.	去windowsafg 網站</h3><ul>
+<li>請到 <a target="_blank" rel="noopener" href="https://www.windowsafg.com/">window-afg</a>網站製作<code>autounattend.xml</code>檔案</li>
+<li>Access to <a target="_blank" rel="noopener" href="https://www.windowsafg.com/">windows answer file generator</a> site and create <code>autounattend.xml</code> file<br><img src="https://i.imgur.com/ikhlwPq.png" alt="windowsafg"></li>
+</ul>
+<h3 id="2-window-相關設定"><a href="#2-window-相關設定" class="headerlink" title="2.	window 相關設定"></a>2.	window 相關設定</h3><p>用預設的設定即可。You can use the default setting, or use the same setting I set.</p>
+<ul>
+<li>我只設定，時間，鍵盤語言，和帳號</li>
+<li>I only changed <code>time tone</code>, <code>keyboard to US</code>, and <code>account to administrator</code><br><img src="https://i.imgur.com/WDtM0RU.png" alt="account admin"></li>
+</ul>
+<h3 id="3-下載autounattend-xml檔案"><a href="#3-下載autounattend-xml檔案" class="headerlink" title="3.下載autounattend.xml檔案"></a>3.下載<code>autounattend.xml</code>檔案</h3><p>Download <code>autounattend.xml</code> file. 下載<code>autounattend.xml</code>檔案<br><img src="https://i.imgur.com/8PYvDsZ.png" alt="downloadfile"></p>
+<h2 id="Part-2-autounattend-xml-放進windowOS目錄（ISO檔案或是USBdisk-。"><a href="#Part-2-autounattend-xml-放進windowOS目錄（ISO檔案或是USBdisk-。" class="headerlink" title="Part 2 :autounattend.xml 放進windowOS目錄（ISO檔案或是USBdisk)。"></a>Part 2 :<code>autounattend.xml</code> 放進windowOS目錄（ISO檔案或是USBdisk)。</h2><p>把<code>autounattend.xml</code>檔案放進WindowOS的根目錄。add the<code>autounattend.xml</code> into window image file. </p>
+<ul>
+<li>There are many way you can do, you just have to put your e<code>autounattend.xml</code>file into windowOS root directory. </li>
+<li>我們有多方法可以把<code>autounattend.xml</code>放進windowOS根目錄。<h3 id="方法一：放進window-ISO樣案"><a href="#方法一：放進window-ISO樣案" class="headerlink" title="方法一：放進window ISO樣案"></a>方法一：放進window ISO樣案</h3>我們可以把剛剛下載的.xml放進window ISO檔案，以下是如何編輯我們ISO File<h4 id="1-請下載anyburn這個工具再安裝他。-Download-anyburn-tool-and-install-it"><a href="#1-請下載anyburn這個工具再安裝他。-Download-anyburn-tool-and-install-it" class="headerlink" title="1.	請下載anyburn這個工具再安裝他。 Ｄownload anyburn tool and install it"></a>1.	請下載<code>anyburn</code>這個工具再安裝他。 Ｄownload <code>anyburn</code> tool and install it</h4><h4 id="2-啟動anyburn再選edit-image-file-Open-the-tool-and-click-on-edit-image-file"><a href="#2-啟動anyburn再選edit-image-file-Open-the-tool-and-click-on-edit-image-file" class="headerlink" title="2.	啟動anyburn再選edit image file Open the tool and click on edit image file"></a>2.	啟動<code>anyburn</code>再選<code>edit image file</code> Open the tool and click on edit image file</h4><img src="https://i.imgur.com/kisbiAK.png" alt="editimage"></li>
+</ul>
+<h4 id="3-選取你的ISO檔案-Select-your-window-iso-file"><a href="#3-選取你的ISO檔案-Select-your-window-iso-file" class="headerlink" title="3.	選取你的ISO檔案 Select your window iso file"></a>3.	選取你的ISO檔案 Select your window iso file</h4><p> <img src="https://i.imgur.com/gcnbsp7.png" alt="select-iso-file"></p>
+<h4 id="4-Select-your-file-autounattend-xml-file-選取你的eautounattend-xml檔案"><a href="#4-Select-your-file-autounattend-xml-file-選取你的eautounattend-xml檔案" class="headerlink" title="4.	Select your file autounattend.xml file 選取你的eautounattend.xml檔案"></a>4.	Select your file <code>autounattend.xml</code> file 選取你的e<code>autounattend.xml</code>檔案</h4><p> <img src="https://i.imgur.com/XZe9UCh.png" alt="xml"></p>
+<h4 id="5-Save-your-iso-name-recommend-change-different-name-存取新個ISO檔名-建議曲新的名字"><a href="#5-Save-your-iso-name-recommend-change-different-name-存取新個ISO檔名-建議曲新的名字" class="headerlink" title="5.	Ｓave your iso name (recommend change different name) 存取新個ISO檔名(建議曲新的名字)"></a>5.	Ｓave your iso name (recommend change different name) 存取新個ISO檔名(建議曲新的名字)</h4><p> <img src="https://i.imgur.com/CEKajae.png" alt="change-iso-name"></p>
+<h4 id="6-建立windowOS-USB開機"><a href="#6-建立windowOS-USB開機" class="headerlink" title="6.	建立windowOS USB開機"></a>6.	建立windowOS USB開機</h4><ul>
+<li>Your new iso image is created, right now you create a bootable usb disk using the iso file. </li>
+<li>Create USB bootable file for window OS, use tool RUFUS, and select your disk<br>我們已建好window ISO 檔案，現在準備製作window USB 開機碟，我們用RUFUS這套軟體。<br><img src="https://i.imgur.com/hOXuKYP.png" alt="RUFUS-burniso"></li>
+</ul>
+<h4 id="7-You-can-install-OS-already-現在可以安裝OS"><a href="#7-You-can-install-OS-already-現在可以安裝OS" class="headerlink" title="7.	You can install OS already. 現在可以安裝ＯＳ"></a>7.	You can install OS already. 現在可以安裝ＯＳ</h4><ul>
+<li>After install OS you have to select which window you can to install, after that all will be automatic. </li>
+<li>安裝ＯＳ請輸選你要安裝那個window版本OS，選完就會自動幫你安裝成功，什麼都不用設。等他綁你安裝完成。<h3 id="方法2-：放進window-USB碟"><a href="#方法2-：放進window-USB碟" class="headerlink" title="方法2 ：放進window USB碟"></a>方法2 ：放進window USB碟</h3></li>
+<li>這個是我們一般製作window ＯＳ 的開機碟，如果不知道可以參考上面的第6步。</li>
+<li>我們再把我們的<code>autounattend.xml</code> 放進USB-Disk的根目錄。</li>
+</ul>
+<h2 id="Part-3-bypass-the-os-edition-selection-page"><a href="#Part-3-bypass-the-os-edition-selection-page" class="headerlink" title="Part 3 bypass the os edition selection page"></a>Part 3 bypass the os edition selection page</h2><ul>
+<li>As you can see above setting, will still need to select which OS you need to install. To automatic not occur, there are some way you can do, edit the autounattend.xml. </li>
+<li>剛剛上面步驟你會發現我們要自己選我們要安裝那一個OS版本。在這我教大家如何自動幫我們選，重投安裝到完。</li>
+</ul>
+<h3 id="1-編輯我們的autounattend-xml檔案"><a href="#1-編輯我們的autounattend-xml檔案" class="headerlink" title="1.	編輯我們的autounattend.xml檔案"></a>1.	編輯我們的<code>autounattend.xml</code>檔案</h3><h3 id="2-Check-window-edition-vlaue-檢查我們window-11-pro的直"><a href="#2-Check-window-edition-vlaue-檢查我們window-11-pro的直" class="headerlink" title="2.	Check window edition vlaue 檢查我們window 11 pro的直"></a>2.	Check window edition vlaue 檢查我們window 11 pro的直</h3><p>我們需要先知道我們要安裝的window的直是哪的，這裡有一個指令可以查看看：</p>
+<blockquote>
+<p>指令: <code>Dism /Get-ImageInfo /ImageFile:&lt;your_path&gt;</code></p>
+<blockquote>
+<p>EXample: <code>Dism /Get-ImageInfo /ImageFile:F:\sources\install.wim</code></p>
+</blockquote>
+</blockquote>
+<p><strong>Note:</strong> <code>F:</code> 我的Ｗindow位置。<br> <img src="https://i.imgur.com/VbzK5WA.png"></p>
+<p>以上圖你可以看的如果我們要安裝window 11 PRO，他是第5個選項，因此我們在下面步驟要把5加進去</p>
+<h3 id="3-加window安裝OS選項進autounattend-xml"><a href="#3-加window安裝OS選項進autounattend-xml" class="headerlink" title="3.	加window安裝OS選項進autounattend.xml"></a>3.	加window安裝OS選項進<code>autounattend.xml</code></h3><p>剛剛上面我們用指令可以查看<code>window 11 Pro</code> 是第幾個選項，他是第5個選項，我們先去編輯<code>autounattend.xml</code> ，然後把下面語法加進去。<br><strong>Ｎote:</strong> <code>&lt;Value&gt;5&lt;/Value&gt;</code>記得要填你的window的選單得直。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;InstallFrom&gt;</span><br><span class="line">&lt;MetaData wcm:action=&quot;add&quot;&gt;</span><br><span class="line">&lt;Key&gt;/image/index&lt;/Key&gt;</span><br><span class="line">&lt;Value&gt;5&lt;/Value&gt;</span><br><span class="line">&lt;/MetaData&gt;</span><br><span class="line">&lt;/InstallFrom&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/W6vgWjo.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/" title="windowOS-製作動畫.xml">https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/window/" rel="tag"># window</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/25/2022-06-25-remotedesktop/" rel="prev" title="無密碼-遠端桌面連線和分享網路磁碟">
+                  <i class="fa fa-chevron-left"></i> 無密碼-遠端桌面連線和分享網路磁碟
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/30/2022-06-21-hexo2_SetupShort/" rel="next" title="Hexo + GitHub Pages 架設個人網誌-簡易版-2">
+                  Hexo + GitHub Pages 架設個人網誌-簡易版-2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">82k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

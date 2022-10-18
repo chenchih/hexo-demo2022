@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="Flex Layout 排版 (CSS 格線佈局)CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以叫做flexible。Flexbox 是屬於one dimention ，也就去說你只有一個軸，你不是選擇用row or colomn。我會介紹以下的內容：  父元素&#x2F;容器属性： flex-direction:  row (default) row-reverse  col">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS LAYOUT - Flexbox">
+<meta property="og:url" content="https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="Flex Layout 排版 (CSS 格線佈局)CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以叫做flexible。Flexbox 是屬於one dimention ，也就去說你只有一個軸，你不是選擇用row or colomn。我會介紹以下的內容：  父元素&#x2F;容器属性： flex-direction:  row (default) row-reverse  col">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/zqn2Yrl.png">
+<meta property="og:image" content="https://i.imgur.com/TL4nzzR.png">
+<meta property="og:image" content="https://i.imgur.com/Vz8M4ne.png">
+<meta property="og:image" content="https://i.imgur.com/x9TMxYR.png">
+<meta property="og:image" content="https://i.imgur.com/OKWpLtk.png">
+<meta property="og:image" content="https://i.imgur.com/jYLlPft.png">
+<meta property="og:image" content="https://i.imgur.com/f2p0vxd.png">
+<meta property="og:image" content="https://i.imgur.com/yqyRL3t.png">
+<meta property="og:image" content="https://i.imgur.com/qHvQcXv.png">
+<meta property="og:image" content="https://i.imgur.com/e2slCFW.png">
+<meta property="og:image" content="https://i.imgur.com/LGqENxP.png">
+<meta property="og:image" content="https://i.imgur.com/btlBsMd.png">
+<meta property="og:image" content="https://i.imgur.com/1aAHxy7.png">
+<meta property="og:image" content="https://i.imgur.com/7IDuNrN.png">
+<meta property="og:image" content="https://i.imgur.com/RmgOZkt.png">
+<meta property="og:image" content="https://i.imgur.com/KMi7Ic6.png">
+<meta property="og:image" content="https://i.imgur.com/N4CJ71n.png">
+<meta property="og:image" content="https://i.imgur.com/kATWvxj.png">
+<meta property="og:image" content="https://i.imgur.com/fDSkBRc.png">
+<meta property="og:image" content="https://i.imgur.com/UL2XdxE.png">
+<meta property="og:image" content="https://i.imgur.com/TyxiMzb.png">
+<meta property="og:image" content="https://i.imgur.com/5ie4wbS.png">
+<meta property="og:image" content="https://i.imgur.com/eoQyBLu.png">
+<meta property="og:image" content="https://i.imgur.com/X9sCtSW.png">
+<meta property="og:image" content="https://i.imgur.com/0qjnWVf.png">
+<meta property="og:image" content="https://i.imgur.com/1B4Gj4K.png">
+<meta property="og:image" content="https://i.imgur.com/X9sCtSW.png">
+<meta property="og:image" content="https://i.imgur.com/cj8v7Xw.png">
+<meta property="og:image" content="https://i.imgur.com/9iugTtJ.png">
+<meta property="og:image" content="https://i.imgur.com/3XYd1es.png">
+<meta property="og:image" content="https://i.imgur.com/nbUJouX.png">
+<meta property="og:image" content="https://i.imgur.com/5zmMVYA.png">
+<meta property="og:image" content="https://i.imgur.com/HBU0f9l.png">
+<meta property="og:image" content="https://i.imgur.com/XKMVy6g.png">
+<meta property="og:image" content="https://i.imgur.com/mI98jsY.png">
+<meta property="og:image" content="https://i.imgur.com/BHVm0G3.png">
+<meta property="og:image" content="https://i.imgur.com/VWmtJrr.png">
+<meta property="og:image" content="https://i.imgur.com/inl7Dn4.png">
+<meta property="og:image" content="https://i.imgur.com/9svjArI.png">
+<meta property="og:image" content="https://i.imgur.com/zkYr6lS.png">
+<meta property="og:image" content="https://i.imgur.com/kTwt6xv.png">
+<meta property="article:published_time" content="2022-06-21T12:33:42.000Z">
+<meta property="article:modified_time" content="2022-08-23T03:15:58.482Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="Frontend">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/zqn2Yrl.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/","path":"2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/","title":"CSS LAYOUT - Flexbox"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSS LAYOUT - Flexbox | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flex-Layout-%E6%8E%92%E7%89%88-CSS-%E6%A0%BC%E7%B7%9A%E4%BD%88%E5%B1%80"><span class="nav-number">1.</span> <span class="nav-text">Flex Layout 排版 (CSS 格線佈局)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#part-1-%E5%9F%BA%E6%9C%ACFLEX%E7%9B%B8%E9%97%9C%E7%9F%A5%E8%AD%98"><span class="nav-number">1.1.</span> <span class="nav-text">part 1 基本FLEX相關知識</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Container-and-items-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">Container and items 的差別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AXIS%E8%BB%B8"><span class="nav-number">1.1.2.</span> <span class="nav-text">AXIS軸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-2-Parent-%E5%A4%96%E5%AE%B9%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">Part 2 Parent 外容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-display"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. display</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-justify-content-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9-main-axis"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. justify-content 屬性介紹(main axis)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-align-items-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9-cross-axis"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. align-items 屬性介紹 (cross-axis)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-align-content-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. align-content 屬性介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-2"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#align-item-vs-align-content-%E6%AF%94%E8%BC%83"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">align-item vs align-content 比較</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-flex-direction-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.flex-direction 屬性介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-3"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-flex-wrap-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9"><span class="nav-number">1.2.6.</span> <span class="nav-text">6.flex-wrap 屬性介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-4"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Flex-flow%E7%B8%AE%E5%AF%AB"><span class="nav-number">1.2.7.</span> <span class="nav-text">7. Flex-flow縮寫</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part-3-Items-Properties-Child-%E5%85%A7%E5%85%83%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">Part 3 Items Properties (Child)內元件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-order"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. order</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-5"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-grow"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. grow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-6"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-shrink"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. shrink</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-7"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-basis"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. basis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#basis-VS-width-%E5%84%AA%E5%85%88%E9%A0%86%E5%BA%8F"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">basis VS width 優先順序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-flex-%E7%B8%AE%E5%AF%AB-grow-shrink-basis"><span class="nav-number">1.3.5.</span> <span class="nav-text">5. flex 縮寫(grow shrink basis)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-8"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-align-self"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.align-self</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-9"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.4.</span> <span class="nav-text">總結</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Row"><span class="nav-number">1.4.1.</span> <span class="nav-text">Row</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#column"><span class="nav-number">1.4.2.</span> <span class="nav-text">column</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.5.</span> <span class="nav-text">Reference:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FlexBox-Example"><span class="nav-number">1.6.</span> <span class="nav-text">FlexBox Example</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example1-Basic-Nav-Bar"><span class="nav-number">1.6.1.</span> <span class="nav-text">Example1: Basic Nav Bar</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTPUT"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">OUTPUT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example2"><span class="nav-number">1.6.2.</span> <span class="nav-text">Example2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-1"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTPUT-1"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">OUTPUT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example3"><span class="nav-number">1.6.3.</span> <span class="nav-text">Example3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-1"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-2"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTPUT-2"><span class="nav-number">1.6.3.3.</span> <span class="nav-text">OUTPUT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example4"><span class="nav-number">1.6.4.</span> <span class="nav-text">Example4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-2"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-3"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTPUT-3"><span class="nav-number">1.6.4.3.</span> <span class="nav-text">OUTPUT</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CSS LAYOUT - Flexbox | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS LAYOUT - Flexbox
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-21 20:33:42" itemprop="dateCreated datePublished" datetime="2022-06-21T20:33:42+08:00">2022-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Flex-Layout-排版-CSS-格線佈局"><a href="#Flex-Layout-排版-CSS-格線佈局" class="headerlink" title="Flex Layout 排版 (CSS 格線佈局)"></a>Flex Layout 排版 (CSS 格線佈局)</h1><p>CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以叫做flexible。Flexbox 是屬於one dimention ，也就去說你只有一個軸，你不是選擇用row or colomn。我會介紹以下的內容：</p>
+<ul>
+<li>父元素&#x2F;容器属性：<ul>
+<li>flex-direction: <ul>
+<li>row (default)</li>
+<li>row-reverse </li>
+<li>column</li>
+<li>column-reverse</li>
+</ul>
+</li>
+<li>flex container(display): <ul>
+<li>flex </li>
+<li>inline-flex</li>
+</ul>
+</li>
+<li>flex-wrap: <ul>
+<li>wrap</li>
+<li>nowrap (default)</li>
+</ul>
+</li>
+<li>justify-content<ul>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>space-around</li>
+<li>space-between</li>
+<li>space-evenly</li>
+</ul>
+</li>
+<li>align-item<ul>
+<li>stretch</li>
+<li>lex-start</li>
+<li>flex-end</li>
+<li>center</li>
+</ul>
+</li>
+<li>Align-Content<ul>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>stretch</li>
+<li>space-around</li>
+<li>space-between</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Flex 內元件屬性&#x2F;子元素：<ul>
+<li>flex-item:<ul>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex (縮寫)</li>
+</ul>
+</li>
+<li>order</li>
+<li>align-self</li>
+</ul>
+</li>
+</ul>
+<h2 id="part-1-基本FLEX相關知識"><a href="#part-1-基本FLEX相關知識" class="headerlink" title="part 1 基本FLEX相關知識"></a>part 1 基本FLEX相關知識</h2><p>FlexBox 就是flexible Box，顧名思義就是彈性的盒子。早期我們在排版都是用float，但用起來沒有FlexBox好用。我們有幾個CSS layout，如<code>float</code>,<code>display</code>,<code>Positioning</code>, <code>Flexbox</code>, and <code>grid</code>等等。</p>
+<h3 id="Container-and-items-的差別"><a href="#Container-and-items-的差別" class="headerlink" title="Container and items 的差別"></a>Container and items 的差別</h3><ul>
+<li><strong><code>Container</code>:</strong> 就是<code>外容器</code>，你也可以想成它是盒子的外面，或是我喜歡稱他為Parent容器。</li>
+<li><strong><code>Items</code>:</strong> 就是<code>內容器</code>，你也可以想成它是盒子的裡面，或是我喜歡稱他為Child容器。<br>我們來看一下圖你們更了解，這兩個差別:外面綠色就是container(外容器)，裡面橘色就是items()內容器)</li>
+</ul>
+<p><img src="https://i.imgur.com/zqn2Yrl.png"></p>
+<p>這非常重要，這樣你才知道要用那一個容器的元屬性，然後也很好去記，卻步用去蓓背他。</p>
+<h3 id="AXIS軸"><a href="#AXIS軸" class="headerlink" title="AXIS軸"></a>AXIS軸</h3><p>Flexbox 具有主軸起點、終點、尺寸與交錯軸起點、終點、尺寸的特性可以進行布局規畫。</p>
+<p>我要在這裡介紹<code>main-axis</code>主軸(<code>水平Horizontal</code>)和 <code>cross-axis</code>交錯軸(<code>垂直vertical</code>)。</p>
+<ul>
+<li><p><code>main-axis主軸</code>: 就是走X方向或是水平(Horizontal)，這是他預設的，因為<code>flex-direction</code>預設是<code>row</code>，因此它是走右到左(起點:右，終點:左)。如果你想改成走垂直vertical，也是可以，就把<code>flex-direction</code>改<code>coloumn</code>，就會有上到下(起點:上，終點:下)。它會用屬性<code>justify-content</code>。</p>
+</li>
+<li><p><code>cross-axis交錯軸</code>: 就是走Y方向或是走<code>垂直vertical</code>。它會用屬性<code>align-items</code>,和 <code>align-content</code>。</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/TL4nzzR.png"></p>
+<p><img src="https://i.imgur.com/Vz8M4ne.png"></p>
+<p>這張圖應蓋更清除了，預設main是水平，如果你要走垂直，請看圖的<code>column</code>，<code>main</code>的軸就改了。<br><img src="https://i.imgur.com/x9TMxYR.png"></p>
+<h2 id="Part-2-Parent-外容器"><a href="#Part-2-Parent-外容器" class="headerlink" title="Part 2 Parent 外容器"></a>Part 2 Parent 外容器</h2><h3 id="1-display"><a href="#1-display" class="headerlink" title="1. display"></a>1. display</h3><p>一開始要宣告為 <code>flex</code> 才能使用，如果沒有宣告為 flex，無法作用。還有一個 <code>inline-flex</code>，作用類似於 <code>inline-block + flex</code></p>
+<blockquote>
+<p>指令: <code>display: &#123;flex |inline-flex&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex</td>
+<td>如果沒有設定寬高，它跟block 一樣佔據了整行</td>
+</tr>
+<tr>
+<td>inline-flex</td>
+<td>就是inline-block + flex，如果沒有設定寬高，它只會用他有擁有的空間。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>下面圖會更請楚</li>
+</ul>
+<p><img src="https://i.imgur.com/OKWpLtk.png"></p>
+<ul>
+<li><font size=5> flexbox 比較看看</font><br><img src="https://i.imgur.com/jYLlPft.png"></li>
+</ul>
+<p> <font size=5> <strong>Example</strong></font><br><img src="https://i.imgur.com/f2p0vxd.png"></p>
+<p><strong><font color="red">補充 inline VS Block</font></strong></p>
+<ul>
+<li><p><code>inline</code>:</p>
+<ul>
+<li><strong>無法</strong>透過 <code>width</code> 與 <code>height</code> 屬性調整寬高。</li>
+<li>寬高取決於內容(例如文字)的長度與行高(line height)。</li>
+<li>呈現水平排列。</li>
+</ul>
+</li>
+<li><p><code>block</code>:</p>
+<ul>
+<li>預設寬度為容器的 100%。</li>
+<li>可以透過 <code>width</code> 與 <code>height</code> 屬性調整寬高。</li>
+<li>強迫換行，呈現垂直排列。</li>
+</ul>
+</li>
+<li><p><code>inline-block</code>:</p>
+<ul>
+<li>把<code>inline</code> 和<code> block</code> 結合再一起。</li>
+<li>可以透過 <code>width</code> 與 <code>height</code> 屬性調整寬高。</li>
+<li>呈現水平排列。</li>
+<li>在無設定 width 與 height 時，寬高由內容決定。<br><img src="https://i.imgur.com/yqyRL3t.png"></li>
+</ul>
+</li>
+</ul>
+<p> <font size=3>  <strong>Reference:</strong> <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10219161">inline-block</a></font></p>
+<h3 id="2-justify-content-屬性介紹-main-axis"><a href="#2-justify-content-屬性介紹-main-axis" class="headerlink" title="2. justify-content 屬性介紹(main axis)"></a>2. justify-content 屬性介紹(main axis)</h3><p>主要以主軸線<code>main-axis</code>來排版(<code>main axis</code>)</p>
+<blockquote>
+<p>指令: justify-content: {flex-start| flex-end | center| space-around| space-between | space-evenly}</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex-start</td>
+<td>預設值&#x2F;默認值，對齊主軸線最前端</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>對齊主軸線最終端</td>
+</tr>
+<tr>
+<td>center</td>
+<td>對齊主軸線中央</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>平均分配寬度和間距，第一項和最後一項比較短</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>平均分配寬度，第一項和最後一項貼齊邊緣</td>
+</tr>
+<tr>
+<td>space-evenly</td>
+<td>平均分配寬度和間距</td>
+</tr>
+</tbody></table>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p> <img src="https://i.imgur.com/qHvQcXv.png"></p>
+<ul>
+<li><p>space-around vs space-evenly<br> <img src="https://i.imgur.com/e2slCFW.png"></p>
+</li>
+<li><p>main-axis 水平和垂直<br><img src="https://i.imgur.com/LGqENxP.png"></p>
+</li>
+</ul>
+<h3 id="3-align-items-屬性介紹-cross-axis"><a href="#3-align-items-屬性介紹-cross-axis" class="headerlink" title="3. align-items 屬性介紹 (cross-axis)"></a>3. align-items 屬性介紹 (cross-axis)</h3><p>主要以<code>交錯軸線cross-axis</code>來做排版</p>
+<blockquote>
+<p>指令: <code>align-items: &#123;flex-start| flex-end | center| stretch| baseline&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch</td>
+<td>預設值&#x2F;默認值，將內容元素撐開至 flexbox 大小</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>對齊交錯軸線最前端</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>對齊交錯軸線最末端</td>
+</tr>
+<tr>
+<td>center</td>
+<td>對齊主軸線中央</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>對齊內容物的基線</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.imgur.com/btlBsMd.png"></p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/1aAHxy7.png"></p>
+<p><font color="red" size=3> 總結 justify-content and align-items </font></p>
+<p><img src="https://i.imgur.com/7IDuNrN.png"></p>
+<p><img src="https://i.imgur.com/RmgOZkt.png"></p>
+<h3 id="4-align-content-屬性介紹"><a href="#4-align-content-屬性介紹" class="headerlink" title="4. align-content 屬性介紹"></a>4. align-content 屬性介紹</h3><p>跟<code>align-items</code> 相同差別在於多行，<code>align-items 單行</code></p>
+<blockquote>
+<p>指令: <code>align-content: &#123;flex-start| flex-end | center| stretch| baseline&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch</td>
+<td>預設值&#x2F;默認值，將內容元素撐開至 flexbox 大小</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>對齊交錯軸線最前端</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>對齊交錯軸線最末端</td>
+</tr>
+<tr>
+<td>center</td>
+<td>對齊主軸線中央</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>對齊內容物的基線</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.imgur.com/KMi7Ic6.png"></p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/N4CJ71n.png"></p>
+<h4 id="align-item-vs-align-content-比較"><a href="#align-item-vs-align-content-比較" class="headerlink" title="align-item vs align-content 比較"></a>align-item vs align-content 比較</h4><p>我們可以看到，如果用個是align-content 再把螢幕縮小，它會換到下一行。<br>可是用同樣方法，我們改成align-items，它就不會換新行會重新排。<br><img src="https://i.imgur.com/kATWvxj.png"></p>
+<h3 id="5-flex-direction-屬性介紹"><a href="#5-flex-direction-屬性介紹" class="headerlink" title="5.flex-direction 屬性介紹"></a>5.flex-direction 屬性介紹</h3><p><font color="red">這是決定我們主軸方向(main and cross)。</font><br>container 加了 display: flex;屬性時，內容物會依照交錯軸線排列成一行，如果我們想將內容物呈現直向排列，可以透過 flex-direction 來設定。row -&gt;橫向排列，column直向排列</p>
+<blockquote>
+<p>指令: <code>flex-direction:&#123; row|row-reverse|column|column-reverse&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>row</td>
+<td>預設值&#x2F;默認值，內容物依照主軸線(main-axis)，橫向排列(左至右)</td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>與row相同，且主軸線起點與終點相反((右至左))</td>
+</tr>
+<tr>
+<td>column</td>
+<td>交錯軸線位置與主軸線(cross-axis)，直向排列(上至下)</td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>與column相同，且主軸線起點與終點相反(下至上)</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.imgur.com/fDSkBRc.png"></p>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/UL2XdxE.png"></p>
+<h3 id="6-flex-wrap-屬性介紹"><a href="#6-flex-wrap-屬性介紹" class="headerlink" title="6.flex-wrap 屬性介紹"></a>6.flex-wrap 屬性介紹</h3><ul>
+<li>超出範圍時是否換行的屬性，分為換行、不換行、換行時反轉</li>
+<li>如果子元素數量較多時，內容常會被壓縮且擠在同一行，這時我們就可以透過 flex-wrap 來換行。</li>
+</ul>
+<blockquote>
+<p>指令:<code>flex-wrap:&#123;nowrap | wrap | wrap-reverse&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nowrap</td>
+<td>預設值，不斷行</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>沒空間，就換行，第一行在上方，(column:第一行，就往右)</td>
+</tr>
+<tr>
+<td>wrap-reverse</td>
+<td>沒空間，就換行(wrap 相反))，第一行在下方，(column:第一行，就往左)</td>
+</tr>
+</tbody></table>
+<p><img src="https://i.imgur.com/TyxiMzb.png"></p>
+<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example"></a>Example</h4><ul>
+<li><p><code>ROW(default)</code><br><img src="https://i.imgur.com/5ie4wbS.png"></p>
+</li>
+<li><p><code>column</code><br><img src="https://i.imgur.com/eoQyBLu.png"></p>
+</li>
+</ul>
+<h3 id="7-Flex-flow縮寫"><a href="#7-Flex-flow縮寫" class="headerlink" title="7. Flex-flow縮寫"></a>7. Flex-flow縮寫</h3><ul>
+<li>它是<code>flex-direction</code> 和<code>flex-wrap</code>的縮寫。<blockquote>
+<p>指令:<code>flex-flow:&#123;flex-direction |flex-wrap&#125;</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Part-3-Items-Properties-Child-內元件"><a href="#Part-3-Items-Properties-Child-內元件" class="headerlink" title="Part 3 Items Properties (Child)內元件"></a>Part 3 Items Properties (Child)內元件</h2><p>接下來我們要開始了解內元件 也就是<code>items</code>。有了上面的<code>container</code>，接下來我們要來介紹如何設定裡面的盒子。</p>
+<h3 id="1-order"><a href="#1-order" class="headerlink" title="1. order"></a>1. order</h3><p>可以重新定義元件的<code>排列順序</code>，順序會依據數值的大小排列。</p>
+<blockquote>
+<p>指令:<code>order: ｛&lt;integer&gt;｝</code> &#x2F;* default ０ *&#x2F;</p>
+</blockquote>
+<ul>
+<li><code>order</code>直的數字越大排越後面，越小越前面，包括-1<br><img src="https://i.imgur.com/X9sCtSW.png"></li>
+</ul>
+<h4 id="Example-5"><a href="#Example-5" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/0qjnWVf.png"></p>
+<h3 id="2-grow"><a href="#2-grow" class="headerlink" title="2. grow"></a>2. grow</h3><ul>
+<li>子元素「<code>伸展</code>」比例分配：數字，無單位，<code>預設值為 0</code>，不可為負值</li>
+<li>尚未進行設定時(<code>預設值</code>)，不會將剩餘空間分配給子元素做長度「<code>伸展</code>」，設定為 1 長度會進行彈性變化。分配的比例會依照設定的數值進行配置<blockquote>
+<p>指令:flex-grow: {<number>} &#x2F;* default 0 *&#x2F;</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/1B4Gj4K.png"></p>
+<ul>
+<li><code>預設為0</code>。因此他不會伸展，如果你把其中子元素改成1，只有那一個<code>子元素item</code>就會如果。如果改<code>2個子元素items</code>他們會<code>平均分配</code>。</li>
+</ul>
+<h4 id="Example-6"><a href="#Example-6" class="headerlink" title="Example"></a>Example</h4><p>我們可以看到item6 設grow為1，只有它會伸展，但如果我們設兩個item 為grow&#x3D;1，它們會平均伸展<br><img src="https://i.imgur.com/X9sCtSW.png"></p>
+<h3 id="3-shrink"><a href="#3-shrink" class="headerlink" title="3. shrink"></a>3. shrink</h3><ul>
+<li><code>items子元素</code>「<code>shrink 壓縮</code>」比例分配：數字，無單位，<code>預設值為 1</code>，不可為負值伸展，</li>
+<li>尚未進行設定時(預設值)，會按照數字「<code>shrink壓縮</code>」比例分配。如果不想要被壓縮的話，可以設定數值為 <code>0</code>。</li>
+</ul>
+<blockquote>
+<p>指令:<code>flex-shrink: &#123;&lt;number&gt;&#125;</code> &#x2F;* default 1 *&#x2F;</p>
+</blockquote>
+<p><img src="https://i.imgur.com/cj8v7Xw.png"><br>我們看上面圖，所有子元素都是為1(預設)，只有第2個子<code>元素為0</code>，換句話說，如果空間不足，所有子元素都會被壓縮</p>
+<h4 id="Example-7"><a href="#Example-7" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/9iugTtJ.png"></p>
+<h3 id="4-basis"><a href="#4-basis" class="headerlink" title="4. basis"></a>4. basis</h3><p> 子元素基本大小：預設值為 auto。其實它可以設為跟width或height屬性一樣的。</p>
+<blockquote>
+<p>指令:<code>flex-basis: &#123;&#125;&lt;length&gt;&#125; | auto; </code> &#x2F;* default auto *&#x2F;</p>
+</blockquote>
+<h4 id="basis-VS-width-優先順序"><a href="#basis-VS-width-優先順序" class="headerlink" title="basis VS width 優先順序"></a>basis VS width 優先順序</h4><p><img src="https://i.imgur.com/3XYd1es.png"></p>
+<h3 id="5-flex-縮寫-grow-shrink-basis"><a href="#5-flex-縮寫-grow-shrink-basis" class="headerlink" title="5. flex 縮寫(grow shrink basis)"></a>5. flex 縮寫(grow shrink basis)</h3><blockquote>
+<p>指令:<code>flex-wrap:&#123;grow | shrink | basis&#125;</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>屬性值properties</th>
+<th>說明 Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nowrap</td>
+<td>伸展性，是一個數值，當空間分配還有剩餘時的當前元件的伸展性，預設值為 0，如果設置為 0 則不會縮放</td>
+</tr>
+<tr>
+<td>flex-shrink</td>
+<td>元件的伸展性，是一個數值，當空間分配還不足時的當前元件的收縮性，預設值為 1，如果設置為 0 則不會縮放。</td>
+</tr>
+<tr>
+<td>flex-basis</td>
+<td>元件的基準值，可使用不同的單位值</td>
+</tr>
+</tbody></table>
+<p><strong>不同寫法:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flex: 0 1 auto /* default */</span><br><span class="line">   or &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;</span><br><span class="line">   or &lt;flex-grow&gt;</span><br><span class="line">   or &lt;flex-basis&gt;</span><br><span class="line">   or &lt;flex-grow&gt; &lt;flex-basis&gt;</span><br><span class="line">   or &lt;flex-grow&gt; &lt;flex-shrink&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/nbUJouX.png"></p>
+<h4 id="Example-8"><a href="#Example-8" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/5zmMVYA.png"></p>
+<h3 id="6-align-self"><a href="#6-align-self" class="headerlink" title="6.align-self"></a>6.align-self</h3><p><code>align-self</code> 可以個別調整<code>items子元素</code>在<code>cross-axis交錯軸線</code>的位置。它會覆蓋父元素上設定 <code>align-item</code></p>
+<blockquote>
+<p>指令: <code>align-self: &#123;auto | flex-start | flex-end | center | baseline | stretch&#125;</code></p>
+</blockquote>
+<ul>
+<li><code>Auto</code> 就是指<code>父元素container</code>上設定 <code>align-item</code>。也就是如果你沒有設<code>align-self</code>，就會用父元素上設定 align-item。</li>
+<li>假如我們已經在父元素上設定 align-item，但要其中一個內容物的位置需要調整成其他對齊方式，這時我們就可以針對該元素設定 <code>align-self</code> 來覆寫原本 <code>align-item</code> 的屬性。</li>
+</ul>
+<p><img src="https://i.imgur.com/HBU0f9l.png"></p>
+<h4 id="Example-9"><a href="#Example-9" class="headerlink" title="Example"></a>Example</h4><p><img src="https://i.imgur.com/XKMVy6g.png"></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p><img src="https://i.imgur.com/mI98jsY.png"></p>
+<h3 id="Row"><a href="#Row" class="headerlink" title="Row"></a>Row</h3><p><img src="https://i.imgur.com/BHVm0G3.png"></p>
+<h3 id="column"><a href="#column" class="headerlink" title="column"></a>column</h3><p><img src="https://i.imgur.com/VWmtJrr.png"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://tsweb44.com/TS_HTML5CSS3_4/TSwrite/i12.html">http://tsweb44.com/TS_HTML5CSS3_4/TSwrite/i12.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2017/07/21/css-flex/#Flex-%E7%9A%84%E5%A4%96%E5%AE%B9%E5%99%A8%E8%88%87%E5%85%A7%E5%85%83%E4%BB%B6">https://www.casper.tw/css/2017/07/21/css-flex/#Flex-%E7%9A%84%E5%A4%96%E5%AE%B9%E5%99%A8%E8%88%87%E5%85%A7%E5%85%83%E4%BB%B6</a></li>
+<li><a target="_blank" rel="noopener" href="https://w3c.hexschool.com/flexbox/2186a786">https://w3c.hexschool.com/flexbox/2186a786</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://iq.opengenus.org/types-of-css-layout/">https://iq.opengenus.org/types-of-css-layout/</a></li>
+<li><a target="_blank" rel="noopener" href="https://angrytools.com/css-flex/">https://angrytools.com/css-flex/</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mwl_learning/article/details/115443138?spm=1001.2014.3001.5502">https://blog.csdn.net/mwl_learning/article/details/115443138?spm=1001.2014.3001.5502</a></li>
+</ul>
+<h2 id="FlexBox-Example"><a href="#FlexBox-Example" class="headerlink" title="FlexBox Example"></a>FlexBox Example</h2><ul>
+<li><h3 id="Example1-Basic-Nav-Bar"><a href="#Example1-Basic-Nav-Bar" class="headerlink" title="Example1: Basic Nav Bar"></a>Example1: Basic Nav Bar</h3></li>
+</ul>
+<h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;Home&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;About&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;Service&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;Contact&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;        </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">nav&#123;</span><br><span class="line">    font-size: 2rem;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  nav ul &#123;</span><br><span class="line">    list-style-type: none;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    display:flex;</span><br><span class="line">    /* justify-content: space-around; */</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  nav ul li&#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    padding: 0.5rem;</span><br><span class="line">    flex: auto;</span><br><span class="line">    text-align: center;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  nav ul li:hover &#123;</span><br><span class="line">   background-color: #555;</span><br><span class="line">  color: white;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @media all and (max-width:400px)&#123;</span><br><span class="line">    nav ul &#123;</span><br><span class="line">      flex-direction: column;    </span><br><span class="line">  &#125;</span><br><span class="line">    nav ul li &#123;</span><br><span class="line">    text-align: center;  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="OUTPUT"><a href="#OUTPUT" class="headerlink" title="OUTPUT"></a>OUTPUT</h4><p><img src="https://i.imgur.com/inl7Dn4.png"></p>
+<hr>
+<h3 id="Example2"><a href="#Example2" class="headerlink" title="Example2"></a>Example2</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;header class=&quot;flex-header&quot;&gt;</span><br><span class="line">  HEADER</span><br><span class="line">&lt;/header&gt;</span><br><span class="line">&lt;main class=&quot;flex-main&quot;&gt;</span><br><span class="line">  &lt;nav class=&quot;flex-nav&quot;&gt;</span><br><span class="line">    SIDEBAR</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">  &lt;article class=&quot;flex-article&quot;&gt;</span><br><span class="line">    MAIN CONTENT</span><br><span class="line">  &lt;/article&gt;</span><br><span class="line">  &lt;aside class=&quot;flex-aside&quot;&gt;</span><br><span class="line">    SIDEBAR</span><br><span class="line">  &lt;/aside&gt;</span><br><span class="line">&lt;/main&gt;</span><br><span class="line">&lt;footer class=&quot;flex-footer&quot;&gt;</span><br><span class="line">Footer</span><br><span class="line">&lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS-1"><a href="#CSS-1" class="headerlink" title="CSS"></a>CSS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">  margin: 2px;</span><br><span class="line">  &#125;</span><br><span class="line">body&#123;</span><br><span class="line">    font-size:24px;</span><br><span class="line">    color: white;</span><br><span class="line">    height: 550px; /*100vh*/</span><br><span class="line">    text-align:center;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .flex-header&#123;</span><br><span class="line">    background-color: #5070b5;</span><br><span class="line">    padding-top: 3rem;</span><br><span class="line">    padding-bottom: 3rem;</span><br><span class="line">  &#125;</span><br><span class="line">  .flex-main&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex: 1 ;</span><br><span class="line">  &#125;</span><br><span class="line">  .flex-nav&#123;</span><br><span class="line">    background-color: #B95F21;</span><br><span class="line">    padding-top: 3rem;</span><br><span class="line">    flex: 1 1 5rem;</span><br><span class="line">  &#125;</span><br><span class="line">  .flex-article&#123;</span><br><span class="line">    background-color: #81a43c;</span><br><span class="line">    padding-top: 3rem;</span><br><span class="line">    flex: 3 3;</span><br><span class="line">  &#125;</span><br><span class="line">  .flex-aside&#123;</span><br><span class="line">    background-color: #b95f21;</span><br><span class="line">    padding-top: 3rem;</span><br><span class="line">    flex: 1 1 5rem;</span><br><span class="line">  &#125;</span><br><span class="line">  .flex-footer&#123;</span><br><span class="line">    background-color: #5070b5;</span><br><span class="line">    padding-top: 3rem;</span><br><span class="line">    padding-bottom: 3rem;</span><br><span class="line">  &#125;</span><br><span class="line">  @media all and (max-width: 500px)&#123;</span><br><span class="line">    .flex-main&#123;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="OUTPUT-1"><a href="#OUTPUT-1" class="headerlink" title="OUTPUT"></a>OUTPUT</h4><p><img src="https://i.imgur.com/9svjArI.png"></p>
+<hr>
+<h3 id="Example3"><a href="#Example3" class="headerlink" title="Example3"></a>Example3</h3><h4 id="HTML-1"><a href="#HTML-1" class="headerlink" title="HTML"></a>HTML</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;h1&gt; Hello World &lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"> &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/52500/horse-herd-fog-nature-52500.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/66898/elephant-cub-tsavo-kenya-66898.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/213399/pexels-photo-213399.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/158471/ibis-bird-red-animals-158471.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/133459/pexels-photo-133459.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://static.pexels.com/photos/50988/ape-berber-monkeys-mammal-affchen-50988.jpeg&quot; alt=&quot;&quot;&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS-2"><a href="#CSS-2" class="headerlink" title="CSS"></a>CSS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">display: flex;</span><br><span class="line">flex-wrap: wrap;</span><br><span class="line">justify-content: center;</span><br><span class="line">&#125;</span><br><span class="line">h1&#123;</span><br><span class="line">font-family: fantasy;</span><br><span class="line">font-size: 3em;</span><br><span class="line">border-bottom: 5px solid red;</span><br><span class="line">border-right: 5px solid darkgreen;</span><br><span class="line">width:400px;</span><br><span class="line">text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">img&#123;</span><br><span class="line">height: 400px;</span><br><span class="line">height: 300px;</span><br><span class="line">margin: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="OUTPUT-2"><a href="#OUTPUT-2" class="headerlink" title="OUTPUT"></a>OUTPUT</h4><p><img src="https://i.imgur.com/zkYr6lS.png"></p>
+<hr>
+<h3 id="Example4"><a href="#Example4" class="headerlink" title="Example4"></a>Example4</h3><h4 id="HTML-2"><a href="#HTML-2" class="headerlink" title="HTML"></a>HTML</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;nav class=&quot;navbar&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;logo&quot;&gt;Flexbox&lt;/div&gt;</span><br><span class="line">      &lt;ul class=&quot;nav&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">          &lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">  &lt;header class=&quot;header&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Flexbox Crash Course&lt;/h1&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          This crash course was created by Brad Traversy to help you learn the</span><br><span class="line">          basics of flexbox. Flexbox is a very important and useful tool in</span><br><span class="line">          CSS.</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;img src=&quot;grid.svg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/header&gt;</span><br><span class="line">  &lt;section class=&quot;boxes&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;h2&gt;&lt;i class=&quot;fas fa-arrows-alt-v&quot;&gt;&lt;/i&gt; Alignment &amp; Space&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          A more efficient way to lay out, align and distribute space among</span><br><span class="line">          items in a container</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">      &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;h2&gt;&lt;i class=&quot;fas fa-arrows-alt&quot;&gt;&lt;/i&gt;Tricky Positioning&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          Flexbox usually solves tricky problems including how to position or</span><br><span class="line">          dynamically resize elements on a page</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;h2&gt;&lt;i class=&quot;fas fa-mobile&quot;&gt;&lt;/i&gt;Responsive Design&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">          Flexbox makes building a website layout (and making it responsive!)</span><br><span class="line">          much, much easier</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="CSS-3"><a href="#CSS-3" class="headerlink" title="CSS"></a>CSS</h4>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">@import url(&#x27;https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&amp;display=swap&#x27;);</span><br><span class="line">*&#123;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">font-family: &#x27;Poppins&#x27;, sans-serif;</span><br><span class="line">font-size: 16px;</span><br><span class="line">line-height: 1.5;</span><br><span class="line">color: #333;</span><br><span class="line">background-color: #a1c3ff;</span><br><span class="line">&#125;</span><br><span class="line">img&#123;</span><br><span class="line">max-width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">h1,</span><br><span class="line">h2 &#123;</span><br><span class="line">    margin-bottom: 15px;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">list-style: none;</span><br><span class="line">&#125;</span><br><span class="line">.container&#123;</span><br><span class="line">max-width: 1100px;</span><br><span class="line">margin: 0 auto;</span><br><span class="line">padding: 0 30px;</span><br><span class="line">&#125;</span><br><span class="line">.navbar&#123;</span><br><span class="line">    background-color: #3474e6;</span><br><span class="line">    color: 60px;</span><br><span class="line">    height: 60px;</span><br><span class="line">&#125;</span><br><span class="line">.navbar .logo &#123;</span><br><span class="line">font-size: x-large;</span><br><span class="line">font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.navbar a&#123;</span><br><span class="line">color: #fff;</span><br><span class="line">text-decoration: none;</span><br><span class="line">font-size: 18px;</span><br><span class="line">font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">.navbar a:hover&#123;</span><br><span class="line">    color: lightblue</span><br><span class="line">&#125;</span><br><span class="line">.navbar .container&#123;</span><br><span class="line">display: flex;</span><br><span class="line">justify-content: space-between;</span><br><span class="line">align-items: center;</span><br><span class="line">height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.navbar ul &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.navbar ul li &#123;</span><br><span class="line">    margin-left: 20px;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">background-color: #0151cc;</span><br><span class="line">color: white;</span><br><span class="line">min-height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">.header h1&#123;</span><br><span class="line">font-size: 3rem;</span><br><span class="line">font-weight: bold;</span><br><span class="line">line-height: 1.2;  </span><br><span class="line">&#125;</span><br><span class="line">.header img&#123;</span><br><span class="line">max-width: 400px;</span><br><span class="line">&#125;</span><br><span class="line">.header .container &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    align-items: center;</span><br><span class="line">    justify-content: space-between ;</span><br><span class="line">&#125;</span><br><span class="line">.boxes .container &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: space-between;</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">    flex:1;</span><br><span class="line">    background-color: #0a51cc;</span><br><span class="line">    color: white;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    margin: 20px 10px;</span><br><span class="line">    box-shadow: 0 3px 5px rgba(0, 0 , 0, 0.6);</span><br><span class="line">    padding: 15px 20px;</span><br><span class="line">&#125;</span><br><span class="line">.box i &#123;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media(max-width: 768px) &#123;</span><br><span class="line">    .header .container&#123;</span><br><span class="line">        flex-direction:column;</span><br><span class="line">        padding-top: 20px;</span><br><span class="line">        text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">    .boxes .container &#123;</span><br><span class="line">        display: block;</span><br><span class="line">        text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="OUTPUT-3"><a href="#OUTPUT-3" class="headerlink" title="OUTPUT"></a>OUTPUT</h4><p><img src="https://i.imgur.com/kTwt6xv.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/" title="CSS LAYOUT - Flexbox">https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/Frontend/" rel="tag"># Frontend</a>
+              <a href="/hexo-demo2022/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/17/2022-06-17-Git-Basic-Command/" rel="prev" title="Git Basic Command">
+                  <i class="fa fa-chevron-left"></i> Git Basic Command
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/21/2022-06-21-hexo-1-SetupFull/" rel="next" title="Hexo + GitHub Pages 架設個人網誌-完整版-1">
+                  Hexo + GitHub Pages 架設個人網誌-完整版-1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">82k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

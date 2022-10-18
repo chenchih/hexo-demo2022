@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="JS基本須知道How to run JS Browser- inspect  Method1:  Go to inspect &gt; console   Method 2:  inspect&gt; sources&gt; snipperts&gt; create js file     NodeJS environment  寫 XXX.js&#x2F;&#x2F;CREATE JS file">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS Basic Code 基本">
+<meta property="og:url" content="https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="JS基本須知道How to run JS Browser- inspect  Method1:  Go to inspect &gt; console   Method 2:  inspect&gt; sources&gt; snipperts&gt; create js file     NodeJS environment  寫 XXX.js&#x2F;&#x2F;CREATE JS file">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-29T23:59:48.000Z">
+<meta property="article:modified_time" content="2022-08-23T03:15:58.483Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/","path":"2022/07/30/2022-07-30-JS-BasicCode/","title":"JS Basic Code 基本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JS Basic Code 基本 | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E5%9F%BA%E6%9C%AC%E9%A0%88%E7%9F%A5%E9%81%93"><span class="nav-number">1.</span> <span class="nav-text">JS基本須知道</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-run-JS"><span class="nav-number">1.1.</span> <span class="nav-text">How to run JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adding-comment"><span class="nav-number">1.2.</span> <span class="nav-text">adding comment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%AF%E7%A4%BA-print"><span class="nav-number">1.3.</span> <span class="nav-text">顯示 print</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95-Part-1"><span class="nav-number">2.</span> <span class="nav-text">JS　 基本語法- Part 1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%91-declare-variable-%E5%AE%A3%E5%91%8A%E8%AE%8A%E6%95%B8"><span class="nav-number">2.1.</span> <span class="nav-text">１. declare variable 宣告變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Data-Type"><span class="nav-number">2.2.</span> <span class="nav-text">2. Data Type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string"><span class="nav-number">2.2.1.</span> <span class="nav-text">string:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#declare-String-and-print-string"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">declare String and print string</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#combind-two-String"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">combind two String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#template-literals-concatenate-strings-ES6"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">template literals (concatenate strings)(ES6)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ex"><span class="nav-number">2.2.1.4.</span> <span class="nav-text">Ex:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#number"><span class="nav-number">2.2.2.</span> <span class="nav-text">number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boolean"><span class="nav-number">2.2.3.</span> <span class="nav-text">boolean:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined-type-%E7%A9%BA%E7%9B%B4"><span class="nav-number">2.2.4.</span> <span class="nav-text">undefined type: 空直</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ex-1"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">Ex:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Null-Type-%E7%A9%BA%E7%9B%B4"><span class="nav-number">2.2.5.</span> <span class="nav-text">Null Type:空直</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ex-2"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">Ex:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof-check-data-Type"><span class="nav-number">2.2.6.</span> <span class="nav-text">typeof check data Type</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ex-3"><span class="nav-number">2.2.6.1.</span> <span class="nav-text">Ex:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Interaction-alert-prompt-confirm"><span class="nav-number">2.3.</span> <span class="nav-text">3. Interaction: alert, prompt, confirm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">2.3.1.</span> <span class="nav-text">Example:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Type-Conversions"><span class="nav-number">2.4.</span> <span class="nav-text">4. Type Conversions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String-Conversion"><span class="nav-number">2.4.1.</span> <span class="nav-text">String Conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Numeric-Conversion"><span class="nav-number">2.4.2.</span> <span class="nav-text">Numeric Conversion</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-operator"><span class="nav-number">2.5.</span> <span class="nav-text">5. operator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#remainder"><span class="nav-number">2.5.1.</span> <span class="nav-text">remainder %</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exponentiation"><span class="nav-number">2.5.2.</span> <span class="nav-text">Exponentiation **</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String-concatenation-with-binary"><span class="nav-number">2.5.3.</span> <span class="nav-text">String concatenation with binary +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Numeric-conversion-unary-convert-str-to-number"><span class="nav-number">2.5.4.</span> <span class="nav-text">Numeric conversion, unary + (convert str to number)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chaining-assignments-%E2%80%98-x3D-%E2%80%99"><span class="nav-number">2.5.5.</span> <span class="nav-text">Chaining assignments ‘&#x3D;’</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Increment-x2F-decrement"><span class="nav-number">2.5.6.</span> <span class="nav-text">Increment&#x2F;decrement</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Comparisons"><span class="nav-number">2.6.</span> <span class="nav-text">6. Comparisons</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%8A%E7%B5%90%E6%9E%9C%E5%8F%8D%E5%90%91"><span class="nav-number">2.6.1.</span> <span class="nav-text">! 把結果反向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strict-equality-and"><span class="nav-number">2.6.2.</span> <span class="nav-text">Strict equality  &#x3D;&#x3D; and &#x3D;&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null-vs-undefined-vs-0"><span class="nav-number">2.6.3.</span> <span class="nav-text">null vs undefined vs 0</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-condition-if-amp-statement"><span class="nav-number">2.7.</span> <span class="nav-text">7 condition if &amp; ? statement</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if-else-if-else"><span class="nav-number">2.7.1.</span> <span class="nav-text">if else if else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-0-Boolean-conversion"><span class="nav-number">2.7.2.</span> <span class="nav-text">if (0) Boolean conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#operator"><span class="nav-number">2.7.3.</span> <span class="nav-text">? operator</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ex1-If-else-and"><span class="nav-number">2.7.3.1.</span> <span class="nav-text">Ex1: If else and  ?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex2-boolean"><span class="nav-number">2.7.3.2.</span> <span class="nav-text">ex2: boolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex3-prompt-example"><span class="nav-number">2.7.3.3.</span> <span class="nav-text">ex3 prompt example:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ex3-prompt-example-1"><span class="nav-number">2.7.3.4.</span> <span class="nav-text">ex3 prompt example:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-function"><span class="nav-number">2.8.</span> <span class="nav-text">3. function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#basic-function"><span class="nav-number">2.8.1.</span> <span class="nav-text">basic function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function-with-value"><span class="nav-number">2.8.2.</span> <span class="nav-text">function with value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function-return-value"><span class="nav-number">2.8.3.</span> <span class="nav-text">function return value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function-return-and-if-else"><span class="nav-number">2.8.4.</span> <span class="nav-text">function return and if else</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95-Part-2-loop%E8%BF%B4%E5%9C%88-and-condition%E6%A2%9D%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">JS　 基本語法- Part 2 loop迴圈 and condition條件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-loop"><span class="nav-number">3.1.</span> <span class="nav-text">1. loop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-loop"><span class="nav-number">3.1.1.</span> <span class="nav-text">for loop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-number">3.1.2.</span> <span class="nav-text">Example:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#While"><span class="nav-number">3.2.</span> <span class="nav-text">While</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ex1-while-only-true-will-execute"><span class="nav-number">3.2.1.</span> <span class="nav-text">Ex1: while only true will execute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ex2-condition-stop-when-traget-match"><span class="nav-number">3.2.2.</span> <span class="nav-text">Ex2 condition stop when traget match</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while-loop"><span class="nav-number">3.3.</span> <span class="nav-text">do while loop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ex1"><span class="nav-number">3.3.1.</span> <span class="nav-text">ex1:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWITCH"><span class="nav-number">3.4.</span> <span class="nav-text">SWITCH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95-Part-3-array-object-class"><span class="nav-number">4.</span> <span class="nav-text">JS　 基本語法- Part 3 array object class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-array"><span class="nav-number">4.1.</span> <span class="nav-text">1. array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#decalare-array"><span class="nav-number">4.1.1.</span> <span class="nav-text">decalare array:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ex1-1"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">ex1:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length%E9%95%B7%E5%BA%A6"><span class="nav-number">4.1.2.</span> <span class="nav-text">length長度:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-push-pull-shift"><span class="nav-number">4.1.3.</span> <span class="nav-text">Method push pull shift</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#array-with-for-loop"><span class="nav-number">4.1.4.</span> <span class="nav-text">array with for loop</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example1-loop-in-array"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">Example1: loop in array</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example2"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">Example2:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-object"><span class="nav-number">4.2.</span> <span class="nav-text">2. object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#object-with-for-loop"><span class="nav-number">4.2.1.</span> <span class="nav-text">object with for loop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">example 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example2"><span class="nav-number">4.2.3.</span> <span class="nav-text">example2:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JS Basic Code 基本 | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS Basic Code 基本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 07:59:48" itemprop="dateCreated datePublished" datetime="2022-07-30T07:59:48+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>12 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="JS基本須知道"><a href="#JS基本須知道" class="headerlink" title="JS基本須知道"></a>JS基本須知道</h2><h3 id="How-to-run-JS"><a href="#How-to-run-JS" class="headerlink" title="How to run JS"></a>How to run JS</h3><ul>
+<li><p>Browser- inspect</p>
+<ul>
+<li><p>Method1:</p>
+<blockquote>
+<p>Go to inspect &gt; console</p>
+</blockquote>
+</li>
+<li><p>Method 2:</p>
+<blockquote>
+<p>inspect&gt; sources&gt; snipperts&gt; create js file</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>NodeJS environment</p>
+<blockquote>
+<p>寫 <code>XXX.js</code>&#x2F;&#x2F;CREATE JS file</p>
+<blockquote>
+<p><code>node XXX.js</code> &#x2F;&#x2F;run .js file using node</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="adding-comment"><a href="#adding-comment" class="headerlink" title="adding comment"></a>adding comment</h3><p><code>//</code> single line comment<br><code>/**/</code>: multiply line comment</p>
+<h3 id="顯示-print"><a href="#顯示-print" class="headerlink" title="顯示 print"></a>顯示 print</h3><ul>
+<li><code>console.log()</code> 顯示在console</li>
+<li><code>alert()</code> 跳出顯示</li>
+<li><code>document.write(&quot;\&lt;h1&gt;hello &lt;br\/&gt;&quot;)</code></li>
+</ul>
+<h2 id="JS-基本語法-Part-1"><a href="#JS-基本語法-Part-1" class="headerlink" title="JS　 基本語法- Part 1"></a>JS　 基本語法- Part 1</h2><h3 id="１-declare-variable-宣告變數"><a href="#１-declare-variable-宣告變數" class="headerlink" title="１. declare variable 宣告變數"></a>１. declare variable 宣告變數</h3><ul>
+<li><code>let</code> (新)可以取代var<blockquote>
+<p>ex:</p>
+<blockquote>
+<p><code>let myName= &quot;chenchih&quot;</code><br><code>console.log(myName)</code></p>
+</blockquote>
+</blockquote>
+</li>
+<li><code>var</code></li>
+<li><code>const</code><blockquote>
+<p>must be inital and not able to change<br>不被修改變數。如果不想被人修改</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const test= &quot;heloo&quot;</span><br><span class="line">test=&quot;world&quot;</span><br><span class="line">console.log(test) //error</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Data-Type"><a href="#2-Data-Type" class="headerlink" title="2. Data Type"></a>2. Data Type</h3><h4 id="string"><a href="#string" class="headerlink" title="string:"></a>string:</h4><h5 id="declare-String-and-print-string"><a href="#declare-String-and-print-string" class="headerlink" title="declare String and print string"></a>declare String and print string</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;Jessie&quot;</span><br><span class="line">console.log( &#x27;Hello&#x27;, name); //Before ES5</span><br><span class="line">console.log( `Hello, $&#123;name&#125;!` ); // After Es6</span><br></pre></td></tr></table></figure>
+
+<h5 id="combind-two-String"><a href="#combind-two-String" class="headerlink" title="combind two String"></a>combind two String</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strname=&quot;hello&quot;</span><br><span class="line">str2name=&quot;world&quot;</span><br><span class="line">console.log(strname + &quot; &quot; + str2name)</span><br></pre></td></tr></table></figure>
+<h5 id="template-literals-concatenate-strings-ES6"><a href="#template-literals-concatenate-strings-ES6" class="headerlink" title="template literals (concatenate strings)(ES6)"></a>template literals (concatenate strings)(ES6)</h5><blockquote>
+<p>before ES6:</p>
+<blockquote>
+<p>var message &#x3D; ‘Hello ‘ + name;</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>After ES6 using the `<code>$&#123;&#125;</code>`</p>
+<blockquote>
+<p>const message_new &#x3D; <code>Hello $&#123;name&#125;</code>;<br>console.log(<code>3! is $&#123;3*2*1&#125;</code>);<br>console.log(<code>$&#123;1+2+4&#125;</code>);</p>
+</blockquote>
+</blockquote>
+<h5 id="Ex"><a href="#Ex" class="headerlink" title="Ex:"></a>Ex:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//example1:</span><br><span class="line">var name = &#x27;World&#x27;;</span><br><span class="line">var message = &#x27;Hello &#x27; + name; //before ES6</span><br><span class="line">console.log(message);</span><br><span class="line"></span><br><span class="line">const message_new = `Hello $&#123;name&#125;`; //after ES6</span><br><span class="line">console.log(message_new);</span><br><span class="line"></span><br><span class="line">//example2:</span><br><span class="line">let name = &quot;Ilya&quot;;</span><br><span class="line">console.log( `hello $&#123;1&#125;` ); // hello 1</span><br><span class="line">console.log( `hello $&#123;&quot;name&quot;&#125;` ); // hello name</span><br><span class="line">console.log( `hello $&#123;name&#125;` ); // hello Ilya</span><br></pre></td></tr></table></figure>
+
+<h4 id="number"><a href="#number" class="headerlink" title="number"></a>number</h4><blockquote>
+<p><code>let age= 20</code></p>
+</blockquote>
+<h4 id="boolean"><a href="#boolean" class="headerlink" title="boolean:"></a>boolean:</h4><blockquote>
+<p><code>let boolname=true</code></p>
+</blockquote>
+<h4 id="undefined-type-空直"><a href="#undefined-type-空直" class="headerlink" title="undefined type: 空直"></a>undefined type: 空直</h4><blockquote>
+<p>value that is not assign</p>
+</blockquote>
+<h5 id="Ex-1"><a href="#Ex-1" class="headerlink" title="Ex:"></a>Ex:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let test</span><br><span class="line">console.log(test) //undefined</span><br></pre></td></tr></table></figure>
+
+<h4 id="Null-Type-空直"><a href="#Null-Type-空直" class="headerlink" title="Null Type:空直"></a>Null Type:空直</h4><blockquote>
+<p>empty or unknown value，null 不等 undefined</p>
+</blockquote>
+<h5 id="Ex-2"><a href="#Ex-2" class="headerlink" title="Ex:"></a>Ex:</h5><p>let age &#x3D; null;<br>console.log(age)</p>
+<h4 id="typeof-check-data-Type"><a href="#typeof-check-data-Type" class="headerlink" title="typeof check data Type"></a><code>typeof</code> check data Type</h4><blockquote>
+<p>typeof</p>
+</blockquote>
+<ul>
+<li>example types:<blockquote>
+<p>typeof undefined &#x2F;&#x2F; “undefined”<br>typeof 0 &#x2F;&#x2F; “number”<br>typeof 10n &#x2F;&#x2F; “bigint”<br>typeof true &#x2F;&#x2F; “boolean”<br>typeof “foo” &#x2F;&#x2F; “string”<br>typeof Symbol(“id”) &#x2F;&#x2F; “symbol”<br>typeof Math &#x2F;&#x2F; “object”  (1)<br>typeof null &#x2F;&#x2F; “object”  (2)<br>typeof alert &#x2F;&#x2F; “function”  (3)</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="Ex-3"><a href="#Ex-3" class="headerlink" title="Ex:"></a>Ex:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let hellostr=&quot;hello&quot;;</span><br><span class="line">let num = 123;</span><br><span class="line">console.log(typeof(hellostr) )//String</span><br><span class="line">console.log(typeof(num)) //number</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Interaction-alert-prompt-confirm"><a href="#3-Interaction-alert-prompt-confirm" class="headerlink" title="3. Interaction: alert, prompt, confirm"></a>3. Interaction: alert, prompt, confirm</h3><ul>
+<li><code>alert</code>: pop up and shows a message.</li>
+<li><code>prompt</code>: shows a message asking the user to input text.<ul>
+<li>It <code>returns the text</code> or, if <code>Cancel button</code> or <code>Esc</code> is clicked, <code>null</code>.</li>
+</ul>
+</li>
+<li><code>confirm</code>: shows a message and waits for the user to press “OK” or “Cancel”.<ul>
+<li>It <code>returns true</code> for <code>OK</code> and <code>false</code> for <code>Cancel/Esc</code>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//prompt and alert</span></span><br><span class="line"><span class="keyword">let</span> age = <span class="title function_">prompt</span>(<span class="string">&#x27;How old are you?&#x27;</span>, <span class="number">100</span>);</span><br><span class="line"><span class="title function_">alert</span>(<span class="string">`You are <span class="subst">$&#123;age&#125;</span> years old!`</span>); <span class="comment">// You are 100 years old!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//confirm and alert</span></span><br><span class="line"><span class="keyword">let</span> isBoss = <span class="title function_">confirm</span>(<span class="string">&quot;Are you the boss?&quot;</span>);</span><br><span class="line"><span class="title function_">alert</span>( isBoss ); <span class="comment">// true if OK is pressed</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-Type-Conversions"><a href="#4-Type-Conversions" class="headerlink" title="4. Type Conversions"></a>4. Type Conversions</h3><h4 id="String-Conversion"><a href="#String-Conversion" class="headerlink" title="String Conversion"></a>String Conversion</h4><ul>
+<li>string to number convert<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let value = &quot;123&quot;;</span><br><span class="line">console.log(typeof value); // string</span><br><span class="line">value = Number(value); // now value is a number</span><br><span class="line">console.log(typeof value); // number</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Numeric-Conversion"><a href="#Numeric-Conversion" class="headerlink" title="Numeric Conversion"></a>Numeric Conversion</h4><ul>
+<li>number to string convert: <code>toString</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let num=500;</span><br><span class="line">console.log(typeof(num))</span><br><span class="line">convertstr= num.toString()</span><br><span class="line">//or convertstr= String(num)</span><br><span class="line">console.log(typeof(convertstr))</span><br></pre></td></tr></table></figure>
+<h3 id="5-operator"><a href="#5-operator" class="headerlink" title="5. operator"></a>5. operator</h3><blockquote>
+<p><code>&gt;</code> <code>&lt;</code> <code>||</code> <code>&amp;&amp;</code> <code>!==</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="remainder"><a href="#remainder" class="headerlink" title="remainder %"></a>remainder %</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let x=10</span><br><span class="line">let y=20</span><br><span class="line">console.log(x%y) //mod get remainder</span><br><span class="line">console.log(++x) //x=x+1</span><br></pre></td></tr></table></figure>
+
+<h4 id="Exponentiation"><a href="#Exponentiation" class="headerlink" title="Exponentiation **"></a>Exponentiation **</h4><p>The exponentiation operator a ** b raises a to the power of b.</p>
+<blockquote>
+<p>console.log( 2 ** 2 ); &#x2F;&#x2F; 2² &#x3D; 4<br>console.log( 2 ** 3 ); &#x2F;&#x2F; 2³ &#x3D; 8<br>console.log( 2 ** 4 ); &#x2F;&#x2F; 2⁴ &#x3D; 16</p>
+</blockquote>
+<h4 id="String-concatenation-with-binary"><a href="#String-concatenation-with-binary" class="headerlink" title="String concatenation with binary +"></a>String concatenation with binary +</h4><ul>
+<li><p>using <code>+</code> to concatenate string</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let s = &quot;my&quot; + &quot;string&quot;;</span><br><span class="line">console.log(s) // mystring</span><br></pre></td></tr></table></figure></li>
+<li><p><code>+</code> to concatenate a string  and number<br>Note: if any of the operands is a string, then the other one is converted to a string too</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str1= &#x27;1&#x27; + 2</span><br><span class="line">str2=  2 + &#x27;1&#x27;</span><br><span class="line">console.log( typeof(str1) ); // string</span><br><span class="line">console.log( typeof(str2)); // string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>complex example</p>
+<blockquote>
+<p>console.log(2 + 2 + ‘1’ ); &#x2F;&#x2F; “41” and not “221”</p>
+<blockquote>
+<p>the first two number add together and then add 1, so it will look like this: 4+’1’&#x3D;&gt;41</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>console.log(‘1’ + 2 + 2); &#x2F;&#x2F; “122” and not “14”</p>
+<blockquote>
+<p>Here, the first operand is a string, the compiler treats the other two operands as strings too.</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>other arithmetic operators<br>binary + is the only operator that supports strings in such a way. Other arithmetic operators will convert string to Number<blockquote>
+<p>console.log( 6 - ‘2’ ); &#x2F;&#x2F; 4, converts ‘2’ to a number<br>console.log( ‘6’ &#x2F; ‘2’ ); &#x2F;&#x2F; 3, converts both operands to numbers</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Numeric-conversion-unary-convert-str-to-number"><a href="#Numeric-conversion-unary-convert-str-to-number" class="headerlink" title="Numeric conversion, unary + (convert str to number)"></a>Numeric conversion, unary + (convert str to number)</h4><p>It actually does the same thing as Number(…), but is shorter. In above convert we use Number(…),we can also use <code>+</code>to convert.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// No effect on numbers</span><br><span class="line">let x = 1;</span><br><span class="line">console.log( +x ); // 1</span><br><span class="line"></span><br><span class="line">let apples = &quot;2&quot;;</span><br><span class="line">let oranges = &quot;3&quot;;</span><br><span class="line">console.log( apples + oranges ); //23 string</span><br><span class="line">// both values converted to numbers before the binary plus</span><br><span class="line">console.log( +apples + +oranges ); // 5 covnert to number</span><br></pre></td></tr></table></figure>
+<h4 id="Chaining-assignments-‘-x3D-’"><a href="#Chaining-assignments-‘-x3D-’" class="headerlink" title="Chaining assignments ‘&#x3D;’"></a>Chaining assignments ‘&#x3D;’</h4><p>Chained assignments evaluate from right to left.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a, b, c;</span><br><span class="line">a = b = c = 2 + 2;</span><br><span class="line">console.log( a ); // 4</span><br><span class="line">console.log( b ); // 4</span><br><span class="line">console.log( c ); // 4</span><br></pre></td></tr></table></figure>
+<p>without cain your code have to write pretty long like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c = 2 + 2;</span><br><span class="line">b = c;</span><br><span class="line">a = c;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Increment-x2F-decrement"><a href="#Increment-x2F-decrement" class="headerlink" title="Increment&#x2F;decrement"></a>Increment&#x2F;decrement</h4><ul>
+<li>counter++: <code>counter=counter+1</code></li>
+<li>counter–: <code>counter=counter=1</code></li>
+</ul>
+<h3 id="6-Comparisons"><a href="#6-Comparisons" class="headerlink" title="6. Comparisons"></a>6. Comparisons</h3><h4 id="把結果反向"><a href="#把結果反向" class="headerlink" title="! 把結果反向"></a><code>!</code> 把結果反向</h4><blockquote>
+<blockquote>
+<p>ex:<br><code>const isValid = true</code><br><code>console.log(!isValid)</code> &#x2F;&#x2F;false</p>
+</blockquote>
+</blockquote>
+<h4 id="Strict-equality-and"><a href="#Strict-equality-and" class="headerlink" title="Strict equality  == and ==="></a>Strict equality  <code>==</code> and <code>===</code></h4><ul>
+<li><p>For a non-strict check <code>==</code></p>
+<blockquote>
+<p><code>==</code> 直比較 <code>x==y</code> &#x2F;&#x2F;compare value, return bool</p>
+<blockquote>
+<p>會幫你轉換想等data type<br>ex: <code>1 == &quot;1&quot;</code> &#x2F;&#x2F;true</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>For a strict check <code>===</code></p>
+<blockquote>
+<p><code>===</code> 嚴格判斷 <code>x===y</code>&#x2F;&#x2F;compare value, and data type, return bool</p>
+<blockquote>
+<p>ex: <code>1 === &quot;1&quot;</code> &#x2F;&#x2F;false</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>alert( null &#x3D;&#x3D; undefined ); &#x2F;&#x2F; true<br>alert( null &#x3D;&#x3D;&#x3D; undefined ); &#x2F;&#x2F; false</p>
+</blockquote>
+<h4 id="null-vs-undefined-vs-0"><a href="#null-vs-undefined-vs-0" class="headerlink" title="null vs undefined vs 0"></a>null vs undefined vs 0</h4><ul>
+<li><p>null vs 0</p>
+<blockquote>
+<p>console.log( null &gt; 0 );  &#x2F;&#x2F; (1) false<br>console.log( null &#x3D;&#x3D; 0 ); &#x2F;&#x2F; (2) false<br>console.log( null &gt;&#x3D; 0 ); &#x2F;&#x2F; (3) true</p>
+</blockquote>
+</li>
+<li><p>undefined vs 0</p>
+<blockquote>
+<p>console.log( undefined &gt; 0 ); &#x2F;&#x2F; false (1)<br>console.log( undefined &lt; 0 ); &#x2F;&#x2F; false (2)<br>console.log( undefined &#x3D;&#x3D; 0 ); &#x2F;&#x2F; false (3)</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="7-condition-if-amp-statement"><a href="#7-condition-if-amp-statement" class="headerlink" title="7 condition if &amp; ? statement"></a>7 condition if &amp; ? statement</h3><h4 id="if-else-if-else"><a href="#if-else-if-else" class="headerlink" title="if else if else"></a>if else if else</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const num= -5</span><br><span class="line"></span><br><span class="line">if (num &gt; 0)&#123;</span><br><span class="line">console.log(&quot;num is positive&quot;)</span><br><span class="line">&#125;</span><br><span class="line">else if( num &lt; 0 )&#123;</span><br><span class="line">console.log(&quot;Number is negative&quot;)</span><br><span class="line">&#125;</span><br><span class="line">else(</span><br><span class="line">console.log(&quot;Number is zero&quot;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+<blockquote>
+<p>Number is negative</p>
+</blockquote>
+</blockquote>
+<h4 id="if-0-Boolean-conversion"><a href="#if-0-Boolean-conversion" class="headerlink" title="if (0) Boolean conversion"></a>if (0) Boolean conversion</h4><ul>
+<li>false will never execute<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (0) &#123; // 0 is falsy</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>true will execute<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (1) &#123; // 1 is truthy</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="operator"><a href="#operator" class="headerlink" title="? operator"></a>? operator</h4><blockquote>
+<p>syntax: let result &#x3D; condition ? value1 : value2;</p>
+</blockquote>
+<h5 id="Ex1-If-else-and"><a href="#Ex1-If-else-and" class="headerlink" title="Ex1: If else and  ?"></a>Ex1: If else and  ?</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let accessAllowed;</span><br><span class="line">let age = prompt(&#x27;How old are you?&#x27;, &#x27;&#x27;);</span><br><span class="line">if (age &gt; 18) &#123;</span><br><span class="line">  accessAllowed = true;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  accessAllowed = false;</span><br><span class="line">&#125;</span><br><span class="line">alert(accessAllowed);</span><br></pre></td></tr></table></figure>
+<p>Now we can use shorter way:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let age = prompt(&#x27;How old are you?&#x27;, &#x27;&#x27;);</span><br><span class="line">let accessAllowed = (age &gt; 18) ? true : false;</span><br><span class="line">alert(accessAllowed);</span><br></pre></td></tr></table></figure>
+
+<h5 id="ex2-boolean"><a href="#ex2-boolean" class="headerlink" title="ex2: boolean"></a>ex2: boolean</h5><ul>
+<li>boolean<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const isEven = 10 % 2 ==0 ? true : false</span><br><span class="line">console.log(isEven) //true</span><br></pre></td></tr></table></figure></li>
+<li>sting<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const isEven = 10 % 2 ==0 ? &#x27;Number is Even &#x27; : &#x27;Number is odd&#x27;</span><br><span class="line">console.log(isEven) // Number is Even</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="ex3-prompt-example"><a href="#ex3-prompt-example" class="headerlink" title="ex3 prompt example:"></a>ex3 prompt example:</h5><ul>
+<li>using if else<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (age &lt; 3) &#123;</span><br><span class="line">  message = &#x27;Hi, baby!&#x27;;</span><br><span class="line">&#125; else if (age &lt; 18) &#123;</span><br><span class="line">  message = &#x27;Hello!&#x27;;</span><br><span class="line">&#125; else if (age &lt; 100) &#123;</span><br><span class="line">  message = &#x27;Greetings!&#x27;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  message = &#x27;What an unusual age!&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>using ?<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let age = prompt(&#x27;age?&#x27;, 18);</span><br><span class="line">let message = (age &lt; 3) ? &#x27;Hi, baby!&#x27; :</span><br><span class="line">  (age &lt; 18) ? &#x27;Hello!&#x27; :</span><br><span class="line">  (age &lt; 100) ? &#x27;Greetings!&#x27; :</span><br><span class="line">  &#x27;What an unusual age!&#x27;;</span><br><span class="line">console.log( message );</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="ex3-prompt-example-1"><a href="#ex3-prompt-example-1" class="headerlink" title="ex3 prompt example:"></a>ex3 prompt example:</h5><ul>
+<li><p>? method</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let company = prompt(&#x27;Which company created JavaScript?&#x27;, &#x27;&#x27;);</span><br><span class="line"></span><br><span class="line">(company == &#x27;Netscape&#x27;) ?</span><br><span class="line">   alert(&#x27;Right!&#x27;) : alert(&#x27;Wrong.&#x27;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>if else</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let company = prompt(&#x27;Which company created JavaScript?&#x27;, &#x27;&#x27;);</span><br><span class="line"></span><br><span class="line">if (company == &#x27;Netscape&#x27;) &#123;</span><br><span class="line">  alert(&#x27;Right!&#x27;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  alert(&#x27;Wrong.&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-function"><a href="#3-function" class="headerlink" title="3. function"></a>3. function</h3><h4 id="basic-function"><a href="#basic-function" class="headerlink" title="basic function"></a>basic function</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function hello()&#123;</span><br><span class="line">console.log(&#x27;你好&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">hello()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>你好</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="function-with-value"><a href="#function-with-value" class="headerlink" title="function with value"></a>function with value</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addMoney(price1, price2, discount)&#123;</span><br><span class="line">console.log(price1+price2 + discount)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addMoney (400, 500) //沒放第3參數會出現undefine。JS不嚴謹</span><br><span class="line">addMoney (600, 700, 100)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>NAN<br>1400</p>
+</blockquote>
+</blockquote>
+<h4 id="function-return-value"><a href="#function-return-value" class="headerlink" title="function return value"></a>function return value</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function addMoney(price1, price2, discount)&#123;</span><br><span class="line">let result = price1+price2 -discount</span><br><span class="line">return result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let total = addMoney (400, 500, 50)</span><br><span class="line">console.log(&#x27;total&#x27;, total)</span><br><span class="line">addMoney (600, 700, 100)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>total 850</p>
+</blockquote>
+</blockquote>
+<h4 id="function-return-and-if-else"><a href="#function-return-and-if-else" class="headerlink" title="function return and if else"></a>function return and if else</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function addMoney(price1, price2, discount)&#123;</span><br><span class="line">let result = price1+price2 -discount</span><br><span class="line">let message= &quot;normal account&quot;</span><br><span class="line"></span><br><span class="line">if (result &gt; 20000)&#123;</span><br><span class="line">message= &quot;platinum account&quot;</span><br><span class="line">return message</span><br><span class="line">&#125;</span><br><span class="line">if (result &gt; 50000)&#123;</span><br><span class="line">message= &quot;VIP&quot;</span><br><span class="line">return message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return message</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let message= addMoney (11000, 500000, 50)</span><br><span class="line">console.log(&#x27;msg&#x27;, message)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+<blockquote>
+<p>msg platinum account</p>
+</blockquote>
+</blockquote>
+<h2 id="JS-基本語法-Part-2-loop迴圈-and-condition條件"><a href="#JS-基本語法-Part-2-loop迴圈-and-condition條件" class="headerlink" title="JS　 基本語法- Part 2 loop迴圈 and condition條件"></a>JS　 基本語法- Part 2 loop迴圈 and condition條件</h2><h3 id="1-loop"><a href="#1-loop" class="headerlink" title="1. loop"></a>1. loop</h3><h4 id="for-loop"><a href="#for-loop" class="headerlink" title="for loop"></a>for loop</h4><ul>
+<li><p>Syntax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (begin; condition; step) &#123;</span><br><span class="line">  // ... loop body ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a>Example:</h4></li>
+<li><p>for loop</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (let i=0; i&lt;10; i++)&#123;</span><br><span class="line">console.log(&quot;i:&quot;, i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>we can also use : <code>i++</code> or <code>i+=2</code></p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>step by step</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// for (let i = 0; i &lt; 3; i++) alert(i)</span><br><span class="line"></span><br><span class="line">// run begin</span><br><span class="line">let i = 0</span><br><span class="line">// if condition → run body and run step</span><br><span class="line">if (i &lt; 3) &#123; alert(i); i++ &#125;</span><br><span class="line">// if condition → run body and run step</span><br><span class="line">if (i &lt; 3) &#123; alert(i); i++ &#125;</span><br><span class="line">// if condition → run body and run step</span><br><span class="line">if (i &lt; 3) &#123; alert(i); i++ &#125;</span><br><span class="line">// ...finish, because now i == 3</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="While"><a href="#While" class="headerlink" title="While"></a>While</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let condition= true</span><br><span class="line">while(condition)&#123;</span><br><span class="line">console.log(&#x27;....&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Ex1-while-only-true-will-execute"><a href="#Ex1-while-only-true-will-execute" class="headerlink" title="Ex1: while only true will execute"></a>Ex1: while only true will execute</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let i = 1</span><br><span class="line">while(i &lt;=5)&#123;</span><br><span class="line">console.log(&#x27;iteration&#x27; + i)</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>iteration number 1<br>iteration number 2<br>iteration number 3<br>iteration number 4<br>iteration number 5</p>
+</blockquote>
+</blockquote>
+<h4 id="Ex2-condition-stop-when-traget-match"><a href="#Ex2-condition-stop-when-traget-match" class="headerlink" title="Ex2 condition stop when traget match"></a>Ex2 condition stop when traget match</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let condition= true</span><br><span class="line">let target = 10</span><br><span class="line">let i =0</span><br><span class="line"></span><br><span class="line">while(condition)&#123;</span><br><span class="line">if (i === target)&#123;</span><br><span class="line">condition= false</span><br><span class="line">&#125;</span><br><span class="line">console.log(i)</span><br><span class="line">i++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</p>
+</blockquote>
+</blockquote>
+<h3 id="do-while-loop"><a href="#do-while-loop" class="headerlink" title="do while loop"></a>do while loop</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">  // loop body</span><br><span class="line">&#125; while</span><br></pre></td></tr></table></figure>
+<h4 id="ex1"><a href="#ex1" class="headerlink" title="ex1:"></a>ex1:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let i = 1</span><br><span class="line">do &#123;</span><br><span class="line">console.log(&#x27;iteration &#x27; + i)</span><br><span class="line">i++</span><br><span class="line">&#125; while (i &lt;=5)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>iteration number 1<br>iteration number 2<br>iteration number 3<br>iteration number 4<br>iteration number 5</p>
+</blockquote>
+</blockquote>
+<h3 id="SWITCH"><a href="#SWITCH" class="headerlink" title="SWITCH"></a>SWITCH</h3><blockquote>
+<p>switch(key){<br>case value<br>}</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let key=900</span><br><span class="line"></span><br><span class="line">switch(key)&#123;</span><br><span class="line">case 100:</span><br><span class="line">console.log(&quot;key 100&quot;)</span><br><span class="line">break;</span><br><span class="line"></span><br><span class="line">case 200:</span><br><span class="line">console.log(&quot;key 200&quot;)</span><br><span class="line">break;</span><br><span class="line"></span><br><span class="line">default:</span><br><span class="line">console.log(&quot;no score&quot;)</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="JS-基本語法-Part-3-array-object-class"><a href="#JS-基本語法-Part-3-array-object-class" class="headerlink" title="JS　 基本語法- Part 3 array object class"></a>JS　 基本語法- Part 3 array object class</h2><h3 id="1-array"><a href="#1-array" class="headerlink" title="1. array"></a>1. array</h3><h4 id="decalare-array"><a href="#decalare-array" class="headerlink" title="decalare array:"></a>decalare array:</h4><h5 id="ex1-1"><a href="#ex1-1" class="headerlink" title="ex1:"></a>ex1:</h5><ul>
+<li><p>decalare array with value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arrayName=[&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;]</span><br><span class="line">console.log(arrayName) //[ &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27; ]</span><br><span class="line">const oddNumber=[1,3,4,5,7]</span><br><span class="line">console.log(oddNumber[0]) //1</span><br><span class="line">console.log(oddNumber[4]) //7</span><br></pre></td></tr></table></figure></li>
+<li><p>Trailing comma</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fruits = [</span><br><span class="line">  <span class="string">&quot;Apple&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Orange&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Plum&quot;</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure></li>
+<li><p>replace new element</p>
+<blockquote>
+<p>fruits[2] &#x3D; ‘Pear’; &#x2F;&#x2F; now [“Apple”, “Orange”, “Pear”]</p>
+</blockquote>
+</li>
+<li><p>decalare empty array:<br>We can use either way to create empty array</p>
+<blockquote>
+<p>let arr &#x3D; new Array();<br>let arr &#x3D; [];</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="length長度"><a href="#length長度" class="headerlink" title="length長度:"></a>length長度:</h4><blockquote>
+<p><code>console.log(arrayName.length)</code></p>
+</blockquote>
+<h4 id="Method-push-pull-shift"><a href="#Method-push-pull-shift" class="headerlink" title="Method push pull shift"></a>Method push pull shift</h4><ul>
+<li><p>push加值 appends an element to the end.</p>
+<blockquote>
+<p><code>arrayName.push(&#39;value&#39;)</code></p>
+</blockquote>
+</li>
+<li><p>pop takes an element from the end.</p>
+<blockquote>
+<p><code>arrayName.push(&#39;value&#39;)</code></p>
+</blockquote>
+</li>
+<li><p>shift: get an element from the beginning, advancing the queue, so that the 2nd element becomes the 1st.</p>
+</li>
+</ul>
+<h4 id="array-with-for-loop"><a href="#array-with-for-loop" class="headerlink" title="array with for loop"></a>array with for loop</h4><h5 id="Example1-loop-in-array"><a href="#Example1-loop-in-array" class="headerlink" title="Example1: loop in array"></a>Example1: loop in array</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numArray=[1,2,3,4,5]</span><br><span class="line">for (const num of numArray)&#123;</span><br><span class="line">console.log(&quot;iteration number &quot; + num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>iteration number 1<br>iteration number 2<br>iteration number 3<br>iteration number 4<br>iteration number 5</p>
+</blockquote>
+</blockquote>
+<h5 id="Example2"><a href="#Example2" class="headerlink" title="Example2:"></a>Example2:</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let classA = [&#x27;80&#x27;,&#x27;90&#x27;,&#x27;50&#x27;]</span><br><span class="line">for (let i = 0; i &lt; classA.length; i++)&#123;</span><br><span class="line">if (i ===2)&#123;</span><br><span class="line">classA[i]=900</span><br><span class="line">&#125;</span><br><span class="line">console.log(&quot;i:&quot;,classA[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p>i: 80<br>i: 90<br>i: 100</p>
+</blockquote>
+</blockquote>
+<h3 id="2-object"><a href="#2-object" class="headerlink" title="2. object"></a>2. object</h3><blockquote>
+<p>basic object</p>
+<blockquote>
+<p>ex</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const person = &#123;</span><br><span class="line">firstName: &#x27;Bruce&#x27;,</span><br><span class="line">lastName: &#x27;Lee&#x27;,</span><br><span class="line">age:30,</span><br><span class="line">&#125;</span><br><span class="line">console.log(person.lastName)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+<blockquote>
+<p>Lee</p>
+</blockquote>
+</blockquote>
+<h4 id="object-with-for-loop"><a href="#object-with-for-loop" class="headerlink" title="object with for loop"></a>object with for loop</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const posts = [</span><br><span class="line">&#123;</span><br><span class="line">name: &#x27;Mary&#x27;,</span><br><span class="line">desc: &#x27;Hello Mary&#x27;,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">name: &#x27;Anna&#x27;,</span><br><span class="line">desc: &#x27;Hello ANNA&#x27;,</span><br><span class="line">&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">for (let i =0; i&lt; posts.length;i++)</span><br><span class="line">&#123;</span><br><span class="line">if (i ===1)&#123;</span><br><span class="line">let post = posts[i];</span><br><span class="line">console.log(post)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p><code>&#123; name: &#39;Anna&#39;, desc: &#39;Hello ANNA&#39; &#125;</code></p>
+</blockquote>
+</blockquote>
+<h4 id="example-1"><a href="#example-1" class="headerlink" title="example 1"></a><strong>example 1</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const post= &#123;</span><br><span class="line">  images: &#x27;https://xx.img.com/a1.png&#x27;,</span><br><span class="line">  desc: &#x27;this is a image&#x27;,</span><br><span class="line">  date: &#x27;2022/07/14&#x27;,</span><br><span class="line">  comment: [&#x27;awesome&#x27;,&#x27;cool&#x27;,&#x27;nicepic&#x27;]  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const wall = [</span><br><span class="line">  post,</span><br><span class="line">  post,</span><br><span class="line">  post,</span><br><span class="line">]</span><br><span class="line">console.log(wall)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    images: &#x27;https://xx.img.com/a1.png&#x27;,</span><br><span class="line">    desc: &#x27;this is a image&#x27;,</span><br><span class="line">    date: &#x27;2022/07/14&#x27;,</span><br><span class="line">    comment: [ &#x27;awesome&#x27;, &#x27;cool&#x27;, &#x27;nicepic&#x27; ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    images: &#x27;https://xx.img.com/a1.png&#x27;,</span><br><span class="line">    desc: &#x27;this is a image&#x27;,</span><br><span class="line">    date: &#x27;2022/07/14&#x27;,</span><br><span class="line">    comment: [ &#x27;awesome&#x27;, &#x27;cool&#x27;, &#x27;nicepic&#x27; ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    images: &#x27;https://xx.img.com/a1.png&#x27;,</span><br><span class="line">    desc: &#x27;this is a image&#x27;,</span><br><span class="line">    date: &#x27;2022/07/14&#x27;,</span><br><span class="line">    comment: [ &#x27;awesome&#x27;, &#x27;cool&#x27;, &#x27;nicepic&#x27; ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h4 id="example2"><a href="#example2" class="headerlink" title="example2:"></a><strong>example2:</strong></h4><p>continue above example, and add another post</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const post2= &#123;</span><br><span class="line">  images: &#x27;https://xx.img.com/a2.png&#x27;,</span><br><span class="line">  desc: &#x27;this is a image&#x27;,</span><br><span class="line">  date: &#x27;2022/07/15&#x27;,</span><br><span class="line">  comment: [&#x27;awesome&#x27;,&#x27;cool&#x27;,&#x27;nicepic&#x27;, &#x27;wow&#x27;]  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const wall = [</span><br><span class="line">  post,</span><br><span class="line"> post2,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">console.log(wall)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+<blockquote>
+<p><code>createCard &#123; name: &#39;Ma&#39; &#125;</code><br><code>createCard &#123; name: &#39;Ma2&#39; &#125;</code><br><code>createCard &#123; name: &#39;Ma3&#39; &#125;</code></p>
+</blockquote>
+</blockquote>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://javascript.info/">https://javascript.info/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/" title="JS Basic Code 基本">https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/JS/" rel="tag"># JS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/" rel="prev" title="Markdown 指令">
+                  <i class="fa fa-chevron-left"></i> Markdown 指令
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/07/30/2022-07-30-python-Print/" rel="next" title="Python Print">
+                  Python Print <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">82k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

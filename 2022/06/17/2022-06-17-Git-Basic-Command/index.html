@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天我想在這文章中介紹最常用到的git指令。我會介紹我最常用到的指令有：  git init git add . git commit -m “message” git push以上是我最常用到的。我還想介紹一些關於git remote 等指令。  基本指令1. git init 初始化 gitStep1: 建立一個資料夾如：$mkdir test Step2: 進去目錄 cd test Step">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Basic Command">
+<meta property="og:url" content="https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天我想在這文章中介紹最常用到的git指令。我會介紹我最常用到的指令有：  git init git add . git commit -m “message” git push以上是我最常用到的。我還想介紹一些關於git remote 等指令。  基本指令1. git init 初始化 gitStep1: 建立一個資料夾如：$mkdir test Step2: 進去目錄 cd test Step">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-05T01:47:35.085Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/","path":"2022/06/17/2022-06-17-Git-Basic-Command/","title":"Git Basic Command"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git Basic Command | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-init-%E5%88%9D%E5%A7%8B%E5%8C%96-git"><span class="nav-number">1.1.</span> <span class="nav-text">1. git init 初始化 git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git-add-%E6%8A%8A%E6%AA%94%E6%A1%88%E9%80%B2%E7%B4%A2%E5%BC%95index"><span class="nav-number">1.2.</span> <span class="nav-text">2. git add 把檔案進索引index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-commit"><span class="nav-number">1.3.</span> <span class="nav-text">3. git commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-git-log"><span class="nav-number">1.4.</span> <span class="nav-text">4. git log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-git-push"><span class="nav-number">1.5.</span> <span class="nav-text">5. git push</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%ACremote-%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">基本remote 相關指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Branching"><span class="nav-number">3.</span> <span class="nav-text">Branching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BB%BA%E7%AB%8B%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%EF%BC%88%E5%8F%AA%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">1. 建立本地分支（只建立分支）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%BB%BA%E7%AB%8B%E5%92%8C%E5%88%87%E6%8F%9B%E5%88%86%E6%94%AFCreate-a-branch-and-switch"><span class="nav-number">3.2.</span> <span class="nav-text">2. 建立和切換分支Create a branch and switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-check-branch-%E6%AA%A2%E6%9F%A5%E5%88%86%E6%94%AF"><span class="nav-number">3.3.</span> <span class="nav-text">3. check branch 檢查分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%AA%E9%99%A4%E5%88%86%E6%94%AF-Delete-branch"><span class="nav-number">3.4.</span> <span class="nav-text">4. 刪除分支 Delete branch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remote-branch-%E9%80%B2%E9%9A%8E"><span class="nav-number">4.</span> <span class="nav-text">remote branch (進階)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BB%BA%E7%AB%8B%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AF%E7%AC%AC%E4%B8%80%E6%AC%A1-%E5%BB%BA%E5%AE%8Cgit-init"><span class="nav-number">4.1.</span> <span class="nav-text">1. 建立遠端分支第一次(建完git init)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%AA%E9%99%A4%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AF"><span class="nav-number">4.2.</span> <span class="nav-text">2. 刪除遠端分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%AC%E5%9C%B0%E5%88%87%E6%8F%9B%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AFswitch-remote-branch"><span class="nav-number">4.3.</span> <span class="nav-text">3. 本地切換遠端分支switch remote branch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-fetch-%E2%80%93prune-%E6%8A%8A%E9%81%A0%E7%AB%AF%E5%88%86%E6%94%AF%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%AD%A5"><span class="nav-number">4.4.</span> <span class="nav-text">4. fetch –prune 把遠端分支在本地同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Git Basic Command | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git Basic Command
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-17T00:00:00+08:00">2022-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天我想在這文章中介紹最常用到的git指令。我會介紹我最常用到的指令有：</p>
+<ul>
+<li>git init</li>
+<li>git add .</li>
+<li>git commit -m “message”</li>
+<li>git push<br>以上是我最常用到的。我還想介紹一些關於git remote 等指令。</li>
+</ul>
+<h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><h3 id="1-git-init-初始化-git"><a href="#1-git-init-初始化-git" class="headerlink" title="1. git init 初始化 git"></a>1. git init 初始化 git</h3><p>Step1: 建立一個資料夾如：<code>$mkdir test</code></p>
+<p>Step2: 進去目錄 <code>cd test</code></p>
+<p>Step3: 執行 <code>git init</code>就會初始化 git。如果你下 <code>ls-al</code>就可以看所有資料，會有一個 <code>.git</code> 隱藏檔</p>
+<h3 id="2-git-add-把檔案進索引index"><a href="#2-git-add-把檔案進索引index" class="headerlink" title="2. git add 把檔案進索引index"></a>2. git add 把檔案進索引index</h3><p>Step1: 建立檔案 <code>touch hello.py</code><br>Step2: 編輯檔案</p>
+<ul>
+<li>(linux) vim hello.py</li>
+<li>(window) notepad hello.py<br>就加 <code>print(&quot;hello world&quot;)</code><br>Step3: 把檔案加進索引 <code>git add .</code><br>Step4: 看git status  <code>git status</code><br>他會顯示stage</li>
+</ul>
+<h3 id="3-git-commit"><a href="#3-git-commit" class="headerlink" title="3. git commit"></a>3. git commit</h3><p>我們準備要把他推到我們本地local repository，請下以下指令：</p>
+<blockquote>
+<p><code>git commit -m &quot;add hello.py &quot; </code><br><code>-m</code>: message，後面是你要推的信息</p>
+</blockquote>
+<h3 id="4-git-log"><a href="#4-git-log" class="headerlink" title="4. git log"></a>4. git log</h3><p>我們可以用這個指令<code>git log --oneline</code> 來看我們有commit 成功嘛。這個指令很常用。我們可以看到我們的commit hash，這可以讓我們環原我們檔案等等。<br>有幾個參數可以用：</p>
+<ul>
+<li><code>git log</code> ：顯示相細訊息</li>
+<li><code>git log --oneline</code>: 只顯示基本信息</li>
+<li><code>git log --oneline --graph</code> : 可以顯示你的分支相關圖</li>
+<li><code>git log --oneline HEAD -N</code> : HEAD 0 就是最新個commit，N可以顯示最新幾筆</li>
+</ul>
+<h3 id="5-git-push"><a href="#5-git-push" class="headerlink" title="5. git push"></a>5. git push</h3><p>我們需要去giuthub建立我們自己的repository(專案)。建立完他會給我們一些提示，我們需要把本地跟遠端連再一起。</p>
+<ul>
+<li><p>local跟remote 連結</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git remote add origin https://github.com/username/&lt;repoistory&gt;.git</span><br><span class="line">$git branch -M main #add local main branch</span><br><span class="line">$git push -u origin main #add main remote branch</span><br></pre></td></tr></table></figure>
+<p>Note: 上面的<code>-u</code>：他會記錄你的repository名字，你下次要push上去，就可以直接下<code>git push</code>就不用下 <code>git push -u origin</code></p>
+</li>
+<li><p>正常push command<br>上面指令只需要在第一次用，下次你要push上說，只要下<code>git push</code>就好。</p>
+</li>
+</ul>
+<h2 id="基本remote-相關指令"><a href="#基本remote-相關指令" class="headerlink" title="基本remote 相關指令"></a>基本remote 相關指令</h2><ul>
+<li>如果你相要改你個remote reposioty名字，或你加錯，我們都可以改。<ul>
+<li>檢查我們的repository連結 check remote repository url：<blockquote>
+<p><code>git remote -v</code></p>
+</blockquote>
+</li>
+<li>移除我們remote repository: <blockquote>
+<p><code>git remote rename &lt;oldname&gt; &lt;newname&gt;</code></p>
+</blockquote>
+</li>
+<li>改名remote repository: <blockquote>
+<p><code>git remote remove &lt;name&gt;</code></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Branching"><a href="#Branching" class="headerlink" title="Branching"></a>Branching</h2><h3 id="1-建立本地分支（只建立分支）"><a href="#1-建立本地分支（只建立分支）" class="headerlink" title="1. 建立本地分支（只建立分支）"></a>1. 建立本地分支（只建立分支）</h3><blockquote>
+<p><code>$git branch &lt;branchname&gt;</code> # create branchname<br><code>$git checkout &lt;branchname&gt;</code> # check branchname</p>
+</blockquote>
+<h3 id="2-建立和切換分支Create-a-branch-and-switch"><a href="#2-建立和切換分支Create-a-branch-and-switch" class="headerlink" title="2. 建立和切換分支Create a branch and switch"></a>2. 建立和切換分支Create a branch and switch</h3><blockquote>
+<p><code>$git checkout -b &lt;branchname&gt;</code> # create branch and switch<br><code>git switch -c &lt;branchname&gt;</code> # create branch and switch</p>
+</blockquote>
+<h3 id="3-check-branch-檢查分支"><a href="#3-check-branch-檢查分支" class="headerlink" title="3. check branch 檢查分支"></a>3. check branch 檢查分支</h3><blockquote>
+<p><code>$git branch</code> or <code>$git branch -l</code> # 本端分支，預設list local branch<br><code>$git branch -r</code> # list remote branch 遠端分支<br><code>$git branch -a</code> #全部分支 list all branch local and remote</p>
+</blockquote>
+<h3 id="4-刪除分支-Delete-branch"><a href="#4-刪除分支-Delete-branch" class="headerlink" title="4. 刪除分支 Delete branch"></a>4. 刪除分支 Delete branch</h3><ul>
+<li>刪除本地分支local branch<blockquote>
+<p><code>$git branch -d &lt;branchname&gt;</code> # delete local branch<br>  <code>-d</code>: merge<br>  <code>-D</code> : no merge</p>
+</blockquote>
+</li>
+<li>刪除遠端分支remote branch<blockquote>
+<p><code>$git push &lt;remote name&gt; --delete &lt;remote branch name&gt;</code> #delete remote branch</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="remote-branch-進階"><a href="#remote-branch-進階" class="headerlink" title="remote branch (進階)"></a>remote branch (進階)</h2><h3 id="1-建立遠端分支第一次-建完git-init"><a href="#1-建立遠端分支第一次-建完git-init" class="headerlink" title="1. 建立遠端分支第一次(建完git init)"></a>1. 建立遠端分支第一次(建完git init)</h3><blockquote>
+<p><code>git push --set-upstream &lt;remote repository&gt; &lt;branch-name&gt;</code></p>
+<blockquote>
+<p>Example:<br><code>git push --set-upstream origin newbranch1</code></p>
+</blockquote>
+</blockquote>
+<h3 id="2-刪除遠端分支"><a href="#2-刪除遠端分支" class="headerlink" title="2. 刪除遠端分支"></a>2. 刪除遠端分支</h3><blockquote>
+<p><code>git push origin --delete newbranch1</code></p>
+<blockquote>
+<p> or 也可以用這個<br><code>git push &lt;remote&gt; :&lt;branch&gt;</code></p>
+</blockquote>
+</blockquote>
+<h3 id="3-本地切換遠端分支switch-remote-branch"><a href="#3-本地切換遠端分支switch-remote-branch" class="headerlink" title="3. 本地切換遠端分支switch remote branch"></a>3. 本地切換遠端分支switch remote branch</h3><p>我們如果clone repository，只會有master被clone下來，分支不會下載。因此我們需要切換到remote branch。以下是切換方法:</p>
+<blockquote>
+<p>#假如我有 main和test<br><code>git branch -a</code> #list all remote local branch ，local沒看到test分支<br><code>git checkout origin/test</code> #test是遠端分支<br><code>git switch -</code> #切到master或main<br><code>git switch test </code></p>
+</blockquote>
+<p>這時就會有test分支</p>
+<h3 id="4-fetch-–prune-把遠端分支在本地同步"><a href="#4-fetch-–prune-把遠端分支在本地同步" class="headerlink" title="4. fetch –prune 把遠端分支在本地同步"></a>4. fetch –prune 把遠端分支在本地同步</h3><p>我們在server 刪除 remote branch 可是在本地 branch -r 還是有看到，此時我們就要用這指令</p>
+<blockquote>
+<p><code>git branch -r</code><br><code>git fetch --prune</code></p>
+</blockquote>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>以上是最基本指令，我後續我再放一些高階的指令上去。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/" title="Git Basic Command">https://github.com/chenchih/2022/06/17/2022-06-17-Git-Basic-Command/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/github/" rel="tag"># github</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/11/2022-06-11-%5BCSS-Layout%5D_GRID/" rel="prev" title="CSS LAYOUT - GRID 介紹">
+                  <i class="fa fa-chevron-left"></i> CSS LAYOUT - GRID 介紹
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/06/21/2022-06-21-%5BCSS-Layout%5D_Flexbox/" rel="next" title="CSS LAYOUT - Flexbox">
+                  CSS LAYOUT - Flexbox <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">82k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
