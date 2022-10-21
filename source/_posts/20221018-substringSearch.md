@@ -30,24 +30,29 @@ print(dateStr) #20221013.162853.788442
 >> 20221013.162853.788442
 
 - Step3 抓取TPUT直
+這裡會用到`spit`和`strip`
+`spit`是把字源切開，切完只留下Tput，會發現有空白，因此在後面加`strip`把空白移除就可以。
+
 ```
 #一次把所有東西spit切掉 
-Tput = st.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0]
+Tput = st.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
 #如果不喜歡可以用下面一個一切
-#subString = st.split(" DL- ingress traffic:", 1)[1]
-#TPUT=subString.split(',')[0]
-#TPUT=TPUT.split('(')[0]
 print(Tput) # 0.010799
 ```
 > output:
 >> 0.010799
+
+想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:
+#subString = st.split(" DL- ingress traffic:", 1)[1]
+#TPUT=subString.split(',')[0]
+#TPUT=TPUT.split('(')[0]
 
 ## Regular expression
 Regular Expression 也好用，下面只教如何抓取時間。
 - 數字only
 ```
 import re
-s = "alpha.Customer[20221013.162853.788442]"
+s = "list[20221013.162853.788442]"
 m = re.search(r"\[([0-9.]+)\]", s)
 print(m.group(1) ) #20221013.162853.788442
 ```
@@ -62,6 +67,74 @@ print(m.group(1) ) #cus_Y4o9qMEZAugtnW
 ```
 > output:
 >> cus_Y4o9qMEZAugtnW
+
+## 用毒檔案方式(最實用)
+我把切格方式加進function，妳也可以不用加到function。我再把它存進list裡面。
+
+```
+givenString = "DL- ingress traffic"
+result = []
+#function spit time and tput value
+def timeparse(data):         
+    datestr = data.split('[', 1)[1].split(']')[0]
+    Tput = data.split(" DL- ingress traffic:", 1)[1].split(',')[0].split('(')[0].strip()
+    result.append(datestr)
+    result.append(Tput)
+    print(datestr, Tput)
+    #return datestr
+
+with open('elog', 'r') as filedata:
+    for line in filedata:   
+        if givenString in line:
+
+             # Print the line, if the given string is found in the current line
+             #print(line)
+             timeparse(line)
+
+print ("="*30)
+print(result)
+#把list 面東西印出來
+for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
+    print(*i)       
+```
+
+### 以下有幾個方法可以印出list+換行
+
+-  List Comprehensions 簡短
+```
+for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
+    print(*i) 
+```
+
+- 轉成正常for loop
+方法一
+```
+temp = []
+for c in range(0, len(results)):
+    if c % 2 == 0:
+        temp.append(results[c:c+2])
+
+for i in temp:
+    print(*i)
+```
+或是
+
+方法二
+```
+results = ['A', 'B', 'C', 'D']
+for index, c in enumerate(results):
+    if index % 2 == 0:
+        print(*results[index:index + 2])
+```
+
+- 用 zip 最好方式
+```
+results = iter(["A", "B", "C", "D"])
+for i in zip(results, results):
+    print(*i)
+```
+
+
 
 ## reference:
 source: https://stackoverflow.com/questions/8569201/get-the-string-within-brackets-in-python
