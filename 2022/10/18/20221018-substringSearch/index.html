@@ -38,7 +38,7 @@
 <meta property="og:description" content="今天分享如何搜尋字串裡面的substring或如果有檔案(log)想找相關字來做分析。 spit 方式我的string是:   st&#x3D;&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx:">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-18T09:44:27.000Z">
-<meta property="article:modified_time" content="2022-10-18T10:03:48.868Z">
+<meta property="article:modified_time" content="2022-10-21T07:10:09.270Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spit-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">spit 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-expression"><span class="nav-number">2.</span> <span class="nav-text">Regular expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">reference:</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spit-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">spit 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-expression"><span class="nav-number">2.</span> <span class="nav-text">Regular expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%AF%92%E6%AA%94%E6%A1%88%E6%96%B9%E5%BC%8F-%E6%9C%80%E5%AF%A6%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">用毒檔案方式(最實用)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E6%9C%89%E5%B9%BE%E5%80%8B%E6%96%B9%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%8D%B0%E5%87%BAlist-%E6%8F%9B%E8%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">以下有幾個方法可以印出list+換行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">reference:</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,9 +239,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-10-18 17:44:27 / Modified: 18:03:48" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-21 15:10:09" itemprop="dateModified" datetime="2022-10-21T15:10:09+08:00">2022-10-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -260,14 +266,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.4k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -297,20 +303,21 @@
 </blockquote>
 </blockquote>
 </li>
-<li><p>Step3 抓取TPUT直</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0]</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">#subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">#TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">#TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
+<li><p>Step3 抓取TPUT直<br>這裡會用到<code>spit</code>和<code>strip</code><br><code>spit</code>是把字源切開，切完只留下Tput，會發現有空白，因此在後面加<code>strip</code>把空白移除就可以。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>output:</p>
 <blockquote>
 <p>0.010799</p>
 </blockquote>
 </blockquote>
-</li>
-</ul>
+<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:<br>#subString &#x3D; st.split(“ DL- ingress traffic:”, 1)[1]<br>#TPUT&#x3D;subString.split(‘,’)[0]<br>#TPUT&#x3D;TPUT.split(‘(‘)[0]</p>
 <h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2><p>Regular Expression 也好用，下面只教如何抓取時間。</p>
 <ul>
 <li><p>數字only</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s = &quot;alpha.Customer[20221013.162853.788442]&quot;</span><br><span class="line">m = re.search(r&quot;\[([0-9.]+)\]&quot;, s)</span><br><span class="line">print(m.group(1) ) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s = &quot;list[20221013.162853.788442]&quot;</span><br><span class="line">m = re.search(r&quot;\[([0-9.]+)\]&quot;, s)</span><br><span class="line">print(m.group(1) ) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>output:</p>
 <blockquote>
@@ -327,6 +334,24 @@
 </blockquote>
 </blockquote>
 </li>
+</ul>
+<h2 id="用毒檔案方式-最實用"><a href="#用毒檔案方式-最實用" class="headerlink" title="用毒檔案方式(最實用)"></a>用毒檔案方式(最實用)</h2><p>我把切格方式加進function，妳也可以不用加到function。我再把它存進list裡面。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">givenString = &quot;DL- ingress traffic&quot;</span><br><span class="line">result = []</span><br><span class="line">#function spit time and tput value</span><br><span class="line">def timeparse(data):         </span><br><span class="line">    datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">    Tput = data.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">    result.append(datestr)</span><br><span class="line">    result.append(Tput)</span><br><span class="line">    print(datestr, Tput)</span><br><span class="line">    #return datestr</span><br><span class="line"></span><br><span class="line">with open(&#x27;elog&#x27;, &#x27;r&#x27;) as filedata:</span><br><span class="line">    for line in filedata:   </span><br><span class="line">        if givenString in line:</span><br><span class="line"></span><br><span class="line">             # Print the line, if the given string is found in the current line</span><br><span class="line">             #print(line)</span><br><span class="line">             timeparse(line)</span><br><span class="line"></span><br><span class="line">print (&quot;=&quot;*30)</span><br><span class="line">print(result)</span><br><span class="line">#把list 面東西印出來</span><br><span class="line">for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:</span><br><span class="line">    print(*i)       </span><br></pre></td></tr></table></figure>
+
+<h3 id="以下有幾個方法可以印出list-換行"><a href="#以下有幾個方法可以印出list-換行" class="headerlink" title="以下有幾個方法可以印出list+換行"></a>以下有幾個方法可以印出list+換行</h3><ul>
+<li><p>List Comprehensions 簡短</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:</span><br><span class="line">    print(*i) </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>轉成正常for loop<br>方法一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">temp = []</span><br><span class="line">for c in range(0, len(results)):</span><br><span class="line">    if c % 2 == 0:</span><br><span class="line">        temp.append(results[c:c+2])</span><br><span class="line"></span><br><span class="line">for i in temp:</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure>
+<p>或是</p>
+</li>
+</ul>
+<p>方法二</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">results = [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;]</span><br><span class="line">for index, c in enumerate(results):</span><br><span class="line">    if index % 2 == 0:</span><br><span class="line">        print(*results[index:index + 2])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用 zip 最好方式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">results = iter([&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;])</span><br><span class="line">for i in zip(results, results):</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h2><p>source: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8569201/get-the-string-within-brackets-in-python">https://stackoverflow.com/questions/8569201/get-the-string-within-brackets-in-python</a></p>
 
@@ -398,13 +423,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">82k</span>
+    <span title="Symbols count total">83k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:14</span>
+    <span title="Reading time total">1:16</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

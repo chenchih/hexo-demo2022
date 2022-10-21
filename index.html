@@ -232,9 +232,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-10-18 17:44:27 / Modified: 18:03:48" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-21 15:10:09" itemprop="dateModified" datetime="2022-10-21T15:10:09+08:00">2022-10-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.4k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>2 mins.</span>
     </span>
 </div>
 
@@ -290,38 +296,18 @@
 </blockquote>
 </blockquote>
 </li>
-<li><p>Step3 抓取TPUT直</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0]</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">#subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">#TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">#TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
+<li><p>Step3 抓取TPUT直<br>這裡會用到<code>spit</code>和<code>strip</code><br><code>spit</code>是把字源切開，切完只留下Tput，會發現有空白，因此在後面加<code>strip</code>把空白移除就可以。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>output:</p>
 <blockquote>
 <p>0.010799</p>
 </blockquote>
 </blockquote>
-</li>
-</ul>
-<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2><p>Regular Expression 也好用，下面只教如何抓取時間。</p>
-<ul>
-<li><p>數字only</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s = &quot;alpha.Customer[20221013.162853.788442]&quot;</span><br><span class="line">m = re.search(r&quot;\[([0-9.]+)\]&quot;, s)</span><br><span class="line">print(m.group(1) ) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output:</p>
-<blockquote>
-<p>20221013.162853.788442</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>如果有文字可以這樣用，我在 stackoverflow看到</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;alpha.Customer[cus_Y4o9qMEZAugtnW] ...&quot;</span><br><span class="line">m = re.search(r&quot;\[([A-Za-z0-9_]+)\]&quot;, s)</span><br><span class="line">print(m.group(1) ) #cus_Y4o9qMEZAugtnW</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output:</p>
-<blockquote>
-<p>cus_Y4o9qMEZAugtnW</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h2>
+<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:<br>#subString &#x3D; st.split(“ DL- ingress traffic:”, 1)[1]<br>#TPUT&#x3D;subString.split(‘,’)[0]<br>#TPUT&#x3D;TPUT.split(‘(‘)[0]</p>
+<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
@@ -1561,13 +1547,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">82k</span>
+    <span title="Symbols count total">83k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:14</span>
+    <span title="Reading time total">1:16</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
