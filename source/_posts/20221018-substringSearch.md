@@ -1,12 +1,13 @@
 ---
-title: 20221018_substringSearch
+title: substringSearchg檔案內容搜尋相關關鍵字
 date: 2022-10-18 17:44:27
-tags: python
+tags: python fileIO search
 categories:
 - python
 ---
 
 今天分享如何搜尋字串裡面的substring或如果有檔案(log)想找相關字來做分析。
+
 
 ## spit 方式
 我的string是: 
@@ -126,6 +127,14 @@ for index, c in enumerate(results):
     if index % 2 == 0:
         print(*results[index:index + 2])
 ```
+寫檔案:
+```
+with open('output.txt', 'a') as output:
+    results = ['A', 'B', 'C', 'D']
+    for index, c in enumerate(results):
+        if index % 2 == 0:
+            print(*results[index:index + 2], file=output)
+```
 
 - 用 zip 最好方式
 ```
@@ -134,6 +143,20 @@ for i in zip(results, results):
     print(*i)
 ```
 
+-方法４
+```
+results = ['A', 'B', 'C', 'D']
+for index in range(0, len(results), 2):
+    print(*results[index:index + 2])
+```
+
+write file:
+```
+results = iter(["A", "B", "C", "D"])
+with open('output.txt', 'a') as output:
+    for i in zip(results, results):
+        print(*i, file=output)
+```
 
 
 ## reference:
