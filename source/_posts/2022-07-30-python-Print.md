@@ -130,6 +130,29 @@ print(f"{now}") # 2022-07-30 09:21:30.500456
 print(f"{now=:%y-%m-%d}") # now=22-07-30
 
 ```
+### Ex5 Runtime time
+```
+import time
+
+# starting time
+start = time.time()
+#script
+for i in range(1,5):
+    print(i)
+#end time 
+end = time.time()
+
+#calculate run time
+runtime =end - start
+
+#you can use either method:
+print(" Runtime of the program is {runtime:%.8f}")
+print(f"Runtime of the program is {runtime:.8f}")
+print(f"Runtime of the program is {(end - start):.8f}")
+print("%.8f" % runtime)
+```
+
+
 ## 5 other print function
 ### Ex1: round number:
 ```
