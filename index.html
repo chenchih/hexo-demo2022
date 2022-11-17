@@ -240,7 +240,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-21 15:10:09" itemprop="dateModified" datetime="2022-10-21T15:10:09+08:00">2022-10-21</time>
+      <time title="Modified: 2022-11-17 15:46:05" itemprop="dateModified" datetime="2022-11-17T15:46:05+08:00">2022-11-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.7k</span>
+      <span>7.9k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>7 mins.</span>
     </span>
 </div>
 
@@ -282,7 +282,7 @@
 <blockquote>
 <p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
 </blockquote>
-<p>我想抓出時間和TPUT的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和<code>(Mbps)</code>移除，可以用下面方式:</p>
+<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和<code>(Mbps)</code>移除，可以用下面方式:</p>
 <ul>
 <li><p>Step1: 宣告我的string</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
@@ -306,8 +306,8 @@
 <p>0.010799</p>
 </blockquote>
 </blockquote>
-<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:<br>#subString &#x3D; st.split(“ DL- ingress traffic:”, 1)[1]<br>#TPUT&#x3D;subString.split(‘,’)[0]<br>#TPUT&#x3D;TPUT.split(‘(‘)[0]</p>
-<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2>
+<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
@@ -1045,7 +1045,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+      <time title="Modified: 2022-10-21 16:53:02" itemprop="dateModified" datetime="2022-10-21T16:53:02+08:00">2022-10-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1064,14 +1064,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.5k</span>
+      <span>2.9k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -1547,13 +1547,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">83k</span>
+    <span title="Symbols count total">89k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:16</span>
+    <span title="Reading time total">1:21</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

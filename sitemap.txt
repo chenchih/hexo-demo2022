@@ -1,4 +1,5 @@
 https://github.com/chenchih/2022/10/18/20221018-substringSearch/
+https://github.com/chenchih/2022/07/30/2022-07-30-python-Print/
 https://github.com/chenchih/2022/08/21/2022-08-21-codeTest-and-Interview/
 https://github.com/chenchih/2022/06/11/2022-06-11-[CSS-Layout]_GRID/
 https://github.com/chenchih/2022/08/21/IO-ReadWriteFile-python/
@@ -8,7 +9,6 @@ https://github.com/chenchih/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/
 https://github.com/chenchih/about/index.html
 https://github.com/chenchih/2022/07/03/2022-07-03-zsh_ohmysh_setting/
 https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/
-https://github.com/chenchih/2022/07/30/2022-07-30-python-Print/
 https://github.com/chenchih/2022/07/31/2022-07-31-linux-bash/
 https://github.com/chenchih/2022/04/01/2022-4-1-hello-world/
 https://github.com/chenchih/2022/06/05/2022-6-5-hello-world/
