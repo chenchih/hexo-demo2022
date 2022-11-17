@@ -151,3 +151,24 @@ print (f"{name.lower()} is funny.")
 > **output:**
 >>　`ja laaaa is funny.`
 
+## 6 Print List
+There are couple of ways to print list
+
+> `test = ['A' , 'B', 'C' , 'D']`
+
+- Method 1: using for loop
+```
+for i in test:
+    print(i,end=' ') 
+print()
+# A B C D
+```
+- Method 2: *listname unpack list
+We can use without for loop to unpack list
+>  print(*test) # A B C D
+
+Print new line: 
+> print(*test, sep='\n')
+
+- reference: 
+https://python.plainenglish.io/3-ways-to-print-list-elements-on-separate-lines-in-python-815454bb2cd4
