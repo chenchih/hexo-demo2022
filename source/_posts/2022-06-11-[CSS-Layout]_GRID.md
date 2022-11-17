@@ -263,8 +263,7 @@ We can also set `mimmax`, which you can provide `min` and `max width`.
 --- 
 
 #### grid-template-rows 列的高度 (row height- 列的高度)
-Specifies the number of rows(height) in a grid layout
-It\'s same as columnm expect instead set width, we set the height of it. Column also refer to Y axis vertical axis. 
+Specifies the number of rows(height) in a grid layout. It\'s the same as the column except for instead set width, we set its height of it. The row also refers to X axis horizontal axis.
 
 - ##### value as `PX` or `auto` 
 > - 設定高度大小以`px`為單位，或 `auto`。
@@ -298,13 +297,13 @@ It\'s same as columnm expect instead set width, we set the height of it. Column 
 we can also set to `fr` which is fraction value or free space. In this example let assign `container height` to `400px`, `height: 400px`
 
  - **EX1**: `fr` value =>`grid-template-rows: repeat(3, 1fr);`
-     We have set our height to be `400px`, and we also added a `fr` value in it, which will stretch avaible space to fill up the container. 
+     We have set our height to be `400px`, and we also added a `fr` value in it, which will stretch available space to fill up the container. 
  - **EX2**: `px` value => `grid-template-rows: repeat(3, 100px);`
-      We have set our height to be `400px`, and we also added a `px` value in it, which will sonly use the space you assign and left over with aviable space. 
+      We have set our height to be `400px`, and we also added a `px` value in it, which will sonly use the space you assign and left over with available space. 
 
     ![](https://i.imgur.com/PGsp0sY.png)
 
-The biggest differenct between `fr` and `px` is `fr value` will take over all available free space, whereas `px value` won\'t. As you can see above picture, we have add `height` to the container, and apply `3 row with fr` will take all available space, and stretch. In the other side if you set row with px, it will only apply the size, and left out with a available space. 
+The biggest differenct between `fr` and `px` is `fr value` will take over all available free space, whereas `px value` won\'t. As you can see above picture, we have add `height` to the container, and apply `3 row with fr` will take all available space, and stretch. On the other side if you set the row with px, it will only apply the size and be left out with available space.
 
 ---
 
@@ -544,19 +543,19 @@ In above I mention that `item8` have **no space and overflow** to next line. If 
 - `Grid-auto-column`: Setting default column width (same width)
     - **EX1**: `grid-auto-column: 100px`
     Value: pixel, %, minmax, auto(default)   
-- `Grid-auto-row`: Setting default column height  (same height)
+- `Grid-auto-row`: Setting default row height  (same height)
     - **EX2**: `grid-auto-row: 100px`
     Value: pixel, %, minmax, auto(default)
     ![](https://i.imgur.com/fyC05ha.png)
 -  `Grid-auto-column` with different size
-    - **EX3**: `grid-auto-row: 100px 500px 100px`
+    - **EX3**: `grid-auto-column: 100px 500px 100px`
     ![](https://i.imgur.com/ZKOTjx5.png)
 
 
 ### 4. Gap 間距
-> - Spacing betwwen row and column  `<row gap> <column gap>`
+> - Spacing between row and column  `<row gap> <column gap>`
 > - specify the gap between columns using `column-gap`
-> - specify the gap between columns using `row-gap`
+> - specify the gap between rows using `row-gap`
 > - value can be non negative value or a perentage 
 
 #### Example gap 
@@ -570,10 +569,10 @@ In above I mention that `item8` have **no space and overflow** to next line. If 
 欄與列間距縮寫 shorthand for row-gap and column-gap
 > **syntax** : `gap: row gap column gap`
 
-![](https://i.imgur.com/cyDRkxM.png)
+![](https://i.imgur.com/iUZgkMc.png)
 
 
-### 5. aligment and spacing within cell
+### 5. alignment and spacing within cell
 - within grid cell:
     - justify-item for aligment => `row or X axis` 
     - alignment-item for aligment => `colummn or Y axis `
@@ -635,7 +634,7 @@ align-items:center;
 There are two way we can set the value, with `2 value (start and end)`, or `1 value`, which both obtain the same value. 
 
 - **EX1 place with two value**: `place-items: start end`
-- **EX1 place with one value**: `place-items: center`
+- **EX2 place with one value**: `place-items: center`
 
 
     ```

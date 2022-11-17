@@ -1,12 +1,13 @@
 ---
-title: 20221018_substringSearch
+title: substringSearchg檔案內容搜尋相關關鍵字
 date: 2022-10-18 17:44:27
-tags: python
+tags: python fileIO search
 categories:
 - python
 ---
 
 今天分享如何搜尋字串裡面的substring或如果有檔案(log)想找相關字來做分析。
+
 
 ## spit 方式
 我的string是: 
@@ -262,6 +263,7 @@ for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
 
 - re.search()方法
 ```
+
 searchtest=re.search(r'(ingress [^(]+).+(egress [^(]+)',string2)
 test= searchtest.group(1)+", "+ searchtest.group(2)
 #ingress traffic: 0.000000, egress traffic: 0.000000
@@ -302,6 +304,62 @@ print(ingress.group(2), " ", egress.group(2))
 以上是我再抓取檔案裡的資料想找相關字串會用到，我想信很多人會常用到此功能。可以到我github看完整code。
 我開發3個不同抓取資料，主要是要抓取資料不同，再把資料解成文字檔案，也可以轉成excel。
 github project: https://github.com/chenchih/5G_automationLinux/tree/main/log_graph
+=======
+for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:
+    print(*i) 
+```
+
+- 轉成正常for loop
+方法一
+```
+temp = []
+for c in range(0, len(results)):
+    if c % 2 == 0:
+        temp.append(results[c:c+2])
+
+for i in temp:
+    print(*i)
+```
+或是
+
+方法二
+```
+results = ['A', 'B', 'C', 'D']
+for index, c in enumerate(results):
+    if index % 2 == 0:
+        print(*results[index:index + 2])
+```
+寫檔案:
+```
+with open('output.txt', 'a') as output:
+    results = ['A', 'B', 'C', 'D']
+    for index, c in enumerate(results):
+        if index % 2 == 0:
+            print(*results[index:index + 2], file=output)
+```
+
+- 用 zip 最好方式
+```
+results = iter(["A", "B", "C", "D"])
+for i in zip(results, results):
+    print(*i)
+```
+
+-方法４
+```
+results = ['A', 'B', 'C', 'D']
+for index in range(0, len(results), 2):
+    print(*results[index:index + 2])
+```
+
+write file:
+```
+results = iter(["A", "B", "C", "D"])
+with open('output.txt', 'a') as output:
+    for i in zip(results, results):
+        print(*i, file=output)
+```
+
 
 
 ## reference:
