@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="Pandas 筆記今天我想分享我學的pandas筆記，我覺得對於分大數據很有幫助，他有點像mysql。請先下載module或package:pip install pandas&#96; Part1基本語法連線CSV檔案可以去github找相關csv檔案，然後去raw檔案做連線 12345import pandas as pdurl &#x3D; &quot;https:&#x2F;&#x2F;raw.githubuserco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas">
+<meta property="og:url" content="https://github.com/chenchih/2022/11/23/20221123-pandas/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="Pandas 筆記今天我想分享我學的pandas筆記，我覺得對於分大數據很有幫助，他有點像mysql。請先下載module或package:pip install pandas&#96; Part1基本語法連線CSV檔案可以去github找相關csv檔案，然後去raw檔案做連線 12345import pandas as pdurl &#x3D; &quot;https:&#x2F;&#x2F;raw.githubuserco">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-23T03:49:42.000Z">
+<meta property="article:modified_time" content="2022-11-24T09:55:03.038Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="pandas">
+<meta property="article:tag" content="datascience">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/11/23/20221123-pandas/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/11/23/20221123-pandas/","path":"2022/11/23/20221123-pandas/","title":"pandas"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pandas | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas-%E7%AD%86%E8%A8%98"><span class="nav-number">1.</span> <span class="nav-text">Pandas 筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Part1%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">Part1基本語法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%A3%E7%B7%9ACSV%E6%AA%94%E6%A1%88"><span class="nav-number">1.1.1.</span> <span class="nav-text">連線CSV檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Head-and-Tail"><span class="nav-number">1.1.2.</span> <span class="nav-text">Head and Tail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shape-method"><span class="nav-number">1.1.3.</span> <span class="nav-text">Shape method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#column"><span class="nav-number">1.1.4.</span> <span class="nav-text">column</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#columns-%E9%A1%AF%E7%A4%BA%E6%AC%84%E8%A1%A8%E7%9A%84%E5%90%8D%E7%A8%B1"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">columns 顯示欄表的名稱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#describe-statistics-value"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">describe (statistics value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%AF%E7%A4%BA%E7%89%B9%E5%AE%9A%E6%AC%84%E4%BD%8D"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">顯示特定欄位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unique-%E7%9B%B4%EF%BC%8C%E7%8D%A8%E4%B8%80%E7%84%A1%E4%BA%8C"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">Unique 直，獨一無二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort%E6%8E%92%E5%BA%8F"><span class="nav-number">1.1.5.</span> <span class="nav-text">sort排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E6%AC%84%E4%BD%8D"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">單欄位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%AC%84%E4%BD%8D%E6%8E%92%E5%BA%8F%E6%95%B8%E5%AD%97%E5%A4%A7%E5%B0%8F%E6%8E%92%E5%BA%8F"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">多欄位排序數字大小排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%9D%E4%BB%B6condition"><span class="nav-number">1.1.6.</span> <span class="nav-text">條件condition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#single"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">single</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E6%A2%9D%E4%BB%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%94%A8-And-amp-%E6%88%96-or"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">多重條件，可以用 And &amp; 或  or |</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.7.</span> <span class="nav-text">Example:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E5%87%BAday%E6%AC%84%E4%BD%8D%E7%8D%A8%E4%B8%80%E7%84%A1%E4%BA%8C%E7%9A%84%E9%A0%85%E7%9B%AE"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">列出day欄位獨一無二的項目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%97%E5%87%BA%E5%A4%9A%E5%80%8B%E7%89%B9%E5%AE%9A%E7%9A%84-column"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">列出多個特定的 column</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%B8%E5%87%BA%E5%9C%A8%E5%91%A8%E6%97%A5%E7%94%A8%E9%A4%90%E4%B8%94%E5%B0%8F%E8%B2%BB%E7%B5%A65%E5%85%83%E4%BB%A5%E4%B8%8A%E7%9A%84%E8%B3%87%E6%96%99"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">選出在周日用餐且小費給5元以上的資料</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#groupby-%E7%AD%89%E8%AA%9E%E6%B3%95"><span class="nav-number">1.1.8.</span> <span class="nav-text">groupby()等語法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#groupby-%E6%8A%8A%E8%B3%87%E6%96%99%E5%81%9A%E5%88%86%E7%B5%84%E5%86%8D%E9%80%B2%E5%8E%BB%E5%81%9A%E7%B5%B1%E8%A8%88"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">groupby()把資料做分組再進去做統計</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mean-%E5%B9%B3%E5%9D%87%E5%80%BC"><span class="nav-number">1.1.8.2.</span> <span class="nav-text">mean()平均值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Part2-real-world-Example-titanic%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">Part2 real world Example titanic例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E8%B2%B4%E7%9A%84%E7%A5%A8%E5%83%B9%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">最貴的票價是多少？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B9%B4%E8%BC%95%E7%9A%84%E4%B9%98%E5%AE%A2%E8%88%87%E6%9C%80%E8%80%81%E7%9A%84%E4%B9%98%E5%AE%A2%E5%B7%AE%E5%B9%BE%E6%AD%B2%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">最年輕的乘客與最老的乘客差幾歲？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%98%E5%AE%A2%E5%B9%B3%E5%9D%87%E5%B9%B4%E9%BD%A1%E7%82%BA%E5%B9%BE%E6%AD%B2%EF%BC%9F"><span class="nav-number">1.2.3.</span> <span class="nav-text">乘客平均年齡為幾歲？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%8F%E5%80%8B%E4%B9%98%E8%88%B9%E8%99%95%E5%90%84%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B9%98%E5%AE%A2%E4%B8%8A%E8%88%B9%EF%BC%9F"><span class="nav-number">1.2.4.</span> <span class="nav-text">每個乘船處各有多少乘客上船？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B7%E6%80%A7%E3%80%81%E5%A5%B3%E6%80%A7%E3%80%81%E5%AD%A9%E7%AB%A5%E5%80%96%E5%AD%98%E8%80%85%E5%90%84%E6%9C%89%E5%A4%9A%E5%B0%91%E4%BA%BA"><span class="nav-number">1.2.5.</span> <span class="nav-text">男性、女性、孩童倖存者各有多少人?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B7%E4%BA%BA%E3%80%81%E5%A5%B3%E4%BA%BA%E3%80%81%E5%85%92%E7%AB%A5%E5%AD%98%E6%B4%BB%E7%8E%87%E7%82%BA%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">1.2.6.</span> <span class="nav-text">男人、女人、兒童存活率為多少？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.7.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">1.2.8.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.3.</span> <span class="nav-text">reference</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/23/20221123-pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pandas | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pandas
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-23 11:49:42" itemprop="dateCreated datePublished" datetime="2022-11-23T11:49:42+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-24 17:55:03" itemprop="dateModified" datetime="2022-11-24T17:55:03+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Pandas-筆記"><a href="#Pandas-筆記" class="headerlink" title="Pandas 筆記"></a>Pandas 筆記</h1><p>今天我想分享我學的pandas筆記，我覺得對於分大數據很有幫助，他有點像mysql。請先下載module或package:pip install pandas&#96;</p>
+<h2 id="Part1基本語法"><a href="#Part1基本語法" class="headerlink" title="Part1基本語法"></a>Part1基本語法</h2><h3 id="連線CSV檔案"><a href="#連線CSV檔案" class="headerlink" title="連線CSV檔案"></a>連線CSV檔案</h3><p>可以去github找相關csv檔案，然後去raw檔案做連線</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">url = &quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><br><span class="line">tips = pd.read_csv(url)</span><br><span class="line"></span><br><span class="line">print(tips)</span><br></pre></td></tr></table></figure>
+<p>pandas會回傳DataFrame格式。<code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code><br>下面是印出所有資料表內容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">     total_bill   tip     sex smoker   day    time  size</span><br><span class="line">0         16.99  1.01  Female     No   Sun  Dinner     2</span><br><span class="line">1         10.34  1.66    Male     No   Sun  Dinner     3</span><br><span class="line">2         21.01  3.50    Male     No   Sun  Dinner     3</span><br><span class="line">3         23.68  3.31    Male     No   Sun  Dinner     2</span><br><span class="line">4         24.59  3.61  Female     No   Sun  Dinner     4</span><br><span class="line">..          ...   ...     ...    ...   ...     ...   ...</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
+<h3 id="Head-and-Tail"><a href="#Head-and-Tail" class="headerlink" title="Head and Tail"></a>Head and Tail</h3><ul>
+<li><p><code>head(N)</code>: 是查前面N筆資料</p>
+<blockquote>
+<p><code>print(tips.head(10))</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   total_bill   tip     sex smoker  day    time  size</span><br><span class="line">0       16.99  1.01  Female     No  Sun  Dinner     2</span><br><span class="line">1       10.34  1.66    Male     No  Sun  Dinner     3</span><br><span class="line">2       21.01  3.50    Male     No  Sun  Dinner     3</span><br><span class="line">3       23.68  3.31    Male     No  Sun  Dinner     2</span><br><span class="line">4       24.59  3.61  Female     No  Sun  Dinner     4</span><br><span class="line">5       25.29  4.71    Male     No  Sun  Dinner     4</span><br><span class="line">6        8.77  2.00    Male     No  Sun  Dinner     2</span><br><span class="line">7       26.88  3.12    Male     No  Sun  Dinner     4</span><br><span class="line">8       15.04  1.96    Male     No  Sun  Dinner     2</span><br><span class="line">9       14.78  3.23    Male     No  Sun  Dinner     2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>tail(N)</code>: 是查最後N筆資料</p>
+<blockquote>
+<p><code>print(tips.tail(10))</code></p>
+<blockquote>
+<p>output</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  total_bill   tip     sex smoker   day    time  size</span><br><span class="line">234       15.53  3.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">235       10.07  1.25    Male     No   Sat  Dinner     2</span><br><span class="line">236       12.60  1.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">237       32.83  1.17    Male    Yes   Sat  Dinner     2</span><br><span class="line">238       35.83  4.67  Female     No   Sat  Dinner     3</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
+<h3 id="Shape-method"><a href="#Shape-method" class="headerlink" title="Shape method"></a>Shape method</h3><p>shape 語法是用來查有多少欄與列</p>
+</li>
+</ul>
+<blockquote>
+<p><code>tips.shape</code> </p>
+<blockquote>
+<p>output:<br>(244, 7)</p>
+</blockquote>
+</blockquote>
+<h3 id="column"><a href="#column" class="headerlink" title="column"></a>column</h3><h4 id="columns-顯示欄表的名稱"><a href="#columns-顯示欄表的名稱" class="headerlink" title="columns 顯示欄表的名稱"></a>columns 顯示欄表的名稱</h4><blockquote>
+<p><code>print(tips.columns)</code></p>
+<blockquote>
+<p>output:<br>Index([‘total_bill’, ‘tip’, ‘sex’, ‘smoker’, ‘day’, ‘time’, ‘size’], dtype&#x3D;’object’)</p>
+</blockquote>
+</blockquote>
+<h4 id="describe-statistics-value"><a href="#describe-statistics-value" class="headerlink" title="describe (statistics value)"></a>describe (statistics value)</h4><p>describe會顯示出所有有統計的直，如果表內容有字就會顯示出來。</p>
+<blockquote>
+<p><code>print(tips.describe())</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">       total_bill         tip        size</span><br><span class="line">count  244.000000  244.000000  244.000000</span><br><span class="line">mean    19.785943    2.998279    2.569672</span><br><span class="line">std      8.902412    1.383638    0.951100</span><br><span class="line">min      3.070000    1.000000    1.000000</span><br><span class="line">25%     13.347500    2.000000    2.000000</span><br><span class="line">50%     17.795000    2.900000    2.000000</span><br><span class="line">75%     24.127500    3.562500    3.000000</span><br><span class="line">max     50.810000   10.000000    6.000000</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="顯示特定欄位"><a href="#顯示特定欄位" class="headerlink" title="顯示特定欄位"></a>顯示特定欄位</h4><p>請在tips裡面輸入你要顯示欄資訊</p>
+<blockquote>
+<p>‘tips[‘sex’]&#96; </p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">0      Female</span><br><span class="line">1        Male</span><br><span class="line">2        Male</span><br><span class="line">3        Male</span><br><span class="line">4      Female</span><br><span class="line">        ...  </span><br><span class="line">239      Male</span><br><span class="line">240    Female</span><br><span class="line">241      Male</span><br><span class="line">242      Male</span><br><span class="line">243    Female</span><br><span class="line">Name: sex, Length: 244, dtype: object</span><br></pre></td></tr></table></figure>
+<h4 id="Unique-直，獨一無二"><a href="#Unique-直，獨一無二" class="headerlink" title="Unique 直，獨一無二"></a>Unique 直，獨一無二</h4><blockquote>
+<p><code>print(tips[&#39;sex&#39;].unique())</code></p>
+<blockquote>
+<p>[‘Female’ ‘Male’]</p>
+</blockquote>
+</blockquote>
+<h3 id="sort排序"><a href="#sort排序" class="headerlink" title="sort排序"></a>sort排序</h3><h4 id="單欄位"><a href="#單欄位" class="headerlink" title="單欄位"></a>單欄位</h4><blockquote>
+<p><code>print(tips[&#39;total_bill&#39;].sort_values())</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">67      3.07</span><br><span class="line">92      5.75</span><br><span class="line">111     7.25</span><br><span class="line">172     7.25</span><br><span class="line">149     7.51</span><br><span class="line">       ...  </span><br><span class="line">182    45.35</span><br><span class="line">156    48.17</span><br><span class="line">59     48.27</span><br><span class="line">212    48.33</span><br><span class="line">170    50.81</span><br><span class="line">Name: total_bill, Length: 244, dtype: float64</span><br></pre></td></tr></table></figure>
+
+<h4 id="多欄位排序數字大小排序"><a href="#多欄位排序數字大小排序" class="headerlink" title="多欄位排序數字大小排序"></a>多欄位排序數字大小排序</h4><p>顯示欄名稱 和排序大小</p>
+<blockquote>
+<p><code>tips[[&quot;total_bill&quot;,&quot;tip&quot;]].sort_values(&quot;total_bill&quot;)</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">     total_bill    tip</span><br><span class="line">67         3.07   1.00</span><br><span class="line">92         5.75   1.00</span><br><span class="line">111        7.25   1.00</span><br><span class="line">172        7.25   5.15</span><br><span class="line">149        7.51   2.00</span><br><span class="line">..          ...    ...</span><br><span class="line">182       45.35   3.50</span><br><span class="line">156       48.17   5.00</span><br><span class="line">59        48.27   6.73</span><br><span class="line">212       48.33   9.00</span><br><span class="line">170       50.81  10.00</span><br></pre></td></tr></table></figure>
+
+<h3 id="條件condition"><a href="#條件condition" class="headerlink" title="條件condition"></a>條件condition</h3><h4 id="single"><a href="#single" class="headerlink" title="single"></a>single</h4><blockquote>
+<p><code>print(tips[tips[&#39;smoker&#39;] == &#39;No&#39;])</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   total_bill   tip     sex smoker   day    time  size</span><br><span class="line">0         16.99  1.01  Female     No   Sun  Dinner     2</span><br><span class="line">1         10.34  1.66    Male     No   Sun  Dinner     3</span><br><span class="line">2         21.01  3.50    Male     No   Sun  Dinner     3</span><br><span class="line">3         23.68  3.31    Male     No   Sun  Dinner     2</span><br><span class="line">4         24.59  3.61  Female     No   Sun  Dinner     4</span><br><span class="line">..          ...   ...     ...    ...   ...     ...   ...</span><br><span class="line">235       10.07  1.25    Male     No   Sat  Dinner     2</span><br><span class="line">238       35.83  4.67  Female     No   Sat  Dinner     3</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br><span class="line"></span><br><span class="line">[151 rows x 7 columns]</span><br></pre></td></tr></table></figure>
+
+<h4 id="多重條件，可以用-And-amp-或-or"><a href="#多重條件，可以用-And-amp-或-or" class="headerlink" title="多重條件，可以用 And &amp; 或  or |"></a>多重條件，可以用 <code>And &amp;</code> 或  <code>or |</code></h4><blockquote>
+<p><code>tips[(tips[&#39;smoker&#39;] == &#39;Yes&#39;) &amp; (tips[&#39;sex&#39;]==&#39;Male&#39;)]</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  total_bill    tip   sex smoker   day    time  size</span><br><span class="line">56        38.01   3.00  Male    Yes   Sat  Dinner     4</span><br><span class="line">58        11.24   1.76  Male    Yes   Sat  Dinner     2</span><br><span class="line">60        20.29   3.21  Male    Yes   Sat  Dinner     2</span><br><span class="line">61        13.81   2.00  Male    Yes   Sat  Dinner     2</span><br><span class="line">62        11.02   1.98  Male    Yes   Sat  Dinner     2</span><br><span class="line">63        18.29   3.76  Male    Yes   Sat  Dinner     4</span><br><span class="line">69        15.01   2.09  Male    Yes   Sat  Dinner     2</span><br><span class="line">76        17.92   3.08  Male    Yes   Sat  Dinner     2</span><br><span class="line">80        19.44   3.00  Male    Yes  Thur   Lunch     2</span><br><span class="line">83        32.68   5.00  Male    Yes  Thur   Lunch     2</span><br><span class="line">90        28.97   3.00  Male    Yes   Fri  Dinner     2</span><br><span class="line">95        40.17   4.73  Male    Yes   Fri  Dinner     4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>tips[(tips[&#39;smoker&#39;] == &#39;Yes&#39;) | (tips[&#39;sex&#39;]==&#39;Male&#39;)]</code></p>
+</blockquote>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><h4 id="列出day欄位獨一無二的項目"><a href="#列出day欄位獨一無二的項目" class="headerlink" title="列出day欄位獨一無二的項目"></a>列出day欄位獨一無二的項目</h4><blockquote>
+<p><code>print(tips[&#39;day&#39;].unique())</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Sun&#x27; &#x27;Sat&#x27; &#x27;Thur&#x27; &#x27;Fri&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="列出多個特定的-column"><a href="#列出多個特定的-column" class="headerlink" title="列出多個特定的 column"></a>列出多個特定的 column</h4><blockquote>
+<p> <code>tips[[&#39;sex&#39;,&#39;tip&#39;]]</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">        sex   tip</span><br><span class="line">0    Female  1.01</span><br><span class="line">1      Male  1.66</span><br><span class="line">2      Male  3.50</span><br><span class="line">3      Male  3.31</span><br><span class="line">4    Female  3.61</span><br><span class="line">..      ...   ...</span><br><span class="line">239    Male  5.92</span><br><span class="line">240  Female  2.00</span><br><span class="line">241    Male  2.00</span><br><span class="line">242    Male  1.75</span><br><span class="line">243  Female  3.00</span><br><span class="line"></span><br><span class="line">[244 rows x 2 columns]</span><br></pre></td></tr></table></figure>
+
+<h4 id="選出在周日用餐且小費給5元以上的資料"><a href="#選出在周日用餐且小費給5元以上的資料" class="headerlink" title="選出在周日用餐且小費給5元以上的資料"></a>選出在周日用餐且小費給5元以上的資料</h4><blockquote>
+<p><code>print(tips[(tips[&quot;day&quot;]==&quot;Sun&quot;) &amp; (tips[&quot;tip&quot;]&gt;=5)])</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    total_bill   tip     sex smoker  day    time  size</span><br><span class="line">11        35.26  5.00  Female     No  Sun  Dinner     4</span><br><span class="line">44        30.40  5.60    Male     No  Sun  Dinner     4</span><br><span class="line">46        22.23  5.00    Male     No  Sun  Dinner     2</span><br><span class="line">47        32.40  6.00    Male     No  Sun  Dinner     4</span><br><span class="line">52        34.81  5.20  Female     No  Sun  Dinner     4</span><br><span class="line">116       29.93  5.07    Male     No  Sun  Dinner     4</span><br><span class="line">155       29.85  5.14  Female     No  Sun  Dinner     5</span><br><span class="line">156       48.17  5.00    Male     No  Sun  Dinner     6</span><br><span class="line">172        7.25  5.15    Male    Yes  Sun  Dinner     2</span><br><span class="line">181       23.33  5.65    Male    Yes  Sun  Dinner     2</span><br><span class="line">183       23.17  6.50    Male    Yes  Sun  Dinner     4</span><br><span class="line">185       20.69  5.00    Male     No  Sun  Dinner     5</span><br></pre></td></tr></table></figure>
+
+<h3 id="groupby-等語法"><a href="#groupby-等語法" class="headerlink" title="groupby()等語法"></a>groupby()等語法</h3><h4 id="groupby-把資料做分組再進去做統計"><a href="#groupby-把資料做分組再進去做統計" class="headerlink" title="groupby()把資料做分組再進去做統計"></a>groupby()把資料做分組再進去做統計</h4><blockquote>
+<p><code>tips.groupby(&#39;time&#39;).size()</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">time</span><br><span class="line">Dinner    176</span><br><span class="line">Lunch      68</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+
+<h4 id="mean-平均值"><a href="#mean-平均值" class="headerlink" title="mean()平均值"></a>mean()平均值</h4><p>在 groupby之後並選定 column後，使用 mean()可以算出各類別該 column的平均值</p>
+<blockquote>
+<p><code>tips.groupby(&#39;time&#39;)[&#39;total_bill&#39;].median()</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">time</span><br><span class="line">Dinner    18.390</span><br><span class="line">Lunch     15.965</span><br><span class="line">Name: total_bill, dtype: float64</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Part2-real-world-Example-titanic例"><a href="#Part2-real-world-Example-titanic例" class="headerlink" title="Part2 real world Example titanic例"></a>Part2 real world Example titanic例</h2><p>這是新的專案以titanic為例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = &quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv&quot;</span><br><span class="line">df = pd.read_csv(url)</span><br><span class="line">print(df)</span><br><span class="line">print(&quot;=&quot;*50)</span><br><span class="line">print(df.columns)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">   survived  pclass     sex   age  sibsp  parch     fare embarked   class  \</span><br><span class="line">0           0       3    male  22.0      1      0   7.2500        S   Third   </span><br><span class="line">1           1       1  female  38.0      1      0  71.2833        C   First   </span><br><span class="line">2           1       3  female  26.0      0      0   7.9250        S   Third   </span><br><span class="line">3           1       1  female  35.0      1      0  53.1000        S   First   </span><br><span class="line">4           0       3    male  35.0      0      0   8.0500        S   Third   </span><br><span class="line">..        ...     ...     ...   ...    ...    ...      ...      ...     ...   </span><br><span class="line">886         0       2    male  27.0      0      0  13.0000        S  Second   </span><br><span class="line">887         1       1  female  19.0      0      0  30.0000        S   First   </span><br><span class="line">888         0       3  female   NaN      1      2  23.4500        S   Third   </span><br><span class="line">889         1       1    male  26.0      0      0  30.0000        C   First   </span><br><span class="line">890         0       3    male  32.0      0      0   7.7500        Q   Third   </span><br><span class="line"></span><br><span class="line">       who  adult_male deck  embark_town alive  alone  </span><br><span class="line">0      man        True  NaN  Southampton    no  False  </span><br><span class="line">1    woman       False    C    Cherbourg   yes  False  </span><br><span class="line">2    woman       False  NaN  Southampton   yes   True  </span><br><span class="line">3    woman       False    C  Southampton   yes  False  </span><br><span class="line">4      man        True  NaN  Southampton    no   True  </span><br><span class="line">..     ...         ...  ...          ...   ...    ...  </span><br><span class="line">886    man        True  NaN  Southampton    no   True  </span><br><span class="line">887  woman       False    B  Southampton   yes   True  </span><br><span class="line">888  woman       False  NaN  Southampton    no  False  </span><br><span class="line">889    man        True    C    Cherbourg   yes   True  </span><br><span class="line">890    man        True  NaN   Queenstown    no   True  </span><br><span class="line"></span><br><span class="line">[891 rows x 15 columns]</span><br><span class="line"></span><br><span class="line">==================================================</span><br><span class="line"></span><br><span class="line">Index([&#x27;survived&#x27;, &#x27;pclass&#x27;, &#x27;sex&#x27;, &#x27;age&#x27;, &#x27;sibsp&#x27;, &#x27;parch&#x27;, &#x27;fare&#x27;,</span><br><span class="line">       &#x27;embarked&#x27;, &#x27;class&#x27;, &#x27;who&#x27;, &#x27;adult_male&#x27;, &#x27;deck&#x27;, &#x27;embark_town&#x27;,</span><br><span class="line">       &#x27;alive&#x27;, &#x27;alone&#x27;],</span><br><span class="line">      dtype=&#x27;object&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="最貴的票價是多少？"><a href="#最貴的票價是多少？" class="headerlink" title="最貴的票價是多少？"></a>最貴的票價是多少？</h3><blockquote>
+<p>&#96;df[‘fare’].max() </p>
+<blockquote>
+<p>output:<br>512.3292</p>
+</blockquote>
+</blockquote>
+<h3 id="最年輕的乘客與最老的乘客差幾歲？"><a href="#最年輕的乘客與最老的乘客差幾歲？" class="headerlink" title="最年輕的乘客與最老的乘客差幾歲？"></a>最年輕的乘客與最老的乘客差幾歲？</h3><blockquote>
+<p><code>df[&quot;age&quot;].min()</code></p>
+<blockquote>
+<p>output:<br>0.42</p>
+</blockquote>
+</blockquote>
+<h3 id="乘客平均年齡為幾歲？"><a href="#乘客平均年齡為幾歲？" class="headerlink" title="乘客平均年齡為幾歲？"></a>乘客平均年齡為幾歲？</h3><blockquote>
+<p><code>df[&quot;age&quot;].mean()</code> </p>
+<blockquote>
+<p>output:<br>29.69911764705882</p>
+</blockquote>
+</blockquote>
+<h3 id="每個乘船處各有多少乘客上船？"><a href="#每個乘船處各有多少乘客上船？" class="headerlink" title="每個乘船處各有多少乘客上船？"></a>每個乘船處各有多少乘客上船？</h3><blockquote>
+<p><code>df.groupby(&quot;embark_town&quot;).size()</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<h3 id="男性、女性、孩童倖存者各有多少人"><a href="#男性、女性、孩童倖存者各有多少人" class="headerlink" title="男性、女性、孩童倖存者各有多少人?"></a>男性、女性、孩童倖存者各有多少人?</h3><blockquote>
+<p><code>df[df[&quot;survived&quot;]==1].groupby(&quot;who&quot;).size()</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">who</span><br><span class="line">child     49</span><br><span class="line">man       88</span><br><span class="line">woman    205</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+
+<h3 id="男人、女人、兒童存活率為多少？"><a href="#男人、女人、兒童存活率為多少？" class="headerlink" title="男人、女人、兒童存活率為多少？"></a>男人、女人、兒童存活率為多少？</h3><blockquote>
+<p><code>total = df.groupby(&#39;who&#39;).size()</code><br><code>print(total)</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">who</span><br><span class="line">child     83</span><br><span class="line">man      537</span><br><span class="line">woman    271</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><blockquote>
+<p><code>alive = df[df[&quot;survived&quot;] == 1].groupby(&#39;who&#39;).size()</code><br><code>print(alive)</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">who</span><br><span class="line">child     49</span><br><span class="line">man       88</span><br><span class="line">woman    205</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure>
+
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><blockquote>
+<p><code>ratio = alive / total</code><br><code>print(ratio*100)</code></p>
+<blockquote>
+<p>output:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">who</span><br><span class="line">child    59.036145</span><br><span class="line">man      16.387337</span><br><span class="line">woman    75.645756</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html">https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/11/23/20221123-pandas/" title="pandas">https://github.com/chenchih/2022/11/23/20221123-pandas/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
+              <a href="/hexo-demo2022/tags/pandas/" rel="tag"># pandas</a>
+              <a href="/hexo-demo2022/tags/datascience/" rel="tag"># datascience</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/" rel="prev" title="Excel_ReadWrite">
+                  <i class="fa fa-chevron-left"></i> Excel_ReadWrite
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/23/20221123-Function/" rel="next" title="Function">
+                  Function <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">124k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:52</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

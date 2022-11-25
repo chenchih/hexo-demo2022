@@ -2,18 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://github.com/chenchih/2022/10/18/20221018-substringSearch/</loc>
+    <loc>https://github.com/chenchih/2022/11/24/20221124-tuple/</loc>
     
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://github.com/chenchih/2022/07/30/2022-07-30-python-Print/</loc>
+    <loc>https://github.com/chenchih/2022/11/24/20221124-dictionary/</loc>
     
-    <lastmod>2022-10-21</lastmod>
+    <lastmod>2022-11-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/11/24/20221124-set/</loc>
+    
+    <lastmod>2022-11-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/10/23/20221023-List/</loc>
+    
+    <lastmod>2022-11-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/</loc>
+    
+    <lastmod>2022-11-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/11/23/20221123-Function/</loc>
+    
+    <lastmod>2022-11-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/11/23/20221123-pandas/</loc>
+    
+    <lastmod>2022-11-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/11/24/20221124-selenium/</loc>
+    
+    <lastmod>2022-11-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/07/30/2022-07-30-Print/</loc>
+    
+    <lastmod>2022-11-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/07/31/2022-07-31-linux-bash/</loc>
+    
+    <lastmod>2022-11-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/10/18/20221018-substringSearch/</loc>
+    
+    <lastmod>2022-11-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/08/21/20221023_FileReadWriteFile/</loc>
+    
+    <lastmod>2022-11-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/10/23/20221023_Excel-ReadWrite/</loc>
+    
+    <lastmod>2022-11-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/2022/06/11/2022-06-11-[CSS-Layout]_GRID/</loc>
+    
+    <lastmod>2022-11-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -23,24 +131,6 @@
     <loc>https://github.com/chenchih/2022/08/21/2022-08-21-codeTest-and-Interview/</loc>
     
     <lastmod>2022-09-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/chenchih/2022/06/11/2022-06-11-[CSS-Layout]_GRID/</loc>
-    
-    <lastmod>2022-09-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/chenchih/2022/08/21/IO-ReadWriteFile-python/</loc>
-    
-    <lastmod>2022-08-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -84,24 +174,6 @@
   
   <url>
     <loc>https://github.com/chenchih/2022/07/03/2022-07-03-zsh_ohmysh_setting/</loc>
-    
-    <lastmod>2022-08-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/</loc>
-    
-    <lastmod>2022-08-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/chenchih/2022/07/31/2022-07-31-linux-bash/</loc>
     
     <lastmod>2022-08-05</lastmod>
     
@@ -220,7 +292,7 @@
 
   <url>
     <loc>https://github.com/chenchih</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -228,112 +300,175 @@
   
   <url>
     <loc>https://github.com/chenchih/tags/Frontend/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/CSS/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/github/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/Hexo/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/Emmet/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/vscode/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/window/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/markdown/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/zsh/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/JS/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/linux/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/python/</loc>
-    <lastmod>2022-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/chenchih/tags/linux-bash/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/python-codetest-interview/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/%E5%89%8D%E7%AB%AF%E6%96%87/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/tags/%E5%BE%8C%E7%AB%AF%E6%96%87/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/fileIO/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/search/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/excel/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/re/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/pandas/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/function/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/bash/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/selenium/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/automation/</loc>
+    <lastmod>2022-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/chenchih/tags/datascience/</loc>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -342,70 +477,70 @@
   
   <url>
     <loc>https://github.com/chenchih/categories/WebDev/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/devtool/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/Hexo/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/WebDev/CSS/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/window/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/linux/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/WebDev/JS/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/python/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/interview/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://github.com/chenchih/categories/linux/ubuntu/</loc>
-    <lastmod>2022-11-17</lastmod>
+    <lastmod>2022-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

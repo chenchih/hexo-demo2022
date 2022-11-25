@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天想分享如何用dictionary字典方式存資料。 key and Value 如何使用宣槓取直declare dictionary宣告dictIt&#39;s an unorder , it&#39;s not next to each other, so we can&#39;t use index like we use in list.  Dictionary will have a a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dictionary">
+<meta property="og:url" content="https://github.com/chenchih/2022/11/24/20221124-dictionary/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天想分享如何用dictionary字典方式存資料。 key and Value 如何使用宣槓取直declare dictionary宣告dictIt&#39;s an unorder , it&#39;s not next to each other, so we can&#39;t use index like we use in list.  Dictionary will have a a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-24T06:31:31.000Z">
+<meta property="article:modified_time" content="2022-11-25T06:45:15.732Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/11/24/20221124-dictionary/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/11/24/20221124-dictionary/","path":"2022/11/24/20221124-dictionary/","title":"Dictionary"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Dictionary | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#key-and-Value-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AE%A3%E6%A7%93%E5%8F%96%E7%9B%B4"><span class="nav-number">1.</span> <span class="nav-text">key and Value 如何使用宣槓取直</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#declare-dictionary%E5%AE%A3%E5%91%8Adict"><span class="nav-number">1.1.</span> <span class="nav-text">declare dictionary宣告dict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-and-Get-value%E5%8F%96%E6%88%91%E5%80%91%E7%9A%84%E7%9B%B4"><span class="nav-number">1.2.</span> <span class="nav-text">Access and Get value取我們的直:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A%E4%B8%8D%E5%90%8Cdata-type"><span class="nav-number">1.3.</span> <span class="nav-text">宣告不同data type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method"><span class="nav-number">2.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#key"><span class="nav-number">2.1.</span> <span class="nav-text">key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#multiply-key"><span class="nav-number">2.1.1.</span> <span class="nav-text">multiply key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-create-a-dict"><span class="nav-number">2.2.</span> <span class="nav-text">get() create a dict</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get-key-avoid-error-when-no-key-exisit"><span class="nav-number">2.2.1.</span> <span class="nav-text">get key avoid error when no key exisit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-key-with-default-value"><span class="nav-number">2.2.2.</span> <span class="nav-text">create key with default value</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-empty-dictionary"><span class="nav-number">2.3.</span> <span class="nav-text">create empty dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keys-values-items"><span class="nav-number">2.4.</span> <span class="nav-text">keys values items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clear-clear-dictionary"><span class="nav-number">2.5.</span> <span class="nav-text">clear() clear dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-dictionary"><span class="nav-number">2.6.</span> <span class="nav-text">copy dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">2.7.</span> <span class="nav-text">pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">2.8.</span> <span class="nav-text">update()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Example"><span class="nav-number">2.9.</span> <span class="nav-text">Method Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-In-function"><span class="nav-number">3.</span> <span class="nav-text">Build-In function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">3.1.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-1"><span class="nav-number">4.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-Python-Dictionary-Example"><span class="nav-number">4.0.1.</span> <span class="nav-text">Creating Python Dictionary Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Access-Element-from-dictionary"><span class="nav-number">4.0.2.</span> <span class="nav-text">Access Element from dictionary</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing-and-Adding-Dictionary-elements"><span class="nav-number">4.1.</span> <span class="nav-text">Changing and Adding Dictionary elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-elements-from-Dictionary"><span class="nav-number">4.2.</span> <span class="nav-text">Removing elements from Dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-Dictionary-Comprehension"><span class="nav-number">4.3.</span> <span class="nav-text">Python Dictionary Comprehension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dictionary-Operations"><span class="nav-number">4.4.</span> <span class="nav-text">Dictionary Operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterating-Through-a-Dictionary"><span class="nav-number">4.5.</span> <span class="nav-text">Iterating Through a Dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-test-read-file-from-text-file"><span class="nav-number">4.6.</span> <span class="nav-text">[Amazon test] read file from text file</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/24/20221124-dictionary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Dictionary | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dictionary
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-24 14:31:31" itemprop="dateCreated datePublished" datetime="2022-11-24T14:31:31+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-25 14:45:15" itemprop="dateModified" datetime="2022-11-25T14:45:15+08:00">2022-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>9k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天想分享如何用dictionary字典方式存資料。</p>
+<h2 id="key-and-Value-如何使用宣槓取直"><a href="#key-and-Value-如何使用宣槓取直" class="headerlink" title="key and Value 如何使用宣槓取直"></a>key and Value 如何使用宣槓取直</h2><h3 id="declare-dictionary宣告dict"><a href="#declare-dictionary宣告dict" class="headerlink" title="declare dictionary宣告dict"></a>declare dictionary宣告dict</h3><p>It&#39;s an unorder , it&#39;s not next to each other, so we can&#39;t use index like we use in list.  Dictionary will have a a key and value look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    &#x27;keyA&#x27;:1,</span><br><span class="line">    &#x27;keyB&#x27;:2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Access-and-Get-value取我們的直"><a href="#Access-and-Get-value取我們的直" class="headerlink" title="Access and Get value取我們的直:"></a>Access and Get value取我們的直:</h3><p>取key的直: <code>print(dict[&#39;keyA&#39;])</code> &#x3D;&gt; <code>1</code><br>取所有直 <code>print(dic)</code> &#x3D;&gt; <code>&#123;&#39;keyA&#39;: 1, &#39;keyB&#39;: 2&#125;</code></p>
+<h3 id="宣告不同data-type"><a href="#宣告不同data-type" class="headerlink" title="宣告不同data type"></a>宣告不同data type</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    &#x27;keyA&#x27;:[1,2,3], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>取keyA的直 </p>
+<blockquote>
+<p><code>print(dict)</code> </p>
+<blockquote>
+<p>output<br>{‘keyA’: [1, 2, 3], ‘keyB’: ‘hello’, ‘keyC’: True}</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>取keyA的第2直:</p>
+<blockquote>
+<p><code>print(dict[&#39;keyA&#39;][1])</code> &#x3D;&gt; <code>2</code></p>
+</blockquote>
+</li>
+<li><p>list 裡面放dict</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dict=[&#123;</span><br><span class="line">    &#x27;keyA&#x27;:[1,2,3], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">        &#x27;keyA&#x27;:[4,5,6], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>print(dict[0][&#39;keyA&#39;][2])</code> &#x3D;&gt; <code>2</code></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">clear()</td>
+<td align="left">Removes all items from the dictionary.</td>
+</tr>
+<tr>
+<td align="left">copy()</td>
+<td align="left">Returns a shallow copy of the dictionary.</td>
+</tr>
+<tr>
+<td align="left">fromkeys(seq[, v])</td>
+<td align="left">Returns a new dictionary with keys from seq and value equal to v (defaults to None).</td>
+</tr>
+<tr>
+<td align="left">get(key[,d])</td>
+<td align="left">Returns the value of the key. If the key does not exist, returns d (defaults to None).</td>
+</tr>
+<tr>
+<td align="left">items()</td>
+<td align="left">Return a new object of the dictionary’s items in (key, value) format.</td>
+</tr>
+<tr>
+<td align="left">keys()</td>
+<td align="left">Returns a new object of the dictionary’s keys.</td>
+</tr>
+<tr>
+<td align="left">pop(key[,d])</td>
+<td align="left">Removes the item with the key and returns its value or d if key is not found. If d is not provided and the key is not found, it raises KeyError.</td>
+</tr>
+<tr>
+<td align="left">popitem()</td>
+<td align="left">Removes and returns an arbitrary item (key, value). Raises KeyError if the dictionary is empty.</td>
+</tr>
+<tr>
+<td align="left">setdefault(key[,d])</td>
+<td align="left">Returns the corresponding value if the key is in the dictionary. If not, inserts the key with a value of d and returns d (defaults to None).</td>
+</tr>
+<tr>
+<td align="left">update([other])</td>
+<td align="left">Updates the dictionary with the key&#x2F;value pairs from other, overwriting existing keys.</td>
+</tr>
+<tr>
+<td align="left">values()</td>
+<td align="left">Returns a new object of the dictionary’s values</td>
+</tr>
+</tbody></table>
+<h3 id="key"><a href="#key" class="headerlink" title="key"></a>key</h3><p>key need to be immutable, which mean can not change. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    123:[1,2,3], #list</span><br><span class="line">    True:&#x27;hello&#x27;, </span><br><span class="line">    &#x27;hi&#x27;: True,</span><br><span class="line">    [100]: True</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>print(dict[123]) #[1,2,3]</code></li>
+<li><code>print(dict[True]) #hello</code></li>
+<li><code>print(dict[&#39;hi&#39;]) #True</code></li>
+</ul>
+<p>If add <code> [100]:True</code> will occur error because it’s a immutable, can’t change key. list can be change, so we can’t chnage it. Dictionary often use string as it’s key</p>
+<h4 id="multiply-key"><a href="#multiply-key" class="headerlink" title="multiply key"></a>multiply key</h4><p>如果有相同的key，最後一個會被取代overwrite，因此key要unquie。<br>As you can see below, if we declare same key, the last key will overwrite the first one, this is why when I print it the last value I show up. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line"> &quot;123&quot;:&quot;hello&quot;,</span><br><span class="line"> &quot;123&quot;:&quot;world&quot;</span><br><span class="line">&#125;</span><br><span class="line">print(dict[&#x27;123&#x27;]) #world</span><br></pre></td></tr></table></figure>
+<h3 id="get-create-a-dict"><a href="#get-create-a-dict" class="headerlink" title="get() create a dict"></a>get() create a dict</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user=&#123;</span><br><span class="line"> &quot;name&quot;:&quot;James&quot;,</span><br><span class="line"> &quot;phone&quot;:&quot;123&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="get-key-avoid-error-when-no-key-exisit"><a href="#get-key-avoid-error-when-no-key-exisit" class="headerlink" title="get key avoid error when no key exisit"></a>get key avoid error when no key exisit</h4><p>如果我們有key用原本語法會有error，我們可以用get()方法就不會跳出error。</p>
+<blockquote>
+<p>get a nonexist key:</p>
+<blockquote>
+<p><code>print(user[&#39;age&#39;])</code> &#x3D;&gt; <code>pop error</code><br><code>print(user.get(&quot;age&quot;))</code> &#x3D;&gt; <code>#none</code> </p>
+</blockquote>
+</blockquote>
+<h4 id="create-key-with-default-value"><a href="#create-key-with-default-value" class="headerlink" title="create key with default value"></a>create key with default value</h4><p>if user don’t have key age, add a default value。建立key，給予預設直。</p>
+<blockquote>
+<p><code>print(user.get(&quot;age&quot;, 55))</code> &#x3D;&gt; <code>55</code></p>
+</blockquote>
+<p>But if if we have key age, then it will ignore 55。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">user=&#123;</span><br><span class="line"> &quot;name&quot;:&quot;James&quot;,</span><br><span class="line"> &quot;phone&quot;:&quot;123&quot;,</span><br><span class="line"> &quot;age&quot;:60,</span><br><span class="line">&#125;</span><br><span class="line">print(user.get(&quot;age&quot;, 55)) =&gt; `60`</span><br><span class="line">print(user.get(&quot;age&quot;)) =&gt; `60` </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>set value 設預設value:  <code>user.get(&quot;age&quot;, 55)</code><br>get key value取key的直: <code>user.get(&quot;age&quot;)</code></p>
+</blockquote>
+<h3 id="create-empty-dictionary"><a href="#create-empty-dictionary" class="headerlink" title="create empty dictionary"></a>create empty dictionary</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user2=dict(name=&quot;test&quot;)</span><br><span class="line">print(user2) #</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output</p>
+<blockquote>
+<p>{‘name’: ‘test’}</p>
+</blockquote>
+</blockquote>
+<h3 id="keys-values-items"><a href="#keys-values-items" class="headerlink" title="keys values items"></a>keys values items</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">user=&#123;</span><br><span class="line"> &quot;name&quot;:&quot;James&quot;,</span><br><span class="line"> &quot;phone&quot;:&quot;123&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(&#x27;name&#x27; in user) # false</span><br><span class="line">print(&#x27;id&#x27; in user) # false</span><br><span class="line">print(&#x27;id&#x27; in user.keys()) # false</span><br><span class="line">print(&#x27;James&#x27; in user.values()) # True</span><br><span class="line">print(user.items()) #dict_items([(&#x27;name&#x27;, &#x27;James&#x27;), (&#x27;phone&#x27;, &#x27;123&#x27;)])</span><br></pre></td></tr></table></figure>
+<h3 id="clear-clear-dictionary"><a href="#clear-clear-dictionary" class="headerlink" title="clear() clear dictionary"></a>clear() clear dictionary</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(user.clear()) #None</span><br><span class="line">print(user)  #&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="copy-dictionary"><a href="#copy-dictionary" class="headerlink" title="copy dictionary"></a>copy dictionary</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user2=user.copy()</span><br><span class="line">print(user) #&#123;&#x27;name&#x27;: &#x27;James&#x27;, &#x27;phone&#x27;: &#x27;123&#x27;, &#x27;age&#x27;: 60&#125;</span><br><span class="line">print(user2) #&#123;&#x27;name&#x27;: &#x27;James&#x27;, &#x27;phone&#x27;: &#x27;123&#x27;, &#x27;age&#x27;: 60&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(user.pop(&#x27;name&#x27;))#James</span><br><span class="line">print(user) #&#123;&#x27;phone&#x27;: &#x27;123&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(user.update(&#123;&#x27;name&#x27;: &#x27;John&#x27;&#125;))  </span><br><span class="line">#&#123;&#x27;name&#x27;: &#x27;John&#x27;, &#x27;phone&#x27;: &#x27;123&#x27;, &#x27;age&#x27;: 60&#125;</span><br><span class="line"></span><br><span class="line">#if key not exist still update </span><br><span class="line">print(user.update(&#123;&#x27;name11&#x27;: &#x27;MAry&#x27;&#125;))</span><br><span class="line">#&#123;&#x27;name&#x27;: &#x27;John&#x27;, &#x27;phone&#x27;: &#x27;123&#x27;, &#x27;age&#x27;: 60, &#x27;name11&#x27;: &#x27;MAry&#x27;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Method-Example"><a href="#Method-Example" class="headerlink" title="Method Example"></a>Method Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Dictionary Methods</span><br><span class="line">marks = &#123;&#125;.fromkeys([&#x27;Math&#x27;, &#x27;English&#x27;, &#x27;Science&#x27;], 0)</span><br><span class="line">print(marks)</span><br><span class="line"># Output: &#123;&#x27;English&#x27;: 0, &#x27;Math&#x27;: 0, &#x27;Science&#x27;: 0&#125;</span><br><span class="line"></span><br><span class="line">for item in marks.items():</span><br><span class="line">    print(item)</span><br><span class="line"></span><br><span class="line"># Output: [&#x27;English&#x27;, &#x27;Math&#x27;, &#x27;Science&#x27;]</span><br><span class="line">print(list(sorted(marks.keys())))</span><br></pre></td></tr></table></figure>
+<h2 id="Build-In-function"><a href="#Build-In-function" class="headerlink" title="Build-In function"></a>Build-In function</h2><table>
+<thead>
+<tr>
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">all()</td>
+<td align="left">Return True if all keys of the dictionary are True (or if the dictionary is empty).</td>
+</tr>
+<tr>
+<td align="left">any()</td>
+<td align="left">Return True if all keys of the dictionary are True (or if the dictionary is empty).</td>
+</tr>
+<tr>
+<td align="left">len()</td>
+<td align="left">Return the length (the number of items) in the dictionary.</td>
+</tr>
+<tr>
+<td align="left">sorted()</td>
+<td align="left">Compares items of two dictionaries. (Not available in Python 3)</td>
+</tr>
+</tbody></table>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Dictionary Built-in Functions</span><br><span class="line">squares = &#123;0: 0, 1: 1, 3: 9, 5: 25, 7: 49, 9: 81&#125;</span><br><span class="line"></span><br><span class="line"># Output: False</span><br><span class="line">print(all(squares))</span><br><span class="line"></span><br><span class="line"># Output: True</span><br><span class="line">print(any(squares))</span><br><span class="line"></span><br><span class="line"># Output: 6</span><br><span class="line">print(len(squares))</span><br><span class="line"></span><br><span class="line"># Output: [0, 1, 3, 5, 7,</span><br></pre></td></tr></table></figure>
+
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h2><h4 id="Creating-Python-Dictionary-Example"><a href="#Creating-Python-Dictionary-Example" class="headerlink" title="Creating Python Dictionary Example"></a>Creating Python Dictionary Example</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># empty dictionary</span><br><span class="line">my_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line"># dictionary with integer keys</span><br><span class="line">my_dict = &#123;1: &#x27;apple&#x27;, 2: &#x27;ball&#x27;&#125;</span><br><span class="line"></span><br><span class="line"># dictionary with mixed keys</span><br><span class="line">my_dict = &#123;&#x27;name&#x27;: &#x27;John&#x27;, 1: [2, 4, 3]&#125;</span><br><span class="line"></span><br><span class="line"># using dict()</span><br><span class="line">my_dict = dict(&#123;1:&#x27;apple&#x27;, 2:&#x27;ball&#x27;&#125;)</span><br><span class="line"></span><br><span class="line"># from sequence having each item as a pair</span><br><span class="line">my_dict = dict([(1,&#x27;apple&#x27;), (2,&#x27;ball&#x27;)])</span><br></pre></td></tr></table></figure>
+<h4 id="Access-Element-from-dictionary"><a href="#Access-Element-from-dictionary" class="headerlink" title="Access Element from dictionary"></a>Access Element from dictionary</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># get vs [] for retrieving elements</span><br><span class="line">my_dict = &#123;&#x27;name&#x27;: &#x27;Jack&#x27;, &#x27;age&#x27;: 26&#125;</span><br><span class="line"></span><br><span class="line"># Output: Jack</span><br><span class="line">print(my_dict[&#x27;name&#x27;])</span><br><span class="line"></span><br><span class="line"># Output: 26</span><br><span class="line">print(my_dict.get(&#x27;age&#x27;))</span><br><span class="line"></span><br><span class="line"># Trying to access keys which doesn&#x27;t exist throws error</span><br><span class="line"># Output None</span><br><span class="line">print(my_dict.get(&#x27;address&#x27;))</span><br><span class="line"></span><br><span class="line"># KeyError</span><br><span class="line">print(my_dict[&#x27;address&#x27;])</span><br></pre></td></tr></table></figure>
+<h3 id="Changing-and-Adding-Dictionary-elements"><a href="#Changing-and-Adding-Dictionary-elements" class="headerlink" title="Changing and Adding Dictionary elements"></a>Changing and Adding Dictionary elements</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># Changing and adding Dictionary Elements</span><br><span class="line">my_dict = &#123;&#x27;name&#x27;: &#x27;Jack&#x27;, &#x27;age&#x27;: 26&#125;</span><br><span class="line"></span><br><span class="line"># update value</span><br><span class="line">my_dict[&#x27;age&#x27;] = 27</span><br><span class="line"></span><br><span class="line">#Output: &#123;&#x27;age&#x27;: 27, &#x27;name&#x27;: &#x27;Jack&#x27;&#125;</span><br><span class="line">print(my_dict)</span><br><span class="line"></span><br><span class="line"># add item</span><br><span class="line">my_dict[&#x27;address&#x27;] = &#x27;Downtown&#x27;</span><br><span class="line"></span><br><span class="line"># Output: &#123;&#x27;address&#x27;: &#x27;Downtown&#x27;, &#x27;age&#x27;: 27, &#x27;name&#x27;: &#x27;Jack&#x27;&#125;</span><br><span class="line">print(my_dict)</span><br><span class="line">#&#123;&#x27;name&#x27;: &#x27;Jack&#x27;, &#x27;age&#x27;: 27&#125;</span><br><span class="line">#&#123;&#x27;name&#x27;: &#x27;Jack&#x27;, &#x27;age&#x27;: 27, &#x27;address&#x27;: &#x27;Downtown&#x27;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Removing-elements-from-Dictionary"><a href="#Removing-elements-from-Dictionary" class="headerlink" title="Removing elements from Dictionary"></a>Removing elements from Dictionary</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># Removing elements from a dictionary</span><br><span class="line"></span><br><span class="line"># create a dictionary</span><br><span class="line">squares = &#123;1: 1, 2: 4, 3: 9, 4: 16, 5: 25&#125;</span><br><span class="line"></span><br><span class="line"># remove a particular item, returns its value</span><br><span class="line"># Output: 16</span><br><span class="line">print(squares.pop(4))</span><br><span class="line"></span><br><span class="line"># Output: &#123;1: 1, 2: 4, 3: 9, 5: 25&#125;</span><br><span class="line">print(squares)</span><br><span class="line"></span><br><span class="line"># remove an arbitrary item, return (key,value)</span><br><span class="line"># Output: (5, 25)</span><br><span class="line">print(squares.popitem())</span><br><span class="line"></span><br><span class="line"># Output: &#123;1: 1, 2: 4, 3: 9&#125;</span><br><span class="line">print(squares)</span><br><span class="line"></span><br><span class="line"># remove all items</span><br><span class="line">squares.clear()</span><br><span class="line"></span><br><span class="line"># Output: &#123;&#125;</span><br><span class="line">print(squares)</span><br><span class="line"></span><br><span class="line"># delete the dictionary itself</span><br><span class="line">del squares</span><br><span class="line"></span><br><span class="line"># Throws Error</span><br><span class="line">print(squares)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python-Dictionary-Comprehension"><a href="#Python-Dictionary-Comprehension" class="headerlink" title="Python Dictionary Comprehension"></a>Python Dictionary Comprehension</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Dictionary Comprehension</span><br><span class="line">squares = &#123;x: x*x for x in range(6)&#125;</span><br><span class="line"></span><br><span class="line">print(squares)</span><br><span class="line">#&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25&#125;</span><br><span class="line"></span><br><span class="line">squares = &#123;&#125;</span><br><span class="line">for x in range(6):</span><br><span class="line">    squares[x] = x*x</span><br><span class="line">print(squares)</span><br><span class="line">#&#123;0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dictionary-Operations"><a href="#Dictionary-Operations" class="headerlink" title="Dictionary Operations"></a>Dictionary Operations</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Membership Test for Dictionary Keys</span><br><span class="line">squares = &#123;1: 1, 3: 9, 5: 25, 7: 49, 9: 81&#125;</span><br><span class="line"></span><br><span class="line"># Output: True</span><br><span class="line">print(1 in squares)</span><br><span class="line"></span><br><span class="line"># Output: True</span><br><span class="line">print(2 not in squares)</span><br><span class="line"></span><br><span class="line"># membership tests for key only not value</span><br><span class="line"># Output: False</span><br><span class="line">print(49 in squares)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Iterating-Through-a-Dictionary"><a href="#Iterating-Through-a-Dictionary" class="headerlink" title="Iterating Through a Dictionary"></a>Iterating Through a Dictionary</h3><ul>
+<li><p>ex1: Iterating through a Dictionary</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Iterating through a Dictionary</span><br><span class="line">squares = &#123;1: 1, 3: 9, 5: 25, 7: 49, 9: 81&#125;</span><br><span class="line">for i in squares:</span><br><span class="line">    print(squares[i], end=&quot; &quot;)</span><br><span class="line"># 1 9 25 49 81    </span><br></pre></td></tr></table></figure></li>
+<li><p>Iterating all keys and values</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">account = &#123;&#x27;eric&#x27;: 17, &#x27;ben&#x27;:30&#125;</span><br><span class="line">for name, age in account.items():</span><br><span class="line">    print(&quot;Hi &quot; + name+ &quot;your age: &quot;+str(age))</span><br><span class="line"># Hi ericyour age: 17</span><br><span class="line"># Hi benyour age: 30</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Iterating all keys</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">account = &#123;&#x27;eric&#x27;: 17, &#x27;ben&#x27;:30&#125;</span><br><span class="line">for name in account.keys():</span><br><span class="line">    print(&quot;hi &quot; + name)</span><br><span class="line"># hi eric</span><br><span class="line"># hi ben</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Iterating all values</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">account = &#123;&#x27;eric&#x27;: 17, &#x27;ben&#x27;:30&#125;</span><br><span class="line">for age in account.values():</span><br><span class="line">    print(&quot;age &quot; + str(age))</span><br><span class="line"># age 17</span><br><span class="line"># age 30</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Amazon-test-read-file-from-text-file"><a href="#Amazon-test-read-file-from-text-file" class="headerlink" title="[Amazon test] read file from text file"></a>[Amazon test] read file from text file</h3><ul>
+<li><p>Question: Read file into datastucture and search like logfile<br>If we have a log.txt, as below, you need to and search specfic string, like cat.</p>
+</li>
+<li><p>log.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 cat</span><br><span class="line">2 lion</span><br><span class="line">3 apple</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Answer2: using dictionary </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">d=&#123;&#125;</span><br><span class="line">with open(&quot;log.txt&quot;, &quot;r&quot;) as textfile:</span><br><span class="line">   #lines = textfile.readlines()</span><br><span class="line">#skip \n</span><br><span class="line">   lines = textfile.read().splitlines()</span><br><span class="line">   #print(lines)   </span><br><span class="line">for i in lines:</span><br><span class="line">    #sli = i.split(&#x27; &#x27;)    </span><br><span class="line">    (key,val)=i.split(&quot; &quot;)</span><br><span class="line">    d[int(key)]=val</span><br><span class="line">   # print(key,&quot;&quot;,val)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/11/24/20221124-dictionary/" title="Dictionary">https://github.com/chenchih/2022/11/24/20221124-dictionary/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/24/20221124-tuple/" rel="prev" title="Tuple">
+                  <i class="fa fa-chevron-left"></i> Tuple
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/24/20221124-set/" rel="next" title="Set">
+                  Set <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">124k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:52</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
