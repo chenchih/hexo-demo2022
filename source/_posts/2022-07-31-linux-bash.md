@@ -1,7 +1,9 @@
 ---
 title: Linux Bash Script
 date: 2022-07-31 08:07:57
-tags: linux bash
+tags: 
+- linux 
+- bash
 categories:
 - linux 
 ---

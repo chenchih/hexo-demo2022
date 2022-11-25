@@ -1,7 +1,9 @@
 ---
 title: IO_ReadWriteFile_python
 date: 2022-08-21 15:45:05
-tags: python fileIO
+tags: 
+- python 
+- fileIO
 categories:
 - python
 ---

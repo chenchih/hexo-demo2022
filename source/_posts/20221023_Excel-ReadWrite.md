@@ -1,7 +1,10 @@
 ---
 title: Excel_ReadWrite
 date: 2022-10-23 11:58:07
-tags: python fileIO excel
+tags: 
+- python
+- fileIO
+- excel
 categories:
 - python
 ---

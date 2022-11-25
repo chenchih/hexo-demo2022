@@ -1,7 +1,8 @@
 ---
 title: Linux Command
 date: 2022-07-30 08:07:57
-tags: linux
+tags: 
+- linux
 categories:
 - linux 
 - ubuntu
