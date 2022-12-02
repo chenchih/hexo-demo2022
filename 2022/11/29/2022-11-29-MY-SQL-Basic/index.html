@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="我想分享一些基本的DB(MYSQL)語法。之前面試有考不管是在Amazon，或Microsoft 都有考過我DB。我那時有準備筆記，但後來就不知跑哪。今天想在這篇寫關於SQL基本指令，有機會再寫高階的語法。 我住前是用MYSQL的DB軟體，你們可以選用其他的如MogoDB, Microsoft SQL server，orlacle DB等等。基本上語法都差不多，我猜的  Table: employ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MY-SQL(Basic)">
+<meta property="og:url" content="https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="我想分享一些基本的DB(MYSQL)語法。之前面試有考不管是在Amazon，或Microsoft 都有考過我DB。我那時有準備筆記，但後來就不知跑哪。今天想在這篇寫關於SQL基本指令，有機會再寫高階的語法。 我住前是用MYSQL的DB軟體，你們可以選用其他的如MogoDB, Microsoft SQL server，orlacle DB等等。基本上語法都差不多，我猜的  Table: employ">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-29T02:52:35.000Z">
+<meta property="article:modified_time" content="2022-11-29T10:23:37.619Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/","path":"2022/11/29/2022-11-29-MY-SQL-Basic/","title":"MY-SQL(Basic)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MY-SQL(Basic) | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT-amp-FROM"><span class="nav-number">1.</span> <span class="nav-text">SELECT &amp; FROM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-from"><span class="nav-number">1.1.</span> <span class="nav-text">select * from</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-Name-%E6%8C%87%E5%AE%9A%E6%AC%84%E4%BD%8D"><span class="nav-number">1.2.</span> <span class="nav-text">select Name 指定欄位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DISTINCT"><span class="nav-number">1.3.</span> <span class="nav-text">DISTINCT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHERE"><span class="nav-number">2.</span> <span class="nav-text">WHERE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-amp-And"><span class="nav-number">2.1.</span> <span class="nav-text">Where &amp; And</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-amp-or"><span class="nav-number">2.2.</span> <span class="nav-text">Where &amp; or</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-amp-IN"><span class="nav-number">2.3.</span> <span class="nav-text">Where &amp; IN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-amp-like"><span class="nav-number">2.4.</span> <span class="nav-text">Where &amp; like</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">3.</span> <span class="nav-text">GROUP BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Group-BY"><span class="nav-number">3.1.</span> <span class="nav-text">Group BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Group-BY-amp-alias-%E5%8F%A6%E5%8F%96%E6%96%B0%E5%90%8D"><span class="nav-number">3.2.</span> <span class="nav-text">Group BY &amp; alias 另取新名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Group-BY-amp-Aggression-function"><span class="nav-number">3.3.</span> <span class="nav-text">Group BY &amp; Aggression function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HAVING-amp-ORDER-BY"><span class="nav-number">4.</span> <span class="nav-text">HAVING &amp; ORDER BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Having"><span class="nav-number">4.1.</span> <span class="nav-text">Having</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY-ASC"><span class="nav-number">4.2.</span> <span class="nav-text">ORDER BY ASC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY-ASC-Multiply-column"><span class="nav-number">4.3.</span> <span class="nav-text">ORDER BY ASC Multiply column</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY-Desc"><span class="nav-number">4.4.</span> <span class="nav-text">ORDER BY Desc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Join"><span class="nav-number">5.</span> <span class="nav-text">Join</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Inner-Join"><span class="nav-number">5.1.</span> <span class="nav-text">Inner Join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Left-Join"><span class="nav-number">5.2.</span> <span class="nav-text">Left Join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Right-Join"><span class="nav-number">5.3.</span> <span class="nav-text">Right Join</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MY-SQL(Basic) | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MY-SQL(Basic)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-29 10:52:35 / Modified: 18:23:37" itemprop="dateCreated datePublished" datetime="2022-11-29T10:52:35+08:00">2022-11-29</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>6.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>我想分享一些基本的DB(MYSQL)語法。之前面試有考不管是在Amazon，或Microsoft 都有考過我DB。我那時有準備筆記，但後來就不知跑哪。今天想在這篇寫關於SQL基本指令，有機會再寫高階的語法。</p>
+<p>我住前是用MYSQL的DB軟體，你們可以選用其他的如MogoDB, Microsoft SQL server，orlacle DB等等。基本上語法都差不多，我猜的</p>
+<ul>
+<li>Table: employee:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="SELECT-amp-FROM"><a href="#SELECT-amp-FROM" class="headerlink" title="SELECT &amp; FROM"></a>SELECT &amp; FROM</h2><h3 id="select-from"><a href="#select-from" class="headerlink" title="select * from"></a>select * from</h3><p>select 可以選擇要印那一欄，如果加<code>*</code>可以把所有內如印出來，以下是指令:</p>
+<blockquote>
+<p><code>select * from employee;</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Table: employee;</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="select-Name-指定欄位"><a href="#select-Name-指定欄位" class="headerlink" title="select Name 指定欄位"></a>select Name 指定欄位</h3><blockquote>
+<p><code>SELECT Name, Salary From Employee;</code></p>
+</blockquote>
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+--------+</span><br><span class="line">| Name  | Salary |</span><br><span class="line">+-------+--------+</span><br><span class="line">| Joe   | 85000  |</span><br><span class="line">| Henry | 80000  |</span><br><span class="line">| Sam   | 60000  |</span><br><span class="line">| Max   | 90000  |</span><br><span class="line">| Janet | 69000  |</span><br><span class="line">| Randy | 85000  |</span><br><span class="line">+-------+--------+</span><br></pre></td></tr></table></figure>
+<h3 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h3><blockquote>
+<p><code>SELECT DISTINCT DepartmentID From Employee;</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+</span><br><span class="line">| DepartmentID |</span><br><span class="line">+--------------+</span><br><span class="line">| 1            |</span><br><span class="line">| 2            |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h2><h3 id="Where-amp-And"><a href="#Where-amp-And" class="headerlink" title="Where &amp; And"></a>Where &amp; And</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * From Employee</span><br><span class="line">where DepartmentID =2 AND Salary &gt; 50000;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Where-amp-or"><a href="#Where-amp-or" class="headerlink" title="Where &amp; or"></a>Where &amp; or</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * From Employee</span><br><span class="line">where Salary &lt; 70000 OR Salary &gt;80000;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Where-amp-IN"><a href="#Where-amp-IN" class="headerlink" title="Where &amp; IN"></a>Where &amp; IN</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * From Employee</span><br><span class="line">where Salary &lt; 70000 and Salary &lt; 85000;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+<p>也可以這樣用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * From Employee</span><br><span class="line">where Salary IN (70000 , 85000);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Where-amp-like"><a href="#Where-amp-like" class="headerlink" title="Where &amp; like"></a>Where &amp; like</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * From Employee</span><br><span class="line">where Name Like &quot;%an%;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><h3 id="Group-BY"><a href="#Group-BY" class="headerlink" title="Group BY"></a>Group BY</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT DepartmentID, Count(Name)</span><br><span class="line">from Employee Group By DepartmentID;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------------+</span><br><span class="line">| DepartmentID | Count(Name) |</span><br><span class="line">+--------------+-------------+</span><br><span class="line">| 1            |           5 |</span><br><span class="line">| 2            |           1 |</span><br><span class="line">+--------------+-------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Group-BY-amp-alias-另取新名"><a href="#Group-BY-amp-alias-另取新名" class="headerlink" title="Group BY &amp; alias 另取新名"></a>Group BY &amp; alias 另取新名</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT DepartmentID, Count(Name) As Number_Employee</span><br><span class="line">from Employee</span><br><span class="line">Group By DepartmentID;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------------+</span><br><span class="line">| DepartmentID | Count(Name) |</span><br><span class="line">+--------------+-------------+</span><br><span class="line">| 1            |           5 |</span><br><span class="line">| 2            |           1 |</span><br><span class="line">+--------------+-------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Group-BY-amp-Aggression-function"><a href="#Group-BY-amp-Aggression-function" class="headerlink" title="Group BY &amp; Aggression function"></a>Group BY &amp; Aggression function</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT DepartmentID, Count(Salary) As Total,</span><br><span class="line">Min(Salary) AS MinSalary,</span><br><span class="line">Max(Salary) As MaxSalary,</span><br><span class="line">Avg(Salary) as AvgSalary,</span><br><span class="line">Sum(Salary) as SumSalary</span><br><span class="line">from Employee</span><br><span class="line">Group By DepartmentID;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------+-----------+-----------+-----------+-----------+</span><br><span class="line">| DepartmentID | Total | MinSalary | MaxSalary | AvgSalary | SumSalary |</span><br><span class="line">+--------------+-------+-----------+-----------+-----------+-----------+</span><br><span class="line">| 1            |     5 | 60000     | 90000     |     77800 |    389000 |</span><br><span class="line">| 2            |     1 | 80000     | 80000     |     80000 |     80000 |</span><br><span class="line">+--------------+-------+-----------+-----------+-----------+-----------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="HAVING-amp-ORDER-BY"><a href="#HAVING-amp-ORDER-BY" class="headerlink" title="HAVING &amp; ORDER BY"></a>HAVING &amp; ORDER BY</h2><h3 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT DepartmentID</span><br><span class="line">from Employee</span><br><span class="line">Group By DepartmentID</span><br><span class="line">HAVING COUNT(*) &gt; 3;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+--------------+</span><br><span class="line">| DepartmentID |</span><br><span class="line">+--------------+</span><br><span class="line">| 1            |</span><br><span class="line">+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="ORDER-BY-ASC"><a href="#ORDER-BY-ASC" class="headerlink" title="ORDER BY ASC"></a>ORDER BY ASC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Name,Salary,DepartmentID</span><br><span class="line">from Employee</span><br><span class="line">order by salary;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+--------+--------------+</span><br><span class="line">| Name  | Salary | DepartmentID |</span><br><span class="line">+-------+--------+--------------+</span><br><span class="line">| Sam   | 60000  | 1            |</span><br><span class="line">| Janet | 69000  | 1            |</span><br><span class="line">| Henry | 80000  | 2            |</span><br><span class="line">| Joe   | 85000  | 1            |</span><br><span class="line">| Randy | 85000  | 1            |</span><br><span class="line">| Max   | 90000  | 1            |</span><br><span class="line">+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="ORDER-BY-ASC-Multiply-column"><a href="#ORDER-BY-ASC-Multiply-column" class="headerlink" title="ORDER BY ASC Multiply column"></a>ORDER BY ASC Multiply column</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT Name,Salary,DepartmentID</span><br><span class="line">from Employee</span><br><span class="line">order by salary, DepartmentID;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+--------+--------------+</span><br><span class="line">| Name  | Salary | DepartmentID |</span><br><span class="line">+-------+--------+--------------+</span><br><span class="line">| Sam   | 60000  | 1            |</span><br><span class="line">| Janet | 69000  | 1            |</span><br><span class="line">| Henry | 80000  | 2            |</span><br><span class="line">| Joe   | 85000  | 1            |</span><br><span class="line">| Randy | 85000  | 1            |</span><br><span class="line">| Max   | 90000  | 1            |</span><br><span class="line">+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="ORDER-BY-Desc"><a href="#ORDER-BY-Desc" class="headerlink" title="ORDER BY Desc"></a>ORDER BY Desc</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Name,Salary,DepartmentID</span><br><span class="line">from Employee</span><br><span class="line">order by salary DESC;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------+--------+--------------+</span><br><span class="line">| Name  | Salary | DepartmentID |</span><br><span class="line">+-------+--------+--------------+</span><br><span class="line">| Max   | 90000  | 1            |</span><br><span class="line">| Joe   | 85000  | 1            |</span><br><span class="line">| Randy | 85000  | 1            |</span><br><span class="line">| Henry | 80000  | 2            |</span><br><span class="line">| Janet | 69000  | 1            |</span><br><span class="line">| Sam   | 60000  | 1            |</span><br><span class="line">+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><ul>
+<li><p>Table: employee:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Table: department:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----+------+</span><br><span class="line">| ID | name |</span><br><span class="line">+----+------+</span><br><span class="line">|  1 | IT   |</span><br><span class="line">+----+------+</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Inner-Join"><a href="#Inner-Join" class="headerlink" title="Inner Join"></a>Inner Join</h3><p>INNER JOIN: returns rows when there is a match in both tables.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT Employee.Id as ID,Employee.Name as Name,</span><br><span class="line">Employee.salary as Salary, Employee.DepartmentID as DepartmentID,</span><br><span class="line">Department.Name as DepartmentName</span><br><span class="line">From Employee</span><br><span class="line">INNER JOIN Department</span><br><span class="line">on Employee.DepartmentId=Department.Id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+----------------+</span><br><span class="line">| ID | Name  | Salary | DepartmentID | DepartmentName |</span><br><span class="line">+----+-------+--------+--------------+----------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            | IT             |</span><br><span class="line">|  3 | Sam   | 60000  | 1            | IT             |</span><br><span class="line">|  4 | Max   | 90000  | 1            | IT             |</span><br><span class="line">|  5 | Janet | 69000  | 1            | IT             |</span><br><span class="line">|  6 | Randy | 85000  | 1            | IT             |</span><br><span class="line">+----+-------+--------+--------------+----------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Left-Join"><a href="#Left-Join" class="headerlink" title="Left Join"></a>Left Join</h3><p>LEFT JOIN: returns all rows from the left table, even if there are no matches in the right table.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT Employee.Id as ID,Employee.Name as Name,</span><br><span class="line">Employee.salary as Salary, Employee.DepartmentID as DepartmentID,</span><br><span class="line">Department.Name as DepartmentName</span><br><span class="line">From Employee</span><br><span class="line">LEFT JOIN Department</span><br><span class="line">on Employee.DepartmentId=Department.Id;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+----------------+</span><br><span class="line">| ID | Name  | Salary | DepartmentID | DepartmentName |</span><br><span class="line">+----+-------+--------+--------------+----------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            | IT             |</span><br><span class="line">|  2 | Henry | 80000  | 2            | NULL           |</span><br><span class="line">|  3 | Sam   | 60000  | 1            | IT             |</span><br><span class="line">|  4 | Max   | 90000  | 1            | IT             |</span><br><span class="line">|  5 | Janet | 69000  | 1            | IT             |</span><br><span class="line">|  6 | Randy | 85000  | 1            | IT             |</span><br><span class="line">+----+-------+--------+--------------+----------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="Right-Join"><a href="#Right-Join" class="headerlink" title="Right Join"></a>Right Join</h3><p>RIGHT JOIN: returns all rows from the right table, even if there are no matches in the left table.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT Employee.Id as ID,Employee.Name as Name,</span><br><span class="line">Employee.salary as Salary, Employee.DepartmentID as DepartmentID,</span><br><span class="line">Department.Name as DepartmentName</span><br><span class="line">From Employee</span><br><span class="line">RIGHT JOIN Department</span><br><span class="line">on Employee.DepartmentId=Department.Id;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+------+-------+--------+--------------+----------------+</span><br><span class="line">| ID   | Name  | Salary | DepartmentID | DepartmentName |</span><br><span class="line">+------+-------+--------+--------------+----------------+</span><br><span class="line">|    1 | Joe   | 85000  | 1            | IT             |</span><br><span class="line">|    3 | Sam   | 60000  | 1            | IT             |</span><br><span class="line">|    4 | Max   | 90000  | 1            | IT             |</span><br><span class="line">|    5 | Janet | 69000  | 1            | IT             |</span><br><span class="line">|    6 | Randy | 85000  | 1            | IT             |</span><br><span class="line">+------+-------+--------+--------------+----------------+</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/" title="MY-SQL(Basic)">https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/24/20221124-selenium/" rel="prev" title="selenium">
+                  <i class="fa fa-chevron-left"></i> selenium
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/29/2022-11-29-Loop/" rel="next" title="2022-11-29-Loop">
+                  2022-11-29-Loop <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">132k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:01</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

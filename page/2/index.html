@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -195,6 +195,314 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/18/20221018-substringSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/18/20221018-substringSearch/" class="post-title-link" itemprop="url">substringSearchg檔案內容搜尋相關關鍵字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-23 11:46:11" itemprop="dateModified" datetime="2022-11-23T11:46:11+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>13 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天分享如何搜尋字串裡面的substring或如果有檔案(log)想找相關字來做分析。</p>
+<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的string是: </p>
+<blockquote>
+<p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
+</blockquote>
+<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和<code>(Mbps)</code>移除，可以用下面方式:</p>
+<ul>
+<li><p>Step1: 宣告我的string</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Step2 抓取時間直</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateStr = st.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">print(dateStr) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>20221013.162853.788442</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>Step3 抓取TPUT直<br>這裡會用到<code>spit</code>和<code>strip</code><br><code>spit</code>是把字源切開，切完只留下Tput，會發現有空白，因此在後面加<code>strip</code>把空白移除就可以。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>0.010799</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br></pre></td></tr></table></figure>
+<p>以上的方法很簡單的方法，但是這種方法很不好因為如果整個索引改變了我們程式就會壞了。我現在都是用split，他就是用我們的索引在切。還有一個問題就是程是不乾靜，因此如果有更好方法避免用此方法。下面我會用regular expression方法呈現出我們要找的直。</p>
+<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/08/21/20221023_FileReadWriteFile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/" class="post-title-link" itemprop="url">IO_ReadWriteFile_python</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-21 15:45:05" itemprop="dateCreated datePublished" datetime="2022-08-21T15:45:05+08:00">2022-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-22 08:59:41" itemprop="dateModified" datetime="2022-11-22T08:59:41+08:00">2022-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Open-Read-Write-File"><a href="#Open-Read-Write-File" class="headerlink" title="Open Read Write File"></a>Open Read Write File</h2><blockquote>
+<p>open syntax:　</p>
+<blockquote>
+<p><code>open( file, mode, encoding=&quot;utf-8&quot;)</code></p>
+</blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">mode 字串</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">r</td>
+<td align="left">Read only <code>讀取模式</code> ( 預設 )</td>
+</tr>
+<tr>
+<td align="left">r+</td>
+<td align="left">Read and write</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="left">Write only 寫入模式，<code>檔案若存在，會清空內容再寫入</code>； 若檔案不存在，則建立新檔開啟寫入</td>
+</tr>
+<tr>
+<td align="left">w+</td>
+<td align="left">write+read</td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td align="left">Append only 附加模式，若<code>檔案存在，則寫入內容</code>會附加至檔 案尾端</td>
+</tr>
+<tr>
+<td align="left">a+</td>
+<td align="left">Append and Read (‘a+’)</td>
+</tr>
+</tbody></table>
+<h3 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h3><table>
+<thead>
+<tr>
+<th align="left">讀取方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">read( )</td>
+<td align="left">一次讀取檔案所有的內容，回傳為字串</td>
+</tr>
+<tr>
+<td align="left">readline( )</td>
+<td align="left">只讀取一行內容</td>
+</tr>
+<tr>
+<td align="left">readlines( )</td>
+<td align="left">將所有檔案內容，每行讀入回傳為串列</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileObj = open(&quot;路徑檔名&quot; , &quot;r&quot;, encoding=&quot;utf-8&quot;) </span><br><span class="line">content = fileObj.read( ) </span><br><span class="line">fileObj.close( )</span><br></pre></td></tr></table></figure>
+
+<h3 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileObj = open(&quot;路徑檔名&quot; , &quot;w&quot;, encoding=&quot;utf-8&quot;)</span><br><span class="line">fileObj.write(輸出資料)</span><br><span class="line">fileObj.close( ) </span><br></pre></td></tr></table></figure>
+
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><h3 id="Ex1-read-file-and-print"><a href="#Ex1-read-file-and-print" class="headerlink" title="Ex1. read file and print"></a>Ex1. read file and print</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1217,261 +1525,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/30/2022-06-21-hexo2_SetupShort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/30/2022-06-21-hexo2_SetupShort/" class="post-title-link" itemprop="url">Hexo + GitHub Pages 架設個人網誌-簡易版-2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-30 20:34:18" itemprop="dateCreated datePublished" datetime="2022-06-30T20:34:18+08:00">2022-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在這篇教學，我想要分享HEXO簡易版本。我在之前有寫ㄧ篇是關於Hexo完整篇，文章太長。如果你不想看那一篇可以看這一篇。在這一篇，我只會分享一些基本指令。</p>
-<h2 id="安裝-git"><a href="#安裝-git" class="headerlink" title="安裝 git"></a>安裝 git</h2><p>可以到官網下載<a target="_blank" rel="noopener" href="https://git-scm.com/">git</a>:，或是你是Linux&#x2F;MAC，可以輸入命令方式來安裝如下：</p>
-<ul>
-<li><p>Linux (Ubuntu, Debian)：</p>
-<blockquote>
-<p><code>$ sudo apt-get install git-core</code></p>
-</blockquote>
-</li>
-<li><p>Linux (Fedora, Red Hat, CentOS)</p>
-<blockquote>
-<p><code>sudo yum install git-core</code></p>
-</blockquote>
-</li>
-<li><p>mac 安裝:</p>
-<blockquote>
-<p><code>brew install git</code></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h2><h3 id="先安裝-node-js"><a href="#先安裝-node-js" class="headerlink" title="先安裝 node.js"></a>先安裝 node.js</h3><p>可以到官網下載<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>，或是你是Linux&#x2F;MAC，可以輸入命令方式來安裝如下：</p>
-<ul>
-<li>MAC: <blockquote>
-<p><code>$ brew update</code><br><code>$ brew install node</code></p>
-</blockquote>
-</li>
-<li>Linux(ubuntu)<blockquote>
-<p><code>$ sudo apt-get install -y nodejs</code></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="再安裝-Hexo"><a href="#再安裝-Hexo" class="headerlink" title="再安裝 Hexo"></a>再安裝 Hexo</h3><p><code>$ npm install -g hexo-cli     # -g 全域安裝</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/30/2022-06-21-hexo2_SetupShort/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/25/2022-06-25-windowOS-automation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/25/2022-06-25-windowOS-automation/" class="post-title-link" itemprop="url">windowOS-製作動畫.xml</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-25 08:07:07" itemprop="dateCreated datePublished" datetime="2022-06-25T08:07:07+08:00">2022-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/window/" itemprop="url" rel="index"><span itemprop="name">window</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.5k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>大家有用過自動安裝window 系統嗎？正常我們都用 ISO光碟片，USB和網路方法安裝OS。可這些方法我們可能要一直按下一步等等。今天我想分享如何用自動化安裝，不需要寫程式，只要把<code>unattend.xml</code>放進我們window ISO 或是USB的根目錄就可以。<br>這個自動化工具叫做unattend 如果有興趣可以在網路找相關內容。<br>我會教大家如何建立<code>unattend.xml</code>檔案，他可以幫我們自動建立帳號，切磁區等等。在這分享我沒有教如何分切磁區。</p>
-<p>為什麼要做這個？<br>如果你長期在安裝<code>windowOS</code>我建議可以學會這個，非長方便。</p>
-<h2 id="Part-1-建立autounattend-xml-檔案。"><a href="#Part-1-建立autounattend-xml-檔案。" class="headerlink" title="Part 1 : 建立autounattend.xml 檔案。"></a>Part 1 : 建立<code>autounattend.xml</code> 檔案。</h2><h3 id="1-去windowsafg-網站"><a href="#1-去windowsafg-網站" class="headerlink" title="1.	去windowsafg 網站"></a>1.	去windowsafg 網站</h3><ul>
-<li>請到 <a target="_blank" rel="noopener" href="https://www.windowsafg.com/">window-afg</a>網站製作<code>autounattend.xml</code>檔案</li>
-<li>Access to <a target="_blank" rel="noopener" href="https://www.windowsafg.com/">windows answer file generator</a> site and create <code>autounattend.xml</code> file<br><img src="https://i.imgur.com/ikhlwPq.png" alt="windowsafg"></li>
-</ul>
-<h3 id="2-window-相關設定"><a href="#2-window-相關設定" class="headerlink" title="2.	window 相關設定"></a>2.	window 相關設定</h3><p>用預設的設定即可。You can use the default setting, or use the same setting I set.</p>
-<ul>
-<li>我只設定，時間，鍵盤語言，和帳號</li>
-<li>I only changed <code>time tone</code>, <code>keyboard to US</code>, and <code>account to administrator</code><br><img src="https://i.imgur.com/WDtM0RU.png" alt="account admin"></li>
-</ul>
-<h3 id="3-下載autounattend-xml檔案"><a href="#3-下載autounattend-xml檔案" class="headerlink" title="3.下載autounattend.xml檔案"></a>3.下載<code>autounattend.xml</code>檔案</h3><p>Download <code>autounattend.xml</code> file. 下載<code>autounattend.xml</code>檔案<br><img src="https://i.imgur.com/8PYvDsZ.png" alt="downloadfile"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/25/2022-06-25-windowOS-automation/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/hexo-demo2022/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="page-number current">2</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><a class="extend next" rel="next" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1496,13 +1549,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">124k</span>
+    <span title="Symbols count total">132k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:52</span>
+    <span title="Reading time total">2:01</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
