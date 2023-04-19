@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -195,6 +195,150 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2023/04/14/20230414_RegularExpression-Python/" class="post-title-link" itemprop="url">RegularExpression-Python</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-14 16:35:18" itemprop="dateCreated datePublished" datetime="2023-04-14T16:35:18+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-18 11:25:47" itemprop="dateModified" datetime="2023-04-18T11:25:47+08:00">2023-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>26k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>23 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天有想在這裡分享 Regular Expression，這也是大家不想碰到的，可就是一個很復雜的就越耗用。<br>我也沒有很勵害，但之前開發自動化，用很多。因此想藉由這編文章來寫下我所寫道的筆記和參考很多教學。</p>
+<p>在介紹之前我們在 python 都會用到 re 或是 rex ，但在這我只會分享用 re，也就是要 <code>import re</code>，不然不能用。</p>
+<h2 id="常用的-req-module"><a href="#常用的-req-module" class="headerlink" title="常用的 req module"></a>常用的 req module</h2><table>
+<thead>
+<tr>
+<th align="left">Module</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">match</td>
+<td align="left">Determine if the RE matches at the beginning of the string.</td>
+</tr>
+<tr>
+<td align="left">search</td>
+<td align="left">Scan through a string, looking for any location where this RE matches</td>
+</tr>
+<tr>
+<td align="left">findall</td>
+<td align="left">Find all substrings where the RE matches, and returns them as a list.</td>
+</tr>
+<tr>
+<td align="left">finditer</td>
+<td align="left">Find all substrings where the RE matches, and returns them as an iterator.</td>
+</tr>
+</tbody></table>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is ChenChih&#x27;</span><br><span class="line">pattern=re.compile(&#x27;Chenchih&#x27;,re.I)</span><br><span class="line">print(pattern.match(text)) #None</span><br><span class="line">print(pattern.search(text).group()) #chenchih</span><br><span class="line">print(pattern.findall(text)) #[&#x27;chenchih&#x27;, &#x27;ChenChih&#x27;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>None<br><code>cheenchih</code> &gt; &gt; <code>[&#39;chenchih&#39;, &#39;ChenChih&#39;]</code></p>
+</blockquote>
+</blockquote>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><blockquote>
+<p>This function matches a regular expression pattern at the beginning of a string. If the pattern is found, it returns a match object, otherwise, it returns None.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.match(teststring)</span><br><span class="line">print(match)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2023/04/14/20230414_RegularExpression-Python/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -882,7 +1026,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/11/23/20221123-Function/" class="post-title-link" itemprop="url">Function</a>
+          <a href="/hexo-demo2022/2022/11/23/20221123-Function/" class="post-title-link" itemprop="url">Function or Method</a>
         </h2>
 
         <div class="post-meta-container">
@@ -900,7 +1044,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-24 17:55:14" itemprop="dateModified" datetime="2022-11-24T17:55:14+08:00">2022-11-24</time>
+      <time title="Modified: 2023-04-14 09:23:22" itemprop="dateModified" datetime="2023-04-14T09:23:22+08:00">2023-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -937,25 +1081,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>python有很多不同function，因此我想在這篇寫所有funtion我會用到。我指的function不是傳function，而是一些libary function</p>
-<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h2 id="Datetime時間"><a href="#Datetime時間" class="headerlink" title="Datetime時間"></a>Datetime時間</h2><h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><h4 id="程式跑的時間"><a href="#程式跑的時間" class="headerlink" title="程式跑的時間"></a>程式跑的時間</h4><p>如果計算程式袍多就可以用這方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"># starting time</span><br><span class="line">start = time.time()</span><br><span class="line"># your code </span><br><span class="line">for i in range(1,60):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">#endtime</span><br><span class="line">end = time.time()</span><br><span class="line">runtime=end - start</span><br><span class="line">print(&quot; Runtime of the program is &#123;runtime:%.8f&#125;&quot;)</span><br><span class="line">print(f&quot;Runtime of the program is &#123;runtime:.5f&#125;&quot;)</span><br><span class="line">#or </span><br><span class="line">print(f&quot;Runtime of the program is &#123;(end - start):.5f&#125;&quot;)</span><br></pre></td></tr></table></figure>
+          <p>python 有很多不同 function，因此我想在這篇寫所有 funtion 我會用到。我指的 function 不是傳 function，而是一些 libary function</p>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h2 id="Datetime-時間"><a href="#Datetime-時間" class="headerlink" title="Datetime 時間"></a>Datetime 時間</h2><h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><h4 id="程式跑的時間"><a href="#程式跑的時間" class="headerlink" title="程式跑的時間"></a>程式跑的時間</h4><p>如果計算程式袍多就可以用這方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"># starting time</span><br><span class="line">start = time.time()</span><br><span class="line"># your code</span><br><span class="line">for i in range(1,60):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">#endtime</span><br><span class="line">end = time.time()</span><br><span class="line">runtime=end - start</span><br><span class="line">print(&quot; Runtime of the program is &#123;runtime:%.8f&#125;&quot;)</span><br><span class="line">print(f&quot;Runtime of the program is &#123;runtime:.5f&#125;&quot;)</span><br><span class="line">#or</span><br><span class="line">print(f&quot;Runtime of the program is &#123;(end - start):.5f&#125;&quot;)</span><br></pre></td></tr></table></figure>
 
 <h3 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h3><h4 id="今天日期"><a href="#今天日期" class="headerlink" title="今天日期"></a>今天日期</h4><ul>
-<li><p>date.today取今天日期</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from datetime import date</span><br><span class="line">print(date.today())</span><br><span class="line">#2021-05-12</span><br></pre></td></tr></table></figure></li>
-<li><p>datetime.datetime.today取今天日期和時間</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from datetime import date</span><br><span class="line">now=datetime.datetime.today()</span><br><span class="line">print(now)</span><br><span class="line">#2021-01-21 13:29:47.648666</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>date time datetime 取今天日期和時間</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from datetime import date</span><br><span class="line">from datetime import time</span><br><span class="line">from datetime import datetime</span><br><span class="line">print(datetime.now())</span><br><span class="line">#2021-05-12 16:38:03.287772</span><br><span class="line">print (datetime.time(datetime.now()))</span><br><span class="line">#16:40:27.363532</span><br></pre></td></tr></table></figure>
-<h4 id="設定時間"><a href="#設定時間" class="headerlink" title="設定時間"></a>設定時間</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">lanunch_date=datetime.date(2021, 1,1)</span><br><span class="line">lanunch_time=datetime.time(22, 27,0)</span><br><span class="line">lanunch_datetime=datetime.datetime(2017,3,30, 22,27, 0)</span><br><span class="line">print(lanunch_date)</span><br><span class="line">#2017-03-30</span><br><span class="line">print(lanunch_time)</span><br><span class="line">#22:27:00</span><br><span class="line">print(lanunch_datetime)</span><br><span class="line">#2017-03-30 22:27:00</span><br><span class="line">print(lanunch_datetime.hour)</span><br><span class="line">#22</span><br><span class="line">print(lanunch_datetime.minute)</span><br><span class="line">#27</span><br><span class="line">print(lanunch_datetime.second)</span><br><span class="line">#0</span><br></pre></td></tr></table></figure>
-<h4 id="不同格式例印"><a href="#不同格式例印" class="headerlink" title="不同格式例印"></a>不同格式例印</h4></li>
-<li><p>印出不同格式print format</p>
-<blockquote>
-<p><code>%c</code>- indicates the local date and time<br><code>%x</code>- indicates the local date<br><code>%X</code>- indicates the local time</p>
-</blockquote>
-</li>
+<li>date.today 取今天日期</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -1228,130 +1359,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/23/20221023-List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/10/23/20221023-List/" class="post-title-link" itemprop="url">List</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-23 11:34:35" itemprop="dateCreated datePublished" datetime="2022-10-23T11:34:35+08:00">2022-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:34:14" itemprop="dateModified" datetime="2022-11-25T09:34:14+08:00">2022-11-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.6k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="list-列印"><a href="#list-列印" class="headerlink" title="list 列印"></a>list 列印</h2><h3 id="常用的方式印list內容"><a href="#常用的方式印list內容" class="headerlink" title="常用的方式印list內容"></a>常用的方式印list內容</h3><p>list : <code>list = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;]</code></p>
-<p>我們可以用以下方法:</p>
-<blockquote>
-<p>for loop </p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i in list:</span><br><span class="line">    print(i, end=&quot; &quot;) # </span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>*list: 不需要for loop ，可以unpack list </p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(*list) # 新方法</span><br><span class="line">#declare sting</span><br><span class="line">str=[*list] #如果要轉乘str，用下面方式</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>join 方式 轉乘string</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">liststring =&quot; &quot;.join([*list]) #conver to string</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023-List/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/hexo-demo2022/page/2/">2</a><a class="page-number" href="/hexo-demo2022/page/3/">3</a><a class="extend next" rel="next" href="/hexo-demo2022/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/hexo-demo2022/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo2022/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -1363,7 +1372,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1374,13 +1383,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">132k</span>
+    <span title="Symbols count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:01</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

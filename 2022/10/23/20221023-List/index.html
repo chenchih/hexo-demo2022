@@ -30,15 +30,15 @@
   gtag('config', 'c');
 </script>
 
-    <meta name="description" content="list 列印常用的方式印list內容list : list &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;] 我們可以用以下方法:  for loop   123for i in list:    print(i, end&#x3D;&quot; &quot;) # print()   *list: 不需">
+    <meta name="description" content="list 列印這裡會包含以下內內容:  基本讀 list 搭配 for *list (快速讀 list 不需要用到 for loop) N 筆後換 轉換 list 到字串(搭配 join) enumerate 方法 Method: split slice copy zip 轉換 list 理的 tuple 到 list    常用的方式印 list 內容list : list &#x3D; [&#39;A&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="List">
+<meta property="og:title" content="List and ZIP">
 <meta property="og:url" content="https://github.com/chenchih/2022/10/23/20221023-List/index.html">
 <meta property="og:site_name" content="Chen-Chih Blog">
-<meta property="og:description" content="list 列印常用的方式印list內容list : list &#x3D; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;] 我們可以用以下方法:  for loop   123for i in list:    print(i, end&#x3D;&quot; &quot;) # print()   *list: 不需">
+<meta property="og:description" content="list 列印這裡會包含以下內內容:  基本讀 list 搭配 for *list (快速讀 list 不需要用到 for loop) N 筆後換 轉換 list 到字串(搭配 join) enumerate 方法 Method: split slice copy zip 轉換 list 理的 tuple 到 list    常用的方式印 list 內容list : list &#x3D; [&#39;A&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-23T03:34:35.000Z">
-<meta property="article:modified_time" content="2022-11-25T01:34:14.133Z">
+<meta property="article:modified_time" content="2023-04-14T07:10:33.300Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -48,10 +48,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/10/23/20221023-List/","path":"2022/10/23/20221023-List/","title":"List"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/10/23/20221023-List/","path":"2022/10/23/20221023-List/","title":"List and ZIP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>List | Chen-Chih Blog - Tech Note</title>
+<title>List and ZIP | Chen-Chih Blog - Tech Note</title>
   
 
 
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#list-%E5%88%97%E5%8D%B0"><span class="nav-number">1.</span> <span class="nav-text">list 列印</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E5%8D%B0list%E5%85%A7%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">常用的方式印list內容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N%E7%AD%86%E5%BE%8C%E6%8F%9B%E8%A1%8C-n"><span class="nav-number">1.2.</span> <span class="nav-text">N筆後換行\n</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">2.</span> <span class="nav-text">function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Str-to-list-%E6%8A%8A%E6%96%87%E5%AD%97%E8%BD%89%E6%88%90list"><span class="nav-number">2.1.</span> <span class="nav-text">Str to list 把文字轉成list:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8spit-%E6%8A%8A%E6%96%87%E5%AD%97%E8%BD%89%E6%88%90list"><span class="nav-number">2.2.</span> <span class="nav-text">用spit 把文字轉成list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slicing-and-copy-list"><span class="nav-number">2.3.</span> <span class="nav-text">slicing and copy list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZIP-%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">ZIP 方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%8A2%E5%80%8Blist%E4%BD%95%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E5%AF%AB%E5%85%A5%E6%AA%94%E6%A1%88"><span class="nav-number">3.1.</span> <span class="nav-text">把2個list何在一起，寫入檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-list-of-tuples-into-list"><span class="nav-number">4.</span> <span class="nav-text">Convert list of tuples into list</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#list-%E5%88%97%E5%8D%B0"><span class="nav-number">1.</span> <span class="nav-text">list 列印</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E5%BC%8F%E5%8D%B0-list-%E5%85%A7%E5%AE%B9"><span class="nav-number">1.1.</span> <span class="nav-text">常用的方式印 list 內容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-loop"><span class="nav-number">1.1.1.</span> <span class="nav-text">- for loop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-%E4%B8%8D%E9%9C%80%E8%A6%81-for-loop-%EF%BC%8C%E5%8F%AF%E4%BB%A5-unpack-list"><span class="nav-number">1.1.2.</span> <span class="nav-text">- *list: 不需要 for loop ，可以 unpack list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-%E6%96%B9%E5%BC%8F-%E8%BD%89%E4%B9%98-string"><span class="nav-number">1.1.3.</span> <span class="nav-text">- join 方式 轉乘 string</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-N-%E7%AD%86%E5%BE%8C%E6%8F%9B%E8%A1%8C-n"><span class="nav-number">1.2.</span> <span class="nav-text">List N 筆後換行\n</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-count-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">- 用 count 方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enumerate-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">- enumerate 方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C-Method"><span class="nav-number">2.</span> <span class="nav-text">不同 Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Str-to-list-%E6%8A%8A%E6%96%87%E5%AD%97%E8%BD%89%E6%88%90-list"><span class="nav-number">2.1.</span> <span class="nav-text">Str to list 把文字轉成 list:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-split-%E6%8A%8A%E6%96%87%E5%AD%97%E8%BD%89%E6%88%90-list"><span class="nav-number">2.2.</span> <span class="nav-text">用 split 把文字轉成 list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slicing-and-copy-list"><span class="nav-number">2.3.</span> <span class="nav-text">slicing and copy list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZIP-%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">ZIP 方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1-iterate-throught-list"><span class="nav-number">3.1.</span> <span class="nav-text">Example 1: iterate throught list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example2-with-different-length-%E9%95%B7%E5%BA%A6%E4%B8%8D%E5%90%8C"><span class="nav-number">3.2.</span> <span class="nav-text">Example2 with different length 長度不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-3-iterate-list-and-add-in-middle"><span class="nav-number">3.3.</span> <span class="nav-text">Example 3 iterate list and add in middle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-4"><span class="nav-number">3.4.</span> <span class="nav-text">Example 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-5-%E6%8A%8A-2-%E5%80%8B-list-%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E5%AF%AB%E5%85%A5%E6%AA%94%E6%A1%88"><span class="nav-number">3.5.</span> <span class="nav-text">Example 5 把 2 個 list 合在一起，寫入檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-list-of-tuples-into-list"><span class="nav-number">4.</span> <span class="nav-text">Convert list of tuples into list</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -144,7 +144,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -155,7 +155,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -224,12 +224,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="List | Chen-Chih Blog">
+      <meta itemprop="name" content="List and ZIP | Chen-Chih Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          List
+          List and ZIP
         </h1>
 
         <div class="post-meta-container">
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:34:14" itemprop="dateModified" datetime="2022-11-25T09:34:14+08:00">2022-11-25</time>
+      <time title="Modified: 2023-04-14 15:10:33" itemprop="dateModified" datetime="2023-04-14T15:10:33+08:00">2023-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,14 +266,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.6k</span>
+      <span>4.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
+      <span>4 mins.</span>
     </span>
 </div>
 
@@ -284,43 +284,80 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="list-列印"><a href="#list-列印" class="headerlink" title="list 列印"></a>list 列印</h2><h3 id="常用的方式印list內容"><a href="#常用的方式印list內容" class="headerlink" title="常用的方式印list內容"></a>常用的方式印list內容</h3><p>list : <code>list = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;]</code></p>
+        <h2 id="list-列印"><a href="#list-列印" class="headerlink" title="list 列印"></a>list 列印</h2><p>這裡會包含以下內內容:</p>
+<ul>
+<li>基本讀 list 搭配 <code>for</code></li>
+<li><code>*</code>list (快速讀 list 不需要用到 <code>for</code> loop)</li>
+<li>N 筆後換</li>
+<li>轉換 list 到字串(搭配 join)</li>
+<li><code>enumerate</code> 方法</li>
+<li>Method:<ul>
+<li>split</li>
+<li>slice</li>
+<li>copy</li>
+<li>zip</li>
+<li>轉換 list 理的 tuple 到 list</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用的方式印-list-內容"><a href="#常用的方式印-list-內容" class="headerlink" title="常用的方式印 list 內容"></a>常用的方式印 list 內容</h3><p>list : <code>list = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;]</code></p>
 <p>我們可以用以下方法:</p>
-<blockquote>
-<p>for loop </p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i in list:</span><br><span class="line">    print(i, end=&quot; &quot;) # </span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+<h4 id="for-loop"><a href="#for-loop" class="headerlink" title="- for loop"></a>- <code>for</code> loop</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list= [1,2,3]</span><br><span class="line">for i in list:</span><br><span class="line">    print(i, end=&quot; &quot;) #</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>*list: 不需要for loop ，可以unpack list </p>
+<p><code>output:</code></p>
+<blockquote>
+<p>1 2 3</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(*list) # 新方法</span><br><span class="line">#declare sting</span><br><span class="line">str=[*list] #如果要轉乘str，用下面方式</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="list-不需要-for-loop-，可以-unpack-list"><a href="#list-不需要-for-loop-，可以-unpack-list" class="headerlink" title="- *list: 不需要 for loop ，可以 unpack list"></a>- <code>*</code>list: 不需要 for loop ，可以 unpack list</h4><blockquote>
+<p><code>print(*list) # 新方法</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list= [1,2,3]</span><br><span class="line">print(*list)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>join 方式 轉乘string</p>
+<p><code>output:</code></p>
+<blockquote>
+<p>1 2 3</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">liststring =&quot; &quot;.join([*list]) #conver to string</span><br></pre></td></tr></table></figure>
-<h3 id="N筆後換行-n"><a href="#N筆後換行-n" class="headerlink" title="N筆後換行\n"></a>N筆後換行\n</h3><blockquote>
-<p>如果N&#x3D;4換行:</p>
+</blockquote>
+<h4 id="join-方式-轉乘-string"><a href="#join-方式-轉乘-string" class="headerlink" title="- join 方式 轉乘 string"></a>- join 方式 轉乘 string</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">liststring =&quot; &quot;.join([*list]) #conver to string</span><br></pre></td></tr></table></figure>
+
+<h3 id="List-N-筆後換行-n"><a href="#List-N-筆後換行-n" class="headerlink" title="List N 筆後換行\n"></a>List N 筆後換行\n</h3><blockquote>
+<p>如果 N&#x3D;4 換行:</p>
 <blockquote>
 <p>A B C D<br>E F</p>
 </blockquote>
 </blockquote>
 <blockquote>
-<p>如果N&#x3D;2換行:</p>
+<p>如果 N&#x3D;2 換行:</p>
 <blockquote>
 <p>A B<br>C D<br>E F</p>
 </blockquote>
 </blockquote>
-<ul>
-<li>用count方式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MY_LIST = [ &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span><br><span class="line">cycle = 0</span><br><span class="line">for element in MY_LIST:</span><br><span class="line">    cycle += 1</span><br><span class="line">    print(element, end=&quot; &quot;)</span><br><span class="line">    if cycle % 4 == 0:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure></li>
-<li>enumerate 方式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MY_LIST = [ &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span><br><span class="line">for cycle, element in enumerate(MY_LIST, start=1):</span><br><span class="line">    print(element, end=&quot; &quot;)</span><br><span class="line">    if cycle % 4 == 0:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><h3 id="Str-to-list-把文字轉成list"><a href="#Str-to-list-把文字轉成list" class="headerlink" title="Str to list 把文字轉成list:"></a>Str to list 把文字轉成list:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; str = &quot;hello&quot;</span><br><span class="line">&gt;&gt;&gt; list(str) </span><br><span class="line">[&#x27;h&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;]</span><br></pre></td></tr></table></figure>
-<h3 id="用spit-把文字轉成list"><a href="#用spit-把文字轉成list" class="headerlink" title="用spit 把文字轉成list"></a>用spit 把文字轉成list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; str2=&quot;hello world&quot;</span><br><span class="line">&gt;&gt;&gt; str2.split(&#x27; &#x27;)</span><br><span class="line">[&#x27;hello&#x27;, &#x27;world&#x27;]</span><br></pre></td></tr></table></figure>
+<h4 id="用-count-方式"><a href="#用-count-方式" class="headerlink" title="- 用 count 方式"></a>- 用 count 方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MY_LIST = [ &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span><br><span class="line">cycle = 0</span><br><span class="line">for element in MY_LIST:</span><br><span class="line">    cycle += 1</span><br><span class="line">    print(element, end=&quot; &quot;)</span><br><span class="line">    if cycle % 4 == 0:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure>
+
+<h4 id="enumerate-方式"><a href="#enumerate-方式" class="headerlink" title="- enumerate 方式"></a>- enumerate 方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MY_LIST = [ &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span><br><span class="line">for cycle, element in enumerate(MY_LIST, start=1):</span><br><span class="line">    print(element, end=&quot; &quot;)</span><br><span class="line">    if cycle % 4 == 0:</span><br><span class="line">        print()</span><br></pre></td></tr></table></figure>
+
+<h2 id="不同-Method"><a href="#不同-Method" class="headerlink" title="不同 Method"></a>不同 Method</h2><h3 id="Str-to-list-把文字轉成-list"><a href="#Str-to-list-把文字轉成-list" class="headerlink" title="Str to list 把文字轉成 list:"></a>Str to list 把文字轉成 list:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;hello&quot;</span><br><span class="line">list(str)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>[‘h’, ‘e’, ‘l’, ‘l’, ‘o’]</p>
+</blockquote>
+</blockquote>
+<h3 id="用-split-把文字轉成-list"><a href="#用-split-把文字轉成-list" class="headerlink" title="用 split 把文字轉成 list"></a>用 split 把文字轉成 list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str2=&quot;hello world&quot;</span><br><span class="line">str2.split(&#x27; &#x27;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>[‘hello’, ‘world’]</p>
+</blockquote>
+</blockquote>
 <h3 id="slicing-and-copy-list"><a href="#slicing-and-copy-list" class="headerlink" title="slicing and copy list"></a>slicing and copy list</h3><p>list: <code>name= [&quot;james&quot;, &quot;Mary&quot;, &quot;john&quot;]</code></p>
 <ul>
-<li><p>splice</p>
+<li><p><code>slice</code></p>
 <blockquote>
 <p><code>name[:2]</code></p>
 <blockquote>
@@ -328,7 +365,7 @@
 </blockquote>
 </blockquote>
 </li>
-<li><p>copy</p>
+<li><p><code>copy</code></p>
 <blockquote>
 <p><code>newlist = name[:]</code></p>
 <blockquote>
@@ -338,17 +375,84 @@
 </li>
 </ul>
 <h2 id="ZIP-方式"><a href="#ZIP-方式" class="headerlink" title="ZIP 方式"></a>ZIP 方式</h2><blockquote>
-<p>Documentation: </p>
+<p>Documentation:</p>
 <blockquote>
-<p>terator stop when shortest input exhuastes<br>Single iterator argument: return 1 tuple<br>no argument return empty iterator</p>
+<p>where you can iterate serveral iterables (Ex:lists) in parallel.<br>SReturn tuple</p>
 </blockquote>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">prices= [100, 200, 300]</span><br><span class="line">car_size= [&quot;small&quot;, &quot;medium&quot;, &quot;large&quot;]</span><br><span class="line">colors=[&quot;yellow&quot;, &quot;green&quot;]</span><br><span class="line"></span><br><span class="line">list(zip(prices, car_size, colors))</span><br><span class="line">#[(100, &#x27;small&#x27;), (200, &#x27;medium&#x27;), (300, &#x27;large&#x27;)]</span><br><span class="line"></span><br><span class="line">#it will use the shortest value</span><br><span class="line">list(zip(prices, car_size, colors)) #convert to list</span><br><span class="line">#[(100, &#x27;small&#x27;, &#x27;yellow&#x27;), (200, &#x27;medium&#x27;, &#x27;green&#x27;)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">list(zip(prices))#1 tuple</span><br><span class="line">#[(100,), (200,), (300,)]</span><br><span class="line"></span><br><span class="line">list(zip(prices))[0]</span><br><span class="line">#(100,)</span><br></pre></td></tr></table></figure>
+<h3 id="Example-1-iterate-throught-list"><a href="#Example-1-iterate-throught-list" class="headerlink" title="Example 1: iterate throught list"></a>Example 1: iterate throught list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">listN= [1,2,3]</span><br><span class="line">listStr= [&quot;hello&quot;,&quot;world&quot;,&quot;!!!&quot;]</span><br></pre></td></tr></table></figure>
 
-<h3 id="把2個list何在一起，寫入檔案"><a href="#把2個list何在一起，寫入檔案" class="headerlink" title="把2個list何在一起，寫入檔案"></a>把2個list何在一起，寫入檔案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a=[0.2342,2.0002,0.1901]</span><br><span class="line">b=[0.4245,0.5123,6.1002] </span><br><span class="line">c = [a, b] </span><br><span class="line">with open(&quot;list1.txt&quot;, &quot;w&quot;) as file:</span><br><span class="line">    for x in zip(*c):</span><br><span class="line">        print(type(x))</span><br><span class="line">        file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(*x))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>using loop to iterate it 2 list out return tuple</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#for loop</span><br><span class="line">for item in zip (listN,listStr):</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Convert-list-of-tuples-into-list"><a href="#Convert-list-of-tuples-into-list" class="headerlink" title="Convert list of tuples into list"></a>Convert list of tuples into list</h2><p>如果你有list裡面包了tuple，窯如何把他轉成list</p>
+<blockquote>
+<p><code>output:</code><br>(1, ‘hello’)<br>(2, ‘world’)<br>(3, ‘!!!’)</p>
+</blockquote>
+<ul>
+<li><p>wrap zip into list return back to orginal list</p>
+<blockquote>
+<p><code>list(zip(listN, listStr))</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>[(1, ‘hello’), (2, ‘world’), (3, ‘!!!’)]</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>use <code>*</code> return back to original list, upack the list</p>
+<blockquote>
+<p><code>print(list(zip(*zip(listN, listStr))))</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>[(1, 2, 3), (‘hello’, ‘world’, ‘!!!’)]</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p><code>*</code> unpack everything in the list , it the same as write everything like this:<br><code>print(list(zip((1, &#39;hello&#39;), (2, &#39;world&#39;) ,(3, &#39;!!!&#39;))))</code></p>
+<h3 id="Example2-with-different-length-長度不同"><a href="#Example2-with-different-length-長度不同" class="headerlink" title="Example2 with different length 長度不同"></a>Example2 with different length 長度不同</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#iterate longest list</span><br><span class="line">import itertools</span><br><span class="line">listA= [1,2,3]</span><br><span class="line">listB= [&quot;hello&quot;,&quot;w&quot;,&quot;world&quot;,&quot;!!!&quot;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>default behavior stop at the end of the shortest list</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for item in itertools.zip_longest(listA, listB):</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>(1, ‘hello’)<br>(2, ‘w’)<br>(3, ‘world’)<br>(None, ‘!!!’)</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>require same length<blockquote>
+<p><code>Python 3.10</code> added strict option same length <code>strict=True</code><br>列印會出現錯誤，因為我們的 list 長度不一樣，由於用這個<code>strict=True</code>就會嚴格判斷</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for item in itertools.zip_longest(listA, listB,strict=True):</span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>(1, ‘hello’)<br>(2, ‘w’)<br>(3, ‘world’)<br>Traceback (most recent call last):<br>File “<stdin>“, line 1, in <module><br>ValueError: zip() <code>argument 2 is longer than argument 1</code></p>
+</blockquote>
+</blockquote>
+<h3 id="Example-3-iterate-list-and-add-in-middle"><a href="#Example-3-iterate-list-and-add-in-middle" class="headerlink" title="Example 3 iterate list and add in middle"></a>Example 3 iterate list and add in middle</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">L1=[4,5,6]</span><br><span class="line">L2=[&quot;H&quot;,&quot;W&quot;,&quot;!&quot;]</span><br><span class="line">L3=[&quot;@&quot;,&quot;#&quot;,&quot;%&quot;]</span><br><span class="line">for a, b, c in zip (L1, L2, L3):</span><br><span class="line">    print(a, b, c, sep=(&quot; =&gt; &quot;))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>4 &#x3D;&gt; H &#x3D;&gt; @<br>5 &#x3D;&gt; W &#x3D;&gt; #<br>6 &#x3D;&gt; ! &#x3D;&gt; %</p>
+</blockquote>
+</blockquote>
+<h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">prices= [100, 200, 300]</span><br><span class="line">car_size= [&quot;small&quot;, &quot;medium&quot;, &quot;large&quot;]</span><br><span class="line">colors=[&quot;yellow&quot;, &quot;green&quot;]</span><br><span class="line"></span><br><span class="line">list(zip(prices, car_size, colors))</span><br><span class="line">#[(100, &#x27;small&#x27;), (200, &#x27;medium&#x27;), (300, &#x27;large&#x27;)]</span><br><span class="line"></span><br><span class="line">#it will use the shortest value</span><br><span class="line">list(zip(prices, car_size, colors)) #convert to list</span><br><span class="line">#[(100, &#x27;small&#x27;, &#x27;yellow&#x27;), (200, &#x27;medium&#x27;, &#x27;green&#x27;)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">list(zip(prices))#1 tuple</span><br><span class="line">#[(100,), (200,), (300,)]</span><br><span class="line"></span><br><span class="line">list(zip(prices))[0]</span><br><span class="line">#(100,)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Example-5-把-2-個-list-合在一起，寫入檔案"><a href="#Example-5-把-2-個-list-合在一起，寫入檔案" class="headerlink" title="Example 5 把 2 個 list 合在一起，寫入檔案"></a>Example 5 把 2 個 list 合在一起，寫入檔案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a=[0.2342,2.0002,0.1901]</span><br><span class="line">b=[0.4245,0.5123,6.1002]</span><br><span class="line">c = [a, b]</span><br><span class="line">with open(&quot;list1.txt&quot;, &quot;w&quot;) as file:</span><br><span class="line">    for x in zip(*c):</span><br><span class="line">        print(type(x))</span><br><span class="line">        file.write(&quot;&#123;0&#125;\t&#123;1&#125;\n&quot;.format(*x))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Convert-list-of-tuples-into-list"><a href="#Convert-list-of-tuples-into-list" class="headerlink" title="Convert list of tuples into list"></a>Convert list of tuples into list</h2><p>如果你有 list 裡面包了 tuple，窯如何把他轉成 list</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># [(&#x27;20221110.112127.316856&#x27;, &#x27;0.000000&#x27;, &#x27;0.000000&#x27;)]</span><br><span class="line">test=  [(&#x27;20221110.112127.316856&#x27;, &#x27;0.000000&#x27;, &#x27;0.000000&#x27;)]</span><br><span class="line">print(type(test))</span><br><span class="line"># &lt;class &#x27;list&#x27;&gt;</span><br><span class="line">print(test)</span><br><span class="line">#[(&#x27;20221110.112127.316856&#x27;, &#x27;0.000000&#x27;, &#x27;0.000000&#x27;)]</span><br><span class="line"></span><br><span class="line"># Using itertools</span><br><span class="line">import itertools</span><br><span class="line">out = list(itertools.chain(*test))</span><br><span class="line">print(out)</span><br><span class="line"># [&#x27;20221110.112127.316856&#x27;, &#x27;0.000000&#x27;, &#x27;0.000000&#x27;]</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -365,7 +469,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://github.com/chenchih/2022/10/23/20221023-List/" title="List">https://github.com/chenchih/2022/10/23/20221023-List/</a>
+      <a href="https://github.com/chenchih/2022/10/23/20221023-List/" title="List and ZIP">https://github.com/chenchih/2022/10/23/20221023-List/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -409,7 +513,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -420,13 +524,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">132k</span>
+    <span title="Symbols count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:01</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

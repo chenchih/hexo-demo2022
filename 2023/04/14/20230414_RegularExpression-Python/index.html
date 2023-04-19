@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天有想在這裡分享 Regular Expression，這也是大家不想碰到的，可就是一個很復雜的就越耗用。我也沒有很勵害，但之前開發自動化，用很多。因此想藉由這編文章來寫下我所寫道的筆記和參考很多教學。 在介紹之前我們在 python 都會用到 re 或是 rex ，但在這我只會分享用 re，也就是要 import re，不然不能用。 常用的 req module   Module 說明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RegularExpression-Python">
+<meta property="og:url" content="https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天有想在這裡分享 Regular Expression，這也是大家不想碰到的，可就是一個很復雜的就越耗用。我也沒有很勵害，但之前開發自動化，用很多。因此想藉由這編文章來寫下我所寫道的筆記和參考很多教學。 在介紹之前我們在 python 都會用到 re 或是 rex ，但在這我只會分享用 re，也就是要 import re，不然不能用。 常用的 req module   Module 說明">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/fCBdVqv.png">
+<meta property="og:image" content="https://i.imgur.com/2PC3wgE.png">
+<meta property="og:image" content="https://i.imgur.com/GMV31XK.png">
+<meta property="og:image" content="https://i.imgur.com/LG1p6rT.png">
+<meta property="article:published_time" content="2023-04-14T08:35:18.000Z">
+<meta property="article:modified_time" content="2023-04-18T03:25:47.952Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="regExp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/fCBdVqv.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/","path":"2023/04/14/20230414_RegularExpression-Python/","title":"RegularExpression-Python"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>RegularExpression-Python | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84-req-module"><span class="nav-number">1.</span> <span class="nav-text">常用的 req module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#compile"><span class="nav-number">1.1.</span> <span class="nav-text">compile()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">1.2.</span> <span class="nav-text">match()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-Example"><span class="nav-number">1.2.1.</span> <span class="nav-text">Match Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-number">1.3.</span> <span class="nav-text">search()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Search-Example"><span class="nav-number">1.3.1.</span> <span class="nav-text">Search Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findall"><span class="nav-number">1.4.</span> <span class="nav-text">findall()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Findall-Example"><span class="nav-number">1.4.1.</span> <span class="nav-text">Findall Example:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finditer"><span class="nav-number">1.5.</span> <span class="nav-text">finditer()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match-vs-search-vs-findall"><span class="nav-number">1.6.</span> <span class="nav-text">match vs search vs findall</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1-match-search-findall"><span class="nav-number">1.6.1.</span> <span class="nav-text">Example 1 match search findall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example2-match-and-search"><span class="nav-number">1.6.2.</span> <span class="nav-text">Example2: match and search</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods-on-a-Match-object"><span class="nav-number">2.</span> <span class="nav-text">Methods on a Match object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Group-option"><span class="nav-number">2.1.</span> <span class="nav-text">Group option</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meta-character-or-special-character"><span class="nav-number">3.</span> <span class="nav-text">meta character or special character</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">3.1.</span> <span class="nav-text">Example:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dot-any-character"><span class="nav-number">3.1.1.</span> <span class="nav-text">. dot any character</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ignore-special-character"><span class="nav-number">3.1.2.</span> <span class="nav-text">\ ignore special character</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#check-beginning"><span class="nav-number">3.1.3.</span> <span class="nav-text">^ check beginning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#check-end"><span class="nav-number">3.1.4.</span> <span class="nav-text">$ check end</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meta-characters-x2F-Special-Sequences"><span class="nav-number">4.</span> <span class="nav-text">Meta characters &#x2F; Special Sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">4.1.</span> <span class="nav-text">Example:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#d-decimal-and-D-non-Decimal"><span class="nav-number">4.1.1.</span> <span class="nav-text">\d decimal and D non Decimal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#s-space"><span class="nav-number">4.1.2.</span> <span class="nav-text">\s space</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#W-word-and-w"><span class="nav-number">4.1.3.</span> <span class="nav-text">W word and w</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bblock"><span class="nav-number">4.1.4.</span> <span class="nav-text">bblock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sets"><span class="nav-number">5.</span> <span class="nav-text">Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2"><span class="nav-number">5.1.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#look-for-any-single-character-contain-l-or-0"><span class="nav-number">5.1.1.</span> <span class="nav-text">[] look for any single character contain l or 0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-A-Z"><span class="nav-number">5.1.2.</span> <span class="nav-text">[] range A-Z</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quantifiers"><span class="nav-number">6.</span> <span class="nav-text">quantifiers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-3"><span class="nav-number">6.1.</span> <span class="nav-text">Example:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#match-0-or-more"><span class="nav-number">6.1.1.</span> <span class="nav-text">* match 0 or more</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#match-1-or-more"><span class="nav-number">6.1.2.</span> <span class="nav-text">+ match 1 or more</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#match-0-or-1"><span class="nav-number">6.1.3.</span> <span class="nav-text">? match 0 or 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x-y-range-numbers"><span class="nav-number">6.1.4.</span> <span class="nav-text">{x,y} range numbers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#greedy"><span class="nav-number">6.1.5.</span> <span class="nav-text">.* greedy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#non-greedy"><span class="nav-number">6.1.6.</span> <span class="nav-text">.*? non greedy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Date-Example"><span class="nav-number">6.1.7.</span> <span class="nav-text">Date Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">7.</span> <span class="nav-text">Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grouping-substring"><span class="nav-number">8.</span> <span class="nav-text">grouping substring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#email-example"><span class="nav-number">8.1.</span> <span class="nav-text">email example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set-and-condition-example"><span class="nav-number">8.1.1.</span> <span class="nav-text">set and condition example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modifying-strings-method"><span class="nav-number">9.</span> <span class="nav-text">Modifying strings method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Re-sub"><span class="nav-number">9.1.</span> <span class="nav-text">Re.sub()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Re-split"><span class="nav-number">9.2.</span> <span class="nav-text">Re.split()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL-Example"><span class="nav-number">9.3.</span> <span class="nav-text">URL Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flag"><span class="nav-number">10.</span> <span class="nav-text">Flag</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example1"><span class="nav-number">10.1.</span> <span class="nav-text">example1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">11.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>linkedin</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="RegularExpression-Python | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RegularExpression-Python
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-14 16:35:18" itemprop="dateCreated datePublished" datetime="2023-04-14T16:35:18+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-18 11:25:47" itemprop="dateModified" datetime="2023-04-18T11:25:47+08:00">2023-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>26k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>23 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天有想在這裡分享 Regular Expression，這也是大家不想碰到的，可就是一個很復雜的就越耗用。<br>我也沒有很勵害，但之前開發自動化，用很多。因此想藉由這編文章來寫下我所寫道的筆記和參考很多教學。</p>
+<p>在介紹之前我們在 python 都會用到 re 或是 rex ，但在這我只會分享用 re，也就是要 <code>import re</code>，不然不能用。</p>
+<h2 id="常用的-req-module"><a href="#常用的-req-module" class="headerlink" title="常用的 req module"></a>常用的 req module</h2><table>
+<thead>
+<tr>
+<th align="left">Module</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">match</td>
+<td align="left">Determine if the RE matches at the beginning of the string.</td>
+</tr>
+<tr>
+<td align="left">search</td>
+<td align="left">Scan through a string, looking for any location where this RE matches</td>
+</tr>
+<tr>
+<td align="left">findall</td>
+<td align="left">Find all substrings where the RE matches, and returns them as a list.</td>
+</tr>
+<tr>
+<td align="left">finditer</td>
+<td align="left">Find all substrings where the RE matches, and returns them as an iterator.</td>
+</tr>
+</tbody></table>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is ChenChih&#x27;</span><br><span class="line">pattern=re.compile(&#x27;Chenchih&#x27;,re.I)</span><br><span class="line">print(pattern.match(text)) #None</span><br><span class="line">print(pattern.search(text).group()) #chenchih</span><br><span class="line">print(pattern.findall(text)) #[&#x27;chenchih&#x27;, &#x27;ChenChih&#x27;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>None<br><code>cheenchih</code> &gt; &gt; <code>[&#39;chenchih&#39;, &#39;ChenChih&#39;]</code></p>
+</blockquote>
+</blockquote>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><blockquote>
+<p>This function matches a regular expression pattern at the beginning of a string. If the pattern is found, it returns a match object, otherwise, it returns None.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.match(teststring)</span><br><span class="line">print(match)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>None or empty<br><code>[Note]: </code> Match only match at the beginning, because abc is not in the beginning, so will return none.</p>
+</blockquote>
+</blockquote>
+<h4 id="Match-Example"><a href="#Match-Example" class="headerlink" title="Match Example"></a>Match Example</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text = &quot;apple banana cherry&quot;</span><br><span class="line">pattern = r&quot;apple&quot;</span><br><span class="line">match_obj = re.match(pattern, text)</span><br><span class="line">if match_obj:</span><br><span class="line">    print(&quot;Match found!&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Match not found!&quot;)</span><br><span class="line">print(match_obj.group())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output：</code></p>
+<blockquote>
+<p>Match found!<br>apple</p>
+</blockquote>
+</blockquote>
+<p><code>[Note]</code> In this example, <code>re.match()</code> searches for the pattern “apple” at the beginning of the string “apple banana cherry”. Since the pattern is found at the beginning of the string, <code>re.match()</code> returns a match object, and the code prints “Match found!”.</p>
+<h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><blockquote>
+<p>This function searches for a regular expression pattern anywhere in a string. If the pattern is found, if the first is found or occurrence, it returns a match object, otherwise, it returns None.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">search=pattern.search(teststring)</span><br><span class="line">print(search)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(3, 6), match&#x3D;’abc’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="Search-Example"><a href="#Search-Example" class="headerlink" title="Search Example"></a>Search Example</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text = &quot;apple banana cherry&quot;</span><br><span class="line">pattern = r&quot;banana&quot;</span><br><span class="line">match_obj = re.search(pattern, text)</span><br><span class="line"></span><br><span class="line">if match_obj:</span><br><span class="line">    print(&quot;Match found!&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Match not found!&quot;)</span><br><span class="line">print(match_obj.group())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>Match found!<br>banana</p>
+</blockquote>
+</blockquote>
+<p><code>[Note]</code>In this example, re.search() searches for the pattern “banana” anywhere in the string “apple banana cherry”. Since the pattern is found in the middle of the string, re.search() returns a match object, and the code prints “Match found!”.</p>
+<h3 id="findall"><a href="#findall" class="headerlink" title="findall()"></a>findall()</h3><blockquote>
+<p>This function returns a list of all non-overlapping matches of a regular expression pattern in a string.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.findall(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+<blockquote>
+<p>abc<br>abc</p>
+</blockquote>
+</blockquote>
+<h4 id="Findall-Example"><a href="#Findall-Example" class="headerlink" title="Findall Example:"></a>Findall Example:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text = &quot;apple banana cherry&quot;</span><br><span class="line">pattern = r&quot;a&quot;</span><br><span class="line">match_list = re.findall(pattern, text)</span><br><span class="line">print(match_list)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>[‘a’, ‘a’, ‘a’, ‘a’]</p>
+</blockquote>
+</blockquote>
+<h3 id="finditer"><a href="#finditer" class="headerlink" title="finditer()"></a>finditer()</h3><blockquote>
+<p>returns iterator of matched objects in the string while</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p><code>&lt;re.Match object; span=(3, 6), match=&#39;abc&#39;&gt;</code> &gt; &gt; <code>&lt;re.Match object; span=(12, 15), match=&#39;abc&#39;&gt;</code></p>
+</blockquote>
+</blockquote>
+<p>Or you can use this method without compile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">match=re.finditer(r&quot;abc&quot;,teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="match-vs-search-vs-findall"><a href="#match-vs-search-vs-findall" class="headerlink" title="match vs search vs findall"></a>match vs search vs findall</h3><blockquote>
+<p><code>match()</code> is used when you want to check if a pattern exists at the beginning of a string, while <code>search()</code> is used checks for a match anywhere in the string of a pattern in a string, and <code>findall() </code>is used when you want to extract multiple occurrences of a pattern from a string.</p>
+</blockquote>
+<h4 id="Example-1-match-search-findall"><a href="#Example-1-match-search-findall" class="headerlink" title="Example 1 match search findall"></a>Example 1 match search findall</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is chenchih&#x27;</span><br><span class="line">print(&quot;====match=======&quot;)</span><br><span class="line">patternresult1=re.match(&#x27;https&#x27;, text)</span><br><span class="line">patternresult2=re.match(&#x27;chenchih&#x27;, text)</span><br><span class="line">print(&quot;match: https&quot;,patternresult1)</span><br><span class="line">print(&quot;match: chenchih&quot;,patternresult2)</span><br><span class="line">print(&quot;====search=======&quot;)</span><br><span class="line">patternresult1=re.search(&#x27;https&#x27;, text)</span><br><span class="line">patternresult2=re.search(&#x27;chenchih&#x27;, text)</span><br><span class="line">print(&quot;search: https&quot;,patternresult1)</span><br><span class="line">print(&quot;search: chenchih&quot;,patternresult2)</span><br><span class="line"></span><br><span class="line">print(&quot;====findall=======&quot;)</span><br><span class="line">patternresult1=re.findall(&#x27;https&#x27;, text)</span><br><span class="line">patternresult2=re.findall(&#x27;chenchih&#x27;, text)</span><br><span class="line">print(&quot;findall: https&quot;,patternresult1)</span><br><span class="line">print(&quot;findall: chenchih&quot;,patternresult2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;match&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>match: https &lt;re.Match object; span&#x3D;(0, 5), match&#x3D;’https’&gt;<br>match: chenchih None<br>&#x3D;&#x3D;&#x3D;&#x3D;search&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>search: https &lt;re.Match object; span&#x3D;(0, 5), match&#x3D;’https’&gt;<br>search: chenchih &lt;re.Match object; span&#x3D;(8, 16), match&#x3D;’chenchih’&gt;<br>&#x3D;&#x3D;&#x3D;&#x3D;findall&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>findall: https [‘https’]<br>findall: chenchih [‘chenchih’, ‘chenchih’]</p>
+</blockquote>
+</blockquote>
+<h4 id="Example2-match-and-search"><a href="#Example2-match-and-search" class="headerlink" title="Example2: match and search"></a>Example2: match and search</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">line = &quot;Cats are smarter than dogs&quot;</span><br><span class="line">matchObj = re.match(r&#x27;dogs&#x27;, line, re.M | re.I)</span><br><span class="line">if matchObj:</span><br><span class="line">    print(&quot;match --&gt; matchObj.group() : &quot;, matchObj.group())</span><br><span class="line">else:</span><br><span class="line">    print(&quot;No match!!&quot;)</span><br><span class="line">searchObj = re.search(r&#x27;dogs&#x27;, line, re.M | re.I)</span><br><span class="line">if searchObj:</span><br><span class="line">    print(&quot;search --&gt; searchObj.group() : &quot;, searchObj.group())</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Nothing found!!&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>No match!!<br>search –&gt; searchObj.group() : dogs</p>
+</blockquote>
+</blockquote>
+<h2 id="Methods-on-a-Match-object"><a href="#Methods-on-a-Match-object" class="headerlink" title="Methods on a Match object"></a>Methods on a Match object</h2><table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">group()</td>
+<td align="left">Return the string matched by the RE</td>
+</tr>
+<tr>
+<td align="left">start()</td>
+<td align="left">Return the starting position of the match</td>
+</tr>
+<tr>
+<td align="left">end()</td>
+<td align="left">Return the ending position of the match</td>
+</tr>
+<tr>
+<td align="left">span()</td>
+<td align="left">Return a tuple containing the (start, end) positions of the match</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i.span()) # or</span><br><span class="line">    print(i.span(), match.start(), match.end())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>(3, 6)<br>(3, 6) 3 6<br>(12, 15)<br>(12, 15) 12 15</p>
+</blockquote>
+</blockquote>
+<h3 id="Group-option"><a href="#Group-option" class="headerlink" title="Group option"></a>Group option</h3><p>When match&#x2F;search&#x2F;findall function returns a match object on success, none on failure. We use group(num) or groups() function of match object to get matched expression.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is chenchih&#x27;</span><br><span class="line">re1=re.match(&#x27;http&#x27;, text).group()</span><br><span class="line">re2=re.search(&#x27;https&#x27;, text).group()</span><br><span class="line">print(re1) #http</span><br><span class="line">print(re2) #https</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>http<br>https</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Match Group Example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text = &quot;My favorite fruits are apples and bananas.&quot;</span><br><span class="line">pattern = r&quot;My favorite fruits are (.*?) and (.*?)\.&quot;</span><br><span class="line">match_obj = re.match(pattern, text)</span><br><span class="line"></span><br><span class="line">if match_obj:</span><br><span class="line">    fruit1 = match_obj.group(1)</span><br><span class="line">    fruit2 = match_obj.group(2)</span><br><span class="line">    print(&quot;Fruits:&quot;, fruit1, &quot;and&quot;, fruit2)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Match not found.&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Output:</code></p>
+<blockquote>
+<p>Fruits: apples and bananas</p>
+</blockquote>
+</blockquote>
+<p>In this example, the regular expression pattern My favorite fruits are <code>(.*?)</code> and <code>(.*?)</code>. matches the text “My favorite fruits are “ followed by two fruits separated by the word “and” and ending with a period. The two groups <code>(.*?)</code> capture the two fruit names, and the backslash is used to escape the period at the end of the sentence.</p>
+<ul>
+<li>Search Group Example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text = &quot;The quick brown fox jumps over the lazy dog.&quot;</span><br><span class="line">pattern = r&quot;(brown|red) fox jumps over&quot;</span><br><span class="line"></span><br><span class="line">match_obj = re.search(pattern, text)</span><br><span class="line"></span><br><span class="line">if match_obj:</span><br><span class="line">    color = match_obj.group(1)</span><br><span class="line">    print(&quot;Color:&quot;, color)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Match not found.&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>Color: brown</p>
+</blockquote>
+</blockquote>
+<p>In this example, the regular expression pattern <code>(brown|red)</code> fox jumps over matches either the text “brown fox jumps over” or “red fox jumps over”. The group() method is then used to extract the text that was captured by the group.</p>
+<h2 id="meta-character-or-special-character"><a href="#meta-character-or-special-character" class="headerlink" title="meta character or special character"></a>meta character or special character</h2><table>
+<thead>
+<tr>
+<th align="left">Example</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">Any character (except newline character) <code>he..o</code></td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">Starts with <code>^hello</code></td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">Ends with <code>world\$</code></td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">Zero or more occurrences <code>aix*</code></td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">One or more occurrences <code>aix+</code></td>
+</tr>
+<tr>
+<td align="left">{}</td>
+<td align="left">Exactly the specified number of occurrences <code>al&#123;2&#125;</code></td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">A set of characters <code>[a-m]</code></td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">Signals a special sequence (can also be used to escape special characters) <code>\d</code></td>
+</tr>
+<tr>
+<td align="left">|</td>
+<td align="left">Either or <code>falls|stays</code></td>
+</tr>
+<tr>
+<td align="left">()</td>
+<td align="left">Capture and group</td>
+</tr>
+</tbody></table>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><h4 id="dot-any-character"><a href="#dot-any-character" class="headerlink" title=". dot any character"></a><code>.</code> dot any character</h4><blockquote>
+<p><code>.</code> Dot, default mode, this matches any character except a newline.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring = &quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern = re.compile(r&quot;.&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i.group())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>1<br>2<br>3<br>a<br>b<br>c<br>4<br>5<br>6<br>7<br>8<br>9<br>a<br>b<br>c<br>1<br>2<br>3<br>A<br>B</p>
+</blockquote>
+</blockquote>
+<h4 id="ignore-special-character"><a href="#ignore-special-character" class="headerlink" title="\ ignore special character"></a><code>\</code> ignore special character</h4><blockquote>
+<p>indicate special forms or to allow special character like <code>. ^ $ * + ?</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;123abc456789abc123ABC.&quot;</span><br><span class="line">pattern = re.compile(r&quot;\.&quot;)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(21, 22), match&#x3D;’.’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="check-beginning"><a href="#check-beginning" class="headerlink" title="^ check beginning"></a><code>^</code> check beginning</h4><ul>
+<li>check 123</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern = re.compile(r&quot;^123&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(0, 3), match&#x3D;’123’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>check abc</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;123abc456789abc123ABC.&quot;</span><br><span class="line">pattern = re.compile(r&quot;^abc&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>empty because it’s not beginning</p>
+</blockquote>
+</blockquote>
+<h4 id="check-end"><a href="#check-end" class="headerlink" title="$ check end"></a><code>$</code> check end</h4><ul>
+<li>abc</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern = re.compile(r&quot;abc$&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>empty because case sensitive, let change string to ABC<br>Since it’s case case sensitive, so it will return None</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>ABC<blockquote>
+<p><code>pattern = re.compile(r&quot;ABC$&quot;)</code></p>
+<blockquote>
+<p><code>output: </code><br>&lt;re.Match object; span&#x3D;(18, 21), match&#x3D;’ABC’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="Meta-characters-x2F-Special-Sequences"><a href="#Meta-characters-x2F-Special-Sequences" class="headerlink" title="Meta characters &#x2F; Special Sequences"></a>Meta characters &#x2F; Special Sequences</h2><p>| Example | 說明                                                                                                                                  |<br>| :—— | :———————————————————————————————————————————— | ——– |<br>| \d      | Matches any decimal digit; this is equivalent to the class <code>[0-9]</code>.                                                                   |<br>| \D      | Matches any non-digit character; this is equivalent to the class <code>[^0-9]</code>.                                                            |<br>| \s      | Matches any whitespace character                                                                                                      |<br>| \S      | Matches any non-whitespace character;                                                                                                 |<br>| \w      | Matches any alphanumeric (word) character; this is equivalent to the class <code>[a-zA-Z0-9_]</code>.                                            |<br>| \W      | Matches any non-alphanumeric character; this is equivalent to the class <code>[^a-zA-Z0-9_]</code>.                                              |<br>| \b      | Returns a match where the specified characters are at the beginning or at the end of a word r<code>&quot;\bain&quot;</code>                                | r”ain\b” |<br>| \B      | Returns a match where the specified characters are present, but NOT at the beginning (or at the end) of a word r<code>&quot;\Bain&quot;</code> r<code>&quot;ain\B&quot;\</code> |<br>| \A      | Returns a match if the specified characters are at the beginning of the string <code>&quot;\AThe&quot;</code>                                              |<br>| \Z      | Returns a match if the specified characters are at the end of the string <code>&quot;Spain\Z&quot;</code>                                                  |</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a>Example:</h3><h4 id="d-decimal-and-D-non-Decimal"><a href="#d-decimal-and-D-non-Decimal" class="headerlink" title="\d decimal and D non Decimal"></a><code>\d</code> decimal and <code>D</code> non Decimal</h4><ul>
+<li><code>d</code>: <code>re.compile(r&quot;\d&quot;)</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_ heyho hohey&quot;</span><br><span class="line">pattern = re.compile(r&quot;\d&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p><code>&lt;re.Match object; span=(6, 7), match=&#39;1&#39;&gt;</code> &gt; &gt; <code>&lt;re.Match object; span=(7, 8), match=&#39;2&#39;&gt;</code> &gt; &gt; <code>&lt;re.Match object; span=(8, 9), match=&#39;3&#39;&gt;</code></p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>D</code>: <code>re.compile(r&quot;\D&quot;)</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_ heyho hohey&quot;</span><br><span class="line">pattern = re.compile(r&quot;\D&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(0, 1), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(1, 2), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(2, 3), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(3, 4), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(4, 5), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(5, 6), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(9, 10), match&#x3D;’_‘&gt;<br>&lt;re.Match object; span&#x3D;(10, 11), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(11, 12), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(12, 13), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(13, 14), match&#x3D;’y’&gt;<br>&lt;re.Match object; span&#x3D;(14, 15), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(15, 16), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(16, 17), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(17, 18), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(18, 19), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(19, 20), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(20, 21), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(21, 22), match&#x3D;’y’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="s-space"><a href="#s-space" class="headerlink" title="\s space"></a><code>\s</code> space</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_ heyho hohey&quot;</span><br><span class="line">pattern = re.compile(r&quot;\s&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(5, 6), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(10, 11), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(16, 17), match&#x3D;’ ‘&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="W-word-and-w"><a href="#W-word-and-w" class="headerlink" title="W word and w"></a><code>W</code> word and <code>w</code></h4><ul>
+<li><code>w</code> match character</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_ heyho hohey&quot;</span><br><span class="line">pattern = re.compile(r&quot;\w&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(0, 1), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(1, 2), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(2, 3), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(3, 4), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(4, 5), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(6, 7), match&#x3D;’1’&gt;<br>&lt;re.Match object; span&#x3D;(7, 8), match&#x3D;’2’&gt;<br>&lt;re.Match object; span&#x3D;(8, 9), match&#x3D;’3’&gt;<br>&lt;re.Match object; span&#x3D;(9, 10), match&#x3D;’_‘&gt;<br>&lt;re.Match object; span&#x3D;(11, 12), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(12, 13), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(13, 14), match&#x3D;’y’&gt;<br>&lt;re.Match object; span&#x3D;(14, 15), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(15, 16), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(17, 18), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(18, 19), match&#x3D;’o’&gt;<br>&lt;re.Match object; span&#x3D;(19, 20), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(20, 21), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(21, 22), match&#x3D;’y’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>W</code> match non character <code>re.compile(r&quot;\W&quot;)</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_ heyho hohey&quot;</span><br><span class="line">pattern = re.compile(r&quot;\W&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p><code>output:</code><br>　&lt;re.Match object; span&#x3D;(5, 6), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(10, 11), match&#x3D;’ ‘&gt;<br>&lt;re.Match object; span&#x3D;(16, 17), match&#x3D;’ ‘&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="bblock"><a href="#bblock" class="headerlink" title="bblock"></a><code>b</code>block</h4><ul>
+<li><p>find beginning of a block \b</p>
+<blockquote>
+<p><code>pattern = re.compile(r&quot;\bhey&quot;)</code></p>
+<blockquote>
+<p><code>output:</code><br>&lt;re.Match object; span&#x3D;(11, 14), match&#x3D;’hey’&gt;<br><img src="https://i.imgur.com/fCBdVqv.png" alt=" "></p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>find \B opposite of \b</p>
+<blockquote>
+<p><code>teststring = &quot;hello 123_ heyho hohey&quot;</code> &gt; <code>output</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(19, 22), match&#x3D;’hey’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><table>
+<thead>
+<tr>
+<th align="left">Example</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>[arn]</code></td>
+<td align="left">Returns a match where one of the specified characters (a, r, or n) are present</td>
+</tr>
+<tr>
+<td align="left"><code>[a-n]</code></td>
+<td align="left">Returns a match for any lower case character, alphabetically between a and n</td>
+</tr>
+<tr>
+<td align="left"><code>[^arn]</code></td>
+<td align="left">Returns a match for any character EXCEPT a, r, and n</td>
+</tr>
+<tr>
+<td align="left"><code> [0123-]</code></td>
+<td align="left">Returns a match where any of the specified digits (0, 1, 2, or 3) are present</td>
+</tr>
+<tr>
+<td align="left"><code>[0-9]</code></td>
+<td align="left">Returns a match for any digit between 0 and 9</td>
+</tr>
+<tr>
+<td align="left"><code>[0-5][0-9]</code></td>
+<td align="left">Returns a match for any two-digit numbers from 00 and 59</td>
+</tr>
+<tr>
+<td align="left"><code>[a-zA-Z]</code></td>
+<td align="left">Returns a match for any character alphabetically between a and z, lower case OR upper case</td>
+</tr>
+</tbody></table>
+<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h3><h4 id="look-for-any-single-character-contain-l-or-0"><a href="#look-for-any-single-character-contain-l-or-0" class="headerlink" title="[] look for any single character contain l or 0"></a><code>[]</code> look for any single character contain l or 0</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_&quot;</span><br><span class="line">pattern = re.compile(r&quot;[lo]&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(2, 3), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(3, 4), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(4, 5), match&#x3D;’o’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="range-A-Z"><a href="#range-A-Z" class="headerlink" title="[] range A-Z"></a><code>[]</code> range <code>A-Z</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello 123_&quot;</span><br><span class="line">pattern = re.compile(r&quot;[a-z]&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(0, 1), match&#x3D;’h’&gt;<br>&lt;re.Match object; span&#x3D;(1, 2), match&#x3D;’e’&gt;<br>&lt;re.Match object; span&#x3D;(2, 3), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(3, 4), match&#x3D;’l’&gt;<br>&lt;re.Match object; span&#x3D;(4, 5), match&#x3D;’o’&gt;</p>
+</blockquote>
+</blockquote>
+<p>you can also use <code>[0-9]</code> to find digit which is same as<code>\d</code></p>
+<h2 id="quantifiers"><a href="#quantifiers" class="headerlink" title="quantifiers"></a>quantifiers</h2><table>
+<thead>
+<tr>
+<th align="left">character</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>*</code></td>
+<td align="left">0 or more</td>
+</tr>
+<tr>
+<td align="left"><code>+</code></td>
+<td align="left">1 or more</td>
+</tr>
+<tr>
+<td align="left"><code>?</code></td>
+<td align="left">0 or 1, used when a character can be optional may exist or not</td>
+</tr>
+<tr>
+<td align="left"><code>&#123;4&#125;</code></td>
+<td align="left">exact number</td>
+</tr>
+<tr>
+<td align="left"><code>&#123;4,6&#125;</code></td>
+<td align="left">range numbers (min, max)</td>
+</tr>
+<tr>
+<td align="left"><code>*</code></td>
+<td align="left">match 0 or more</td>
+</tr>
+</tbody></table>
+<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example:"></a>Example:</h3><h4 id="match-0-or-more"><a href="#match-0-or-more" class="headerlink" title="* match 0 or more"></a><code>*</code> match 0 or more</h4><ul>
+<li><code>\d*</code> match <code>hello_123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring = &quot;hello_123&quot;</span><br><span class="line">pattern = re.compile(r&quot;\d*&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(0, 0), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(1, 1), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(2, 2), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(3, 3), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(4, 4), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(5, 5), match&#x3D;’’&gt;<br>&lt;re.Match object; span&#x3D;(6, 9), match&#x3D;’123’&gt;<br>&lt;re.Match object; span&#x3D;(9, 9), match&#x3D;’’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="match-1-or-more"><a href="#match-1-or-more" class="headerlink" title="+ match 1 or more"></a><code>+</code> match 1 or more</h4><ul>
+<li>match<code>\d+</code> decimal <code>hello_123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring = &quot;hello_123&quot;</span><br><span class="line">pattern = re.compile(r&quot;\d+&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(6, 9), match&#x3D;’123’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>match decimal <code>_\d</code>with <code>hello_123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello_123&quot;</span><br><span class="line">pattern = re.compile(r&quot;_\d&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(5, 7), match&#x3D;’_1’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>match decimal <code>_\d</code>with <code>hello123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello123&quot;</span><br><span class="line">pattern = re.compile(r&quot;_\d&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>no match</p>
+</blockquote>
+</blockquote>
+<h4 id="match-0-or-1"><a href="#match-0-or-1" class="headerlink" title="? match 0 or 1"></a><code>?</code> match 0 or 1</h4><ul>
+<li><code>_?\d</code> with <code>hello123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello123&quot;</span><br><span class="line">pattern = re.compile(r&quot;_?\d&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(5, 7), match&#x3D;’_1’&gt;<br>&lt;re.Match object; span&#x3D;(7, 8), match&#x3D;’2’&gt;<br>&lt;re.Match object; span&#x3D;(8, 9), match&#x3D;’3’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>_?\d</code> with <code>hello_1_2_3</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello_1_2_3&quot;</span><br><span class="line">pattern = re.compile(r&quot;_?\d&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(5, 7), match&#x3D;’_1’&gt;<br>&lt;re.Match object; span&#x3D;(7, 9), match&#x3D;’_2’&gt;<br>&lt;re.Match object; span&#x3D;(9, 11), match&#x3D;’_3’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="x-y-range-numbers"><a href="#x-y-range-numbers" class="headerlink" title="{x,y} range numbers"></a><code>&#123;x,y&#125;</code> range numbers</h4><ul>
+<li><code>&#123;x,y&#125;</code> or <code>&#123;n&#125;</code> with <code>hello123</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">teststring = &quot;hello123&quot;</span><br><span class="line">pattern = re.compile(r&quot;\d&#123;1,3&#125;&quot;)</span><br><span class="line">match = pattern.finditer(teststring)</span><br><span class="line">for i in match:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<p>or <code>pattern = re.compile(r&quot;\d&#123;3&#125;&quot;)</code><br>&#96;</p>
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(5, 8), match&#x3D;’123’&gt;</p>
+</blockquote>
+</blockquote>
+<h4 id="greedy"><a href="#greedy" class="headerlink" title=".* greedy"></a><code>.*</code> greedy</h4><blockquote>
+<p>This is greedy: it matches as much as it can,<br>The longest possible string ending in h<br><img src="https://i.imgur.com/2PC3wgE.png"></p>
+</blockquote>
+<h4 id="non-greedy"><a href="#non-greedy" class="headerlink" title=".*? non greedy"></a><code>.*?</code> non greedy</h4><blockquote>
+<pre><code>The ? makes the .* non-greedy, matching as little as it can to make a match, and the parenthesis makes it a capture group as well.
+The shortest possible string ending in h
+</code></pre>
+<p><img src="https://i.imgur.com/GMV31XK.png"> &gt; <img src="https://i.imgur.com/LG1p6rT.png"></p>
+</blockquote>
+<h4 id="Date-Example"><a href="#Date-Example" class="headerlink" title="Date Example"></a>Date Example</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">dates = &#x27;&#x27;&#x27;</span><br><span class="line">01.04.2020</span><br><span class="line">2020.04.01</span><br><span class="line">2020-04-01</span><br><span class="line">2020-05-23</span><br><span class="line">2020-06-11</span><br><span class="line">2020-07-11</span><br><span class="line">2020-08-11</span><br><span class="line">2020/04/02</span><br><span class="line">2020_04_04</span><br><span class="line">2020_04_04</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>\d\d\d\d.\d\d.\d\d</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(r&#x27;\d\d\d\d.\d\d.\d\d&#x27;)</span><br><span class="line">matches=pattern.finditer(dates)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(13, 23), match&#x3D;’2020.04.01’&gt;<br>&lt;re.Match object; span&#x3D;(25, 35), match&#x3D;’2020-04-01’&gt;<br>&lt;re.Match object; span&#x3D;(36, 46), match&#x3D;’2020-05-23’&gt;<br>&lt;re.Match object; span&#x3D;(47, 57), match&#x3D;’2020-06-11’&gt;<br>&lt;re.Match object; span&#x3D;(58, 68), match&#x3D;’2020-07-11’&gt;<br>&lt;re.Match object; span&#x3D;(69, 79), match&#x3D;’2020-08-11’&gt;<br>&lt;re.Match object; span&#x3D;(81, 91), match&#x3D;’2020&#x2F;04&#x2F;02’&gt;<br>&lt;re.Match object; span&#x3D;(93, 103), match&#x3D;’2020_04_04’&gt;<br>&lt;re.Match object; span&#x3D;(104, 114), match&#x3D;’2020_04_04’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><p><code>\d\d\d\d[-/]\d\d[-/]\d\d</code></p>
+<blockquote>
+<p><code>re.compile(r&#39;\d\d\d\d[-/]\d\d[-/]\d\d&#39;)</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(25, 35), match&#x3D;’2020-04-01’&gt;<br>&lt;re.Match object; span&#x3D;(36, 46), match&#x3D;’2020-05-23’&gt;<br>&lt;re.Match object; span&#x3D;(47, 57), match&#x3D;’2020-06-11’&gt;<br>&lt;re.Match object; span&#x3D;(58, 68), match&#x3D;’2020-07-11’&gt;<br>&lt;re.Match object; span&#x3D;(69, 79), match&#x3D;’2020-08-11’&gt;<br>&lt;re.Match object; span&#x3D;(81, 91), match&#x3D;’2020&#x2F;04&#x2F;02’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p><code>\d\d\d\d[-/]0[56][-/]\d\d</code></p>
+<blockquote>
+<p><code>re.compile(r&#39;\d\d\d\d[-/]0[56][-/]\d\d&#39;)</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(36, 46), match&#x3D;’2020-05-23’&gt;<br>&lt;re.Match object; span&#x3D;(47, 57), match&#x3D;’2020-06-11’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>-<code>\d\d\d\d[-/]0[5-7][-/]\d\d</code> or <code>\d&#123;4&#125;</code></p>
+<blockquote>
+<p><code>re.compile(r&#39;\d\d\d\d[-/]0[5-7][-/]\d\d&#39;)</code><br>or<br><code>re.compile(r&#39;\d&#123;4&#125;[-/]0[5-7][-/]\d&#123;2&#125;&#39;)</code><br>or<br><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(36, 46), match&#x3D;’2020-05-23’&gt;<br>&lt;re.Match object; span&#x3D;(47, 57), match&#x3D;’2020-06-11’&gt;<br>&lt;re.Match object; span&#x3D;(58, 68), match&#x3D;’2020-07-11’&gt;</p>
+</blockquote>
+</blockquote>
+<p>change <code>\d\d\d\d</code> &#x3D;&gt;<code>\d&#123;4&#125;</code>, and <code>\d\d</code> &#x3D;&gt;<code>\d&#123;2&#125;</code></p>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">my_string = &quot;&quot;&quot;</span><br><span class="line">hello world</span><br><span class="line">1223</span><br><span class="line">2020-05-20</span><br><span class="line">Mr Simpson</span><br><span class="line">Mrs Simpson</span><br><span class="line">Mr. Brown</span><br><span class="line">Ms Smith</span><br><span class="line">Mr. T</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Mr\s\w+</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(r&#x27;Mr\s\w+&#x27;)</span><br><span class="line">matches=pattern.finditer(my_string)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(29, 39), match&#x3D;’Mr Simpson’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>\.?\s\w+</code><blockquote>
+<p><code>re.compile(r&#39;Mr\.?\s\w+&#39;)</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(29, 39), match&#x3D;’Mr Simpson’&gt;<br>&lt;re.Match object; span&#x3D;(52, 61), match&#x3D;’Mr. Brown’&gt;<br>&lt;re.Match object; span&#x3D;(71, 76), match&#x3D;’Mr. T’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>let use condition we wants to get Mr, Mrs</p>
+<blockquote>
+<p><code>	re.compile(r&#39;(Mr|Ms|Mrs)\.?\s\w+&#39;)</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(29, 39), match&#x3D;’Mr Simpson’&gt;<br>&lt;re.Match object; span&#x3D;(40, 51), match&#x3D;’Mrs Simpson’&gt;<br>&lt;re.Match object; span&#x3D;(52, 61), match&#x3D;’Mr. Brown’&gt;<br>&lt;re.Match object; span&#x3D;(62, 70), match&#x3D;’Ms Smith’&gt;<br>&lt;re.Match object; span&#x3D;(71, 76), match&#x3D;’Mr. T’&gt;</p>
+</blockquote>
+</blockquote>
+<h2 id="grouping-substring"><a href="#grouping-substring" class="headerlink" title="grouping substring"></a>grouping substring</h2><h3 id="email-example"><a href="#email-example" class="headerlink" title="email example"></a>email example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">my_string = &quot;&quot;&quot;</span><br><span class="line">pythonengineer@gmail.com</span><br><span class="line">Python-engineer@gmx.de</span><br><span class="line">python-engineer123@my-domain.org</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>[a-zA-z0-9-]+@</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(r&#x27;[a-zA-z0-9-]+@&#x27;)</span><br><span class="line">matches=pattern.finditer(my_string)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(1, 16), match&#x3D;‘pythonengineer@’&gt;<br>&lt;re.Match object; span&#x3D;(26, 42), match&#x3D;‘Python-engineer@’&gt;<br>&lt;re.Match object; span&#x3D;(49, 68), match&#x3D;‘python-engineer123@’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><code>[a-zA-z0-9-]+@[a-zA-Z-]+\.</code><blockquote>
+<p><code>pattern = re.compile(r&#39;[a-zA-z0-9-]+@[a-zA-Z-]+\.&#39;)</code> &gt; <code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(1, 22), match&#x3D;‘pythonengineer@gmail.’&gt;<br>&lt;re.Match object; span&#x3D;(26, 46), match&#x3D;‘Python-engineer@gmx.’&gt;<br>&lt;re.Match object; span&#x3D;(49, 78), match&#x3D;‘python-engineer123@my-domain.’&gt;</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h4 id="set-and-condition-example"><a href="#set-and-condition-example" class="headerlink" title="set and condition example"></a>set and condition example</h4><ul>
+<li>condition email example:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#condition</span><br><span class="line">pattern = re.compile(r&#x27;[a-zA-z0-9-]+@[a-zA-Z-]+\.(com|de|org)&#x27;)</span><br><span class="line">matches=pattern.finditer(my_string)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>set email example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set</span><br><span class="line">pattern =  re.compile(r&#x27;[a-zA-z0-9-]+@[a-zA-Z-]+\.[a-zA-z]+&#x27;)</span><br><span class="line">matches=pattern.finditer(my_string)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(1, 22), match&#x3D;‘pythonengineer@gmail.’&gt;<br>&lt;re.Match object; span&#x3D;(26, 46), match&#x3D;‘Python-engineer@gmx.’&gt;<br>&lt;re.Match object; span&#x3D;(49, 78), match&#x3D;‘python-engineer123@my-domain.’&gt;</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>use group instead match</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern = pattern = re.compile(r&#x27;([a-zA-z0-9-]+)@([a-zA-Z-]+)\.([a-zA-z]+)&#x27;)</span><br><span class="line">matches=pattern.finditer(my_string)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i.group())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p><a href="mailto:&#112;&#x79;&#116;&#x68;&#x6f;&#x6e;&#101;&#110;&#103;&#105;&#110;&#x65;&#101;&#x72;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#112;&#x79;&#116;&#x68;&#x6f;&#x6e;&#101;&#110;&#103;&#105;&#110;&#x65;&#101;&#x72;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a> &gt; &gt; <a href="mailto:&#x50;&#x79;&#116;&#104;&#111;&#x6e;&#45;&#101;&#110;&#103;&#x69;&#110;&#x65;&#x65;&#x72;&#64;&#x67;&#109;&#x78;&#46;&#100;&#x65;">&#x50;&#x79;&#116;&#104;&#111;&#x6e;&#45;&#101;&#110;&#103;&#x69;&#110;&#x65;&#x65;&#x72;&#64;&#x67;&#109;&#x78;&#46;&#100;&#x65;</a> &gt; &gt; <a href="mailto:&#112;&#x79;&#x74;&#104;&#x6f;&#x6e;&#45;&#x65;&#110;&#x67;&#x69;&#110;&#101;&#101;&#x72;&#x31;&#x32;&#x33;&#64;&#x6d;&#x79;&#45;&#100;&#111;&#x6d;&#97;&#x69;&#110;&#46;&#x6f;&#x72;&#103;">&#112;&#x79;&#x74;&#104;&#x6f;&#x6e;&#45;&#x65;&#110;&#x67;&#x69;&#110;&#101;&#101;&#x72;&#x31;&#x32;&#x33;&#64;&#x6d;&#x79;&#45;&#100;&#111;&#x6d;&#97;&#x69;&#110;&#46;&#x6f;&#x72;&#103;</a></p>
+</blockquote>
+</blockquote>
+<h2 id="Modifying-strings-method"><a href="#Modifying-strings-method" class="headerlink" title="Modifying strings method"></a>Modifying strings method</h2><table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">split()</td>
+<td align="left">Split the string into a list, splitting it wherever the RE matches</td>
+</tr>
+<tr>
+<td align="left">sub()</td>
+<td align="left">Findall substrings where the RE matches, and replace them with a different string</td>
+</tr>
+</tbody></table>
+<h3 id="Re-sub"><a href="#Re-sub" class="headerlink" title="Re.sub()"></a>Re.sub()</h3><ul>
+<li>substitute or replace Example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">my_string = &#x27;hello world, you are the best world&#x27;</span><br><span class="line">pattern = re.compile(r&#x27;world&#x27;)</span><br><span class="line">substring=pattern.sub(&quot;planet&quot;, my_string)</span><br><span class="line">print(substring)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>hello planet, you are the best planet</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>URL Example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text =&#x27;https://chenchih.page , Author is ChenChih&#x27;</span><br><span class="line">newtext= re.sub(&#x27;chenchih&#x27;, &#x27;CC&#x27; ,text)</span><br><span class="line">print(newtext) #https://CC.page , Author is ChenChih</span><br><span class="line">newtext= re.sub(&#x27;[C|c]hen[C|c]hih&#x27;, &#x27;CC&#x27; ,text)</span><br><span class="line">print(newtext) #https://CC.page , Author is CC</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cc.page/">https://CC.page</a> , Author is ChenChih<br><a target="_blank" rel="noopener" href="https://cc.page/">https://CC.page</a> , Author is CC</p>
+</blockquote>
+</blockquote>
+<h3 id="Re-split"><a href="#Re-split" class="headerlink" title="Re.split()"></a>Re.split()</h3><ul>
+<li>split string example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">my_string = &#x27;123abc456789abc123ABC&#x27;</span><br><span class="line">pattern = re.compile(r&#x27;abc&#x27;)</span><br><span class="line">splitted=pattern.split(my_string)</span><br><span class="line">print(splitted)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>[‘123’, ‘456789’, ‘123ABC’]</p>
+</blockquote>
+</blockquote>
+<h3 id="URL-Example"><a href="#URL-Example" class="headerlink" title="URL Example"></a>URL Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">urls = &quot;&quot;&quot;</span><br><span class="line">http://python-engineer.com</span><br><span class="line">https://www.python-engineer.org</span><br><span class="line">http://www.pyeng.net</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ex2.1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern=re.compile(r&quot;https?://(www\.)?([a-zA-Z-]+)\.[a-zA-Z]+&quot;)</span><br><span class="line">matches=pattern.finditer(urls)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(1, 27), match&#x3D;’<a target="_blank" rel="noopener" href="http://python-engineer.com&/#39;&gt;">http://python-engineer.com&#39;&gt;</a><br>&lt;re.Match object; span&#x3D;(28, 59), match&#x3D;’<a target="_blank" rel="noopener" href="https://www.python-engineer.org&/#39;&gt;">https://www.python-engineer.org&#39;&gt;</a><br>&lt;re.Match object; span&#x3D;(60, 80), match&#x3D;’<a target="_blank" rel="noopener" href="http://www.pyeng.net&/#39;&gt;">http://www.pyeng.net&#39;&gt;</a></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>ex2.2</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pattern=re.compile(r&quot;https?://(www\.)?([a-zA-Z-]+)(\.[a-zA-Z]+)&quot;)</span><br><span class="line">matches=pattern.finditer(urls)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i.group())</span><br><span class="line">suburl=pattern.sub(r&quot;\2\3&quot;, urls)</span><br><span class="line">print(suburl)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">http://python-engineer.com</span><br><span class="line">https://www.python-engineer.org</span><br><span class="line">http://www.pyeng.net</span><br><span class="line"></span><br><span class="line">python-engineer.com</span><br><span class="line">python-engineer.org</span><br><span class="line">pyeng.net</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ex2.3</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">matches=pattern.finditer(urls)</span><br><span class="line">for i in matches:</span><br><span class="line">    print(i.group(1))</span><br><span class="line">    print(i.group(2))</span><br><span class="line">    print(i.group(3))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">python-engineer</span><br><span class="line">.com</span><br><span class="line">www.</span><br><span class="line">python-engineer</span><br><span class="line">.org</span><br><span class="line">www.</span><br><span class="line">pyeng</span><br><span class="line">.net</span><br></pre></td></tr></table></figure>
+
+<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><table>
+<thead>
+<tr>
+<th align="left">Flag</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">re.A ( re.ASCII )</td>
+<td align="left">Makes several escapes like \w, \b, \s and \d match only on ASCII characters with the respective property.</td>
+</tr>
+<tr>
+<td align="left">re.I (re.IGNORECASE )</td>
+<td align="left">case-insensitive matching</td>
+</tr>
+<tr>
+<td align="left">re.M ( re.MULTILINE )</td>
+<td align="left">Multi-line matching, &#x3D;used with metacharacter ^ (caret) and $ (dollar)</td>
+</tr>
+<tr>
+<td align="left">re.S ( re.DOTALL )</td>
+<td align="left">DOT (.) special character match any character at all, including a newline. Without this flag, DOT(.) will match anything except a newline</td>
+</tr>
+<tr>
+<td align="left">re.X ( re.VERBOSE )</td>
+<td align="left">comment in the regex. Enable verbose REs, which can be organized more cleanly and understandably.</td>
+</tr>
+<tr>
+<td align="left">re.L (re.LOCALE )</td>
+<td align="left">case-insensitive matching dependent on the current locale. Use only with bytes patterns</td>
+</tr>
+</tbody></table>
+<h3 id="example1"><a href="#example1" class="headerlink" title="example1"></a>example1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is ChenChih&#x27;</span><br><span class="line">pattern=re.compile(&#x27;Chenchih&#x27;,re.I) #chenchih</span><br><span class="line">matches=pattern.finditer(text)</span><br><span class="line">for match in matches:</span><br><span class="line">    print(match)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(8, 16), match&#x3D;’chenchih’&gt;<br>&lt;re.Match object; span&#x3D;(34, 42), match&#x3D;’ChenChih’&gt;</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">string=&quot;Hello World&quot;</span><br><span class="line">pattern=re.compile(r&quot;world&quot;, re.I)</span><br><span class="line">matches=pattern.finditer(string)</span><br><span class="line">for match in matches:</span><br><span class="line">    print(match)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output</code></p>
+<blockquote>
+<p>&lt;re.Match object; span&#x3D;(6, 11), match&#x3D;’World’&gt;</p>
+</blockquote>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://superuser.com/questions/1123701/what-is-the-difference-between-and-in-regex">https://superuser.com/questions/1123701/what-is-the-difference-between-and-in-regex</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27881366/regular-expressions-and">https://stackoverflow.com/questions/27881366/regular-expressions-and</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean">https://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean</a></li>
+<li><a target="_blank" rel="noopener" href="https://rubular.com/r/N5yX9LTWTo">https://rubular.com/r/N5yX9LTWTo</a></li>
+<li><a target="_blank" rel="noopener" href="https://regex101.com/">https://regex101.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://chwang12341.medium.com/%E7%B5%A6%E8%87%AA%E5%B7%B1%E7%9A%84python%E5%B0%8F%E7%AD%86%E8%A8%98-%E5%BC%B7%E5%A4%A7%E7%9A%84%E6%95%B8%E6%93%9A%E8%99%95%E7%90%86%E5%B7%A5%E5%85%B7-%E6%AD%A3%E5%89%87%E8%A1%A8%E9%81%94%E5%BC%8F-regular-expression-regex%E8%A9%B3%E7%B4%B0%E6%95%99%E5%AD%B8-a5d20341a0b2">https://chwang12341.medium.com/%E7%B5%A6%E8%87%AA%E5%B7%B1%E7%9A%84python%E5%B0%8F%E7%AD%86%E8%A8%98-%E5%BC%B7%E5%A4%A7%E7%9A%84%E6%95%B8%E6%93%9A%E8%99%95%E7%90%86%E5%B7%A5%E5%85%B7-%E6%AD%A3%E5%89%87%E8%A1%A8%E9%81%94%E5%BC%8F-regular-expression-regex%E8%A9%B3%E7%B4%B0%E6%95%99%E5%AD%B8-a5d20341a0b2</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/" title="RegularExpression-Python">https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
+              <a href="/hexo-demo2022/tags/regExp/" rel="tag"># regExp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/11/29/2022-11-29-Loop/" rel="prev" title="2022-11-29-Loop">
+                  <i class="fa fa-chevron-left"></i> 2022-11-29-Loop
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">167k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:32</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

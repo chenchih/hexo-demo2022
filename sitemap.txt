@@ -1,16 +1,17 @@
+https://github.com/chenchih/2022/10/18/20221018-substringSearch/
+https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/
+https://github.com/chenchih/2022/10/23/20221023-List/
+https://github.com/chenchih/2022/11/23/20221123-Function/
 https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/
 https://github.com/chenchih/2022/11/29/2022-11-29-Loop/
 https://github.com/chenchih/2022/11/24/20221124-set/
 https://github.com/chenchih/2022/11/24/20221124-tuple/
 https://github.com/chenchih/2022/11/24/20221124-dictionary/
-https://github.com/chenchih/2022/10/23/20221023-List/
 https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/
-https://github.com/chenchih/2022/11/23/20221123-Function/
 https://github.com/chenchih/2022/11/23/20221123-pandas/
 https://github.com/chenchih/2022/11/24/20221124-selenium/
 https://github.com/chenchih/2022/07/30/2022-07-30-Print/
 https://github.com/chenchih/2022/07/31/2022-07-31-linux-bash/
-https://github.com/chenchih/2022/10/18/20221018-substringSearch/
 https://github.com/chenchih/2022/08/21/20221023_FileReadWriteFile/
 https://github.com/chenchih/2022/10/23/20221023_Excel-ReadWrite/
 https://github.com/chenchih/2022/06/11/2022-06-11-[CSS-Layout]_GRID/
@@ -51,7 +52,6 @@ https://github.com/chenchih/tags/%E5%BE%8C%E7%AB%AF%E6%96%87/
 https://github.com/chenchih/tags/fileIO/
 https://github.com/chenchih/tags/search/
 https://github.com/chenchih/tags/excel/
-https://github.com/chenchih/tags/re/
 https://github.com/chenchih/tags/pandas/
 https://github.com/chenchih/tags/function/
 https://github.com/chenchih/tags/bash/
@@ -59,6 +59,8 @@ https://github.com/chenchih/tags/selenium/
 https://github.com/chenchih/tags/automation/
 https://github.com/chenchih/tags/datascience/
 https://github.com/chenchih/tags/mysql/
+https://github.com/chenchih/tags/Method/
+https://github.com/chenchih/tags/regExp/
 https://github.com/chenchih/categories/WebDev/
 https://github.com/chenchih/categories/devtool/
 https://github.com/chenchih/categories/Hexo/

@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,139 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/23/20221023-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/23/20221023-List/" class="post-title-link" itemprop="url">List and ZIP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-23 11:34:35" itemprop="dateCreated datePublished" datetime="2022-10-23T11:34:35+08:00">2022-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-14 15:10:33" itemprop="dateModified" datetime="2023-04-14T15:10:33+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="list-列印"><a href="#list-列印" class="headerlink" title="list 列印"></a>list 列印</h2><p>這裡會包含以下內內容:</p>
+<ul>
+<li>基本讀 list 搭配 <code>for</code></li>
+<li><code>*</code>list (快速讀 list 不需要用到 <code>for</code> loop)</li>
+<li>N 筆後換</li>
+<li>轉換 list 到字串(搭配 join)</li>
+<li><code>enumerate</code> 方法</li>
+<li>Method:<ul>
+<li>split</li>
+<li>slice</li>
+<li>copy</li>
+<li>zip</li>
+<li>轉換 list 理的 tuple 到 list</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用的方式印-list-內容"><a href="#常用的方式印-list-內容" class="headerlink" title="常用的方式印 list 內容"></a>常用的方式印 list 內容</h3><p>list : <code>list = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;]</code></p>
+<p>我們可以用以下方法:</p>
+<h4 id="for-loop"><a href="#for-loop" class="headerlink" title="- for loop"></a>- <code>for</code> loop</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list= [1,2,3]</span><br><span class="line">for i in list:</span><br><span class="line">    print(i, end=&quot; &quot;) #</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>1 2 3</p>
+</blockquote>
+</blockquote>
+<h4 id="list-不需要-for-loop-，可以-unpack-list"><a href="#list-不需要-for-loop-，可以-unpack-list" class="headerlink" title="- *list: 不需要 for loop ，可以 unpack list"></a>- <code>*</code>list: 不需要 for loop ，可以 unpack list</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023-List/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/18/20221018-substringSearch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -240,7 +373,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 11:46:11" itemprop="dateModified" datetime="2022-11-23T11:46:11+08:00">2022-11-23</time>
+      <time title="Modified: 2023-04-19 14:41:32" itemprop="dateModified" datetime="2023-04-19T14:41:32+08:00">2023-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,14 +392,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>14k</span>
+      <span>22k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>13 mins.</span>
+      <span>20 mins.</span>
     </span>
 </div>
 
@@ -277,39 +410,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>今天分享如何搜尋字串裡面的substring或如果有檔案(log)想找相關字來做分析。</p>
-<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的string是: </p>
+          <p>今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。</p>
+<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的 string 是:</p>
 <blockquote>
 <p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
 </blockquote>
-<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和<code>(Mbps)</code>移除，可以用下面方式:</p>
+<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和 <code>(Mbps)</code>移除，可以用下面方式:</p>
 <ul>
-<li><p>Step1: 宣告我的string</p>
+<li>Step1: 宣告我的 string</li>
+</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Step2 抓取時間直</p>
+
+<ul>
+<li>Step2 抓取時間直</li>
+</ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateStr = st.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">print(dateStr) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>output:</p>
 <blockquote>
 <p>20221013.162853.788442</p>
 </blockquote>
 </blockquote>
-</li>
-<li><p>Step3 抓取TPUT直<br>這裡會用到<code>spit</code>和<code>strip</code><br><code>spit</code>是把字源切開，切完只留下Tput，會發現有空白，因此在後面加<code>strip</code>把空白移除就可以。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉 </span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output:</p>
-<blockquote>
-<p>0.010799</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br></pre></td></tr></table></figure>
-<p>以上的方法很簡單的方法，但是這種方法很不好因為如果整個索引改變了我們程式就會壞了。我現在都是用split，他就是用我們的索引在切。還有一個問題就是程是不乾靜，因此如果有更好方法避免用此方法。下面我會用regular expression方法呈現出我們要找的直。</p>
-<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
@@ -1398,135 +1520,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/03/2022-07-03-zsh_ohmysh_setting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/03/2022-07-03-zsh_ohmysh_setting/" class="post-title-link" itemprop="url">UBUNTU-Zsh + Oh My Zsh + Powerlevel10k</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-03 09:00:18" itemprop="dateCreated datePublished" datetime="2022-07-03T09:00:18+08:00">2022-07-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到<code>zsh</code> 和 <code>ohmysh</code>。</p>
-<p>本篇文章會安裝以下套件：</p>
-<ul>
-<li>ubuntu 安裝和設定 <ul>
-<li>基本套件: <code>zsh</code> <code>git</code> <code>wget</code> <code>curl</code></li>
-<li><code>ohymysh</code>套件</li>
-<li>shell 設定</li>
-<li><code>Oh My Zsh</code> 安裝，主題設定</li>
-<li>安裝<code>Powerlevel10k</code> 主題，不然會怪怪</li>
-</ul>
-</li>
-</ul>
-<h2 id="更新-ubuntu-套件"><a href="#更新-ubuntu-套件" class="headerlink" title="更新 ubuntu 套件"></a>更新 ubuntu 套件</h2><p><code>$ sudo apt-get update</code></p>
-<h2 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h2><h3 id="檢查我們目前支援的shells"><a href="#檢查我們目前支援的shells" class="headerlink" title="檢查我們目前支援的shells"></a>檢查我們目前支援的shells</h3><blockquote>
-<p>目前支援的shells<br><code>$cat /etc/shells</code></p>
-</blockquote>
-<p><img src="https://i.imgur.com/SGzosrt.png" alt="zsh-after"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-zsh_ohmysh_setting/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/hexo-demo2022/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="page-number current">2</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><a class="extend next" rel="next" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/hexo-demo2022/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="page-number current">2</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -1538,7 +1533,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1549,13 +1544,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">132k</span>
+    <span title="Symbols count total">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:01</span>
+    <span title="Reading time total">2:32</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
