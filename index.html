@@ -159,7 +159,7 @@
         <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
@@ -794,7 +794,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 14:45:15" itemprop="dateModified" datetime="2022-11-25T14:45:15+08:00">2022-11-25</time>
+      <time title="Modified: 2023-04-28 17:26:32" itemprop="dateModified" datetime="2023-04-28T17:26:32+08:00">2023-04-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -813,14 +813,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>8 mins.</span>
+      <span>11 mins.</span>
     </span>
 </div>
 
@@ -831,35 +831,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>今天想分享如何用dictionary字典方式存資料。</p>
-<h2 id="key-and-Value-如何使用宣槓取直"><a href="#key-and-Value-如何使用宣槓取直" class="headerlink" title="key and Value 如何使用宣槓取直"></a>key and Value 如何使用宣槓取直</h2><h3 id="declare-dictionary宣告dict"><a href="#declare-dictionary宣告dict" class="headerlink" title="declare dictionary宣告dict"></a>declare dictionary宣告dict</h3><p>It&#39;s an unorder , it&#39;s not next to each other, so we can&#39;t use index like we use in list.  Dictionary will have a a key and value look like this:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    &#x27;keyA&#x27;:1,</span><br><span class="line">    &#x27;keyB&#x27;:2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Access-and-Get-value取我們的直"><a href="#Access-and-Get-value取我們的直" class="headerlink" title="Access and Get value取我們的直:"></a>Access and Get value取我們的直:</h3><p>取key的直: <code>print(dict[&#39;keyA&#39;])</code> &#x3D;&gt; <code>1</code><br>取所有直 <code>print(dic)</code> &#x3D;&gt; <code>&#123;&#39;keyA&#39;: 1, &#39;keyB&#39;: 2&#125;</code></p>
-<h3 id="宣告不同data-type"><a href="#宣告不同data-type" class="headerlink" title="宣告不同data type"></a>宣告不同data type</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    &#x27;keyA&#x27;:[1,2,3], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <p>今天想分享如何用 dictionary 字典方式存資料。</p>
+<h2 id="key-and-Value-如何使用宣槓取直"><a href="#key-and-Value-如何使用宣槓取直" class="headerlink" title="key and Value 如何使用宣槓取直"></a>key and Value 如何使用宣槓取直</h2><blockquote>
 <ul>
-<li><p>取keyA的直 </p>
-<blockquote>
-<p><code>print(dict)</code> </p>
-<blockquote>
-<p>output<br>{‘keyA’: [1, 2, 3], ‘keyB’: ‘hello’, ‘keyC’: True}</p>
-</blockquote>
-</blockquote>
-</li>
-<li><p>取keyA的第2直:</p>
-<blockquote>
-<p><code>print(dict[&#39;keyA&#39;][1])</code> &#x3D;&gt; <code>2</code></p>
-</blockquote>
-</li>
-<li><p>list 裡面放dict</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dict=[&#123;</span><br><span class="line">    &#x27;keyA&#x27;:[1,2,3], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">        &#x27;keyA&#x27;:[4,5,6], #list</span><br><span class="line">    &#x27;keyB&#x27;:&#x27;hello&#x27;, #tuple</span><br><span class="line">    &#x27;keyC&#x27;: True</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>print(dict[0][&#39;keyA&#39;][2])</code> &#x3D;&gt; <code>2</code></p>
-</blockquote>
-</li>
+<li>collection of of {key:value} pairs</li>
+<li>no duplicate</li>
+<li>allow changeable and ordered</li>
 </ul>
+</blockquote>
+<h3 id="declare-dictionary-宣告-dict"><a href="#declare-dictionary-宣告-dict" class="headerlink" title="declare dictionary 宣告 dict"></a>declare dictionary 宣告 dict</h3><p>It&#39;s an unorder , it&#39;s not next to each other, so we can&#39;t use index like we use in list. Dictionary will have a a key and value look like this:</p>
+<blockquote>
+<p>syntax:</p>
+<blockquote>
+<p>declare: <code>dictname= &#123;key:value&#125;</code><br>get key: <code>print(dictname[&#39;key&#39;])</code></p>
+</blockquote>
+</blockquote>
+<h3 id="Access-and-Get-value-取我們的直"><a href="#Access-and-Get-value-取我們的直" class="headerlink" title="Access and Get value 取我們的直:"></a>Access and Get value 取我們的直:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;</span><br><span class="line">    &#x27;keyA&#x27;:1,</span><br><span class="line">    &#x27;keyB&#x27;:2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取 key 的直: <code>print(dict[&#39;keyA&#39;])</code> &#x3D;&gt; <code>1</code><br>取所有直 <code>print(dict)</code> &#x3D;&gt; <code>&#123;&#39;keyA&#39;: 1, &#39;keyB&#39;: 2&#125;</code></p>
+<h3 id="宣告不同-data-type"><a href="#宣告不同-data-type" class="headerlink" title="宣告不同 data type"></a>宣告不同 data type</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/11/24/20221124-dictionary/#more" rel="contents">
@@ -1383,13 +1373,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">167k</span>
+    <span title="Symbols count total">171k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:32</span>
+    <span title="Reading time total">2:35</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

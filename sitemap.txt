@@ -1,3 +1,4 @@
+https://github.com/chenchih/2022/11/24/20221124-dictionary/
 https://github.com/chenchih/2022/10/23/20221023-List/
 https://github.com/chenchih/2022/10/18/20221018-substringSearch/
 https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/
@@ -6,7 +7,6 @@ https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/
 https://github.com/chenchih/2022/11/29/2022-11-29-Loop/
 https://github.com/chenchih/2022/11/24/20221124-set/
 https://github.com/chenchih/2022/11/24/20221124-tuple/
-https://github.com/chenchih/2022/11/24/20221124-dictionary/
 https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/
 https://github.com/chenchih/2022/11/23/20221123-pandas/
 https://github.com/chenchih/2022/11/24/20221124-selenium/
