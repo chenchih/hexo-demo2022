@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -195,6 +195,120 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/23/20221023_Excel-ReadWrite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/" class="post-title-link" itemprop="url">Excel_ReadWrite</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-23 11:58:07" itemprop="dateCreated datePublished" datetime="2022-10-23T11:58:07+08:00">2022-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-22 08:59:13" itemprop="dateModified" datetime="2022-11-22T08:59:13+08:00">2022-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Create-empty-Excel-File"><a href="#Create-empty-Excel-File" class="headerlink" title="Create empty Excel File"></a>Create empty Excel File</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
+<h2 id="Create-Sheet工作表的"><a href="#Create-Sheet工作表的" class="headerlink" title="Create Sheet工作表的"></a>Create Sheet工作表的</h2><h3 id="Create-Empty-Sheet-新增工作"><a href="#Create-Empty-Sheet-新增工作" class="headerlink" title="Create Empty Sheet 新增工作"></a>Create Empty Sheet 新增工作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.create_sheet(&quot;Sheet1&quot;, 0) </span><br><span class="line">wb.create_sheet(&quot;Sheet2&quot;, 1)</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
+<h3 id="Read-Excel-Sheet-讀取excel檔案每個工作表的名稱"><a href="#Read-Excel-Sheet-讀取excel檔案每個工作表的名稱" class="headerlink" title="Read Excel Sheet 讀取excel檔案每個工作表的名稱"></a>Read Excel Sheet 讀取excel檔案每個工作表的名稱</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.load_workbook(fn)</span><br><span class="line">print(wb.sheetnames)</span><br><span class="line">print(wb.active)</span><br><span class="line">print(wb.active.title)</span><br></pre></td></tr></table></figure>
+
+<p>output: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Sheet1&#x27;, &#x27;Sheet2&#x27;, &#x27;Sheet&#x27;]</span><br><span class="line">&lt;Worksheet &quot;Sheet1&quot;&gt;</span><br><span class="line">Sheet1</span><br></pre></td></tr></table></figure>
+
+<h3 id="edit-Name-of-worksheet-修改工作表名稱"><a href="#edit-Name-of-worksheet-修改工作表名稱" class="headerlink" title="edit Name of worksheet 修改工作表名稱"></a>edit Name of worksheet 修改工作表名稱</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1400,126 +1514,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/03/2022-07-03-Markup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/" class="post-title-link" itemprop="url">Markdown 指令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-03 11:23:24" itemprop="dateCreated datePublished" datetime="2022-07-03T11:23:24+08:00">2022-07-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天我想寫關於 <code>Markdown</code>相關指令。想信大家都會常用MD或是markdown。</p>
-<h2 id="字體效果"><a href="#字體效果" class="headerlink" title="字體效果"></a>字體效果</h2><p><em>斜體字</em> &#x3D;&#x3D;&gt; <code>*文字*</code><br><strong>粗體字</strong>  &#x3D;&#x3D;&gt; <code>**文字**</code><br><em><strong>斜粗體</strong></em>  &#x3D;&#x3D;&gt; <code>***文字***</code><br><del>刪除線strikethrough</del>  &#x3D;&#x3D;&gt; <code>~~文字~~</code><br><em>斜體2</em>  &#x3D;&#x3D;&gt; <code>_文字_</code><br><strong>斜粗2</strong>  &#x3D;&#x3D;&gt; <code>__文字__</code><br>正常^上標^ &#x3D;&#x3D;&gt;  <code>文字^string1^</code><br>正常<del>下標</del> &#x3D;&#x3D;&gt;  <code>文字~string1~</code><br>++底線++  &#x3D;&#x3D;&gt;  <code>++文字++</code><br>&#x3D;&#x3D;螢光標記&#x3D;&#x3D;  &#x3D;&#x3D;&gt; <code>==文字==</code></p>
-<h2 id="color顏色"><a href="#color顏色" class="headerlink" title="color顏色"></a>color顏色</h2><ul>
-<li><font color="red">color</font> &#x3D;&#x3D;&gt; <code>&lt;font color=&quot;red&quot;&gt;text &lt;/font&gt;</code></li>
-<li><mark style="background-color: #FFFF00">Highlighted text</mark> &#x3D;&gt; <code>&lt;mark style=&quot;background-color: #FFFF00&quot;&gt;Highlighted text&lt;/mark&gt;</code><blockquote>
-<p>change mark or span&#x2F;div</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Font-Size-大小"><a href="#Font-Size-大小" class="headerlink" title="Font Size 大小"></a>Font Size 大小</h2><ul>
-<li><font size="5">  <strong>HTML</strong></font>  &#x3D;&#x3D;&gt; <code>&lt;font size=5&gt;  **HTML**&lt;/font&gt; </code></li>
-</ul>
-<h2 id="Horizontal-Rules"><a href="#Horizontal-Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h2><hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">***</span><br><span class="line">___</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/hexo-demo2022/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="page-number current">2</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1533,7 +1527,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1544,13 +1538,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">171k</span>
+    <span title="Symbols count total">177k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">2:41</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>

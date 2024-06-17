@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,7 +149,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -195,6 +195,113 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/" class="post-title-link" itemprop="url">Terminal-oh-my-posh</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-06-17 14:34:35 / Modified: 17:02:03" itemprop="dateCreated datePublished" datetime="2024-06-17T14:34:35+08:00">2024-06-17</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 <code>shell</code> <code>bash</code> <code>zsh</code> <code>powershell</code> <code>fish</code>等等。我有寫一篇比較完整，在<a target="_blank" rel="noopener" href="https://medium.com/jacklee26/setup-fancy-terminal-using-ohmyposh-9f0ce00948bf?source=collection_home---4------0-----------------------">Medium</a> 因此今天會寫簡短方法。</p>
+<h1 id="安裝工具"><a href="#安裝工具" class="headerlink" title="安裝工具"></a>安裝工具</h1><h2 id="軟體安裝服務比較"><a href="#軟體安裝服務比較" class="headerlink" title="軟體安裝服務比較"></a>軟體安裝服務比較</h2><p>如果你有用過 Ubuntu 都會看到大家常用 <code>apt-get install</code> 這命令，這個就是我稱為的安裝服務工具。他可以很快速幫助你要安裝個套件。我今天要介紹 3 個，但我會以 winget 優先用，如果 <code>winget</code> 沒有套件再選其他兩個。<code>winget</code> 是微軟開發因此我才會優先用他。我會盡可能不去商店下載。</p>
+<p>正常來說 winget 預設鏡安裝了，如果你是 win10 都會安裝，如果指令找不到就用下方的方法。如果 <code>winget</code>有，那把 <code>scoop</code>安裝，<code>Chocolatey</code>就看你要挨裝嗎，我目前沒用到。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/windows/package-manager/winget/?WT.mc_id=DOP-MVP-37580">Winget</a><br>先到這裡<a target="_blank" rel="noopener" href="https://aka.ms/getwingetpreview">下載</a> ，檔案會是 <code>Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle</code>然後用這個指令安裝:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Add -AppPackage</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/install">Chocolatey</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -794,7 +901,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-28 17:26:32" itemprop="dateModified" datetime="2023-04-28T17:26:32+08:00">2023-04-28</time>
+      <time title="Modified: 2023-05-02 10:46:26" itemprop="dateModified" datetime="2023-05-02T10:46:26+08:00">2023-05-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1235,120 +1342,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/23/20221023_Excel-ReadWrite/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/" class="post-title-link" itemprop="url">Excel_ReadWrite</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-23 11:58:07" itemprop="dateCreated datePublished" datetime="2022-10-23T11:58:07+08:00">2022-10-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 08:59:13" itemprop="dateModified" datetime="2022-11-22T08:59:13+08:00">2022-11-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>3.8k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>3 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Create-empty-Excel-File"><a href="#Create-empty-Excel-File" class="headerlink" title="Create empty Excel File"></a>Create empty Excel File</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
-<h2 id="Create-Sheet工作表的"><a href="#Create-Sheet工作表的" class="headerlink" title="Create Sheet工作表的"></a>Create Sheet工作表的</h2><h3 id="Create-Empty-Sheet-新增工作"><a href="#Create-Empty-Sheet-新增工作" class="headerlink" title="Create Empty Sheet 新增工作"></a>Create Empty Sheet 新增工作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.create_sheet(&quot;Sheet1&quot;, 0) </span><br><span class="line">wb.create_sheet(&quot;Sheet2&quot;, 1)</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
-<h3 id="Read-Excel-Sheet-讀取excel檔案每個工作表的名稱"><a href="#Read-Excel-Sheet-讀取excel檔案每個工作表的名稱" class="headerlink" title="Read Excel Sheet 讀取excel檔案每個工作表的名稱"></a>Read Excel Sheet 讀取excel檔案每個工作表的名稱</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.load_workbook(fn)</span><br><span class="line">print(wb.sheetnames)</span><br><span class="line">print(wb.active)</span><br><span class="line">print(wb.active.title)</span><br></pre></td></tr></table></figure>
-
-<p>output: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Sheet1&#x27;, &#x27;Sheet2&#x27;, &#x27;Sheet&#x27;]</span><br><span class="line">&lt;Worksheet &quot;Sheet1&quot;&gt;</span><br><span class="line">Sheet1</span><br></pre></td></tr></table></figure>
-
-<h3 id="edit-Name-of-worksheet-修改工作表名稱"><a href="#edit-Name-of-worksheet-修改工作表名稱" class="headerlink" title="edit Name of worksheet 修改工作表名稱"></a>edit Name of worksheet 修改工作表名稱</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/hexo-demo2022/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo2022/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1362,7 +1355,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1373,13 +1366,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">171k</span>
+    <span title="Symbols count total">177k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">2:35</span>
+    <span title="Reading time total">2:41</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
