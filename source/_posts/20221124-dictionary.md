@@ -227,7 +227,7 @@ country = {
   > `country.pop("Taiwan")` > `print(country)`
   >
   > > `output:`
-  > > #{'USA': 'WDC', 'China': 'BJN', 'Thailand': 'BKK', 'Japan': 'TTT'}
+  > > {'USA': 'WDC', 'China': 'BJN', 'Thailand': 'BKK', 'Japan': 'TTT'}
 
 - popitem:移除最後一組
   pop item will remove the latest item
@@ -456,7 +456,8 @@ print(any(squares))
 # Output: 6
 print(len(squares))
 
-# Output: [0, 1, 3, 5, 7,
+# Output: [0, 1, 3, 5, 7]
+
 ```
 
 ## ALL Examples
@@ -501,19 +502,14 @@ squares = {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 
 # remove a particular item, returns its value
 print(squares.pop(4)) #16
-
 print(squares) #{1: 1, 2: 4, 3: 9, 5: 25}
 
 # remove an arbitrary item, return (key,value)
-
 print(squares.popitem()) # (5, 25)
-
-
 print(squares)#{1: 1, 2: 4, 3: 9}
 
 # remove all items
 squares.clear()
-
 print(squares) #{}
 
 # delete the dictionary itself
@@ -528,9 +524,7 @@ print(squares)
 ```
 # Membership Test for Dictionary Keys
 squares = {1: 1, 3: 9, 5: 25, 7: 49, 9: 81}
-
 print(1 in squares) #True
-
 print(2 not in squares) #True
 
 # membership tests for key only not value
