@@ -495,9 +495,9 @@ function pst { Get-Clipboard }
 - 套件移除: `Scoop uninstall <package> `, `-p` cfg 也刪
 - 更新所有套件: `Scoop update *`
 
-# 終結
+# 總結
 
-我們來做一些終結設定
+我們來做一些總結設定
 
 ```
 
@@ -551,7 +551,7 @@ ctrl+shift+p =>show all hotkey
 - [Will 保哥 設定教學](https://blog.miniasp.com/post/2021/11/24/PowerShell-prompt-with-Oh-My-Posh-and-Windows-Terminal)
 - [SCOTT HANSELMAN blog](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal)
 - [devaslife YT 影片教學](https://www.youtube.com/watch?v=5-aK2_WwrmM&t=63s)
-- [devaslife git 影片教學](https://github.com/craftzdog/dotfiles-public)
+- [devaslife git](https://github.com/craftzdog/dotfiles-public)
 - [ChrisTitusTech-automation config](https://github.com/ChrisTitusTech/powershell-profile/tree/main)
 - [ohmyposh](https://ohmyposh.dev/docs/)
 - [winget doc](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
