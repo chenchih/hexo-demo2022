@@ -139,6 +139,43 @@ categories:
   - 產生 `MD` -> HTML 到 PUBLIC: `hexo generate` or `hexo g`
   - public 推上 github: `hexo deploy` or `hexo d`
 
+## Upload image 上傳照片
+
+> Update 2024 突然發現
+
+我之前上傳磚片都是應用網站再把圖 URL 貼上來，今天發現一上傳在本機也可以，用 hexo 內建。
+
+- Step1 設定 `_config.yml`
+
+請到 `_config.yml`去搜尋下面這個，確定是設定 `True`，如果有設定建立新文章會自動幫你建資料夾你就可以放圖片
+
+```
+post_asset_folder: true
+```
+
+- Step2 安裝下面套件
+
+```
+npm i -s hexo-asset-link
+```
+
+如果安裝無法顯示出來
+
+- Step3 建立新文章
+  請建立新文章 `hexo new <post name> ` 再確定有件立資料夾，把圖片放進去。
+  如果你建立文章為 `test` 就會建立 `test`資料夾，你就可以放圖放進去。
+- Step4 加入圖的連結
+
+> Syntax: `{% asset_img <image-path.png> <Alt Text> %}`
+
+> exaample if my photo name is test.png
+
+```
+{% asset_img test.png testimage %}
+```
+
+如果之前文章沒用上面方式建立文章，可以手動建立資料夾，但資料夾要跟檔名 一樣
+
 ## 常用指令
 
 Hexo 會用到一些指令，更多詳細指令可參考[官方文件](https://hexo.io/zh-tw/docs/commands)。

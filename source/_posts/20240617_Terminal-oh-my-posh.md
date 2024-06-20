@@ -109,6 +109,8 @@ notepad $profile
 > `$env`:預設路徑
 > 你們會好奇為什麼 `$env`會知道預設 theme，因為 `env`是 powershell 環境變數，你可以下這個指令看$env所以的參數`ChildItem env:` 就會看到`$env:POSH_THEMES_PATH` 會有 theme 完整路徑。這個好處是你不用打那麼長一串。
 
+{% asset_img child_env.PNG %}
+
 ```
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\iterm2.omp.json" | Invoke-Expression
 ```
@@ -219,20 +221,26 @@ function hosts { notepad c:\windows\system32\drivers\etc\hosts }
 ## Terminal Icons
 
 > - 安裝
->
-> > `Install-Module -Name Terminal-Icons -Repository PSGallery -Force`
+
+```
+Install-Module -Name Terminal-Icons -Repository PSGallery -Force
+```
 
 > - 匯入
 >
 > > `Import-Module Terminal-Icons`
+
+{% asset_img terminal_icon.PNG %}
 
 ## psreadline(Autocompletion)
 
 這個套件很龐大，你們可以參考以下[網站](https://learn.microsoft.com/zh-tw/powershell/module/psreadline/about/about_psreadline_functions?view=powershell-7.4)有很多我並沒介紹
 
 > - 安裝
->
-> > `Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck`
+
+```
+Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+```
 
 > - 匯入
 >
@@ -265,6 +273,14 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+d,Ctrl+c' -Function CaptureScreen
 
 > https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1
 
+你可以下這個指令來看 psreadline 的鍵和功能，上方有設新的鍵他也會 update，非常實用指令:
+
+```
+ Get-PSReadLineKeyHandler
+```
+
+{% asset_img psreadline_key.PNG %}
+
 ## PSFzf (fuzzy finder)
 
 我捫其實是用在 powershell，因此需要安裝 PSFZF，他會把 FZF 包在裡面
@@ -284,9 +300,9 @@ Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 ```
 
-- Ctrl+f: 可以濫你歷史紀錄用的指令
-- ctrl+r: 搜尋目錄所有檔案
-- Alt+c: 可以進子目錄或目錄
+- `Ctrl+f`: 可以濫你歷史紀錄用的指令
+- `ctrl+r`: 搜尋目錄所有檔案
+- `Alt+c`: 可以進子目錄或目錄
 
 這個非常方便如果你要搜尋特別檔案就可以已用 `ctrl+r` 或是進入任何目錄也可以用 `atl+c`。
 
@@ -307,6 +323,8 @@ function f2{$(fzf --height 60% --layout=reverse --border)}
 $env:FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 ```
 
+{% asset_img fzf_layout.PNG %}
+
 ###　 Preview
 可以看歡看檔案內容，不需要開啟
 
@@ -318,6 +336,8 @@ function ff{
 nvim $(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')
 }
 ```
+
+{% asset_img fzf_preview.PNG %}
 
 可以用上面方式也可以開啟指定的文字 textedior，如 `notepad` `vi` `vim` `neovim` `nano` 等等
 
@@ -478,6 +498,8 @@ function pst { Get-Clipboard }
 ```
 "C:\Users\test\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe" -nologo
 ```
+
+{%asset_img terminal_hidden.png%}
 
 # window 相關命令
 
