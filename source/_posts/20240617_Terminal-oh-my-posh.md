@@ -565,7 +565,11 @@ ctrl+shift+, => 開啟therminal settings.json
 ctrl+shift+p =>show all hotkey
 ```
 
-我建立其他主體如果你不喜歡可以到此處看我用 segement 建立主體[segment 客製主體](https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/Theme_customize)
+我建立其他主體如果你不喜歡可以到此處看我用 segement 建立主體[segment 客製主體](https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/Theme_customize)。可以參考我下面有標示不同主題和名稱:
+
+{% asset_img segment_name.png %}
+
+我有寫一個自動化有機會可以來這下載就不用手動安裝，來此[連結下載](https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/automation_ps_script) ，請用這個 powershell script `setup_testing_automation_me.ps1`
 
 # reference
 

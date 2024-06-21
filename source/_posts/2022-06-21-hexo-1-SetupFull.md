@@ -159,7 +159,7 @@ post_asset_folder: true
 npm i -s hexo-asset-link
 ```
 
-如果安裝無法顯示出來
+如果不安裝上面那個，是無法顯示出來
 
 - Step3 建立新文章
   請建立新文章 `hexo new <post name> ` 再確定有件立資料夾，把圖片放進去。
@@ -168,13 +168,19 @@ npm i -s hexo-asset-link
 
 > Syntax: `{% asset_img <image-path.png> <Alt Text> %}`
 
-> exaample if my photo name is test.png
+> example if my photo name is `test.png`
 
 ```
 {% asset_img test.png testimage %}
 ```
 
 如果之前文章沒用上面方式建立文章，可以手動建立資料夾，但資料夾要跟檔名 一樣
+
+用下面這個在 markdown 會顯示但是 hexo 無法顯示:
+
+```
+![terminalHidden](image/20240617_Terminal-oh-my-posh/terminal_hidden.png)
+```
 
 ## 常用指令
 
