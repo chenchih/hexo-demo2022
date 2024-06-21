@@ -43,8 +43,9 @@
 <meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_layout.PNG">
 <meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_preview.PNG">
 <meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/terminal_hidden.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/segment_name.png">
 <meta property="article:published_time" content="2024-06-17T06:34:35.000Z">
-<meta property="article:modified_time" content="2024-06-20T10:05:37.888Z">
+<meta property="article:modified_time" content="2024-06-21T09:33:44.685Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="Terminal">
 <meta property="article:tag" content="Window">
@@ -261,7 +262,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-06-20 18:05:37" itemprop="dateModified" datetime="2024-06-20T18:05:37+08:00">2024-06-20</time>
+      <time title="Modified: 2024-06-21 17:33:44" itemprop="dateModified" datetime="2024-06-21T17:33:44+08:00">2024-06-21</time>
     </span>
 
   
@@ -544,7 +545,10 @@
 <h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>我們來做一些總結設定</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#Step1: install  安裝</span><br><span class="line">winget install JanDeDobbeleer.OhMyPosh -s winget</span><br><span class="line">#upgrade 升級</span><br><span class="line">winget upgrade JanDeDobbeleer.OhMyPosh -s winget</span><br><span class="line"># Step2 安裝nerd font, 把終端機改成powershell 也順便把font 改成nerd font</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#Step3 啟動 預設主題</span><br><span class="line">oh-my-posh init pwsh | invoke-expression</span><br><span class="line">#改你要個主題，可以用</span><br><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br><span class="line"></span><br><span class="line">#Step4建立prompt/profile</span><br><span class="line">New-Item -Path $PROFILE -Type File –Force</span><br><span class="line"></span><br><span class="line">#  修改 $profile</span><br><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Step5 匯入套件</span><br><span class="line">Import-Module Terminal-Icons</span><br><span class="line">Import-Module PSReadLine</span><br><span class="line">Set-PSReadLineOption -EditMode Windows</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br><span class="line">Set-PSReadLineOption -PredictionViewStyle ListView</span><br><span class="line"></span><br><span class="line">Import-Module PSFzf</span><br><span class="line"># Override PSReadLine&#x27;s history search</span><br><span class="line">Set-PsFzfOption -PSReadlineChordProvider &#x27;Ctrl+f&#x27; -PSReadlineChordReverseHistory &#x27;Ctrl+r&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#其他指令</span><br><span class="line">Get-PoshThemes #顯示所有主題</span><br><span class="line">Get-PoshThemes –List #顯示所有主體的檔名</span><br><span class="line"></span><br><span class="line">Get-ChildItem env: #列出 $env</span><br><span class="line">Get-PSReadLineKeyHandler #顯示psreadline</span><br><span class="line">#終端機熱鑑</span><br><span class="line">ctrl+shift+, =&gt; 開啟therminal settings.json</span><br><span class="line">ctrl+shift+p =&gt;show all hotkey</span><br></pre></td></tr></table></figure>
 
-<p>我建立其他主體如果你不喜歡可以到此處看我用 segement 建立主體<a href="https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/Theme_customize">segment 客製主體</a></p>
+<p>我建立其他主體如果你不喜歡可以到此處看我用 segement 建立主體<a href="https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/Theme_customize">segment 客製主體</a>。可以參考我下面有標示不同主題和名稱:</p>
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/segment_name.png" class="">
+
+<p>我有寫一個自動化有機會可以來這下載就不用手動安裝，來此<a href="https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/automation_ps_script">連結下載</a> ，請用這個 powershell script <code>setup_testing_automation_me.ps1</code></p>
 <h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MA_gIbs6P1c">Will 保哥 YT 影片</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2021/11/24/PowerShell-prompt-with-Oh-My-Posh-and-Windows-Terminal">Will 保哥 設定教學</a></li>
