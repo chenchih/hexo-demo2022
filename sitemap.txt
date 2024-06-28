@@ -1,5 +1,7 @@
+https://github.com/chenchih/2024/06/26/20240626-virtual-environment/
 https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/
 https://github.com/chenchih/2022/06/21/2022-06-21-hexo-1-SetupFull/
+https://github.com/chenchih/2022/11/23/20221123-pandas/
 https://github.com/chenchih/about/index.html
 https://github.com/chenchih/2022/11/24/20221124-dictionary/
 https://github.com/chenchih/2022/10/23/20221023-List/
@@ -11,8 +13,6 @@ https://github.com/chenchih/2022/11/29/2022-11-29-Loop/
 https://github.com/chenchih/2022/11/24/20221124-set/
 https://github.com/chenchih/2022/11/24/20221124-tuple/
 https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/
-https://github.com/chenchih/2022/11/23/20221123-pandas/
-https://github.com/chenchih/2022/11/24/20221124-selenium/
 https://github.com/chenchih/2022/07/30/2022-07-30-Print/
 https://github.com/chenchih/2022/07/31/2022-07-31-linux-bash/
 https://github.com/chenchih/2022/08/21/20221023_FileReadWriteFile/
@@ -56,14 +56,14 @@ https://github.com/chenchih/tags/excel/
 https://github.com/chenchih/tags/pandas/
 https://github.com/chenchih/tags/function/
 https://github.com/chenchih/tags/bash/
-https://github.com/chenchih/tags/selenium/
-https://github.com/chenchih/tags/automation/
 https://github.com/chenchih/tags/datascience/
 https://github.com/chenchih/tags/mysql/
 https://github.com/chenchih/tags/Method/
 https://github.com/chenchih/tags/regExp/
 https://github.com/chenchih/tags/Terminal/
 https://github.com/chenchih/tags/Window/
+https://github.com/chenchih/tags/virtualenv/
+https://github.com/chenchih/tags/jupyter-notebook/
 https://github.com/chenchih/categories/WebDev/
 https://github.com/chenchih/categories/devtool/
 https://github.com/chenchih/categories/Hexo/
@@ -74,3 +74,4 @@ https://github.com/chenchih/categories/WebDev/JS/
 https://github.com/chenchih/categories/python/
 https://github.com/chenchih/categories/interview/
 https://github.com/chenchih/categories/linux/ubuntu/
+https://github.com/chenchih/categories/Terminal/

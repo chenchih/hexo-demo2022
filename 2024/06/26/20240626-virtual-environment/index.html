@@ -30,28 +30,35 @@
   gtag('config', 'c');
 </script>
 
-    <meta property="og:type" content="article">
-<meta property="og:title" content="selenium">
-<meta property="og:url" content="https://github.com/chenchih/2022/11/24/20221124-selenium/index.html">
+    <meta name="description" content="今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Virtual Environment">
+<meta property="og:url" content="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/index.html">
 <meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 pac">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-11-24T06:31:57.000Z">
-<meta property="article:modified_time" content="2022-11-24T09:54:54.956Z">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/virtualenv_usage.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_virtual.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_removeenv.png">
+<meta property="article:published_time" content="2024-06-26T03:47:07.000Z">
+<meta property="article:modified_time" content="2024-06-26T08:50:38.147Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="selenium">
-<meta property="article:tag" content="automation">
+<meta property="article:tag" content="virtualenv">
+<meta property="article:tag" content="jupyter-notebook">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png">
 
 
-<link rel="canonical" href="https://github.com/chenchih/2022/11/24/20221124-selenium/">
+<link rel="canonical" href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/11/24/20221124-selenium/","path":"2022/11/24/20221124-selenium/","title":"selenium"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2024/06/26/20240626-virtual-environment/","path":"2024/06/26/20240626-virtual-environment/","title":"Virtual Environment"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>selenium | Chen-Chih Blog - Tech Note</title>
+<title>Virtual Environment | Chen-Chih Blog - Tech Note</title>
   
 
 
@@ -116,7 +123,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -129,6 +136,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#venv"><span class="nav-number">1.</span> <span class="nav-text">venv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virtualenv"><span class="nav-number">2.</span> <span class="nav-text">virtualenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%AF%E5%87%BA%E5%8C%AF%E5%85%A5-libary"><span class="nav-number">3.</span> <span class="nav-text">匯出匯入 libary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virtual-environments-with-Jupyter-notebooks"><span class="nav-number">4.</span> <span class="nav-text">virtual environments with Jupyter notebooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Virtual-Environment-with-Anaconda"><span class="nav-number">5.</span> <span class="nav-text">Create Virtual Environment with Anaconda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -149,7 +157,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -216,7 +224,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/24/20221124-selenium/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -229,12 +237,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="selenium | Chen-Chih Blog">
+      <meta itemprop="name" content="Virtual Environment | Chen-Chih Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          selenium
+          Virtual Environment
         </h1>
 
         <div class="post-meta-container">
@@ -246,7 +254,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-24 14:31:57 / Modified: 17:54:54" itemprop="dateCreated datePublished" datetime="2022-11-24T14:31:57+08:00">2022-11-24</time>
+      <time title="Created: 2024-06-26 11:47:07 / Modified: 16:50:38" itemprop="dateCreated datePublished" datetime="2024-06-26T11:47:07+08:00">2024-06-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,7 +276,76 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 package or library 跟主環境分離不會有相關。</p>
+<p>我覺得這個很好用，如果你原本主環境安裝太多 library 你有時還要 debug，你可以一開就建立在乾淨環境，再安裝你要安裝個 library or module 等 package。</p>
+<p>可以用這兩終方式建立 virtualenv，如:</p>
+<ul>
+<li><code>virtualenv</code> : 需要安裝套件</li>
+<li><code>venv</code>:內建就有無須安裝特建</li>
+</ul>
+<h2 id="venv"><a href="#venv" class="headerlink" title="venv"></a>venv</h2><blockquote>
+<p>Syntax: <code>python -m  venv &lt;my_env_name&gt;</code><br>EX: <code>python -m  venv venv</code></p>
+</blockquote>
+<ul>
+<li>如何用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#create new directory</span><br><span class="line">mkdir newproject</span><br><span class="line">cd newproject</span><br><span class="line"></span><br><span class="line">#create virtual env</span><br><span class="line">py -m  venv env_apitest</span><br><span class="line"></span><br><span class="line">#activate</span><br><span class="line">.\.env_apitest\Scripts\activate</span><br><span class="line"></span><br><span class="line">#deactivate</span><br><span class="line">deactivate</span><br><span class="line"></span><br><span class="line"># upgrade python version</span><br><span class="line">python -m venv /path/to/venv --upgrade</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png" class="" title="venv_example">
+
+<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><blockquote>
+<p>安裝: pip3 install virtualenv<br>Syntax: <code>virtualenv &lt;my_env_name&gt;</code></p>
+</blockquote>
+<blockquote>
+<p>指令 python <code>-p</code>: virtualenv -p &#x2F;path&#x2F;to&#x2F;python3 my_env_name</p>
+<blockquote>
+<p>用　<code>which</code> to check your python path</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#create new directory</span><br><span class="line">mkdir newproject</span><br><span class="line">cd newproject</span><br><span class="line"></span><br><span class="line">#default method</span><br><span class="line">virtualenv my_env_name</span><br><span class="line"></span><br><span class="line"># activate it</span><br><span class="line">cd /python_env/bin/activate</span><br><span class="line">#deactive</span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/virtualenv_usage.png" class="" title="virtualenv_example">
+
+<h2 id="匯出匯入-libary"><a href="#匯出匯入-libary" class="headerlink" title="匯出匯入 libary"></a>匯出匯入 libary</h2><p>上面方式是我們學會如何建立 virtual env，現在來介紹如何匯出我們當下個 library 然後匯入</p>
+<blockquote>
+<ul>
+<li>匯出:<blockquote>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</blockquote>
+</li>
+<li>出入:<blockquote>
+<p><code>pip install -r requirements.txt</code></p>
+</blockquote>
+</li>
+<li>list all library<blockquote>
+<p><code>pip list</code> &gt; &gt; <code>pip3 list</code></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="virtual-environments-with-Jupyter-notebooks"><a href="#virtual-environments-with-Jupyter-notebooks" class="headerlink" title="virtual environments with Jupyter notebooks"></a>virtual environments with Jupyter notebooks</h2><p>我們也可以將我們 virtual environment 用在 jupter notebooks or labs，用下方法:</p>
+<ul>
+<li>安裝: <code>pip install ipykernel</code></li>
+<li>建立 virtual env: <code>python -m ipykernel install --user --name=myenv </code></li>
+<li>list env: <code>jupyter kernelspec list</code></li>
+</ul>
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_virtual.png" class="" title="jupyter-notebook-virtualenv">
+
+<ul>
+<li>移除: <code>jupyter kernelspec uninstall &lt;myenv&gt;</code></li>
+</ul>
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_removeenv.png" class="" title="jupyter-remove-env">
+
+<h2 id="Create-Virtual-Environment-with-Anaconda"><a href="#Create-Virtual-Environment-with-Anaconda" class="headerlink" title="Create Virtual Environment with Anaconda"></a>Create Virtual Environment with Anaconda</h2><ul>
+<li>create virtualenv under conda: <code>conda create -n myenv</code></li>
+<li>activate: <code>conda activate myenv</code></li>
+<li>remove&#x2F;uninstall: <code>conda env remove -n myenv</code></li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html">https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://janakiev.com/blog/jupyter-virtual-envs/">https://janakiev.com/blog/jupyter-virtual-envs/</a></li>
+</ul>
+
     </div>
 
     
@@ -285,7 +362,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://github.com/chenchih/2022/11/24/20221124-selenium/" title="selenium">https://github.com/chenchih/2022/11/24/20221124-selenium/</a>
+      <a href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/" title="Virtual Environment">https://github.com/chenchih/2024/06/26/20240626-virtual-environment/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -295,22 +372,19 @@
 
           <div class="post-tags">
               <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
-              <a href="/hexo-demo2022/tags/selenium/" rel="tag"># selenium</a>
-              <a href="/hexo-demo2022/tags/automation/" rel="tag"># automation</a>
+              <a href="/hexo-demo2022/tags/virtualenv/" rel="tag"># virtualenv</a>
+              <a href="/hexo-demo2022/tags/jupyter-notebook/" rel="tag"># jupyter-notebook</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/hexo-demo2022/2022/11/24/20221124-set/" rel="prev" title="Set">
-                  <i class="fa fa-chevron-left"></i> Set
+                <a href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/" rel="prev" title="Terminal-oh-my-posh">
+                  <i class="fa fa-chevron-left"></i> Terminal-oh-my-posh
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/hexo-demo2022/2022/11/29/2022-11-29-MY-SQL-Basic/" rel="next" title="MY-SQL(Basic)">
-                  MY-SQL(Basic) <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

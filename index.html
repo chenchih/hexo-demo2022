@@ -144,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -210,6 +210,109 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2024/06/26/20240626-virtual-environment/" class="post-title-link" itemprop="url">Virtual Environment</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-06-26 11:47:07 / Modified: 16:50:38" itemprop="dateCreated datePublished" datetime="2024-06-26T11:47:07+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 package or library 跟主環境分離不會有相關。</p>
+<p>我覺得這個很好用，如果你原本主環境安裝太多 library 你有時還要 debug，你可以一開就建立在乾淨環境，再安裝你要安裝個 library or module 等 package。</p>
+<p>可以用這兩終方式建立 virtualenv，如:</p>
+<ul>
+<li><code>virtualenv</code> : 需要安裝套件</li>
+<li><code>venv</code>:內建就有無須安裝特建</li>
+</ul>
+<h2 id="venv"><a href="#venv" class="headerlink" title="venv"></a>venv</h2><blockquote>
+<p>Syntax: <code>python -m  venv &lt;my_env_name&gt;</code><br>EX: <code>python -m  venv venv</code></p>
+</blockquote>
+<ul>
+<li>如何用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#create new directory</span><br><span class="line">mkdir newproject</span><br><span class="line">cd newproject</span><br><span class="line"></span><br><span class="line">#create virtual env</span><br><span class="line">py -m  venv env_apitest</span><br><span class="line"></span><br><span class="line">#activate</span><br><span class="line">.\.env_apitest\Scripts\activate</span><br><span class="line"></span><br><span class="line">#deactivate</span><br><span class="line">deactivate</span><br><span class="line"></span><br><span class="line"># upgrade python version</span><br><span class="line">python -m venv /path/to/venv --upgrade</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png" class title="venv_example">
+
+<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2024/06/26/20240626-virtual-environment/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -246,7 +349,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-06-21 17:33:44" itemprop="dateModified" datetime="2024-06-21T17:33:44+08:00">2024-06-21</time>
+      <time title="Modified: 2024-06-26 11:52:07" itemprop="dateModified" datetime="2024-06-26T11:52:07+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Terminal/" itemprop="url" rel="index"><span itemprop="name">Terminal</span></a>
+        </span>
     </span>
 
   
@@ -570,84 +682,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/24/20221124-selenium/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/11/24/20221124-selenium/" class="post-title-link" itemprop="url">selenium</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-24 14:31:57 / Modified: 17:54:54" itemprop="dateCreated datePublished" datetime="2022-11-24T14:31:57+08:00">2022-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
       
     </div>
 
@@ -1131,7 +1165,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-24 17:55:03" itemprop="dateModified" datetime="2022-11-24T17:55:03+08:00">2022-11-24</time>
+      <time title="Modified: 2024-06-26 11:17:14" itemprop="dateModified" datetime="2024-06-26T11:17:14+08:00">2024-06-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1153,31 +1187,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Pandas-筆記"><a href="#Pandas-筆記" class="headerlink" title="Pandas 筆記"></a>Pandas 筆記</h1><p>今天我想分享我學的pandas筆記，我覺得對於分大數據很有幫助，他有點像mysql。請先下載module或package:pip install pandas&#96;</p>
-<h2 id="Part1基本語法"><a href="#Part1基本語法" class="headerlink" title="Part1基本語法"></a>Part1基本語法</h2><h3 id="連線CSV檔案"><a href="#連線CSV檔案" class="headerlink" title="連線CSV檔案"></a>連線CSV檔案</h3><p>可以去github找相關csv檔案，然後去raw檔案做連線</p>
+          <h1 id="Pandas-筆記"><a href="#Pandas-筆記" class="headerlink" title="Pandas 筆記"></a>Pandas 筆記</h1><p>今天我想分享我學的 pandas 筆記，我覺得對於分大數據很有幫助，他有點像 mysql。請先下載 module 或 package:pip install pandas&#96;</p>
+<h2 id="Part1-基本語法"><a href="#Part1-基本語法" class="headerlink" title="Part1 基本語法"></a>Part1 基本語法</h2><h3 id="連線-CSV-檔案"><a href="#連線-CSV-檔案" class="headerlink" title="連線 CSV 檔案"></a>連線 CSV 檔案</h3><p>可以去 github 找相關 csv 檔案，然後去 raw 檔案做連線</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">url = &quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><br><span class="line">tips = pd.read_csv(url)</span><br><span class="line"></span><br><span class="line">print(tips)</span><br></pre></td></tr></table></figure>
-<p>pandas會回傳DataFrame格式。<code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code><br>下面是印出所有資料表內容。</p>
+
+<p>pandas 會回傳 DataFrame 格式。<code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code><br>下面是印出所有資料表內容。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">     total_bill   tip     sex smoker   day    time  size</span><br><span class="line">0         16.99  1.01  Female     No   Sun  Dinner     2</span><br><span class="line">1         10.34  1.66    Male     No   Sun  Dinner     3</span><br><span class="line">2         21.01  3.50    Male     No   Sun  Dinner     3</span><br><span class="line">3         23.68  3.31    Male     No   Sun  Dinner     2</span><br><span class="line">4         24.59  3.61  Female     No   Sun  Dinner     4</span><br><span class="line">..          ...   ...     ...    ...   ...     ...   ...</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
+
 <h3 id="Head-and-Tail"><a href="#Head-and-Tail" class="headerlink" title="Head and Tail"></a>Head and Tail</h3><ul>
-<li><p><code>head(N)</code>: 是查前面N筆資料</p>
-<blockquote>
-<p><code>print(tips.head(10))</code></p>
-<blockquote>
-<p>output:</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   total_bill   tip     sex smoker  day    time  size</span><br><span class="line">0       16.99  1.01  Female     No  Sun  Dinner     2</span><br><span class="line">1       10.34  1.66    Male     No  Sun  Dinner     3</span><br><span class="line">2       21.01  3.50    Male     No  Sun  Dinner     3</span><br><span class="line">3       23.68  3.31    Male     No  Sun  Dinner     2</span><br><span class="line">4       24.59  3.61  Female     No  Sun  Dinner     4</span><br><span class="line">5       25.29  4.71    Male     No  Sun  Dinner     4</span><br><span class="line">6        8.77  2.00    Male     No  Sun  Dinner     2</span><br><span class="line">7       26.88  3.12    Male     No  Sun  Dinner     4</span><br><span class="line">8       15.04  1.96    Male     No  Sun  Dinner     2</span><br><span class="line">9       14.78  3.23    Male     No  Sun  Dinner     2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>tail(N)</code>: 是查最後N筆資料</p>
-<blockquote>
-<p><code>print(tips.tail(10))</code></p>
-<blockquote>
-<p>output</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  total_bill   tip     sex smoker   day    time  size</span><br><span class="line">234       15.53  3.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">235       10.07  1.25    Male     No   Sat  Dinner     2</span><br><span class="line">236       12.60  1.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">237       32.83  1.17    Male    Yes   Sat  Dinner     2</span><br><span class="line">238       35.83  4.67  Female     No   Sat  Dinner     3</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
-<h3 id="Shape-method"><a href="#Shape-method" class="headerlink" title="Shape method"></a>Shape method</h3><p>shape 語法是用來查有多少欄與列</p>
-</li>
+<li><code>head(N)</code>: 是查前面 N 筆資料</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
