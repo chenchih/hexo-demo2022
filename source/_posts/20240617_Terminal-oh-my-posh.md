@@ -4,6 +4,8 @@ date: 2024-06-17 14:34:35
 tags:
   - Terminal
   - Window
+categories:
+  - Terminal
 ---
 
 今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 `shell` `bash` `zsh` `powershell` `fish`等等。我有寫一篇比較完整，在[Medium](https://medium.com/jacklee26/setup-fancy-terminal-using-ohmyposh-9f0ce00948bf?source=collection_home---4------0-----------------------) 因此今天會寫簡短方法。

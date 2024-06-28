@@ -24,25 +24,25 @@ categories:
 
 在開始安裝 Hexo 之前，必須先在電腦安裝下列工具:
 
-- #### [Node.js](https://nodejs.org/en/): npm 來安裝所需的套件。你可以把 npm 當作是 linux 的 `apt` 或 `yum`。他主要是幫我們安裝 JS 等套件。
+- #### [Node.js](https://nodejs.org/en/)
+
+  npm 來安裝所需的套件。你可以把 npm 當作是 linux 的 `apt` 或 `yum`。他主要是幫我們安裝 JS 等套件。
 
 > - Linux (Ubuntu, Debian)：
->
-> > `sudo apt-get install -y nodejs`
+>   > `sudo apt-get install -y nodejs`
 
-- #### [git](https://git-scm.com/): 是專們做版本控制的工具。外面有多版本控制，我選用 github，因為他比較多人用，還有他有 GitHub Page 可以幫我們架設網站，又是免費。window 可以用這個 git-bash 來下載[git-for-window](https://gitforwindows.org/)
+- #### [git](https://git-scm.com/)
 
-  > - Linux (Ubuntu, Debian)：
-  >
-  > > `$ sudo apt-get install git-core`
+  是專們做版本控制的工具。外面有多版本控制，我選用 github，因為他比較多人用，還有他有 GitHub Page 可以幫我們架設網站，又是免費。window 可以用這個 git-bash 來下載[git-for-window](https://gitforwindows.org/)
 
-  > - Linux (Fedora, Red Hat, CentOS)
-  >
-  > > `sudo yum install git-core`
+> - Linux (Ubuntu, Debian)：
+>   > `$ sudo apt-get install git-core`
 
-  > mac 安裝:
-  >
-  > > `brew install git`
+> - Linux (Fedora, Red Hat, CentOS)
+>   > `sudo yum install git-core`
+
+> - mac 安裝:
+>   > `brew install git`
 
 ## Hexo 環境建置
 
@@ -145,6 +145,8 @@ categories:
 
 我之前上傳磚片都是應用網站再把圖 URL 貼上來，今天發現一上傳在本機也可以，用 hexo 內建。
 
+> > `Step1` and `Step2` 是第一次使用必須要設定，如果之前用過可以跳過直接到`step3`。
+
 - Step1 設定 `_config.yml`
 
 請到 `_config.yml`去搜尋下面這個，確定是設定 `True`，如果有設定建立新文章會自動幫你建資料夾你就可以放圖片
@@ -162,8 +164,10 @@ npm i -s hexo-asset-link
 如果不安裝上面那個，是無法顯示出來
 
 - Step3 建立新文章
+
   請建立新文章 `hexo new <post name> ` 再確定有件立資料夾，把圖片放進去。
   如果你建立文章為 `test` 就會建立 `test`資料夾，你就可以放圖放進去。
+
 - Step4 加入圖的連結
 
 > Syntax: `{% asset_img <image-path.png> <Alt Text> %}`
@@ -178,9 +182,7 @@ npm i -s hexo-asset-link
 
 用下面這個在 markdown 會顯示但是 hexo 無法顯示:
 
-```
-![terminalHidden](image/20240617_Terminal-oh-my-posh/terminal_hidden.png)
-```
+> ~~![terminalHidden]\(image/20240617_Terminal-oh-my-posh/terminal_hidden.png)~~
 
 ## 常用指令
 
