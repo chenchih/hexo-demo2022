@@ -34,7 +34,9 @@ cd newproject
 py -m  venv env_apitest
 
 #activate
-.\.env_apitest\Scripts\activate
+
+.\.env_apitest\Scripts\activate #for window
+source .env_apitest\Scripts\activate #for linux or mac
 
 #deactivate
 deactivate
