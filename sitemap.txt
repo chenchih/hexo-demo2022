@@ -1,4 +1,8 @@
+https://github.com/chenchih/2024/11/28/20241128_Rename_and_List_file_example/
+https://github.com/chenchih/2024/11/28/20241128_count-string-occurrences/
+https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/
 https://github.com/chenchih/2024/06/26/20240626-virtual-environment/
+https://github.com/chenchih/2024/07/05/20240705_Function_Annotations%20/
 https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/
 https://github.com/chenchih/2022/06/21/2022-06-21-hexo-1-SetupFull/
 https://github.com/chenchih/2022/11/23/20221123-pandas/
@@ -6,7 +10,6 @@ https://github.com/chenchih/about/index.html
 https://github.com/chenchih/2022/11/24/20221124-dictionary/
 https://github.com/chenchih/2022/10/23/20221023-List/
 https://github.com/chenchih/2022/10/18/20221018-substringSearch/
-https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/
 https://github.com/chenchih/2022/11/23/20221123-Function/
 https://github.com/chenchih/2022/11/29/2022-11-29-MY-SQL-Basic/
 https://github.com/chenchih/2022/11/29/2022-11-29-Loop/
@@ -64,6 +67,8 @@ https://github.com/chenchih/tags/Terminal/
 https://github.com/chenchih/tags/Window/
 https://github.com/chenchih/tags/virtualenv/
 https://github.com/chenchih/tags/jupyter-notebook/
+https://github.com/chenchih/tags/string/
+https://github.com/chenchih/tags/file/
 https://github.com/chenchih/categories/WebDev/
 https://github.com/chenchih/categories/devtool/
 https://github.com/chenchih/categories/Hexo/
@@ -75,3 +80,4 @@ https://github.com/chenchih/categories/python/
 https://github.com/chenchih/categories/interview/
 https://github.com/chenchih/categories/linux/ubuntu/
 https://github.com/chenchih/categories/Terminal/
+https://github.com/chenchih/categories/python/example/

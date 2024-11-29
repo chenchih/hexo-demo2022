@@ -138,18 +138,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -201,6 +201,305 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/24/20221124-tuple/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/24/20221124-tuple/" class="post-title-link" itemprop="url">Tuple</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-24 14:31:22" itemprop="dateCreated datePublished" datetime="2022-11-24T14:31:22+08:00">2022-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-25 15:54:28" itemprop="dateModified" datetime="2022-11-25T15:54:28+08:00">2022-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Tuple is like list, but we can;t modify it, they are immutable. Tuple immutable 直，就是他的直不無法修改的，有些語法是用const類似這概念。</p>
+<h2 id="Create-Tuple-建立tuple"><a href="#Create-Tuple-建立tuple" class="headerlink" title="Create Tuple 建立tuple"></a>Create Tuple 建立tuple</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Empty tuple</span><br><span class="line">my_tuple = ()</span><br><span class="line">print(my_tuple) #()</span><br><span class="line"></span><br><span class="line"># Tuple having integers</span><br><span class="line">my_tuple = (1, 2, 3) </span><br><span class="line">print(my_tuple) #(1,2,3)</span><br><span class="line"></span><br><span class="line"># tuple with mixed datatypes</span><br><span class="line">my_tuple = (1, &quot;Hello&quot;, 3.4) </span><br><span class="line">print(my_tuple) #(1, &quot;Hello&quot;, 3.4) </span><br><span class="line"></span><br><span class="line"># multiply value</span><br><span class="line">x,y,z, *other = (1,2,3,4,5)</span><br><span class="line">print(f&quot;x: &#123;x&#125;, y:&#123;y&#125;, z:&#123;z&#125;, other:&#123;other&#125;&quot;)</span><br><span class="line">#x: 1, y:2, z:3, other:[4, 5]</span><br><span class="line"></span><br><span class="line">my_tuple = (&quot;mouse&quot;, [8, 4, 6], (1, 2, 3))</span><br><span class="line">print(my_tuple) #(&#x27;mouse&#x27;, [8, 4, 6], (1, 2, 3))</span><br></pre></td></tr></table></figure>
+
+<h2 id="created-without-using-parentheses"><a href="#created-without-using-parentheses" class="headerlink" title="created without using parentheses"></a>created without using parentheses</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">my_tuple = 3, 4.6, &quot;dog&quot;</span><br><span class="line">print(my_tuple)</span><br><span class="line"></span><br><span class="line"># tuple unpacking is also possible</span><br><span class="line">a, b, c = my_tuple</span><br><span class="line"></span><br><span class="line">print(a)      # 3</span><br><span class="line">print(b)      # 4.6</span><br><span class="line">print(c)      # dog</span><br><span class="line"></span><br><span class="line">my_tuple = (&quot;hello&quot;)</span><br><span class="line">print(type(my_tuple))  # &lt;class &#x27;str&#x27;&gt;</span><br><span class="line"></span><br><span class="line"># Creating a tuple having one element</span><br><span class="line">my_tuple = (&quot;hello&quot;,)</span><br><span class="line">print(type(my_tuple))  # &lt;class &#x27;tuple&#x27;&gt;</span><br><span class="line"></span><br><span class="line"># Parentheses is optional</span><br><span class="line">my_tuple = &quot;hello&quot;,</span><br><span class="line">print(type(my_tuple))  # &lt;class &#x27;tuple&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Access-Tuple-Elements"><a href="#Access-Tuple-Elements" class="headerlink" title="Access Tuple Elements"></a>Access Tuple Elements</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Accessing tuple elements using indexing</span><br><span class="line">my_tuple = (&#x27;p&#x27;,&#x27;e&#x27;,&#x27;r&#x27;,&#x27;m&#x27;,&#x27;i&#x27;,&#x27;t&#x27;)</span><br><span class="line"></span><br><span class="line">print(my_tuple[0])   # &#x27;p&#x27; </span><br><span class="line">print(my_tuple[5])   # &#x27;t&#x27;</span><br><span class="line"></span><br><span class="line"># nested tuple</span><br><span class="line">n_tuple = (&quot;mouse&quot;, [8, 4, 6], (1, 2, 3))</span><br><span class="line"></span><br><span class="line"># nested index</span><br><span class="line">print(n_tuple[0][3])  #&#x27;s&#x27;</span><br><span class="line">print(n_tuple[1][1])  # 4</span><br></pre></td></tr></table></figure>
+<h2 id="Negative-indexing-for-accessing-tuple-elements"><a href="#Negative-indexing-for-accessing-tuple-elements" class="headerlink" title="# Negative indexing for accessing tuple elements"></a># Negative indexing for accessing tuple elements</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_tuple = (&#x27;p&#x27;, &#x27;e&#x27;, &#x27;r&#x27;, &#x27;m&#x27;, &#x27;i&#x27;, &#x27;t&#x27;)</span><br><span class="line"></span><br><span class="line"># Output: &#x27;t&#x27;</span><br><span class="line">print(my_tuple[-1])</span><br><span class="line"># elements beginning to 2nd</span><br><span class="line"># Output: (&#x27;p&#x27;, &#x27;r&#x27;)</span><br><span class="line">print(my_tuple[:-7])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Slicing"><a href="#Slicing" class="headerlink" title="Slicing"></a>Slicing</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/24/20221124-tuple/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/23/20221123-Function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/23/20221123-Function/" class="post-title-link" itemprop="url">Function or Method</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-23 16:17:19" itemprop="dateCreated datePublished" datetime="2022-11-23T16:17:19+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-04-14 09:23:22" itemprop="dateModified" datetime="2023-04-14T09:23:22+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>python 有很多不同 function，因此我想在這篇寫所有 funtion 我會用到。我指的 function 不是傳 function，而是一些 libary function</p>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h2 id="Datetime-時間"><a href="#Datetime-時間" class="headerlink" title="Datetime 時間"></a>Datetime 時間</h2><h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><h4 id="程式跑的時間"><a href="#程式跑的時間" class="headerlink" title="程式跑的時間"></a>程式跑的時間</h4><p>如果計算程式袍多就可以用這方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"># starting time</span><br><span class="line">start = time.time()</span><br><span class="line"># your code</span><br><span class="line">for i in range(1,60):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">#endtime</span><br><span class="line">end = time.time()</span><br><span class="line">runtime=end - start</span><br><span class="line">print(&quot; Runtime of the program is &#123;runtime:%.8f&#125;&quot;)</span><br><span class="line">print(f&quot;Runtime of the program is &#123;runtime:.5f&#125;&quot;)</span><br><span class="line">#or</span><br><span class="line">print(f&quot;Runtime of the program is &#123;(end - start):.5f&#125;&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h3><h4 id="今天日期"><a href="#今天日期" class="headerlink" title="今天日期"></a>今天日期</h4><ul>
+<li>date.today 取今天日期</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/23/20221123-Function/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/11/23/20221123-pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/23/20221123-pandas/" class="post-title-link" itemprop="url">pandas</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-23 11:49:42" itemprop="dateCreated datePublished" datetime="2022-11-23T11:49:42+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-06-26 11:17:14" itemprop="dateModified" datetime="2024-06-26T11:17:14+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Pandas-筆記"><a href="#Pandas-筆記" class="headerlink" title="Pandas 筆記"></a>Pandas 筆記</h1><p>今天我想分享我學的 pandas 筆記，我覺得對於分大數據很有幫助，他有點像 mysql。請先下載 module 或 package:pip install pandas&#96;</p>
+<h2 id="Part1-基本語法"><a href="#Part1-基本語法" class="headerlink" title="Part1 基本語法"></a>Part1 基本語法</h2><h3 id="連線-CSV-檔案"><a href="#連線-CSV-檔案" class="headerlink" title="連線 CSV 檔案"></a>連線 CSV 檔案</h3><p>可以去 github 找相關 csv 檔案，然後去 raw 檔案做連線</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">url = &quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><br><span class="line">tips = pd.read_csv(url)</span><br><span class="line"></span><br><span class="line">print(tips)</span><br></pre></td></tr></table></figure>
+
+<p>pandas 會回傳 DataFrame 格式。<code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code><br>下面是印出所有資料表內容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">     total_bill   tip     sex smoker   day    time  size</span><br><span class="line">0         16.99  1.01  Female     No   Sun  Dinner     2</span><br><span class="line">1         10.34  1.66    Male     No   Sun  Dinner     3</span><br><span class="line">2         21.01  3.50    Male     No   Sun  Dinner     3</span><br><span class="line">3         23.68  3.31    Male     No   Sun  Dinner     2</span><br><span class="line">4         24.59  3.61  Female     No   Sun  Dinner     4</span><br><span class="line">..          ...   ...     ...    ...   ...     ...   ...</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Head-and-Tail"><a href="#Head-and-Tail" class="headerlink" title="Head and Tail"></a>Head and Tail</h3><ul>
+<li><code>head(N)</code>: 是查前面 N 筆資料</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/23/20221123-pandas/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1003,351 +1302,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/07/31/2022-07-31-linux-bash/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/30/2022-07-30-linux-Command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/30/2022-07-30-linux-Command/" class="post-title-link" itemprop="url">Linux Command</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-30 08:07:57" itemprop="dateCreated datePublished" datetime="2022-07-30T08:07:57+08:00">2022-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-24 17:55:40" itemprop="dateModified" datetime="2022-11-24T17:55:40+08:00">2022-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><h3 id="Method-1-put-your-alias-in-alias-pofile"><a href="#Method-1-put-your-alias-in-alias-pofile" class="headerlink" title="Method 1: put your alias in .alias_pofile"></a>Method 1: put your alias in <code>.alias_pofile</code></h3><p>Recommend use this file, will not destory <code>.bashrc</code> file. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">touch .alias_pofile</span><br></pre></td></tr></table></figure>
-<h3 id="Method-2-edit-bashrc"><a href="#Method-2-edit-bashrc" class="headerlink" title="Method 2: edit .bashrc"></a>Method 2: edit <code>.bashrc</code></h3><p>This method need to reboot to take effect</p>
-<h2 id="change-directory"><a href="#change-directory" class="headerlink" title="change directory"></a>change directory</h2><h3 id="change-folder-or-directory"><a href="#change-folder-or-directory" class="headerlink" title="change folder or directory"></a>change folder or directory</h3><p><code>cd</code> : change directory to home <code>~</code> directory<br><code>cd folder</code>: change to specific directory</p>
-<h3 id="change-upper-directory"><a href="#change-upper-directory" class="headerlink" title="change upper directory"></a>change upper directory</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-linux-Command/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/30/2022-07-30-Print/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/30/2022-07-30-Print/" class="post-title-link" itemprop="url">Python Print</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-30 08:05:22" itemprop="dateCreated datePublished" datetime="2022-07-30T08:05:22+08:00">2022-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:31:56" itemprop="dateModified" datetime="2022-11-23T16:31:56+08:00">2022-11-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="1-Print"><a href="#1-Print" class="headerlink" title="1. Print"></a>1. Print</h2><h3 id="Ex1-Print-Basic-Interger-and-String"><a href="#Ex1-Print-Basic-Interger-and-String" class="headerlink" title="Ex1 Print Basic Interger and String"></a>Ex1 Print Basic Interger and String</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_name= &quot;hello&quot;</span><br><span class="line">num_value= 999</span><br><span class="line">print(f&quot;str value is &#123;str_name&#125;, and number is &#123;num_value&#125;&quot;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>output:</strong></p>
-<blockquote>
-<p><code>str value is hello, and number is 999</code></p>
-</blockquote>
-</blockquote>
-<h2 id="formatting-OLD"><a href="#formatting-OLD" class="headerlink" title="%-formatting-OLD"></a>%-formatting-OLD</h2><h3 id="Example-1-Print-String-with-Operator"><a href="#Example-1-Print-String-with-Operator" class="headerlink" title="Example 1 Print String with % Operator"></a>Example 1 Print String with <code>%</code> Operator</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text = &#x27;world&#x27;</span><br><span class="line">print(&quot;hello &quot; + text)</span><br><span class="line">print(&#x27;hello %s&#x27; % text)</span><br><span class="line"></span><br><span class="line">name = &quot;Test&quot;</span><br><span class="line">num = 100</span><br><span class="line">print(&quot;Hello, %s. My num is  %s.&quot; % (name, num))</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>output:</strong></p>
-<blockquote>
-<p><code>hello world</code><br><code>hello world</code><br><code>Hello, Test. You are 100.</code></p>
-</blockquote>
-</blockquote>
-<h2 id="3-str-format-NEW"><a href="#3-str-format-NEW" class="headerlink" title="3. str.format()- NEW"></a>3. str.format()- NEW</h2><p>str.format() 是對 %-formatting 的改進，可以用函式呼叫語法，可以通過 format() 方法對被轉換為字串的物件</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-Print/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/07/30/2022-07-30-JS-BasicCode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/" class="post-title-link" itemprop="url">JS Basic Code 基本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-30 07:59:48" itemprop="dateCreated datePublished" datetime="2022-07-30T07:59:48+08:00">2022-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="JS基本須知道"><a href="#JS基本須知道" class="headerlink" title="JS基本須知道"></a>JS基本須知道</h2><h3 id="How-to-run-JS"><a href="#How-to-run-JS" class="headerlink" title="How to run JS"></a>How to run JS</h3><ul>
-<li><p>Browser- inspect</p>
-<ul>
-<li><p>Method1:</p>
-<blockquote>
-<p>Go to inspect &gt; console</p>
-</blockquote>
-</li>
-<li><p>Method 2:</p>
-<blockquote>
-<p>inspect&gt; sources&gt; snipperts&gt; create js file</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>NodeJS environment</p>
-<blockquote>
-<p>寫 <code>XXX.js</code>&#x2F;&#x2F;CREATE JS file</p>
-<blockquote>
-<p><code>node XXX.js</code> &#x2F;&#x2F;run .js file using node</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h3 id="adding-comment"><a href="#adding-comment" class="headerlink" title="adding comment"></a>adding comment</h3><p><code>//</code> single line comment<br><code>/**/</code>: multiply line comment</p>
-<h3 id="顯示-print"><a href="#顯示-print" class="headerlink" title="顯示 print"></a>顯示 print</h3><ul>
-<li><code>console.log()</code> 顯示在console</li>
-<li><code>alert()</code> 跳出顯示</li>
-<li><code>document.write(&quot;\&lt;h1&gt;hello &lt;br\/&gt;&quot;)</code></li>
-</ul>
-<h2 id="JS-基本語法-Part-1"><a href="#JS-基本語法-Part-1" class="headerlink" title="JS　 基本語法- Part 1"></a>JS　 基本語法- Part 1</h2><h3 id="１-declare-variable-宣告變數"><a href="#１-declare-variable-宣告變數" class="headerlink" title="１. declare variable 宣告變數"></a>１. declare variable 宣告變數</h3><ul>
-<li><code>let</code> (新)可以取代var<blockquote>
-<p>ex:</p>
-<blockquote>
-<p><code>let myName= &quot;chenchih&quot;</code><br><code>console.log(myName)</code></p>
-</blockquote>
-</blockquote>
-</li>
-<li><code>var</code></li>
-<li><code>const</code><blockquote>
-<p>must be inital and not able to change<br>不被修改變數。如果不想被人修改</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const test= &quot;heloo&quot;</span><br><span class="line">test=&quot;world&quot;</span><br><span class="line">console.log(test) //error</span><br></pre></td></tr></table></figure></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
