@@ -1,3 +1,4 @@
+https://github.com/chenchih/2025/01/06/20250106_update-python-jupyter/
 https://github.com/chenchih/2024/11/28/20241128_Rename_and_List_file_example/
 https://github.com/chenchih/2024/11/28/20241128_count-string-occurrences/
 https://github.com/chenchih/2023/04/14/20230414_RegularExpression-Python/

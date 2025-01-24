@@ -138,7 +138,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -201,6 +201,131 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/06/21/2022-06-21-hexo-1-SetupFull/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/06/21/2022-06-21-hexo-1-SetupFull/" class="post-title-link" itemprop="url">Hexo + GitHub Pages 架設個人網誌-完整版-1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-06-21 20:34:18" itemprop="dateCreated datePublished" datetime="2022-06-21T20:34:18+08:00">2022-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-06-26 11:43:47" itemprop="dateModified" datetime="2024-06-26T11:43:47+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>＃ 如何使用 Hexo + GitHub Pages 架設個人網誌</p>
+<h2 id="什麼是-Hexo？"><a href="#什麼是-Hexo？" class="headerlink" title="什麼是 Hexo？"></a>什麼是 Hexo？</h2><ul>
+<li>HEXO 是一套 <code>Static Site Generators(SSG)</code>網誌框架工具，只要把建立和編寫 <code>markdown</code>就可以變成轉成靜態網頁。一般都用在架自己的部捼洛客，不用花很多時間設計排版等等。目前最有名的 SSG 有包括: <strong>Hexo(node.js 語言)<strong>，</strong>HUGO(go 語言)<strong>，</strong>Jekyll(ruby 語言)</strong> 等等。</li>
+<li>其實就是一個基於 <code>Node.js</code> 開發的網誌框架。具有下列幾項<strong>特點</strong>：<ul>
+<li>NODE.JS</li>
+<li>能夠支援 <strong>Markdown</strong> 語法解析文章，並透過主題渲染靜態檔案</li>
+<li>具有豐富的<strong>外掛套件</strong></li>
+<li>支援一鍵部署到 <strong>GitHub Pages</strong> 或 <strong>Heroku</strong> 等支援靜態網頁的空間</li>
+</ul>
+</li>
+</ul>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="安裝需要工具"><a href="#安裝需要工具" class="headerlink" title="安裝需要工具"></a>安裝需要工具</h3><p>在開始安裝 Hexo 之前，必須先在電腦安裝下列工具:</p>
+<ul>
+<li><h4 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a><a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a></h4>npm 來安裝所需的套件。你可以把 npm 當作是 linux 的 <code>apt</code> 或 <code>yum</code>。他主要是幫我們安裝 JS 等套件。</li>
+</ul>
+<blockquote>
+<ul>
+<li>Linux (Ubuntu, Debian)：<blockquote>
+<p><code>sudo apt-get install -y nodejs</code></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><h4 id="git"><a href="#git" class="headerlink" title="git"></a><a target="_blank" rel="noopener" href="https://git-scm.com/">git</a></h4>是專們做版本控制的工具。外面有多版本控制，我選用 github，因為他比較多人用，還有他有 GitHub Page 可以幫我們架設網站，又是免費。window 可以用這個 git-bash 來下載<a target="_blank" rel="noopener" href="https://gitforwindows.org/">git-for-window</a></li>
+</ul>
+<blockquote>
+<ul>
+<li>Linux (Ubuntu, Debian)：<blockquote>
+<p><code>$ sudo apt-get install git-core</code></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/06/21/2022-06-21-hexo-1-SetupFull/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -827,7 +952,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
