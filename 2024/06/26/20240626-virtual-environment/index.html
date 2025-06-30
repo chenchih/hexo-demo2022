@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Virtual Environment">
+<meta property="og:url" content="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 pac">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/virtualenv_usage.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_virtual.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_removeenv.png">
+<meta property="article:published_time" content="2024-06-26T03:47:07.000Z">
+<meta property="article:modified_time" content="2025-06-30T00:02:06.494Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="virtualenv">
+<meta property="article:tag" content="jupyter-notebook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2024/06/26/20240626-virtual-environment/","path":"2024/06/26/20240626-virtual-environment/","title":"Virtual Environment"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Virtual Environment | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#venv"><span class="nav-number">1.</span> <span class="nav-text">venv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virtualenv"><span class="nav-number">2.</span> <span class="nav-text">virtualenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%AF%E5%87%BA%E5%8C%AF%E5%85%A5-libary"><span class="nav-number">3.</span> <span class="nav-text">匯出匯入 libary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virtual-environments-with-Jupyter-notebooks"><span class="nav-number">4.</span> <span class="nav-text">virtual environments with Jupyter notebooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-Virtual-Environment-with-Anaconda"><span class="nav-number">5.</span> <span class="nav-text">Create Virtual Environment with Anaconda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Virtual Environment | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Virtual Environment
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-06-26 11:47:07" itemprop="dateCreated datePublished" datetime="2024-06-26T11:47:07+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天來分享如何應用 virtual env 來提高工作環境等效率。如果使用 python library 我想信很多時候都會用 pip 來安裝他的 library 等 module。如果某些套件版本跟你專安不 match 造成無法 code 無法運行怎麼呢?這時你只有降版本，也就是可能要先移除再安特殊版本。另一種方式就是建立一個 virtual env 也就是類似虛擬環境，這裡可以安裝任何 package or library 跟主環境分離不會有相關。</p>
+<p>我覺得這個很好用，如果你原本主環境安裝太多 library 你有時還要 debug，你可以一開就建立在乾淨環境，再安裝你要安裝個 library or module 等 package。</p>
+<p>可以用這兩終方式建立 virtualenv，如:</p>
+<ul>
+<li><code>virtualenv</code> : 需要安裝套件</li>
+<li><code>venv</code>:內建就有無須安裝特建</li>
+</ul>
+<h2 id="venv"><a href="#venv" class="headerlink" title="venv"></a>venv</h2><blockquote>
+<p>Syntax: <code>python -m  venv &lt;my_env_name&gt;</code><br>EX: <code>python -m  venv venv</code></p>
+</blockquote>
+<ul>
+<li>如何用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#create new directory</span><br><span class="line">mkdir newproject</span><br><span class="line">cd newproject</span><br><span class="line"></span><br><span class="line">#create virtual env</span><br><span class="line">py -m  venv env_apitest</span><br><span class="line"></span><br><span class="line">#activate</span><br><span class="line"></span><br><span class="line">.\.env_apitest\Scripts\activate #for window</span><br><span class="line">source .env_apitest\Scripts\activate #for linux or mac</span><br><span class="line"></span><br><span class="line">#deactivate</span><br><span class="line">deactivate</span><br><span class="line"></span><br><span class="line"># upgrade python version</span><br><span class="line">python -m venv /path/to/venv --upgrade</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/venv_usage.png" class="" title="venv_example">
+
+<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><blockquote>
+<p>安裝: pip3 install virtualenv<br>Syntax: <code>virtualenv &lt;my_env_name&gt;</code></p>
+</blockquote>
+<blockquote>
+<p>指令 python <code>-p</code>: virtualenv -p &#x2F;path&#x2F;to&#x2F;python3 my_env_name</p>
+<blockquote>
+<p>用　<code>which</code> to check your python path</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#create new directory</span><br><span class="line">mkdir newproject</span><br><span class="line">cd newproject</span><br><span class="line"></span><br><span class="line">#default method</span><br><span class="line">virtualenv my_env_name</span><br><span class="line"></span><br><span class="line"># activate it</span><br><span class="line">cd /python_env/bin/activate</span><br><span class="line">#deactive</span><br><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/virtualenv_usage.png" class="" title="virtualenv_example">
+
+<h2 id="匯出匯入-libary"><a href="#匯出匯入-libary" class="headerlink" title="匯出匯入 libary"></a>匯出匯入 libary</h2><p>上面方式是我們學會如何建立 virtual env，現在來介紹如何匯出我們當下個 library 然後匯入</p>
+<blockquote>
+<ul>
+<li>匯出:<blockquote>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</blockquote>
+</li>
+<li>出入:<blockquote>
+<p><code>pip install -r requirements.txt</code></p>
+</blockquote>
+</li>
+<li>list all library<blockquote>
+<p><code>pip list</code> &gt; &gt; <code>pip3 list</code></p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="virtual-environments-with-Jupyter-notebooks"><a href="#virtual-environments-with-Jupyter-notebooks" class="headerlink" title="virtual environments with Jupyter notebooks"></a>virtual environments with Jupyter notebooks</h2><p>我們也可以將我們 virtual environment 用在 jupter notebooks or labs，用下方法:</p>
+<ul>
+<li>安裝: <code>pip install ipykernel</code></li>
+<li>建立 virtual env: <code>python -m ipykernel install --user --name=myenv </code></li>
+<li>list env: <code>jupyter kernelspec list</code></li>
+</ul>
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_virtual.png" class="" title="jupyter-notebook-virtualenv">
+
+<ul>
+<li>移除: <code>jupyter kernelspec uninstall &lt;myenv&gt;</code></li>
+</ul>
+<img src="/hexo-demo2022/2024/06/26/20240626-virtual-environment/jupyter_removeenv.png" class="" title="jupyter-remove-env">
+
+<h2 id="Create-Virtual-Environment-with-Anaconda"><a href="#Create-Virtual-Environment-with-Anaconda" class="headerlink" title="Create Virtual Environment with Anaconda"></a>Create Virtual Environment with Anaconda</h2><ul>
+<li>create virtualenv under conda: <code>conda create -n myenv</code></li>
+<li>activate: <code>conda activate myenv</code></li>
+<li>remove&#x2F;uninstall: <code>conda env remove -n myenv</code></li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html">https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://janakiev.com/blog/jupyter-virtual-envs/">https://janakiev.com/blog/jupyter-virtual-envs/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2024/06/26/20240626-virtual-environment/" title="Virtual Environment">https://github.com/chenchih/2024/06/26/20240626-virtual-environment/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
+              <a href="/hexo-demo2022/tags/virtualenv/" rel="tag"># virtualenv</a>
+              <a href="/hexo-demo2022/tags/jupyter-notebook/" rel="tag"># jupyter-notebook</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/" rel="prev" title="Terminal-oh-my-posh">
+                  <i class="fa fa-chevron-left"></i> Terminal-oh-my-posh
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2024/07/05/20240705_Function_Annotations%20/" rel="next" title="Function Annotations">
+                  Function Annotations <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

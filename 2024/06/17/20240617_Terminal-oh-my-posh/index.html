@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Terminal-oh-my-posh">
+<meta property="og:url" content="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 shell">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/child_env.PNG">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/terminal_icon.PNG">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/psreadline_key.PNG">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_layout.PNG">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_preview.PNG">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/terminal_hidden.png">
+<meta property="og:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/segment_name.png">
+<meta property="article:published_time" content="2024-06-17T06:34:35.000Z">
+<meta property="article:modified_time" content="2025-06-30T00:02:06.485Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="Window">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/child_env.PNG">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/","path":"2024/06/17/20240617_Terminal-oh-my-posh/","title":"Terminal-oh-my-posh"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Terminal-oh-my-posh | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">安裝工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BB%9F%E9%AB%94%E5%AE%89%E8%A3%9D%E6%9C%8D%E5%8B%99%E6%AF%94%E8%BC%83"><span class="nav-number">1.1.</span> <span class="nav-text">軟體安裝服務比較</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%B7%A5%E5%85%B7-1"><span class="nav-number">1.2.</span> <span class="nav-text">安裝工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oh-My-Posh-%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.3.</span> <span class="nav-text">Oh-My-Posh 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-install-Nerd-Font"><span class="nav-number">1.3.1.</span> <span class="nav-text">Step 1 install Nerd Font</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E6%8A%8A-WINDOW-TERMINAL-%E5%AD%97%E9%AB%94%E6%94%B9%E6%88%90-NERD-FONT"><span class="nav-number">1.3.2.</span> <span class="nav-text">Step2 把 WINDOW TERMINAL 字體改成 NERD FONT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-%E5%AE%89%E8%A3%9D"><span class="nav-number">1.3.3.</span> <span class="nav-text">Step3 安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4-%E5%95%9F%E5%8B%95-OH-MY-POSH"><span class="nav-number">1.3.4.</span> <span class="nav-text">Step4 啟動 OH-MY-POSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step5-%E8%A8%AD%E5%AE%9A-prompt"><span class="nav-number">1.3.5.</span> <span class="nav-text">Step5 設定 prompt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step6-add-alias-or-function"><span class="nav-number">1.3.6.</span> <span class="nav-text">Step6 add alias or function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Plugin-%E5%A5%97%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">Plugin 套件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminal-Icons"><span class="nav-number">2.1.</span> <span class="nav-text">Terminal Icons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#psreadline-Autocompletion"><span class="nav-number">2.2.</span> <span class="nav-text">psreadline(Autocompletion)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PSFzf-fuzzy-finder"><span class="nav-number">2.3.</span> <span class="nav-text">PSFzf (fuzzy finder)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout"><span class="nav-number">2.3.1.</span> <span class="nav-text">Layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preview"><span class="nav-number">2.3.2.</span> <span class="nav-text">Preview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Search-syntax"><span class="nav-number">2.3.3.</span> <span class="nav-text">Search syntax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%9D%E7%AA%81-ALT-c"><span class="nav-number">2.3.4.</span> <span class="nav-text">衝突 ALT+c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fd"><span class="nav-number">2.3.5.</span> <span class="nav-text">fd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Z-or-zoxide-directory-jumper"><span class="nav-number">2.4.</span> <span class="nav-text">Z or zoxide, directory jumper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fastfetch"><span class="nav-number">2.5.</span> <span class="nav-text">fastfetch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">終端機相關設定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E7%99%BD%E6%96%87%E5%AD%97%E8%87%AA%E5%8B%95%E5%BE%A9%E8%A3%BD"><span class="nav-number">3.1.</span> <span class="nav-text">反白文字自動復製</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E5%A4%9A%E8%A1%8C%E6%96%87%E5%AD%97%E6%88%96%E7%A8%8B%E5%BC%8F%E6%9C%83%E8%B7%B3%E5%87%BA%E6%8F%90%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">複製多行文字或程式會跳出提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A-powershell-%E7%89%88%E6%9C%AC%E5%9C%A8%E7%B5%82%E7%AB%AF%E6%A9%9F%E9%9A%B1%E8%97%8F"><span class="nav-number">3.3.</span> <span class="nav-text">把 powershell 版本在終端機隱藏</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#window-%E7%9B%B8%E9%97%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">window 相關命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#winget"><span class="nav-number">4.1.</span> <span class="nav-text">winget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scoop"><span class="nav-number">4.2.</span> <span class="nav-text">scoop</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">5.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Terminal-oh-my-posh | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Terminal-oh-my-posh
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-06-17 14:34:35" itemprop="dateCreated datePublished" datetime="2024-06-17T14:34:35+08:00">2024-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Terminal/" itemprop="url" rel="index"><span itemprop="name">Terminal</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 <code>shell</code> <code>bash</code> <code>zsh</code> <code>powershell</code> <code>fish</code>等等。我有寫一篇比較完整，在<a target="_blank" rel="noopener" href="https://medium.com/jacklee26/setup-fancy-terminal-using-ohmyposh-9f0ce00948bf?source=collection_home---4------0-----------------------">Medium</a> 因此今天會寫簡短方法。</p>
+<h1 id="安裝工具"><a href="#安裝工具" class="headerlink" title="安裝工具"></a>安裝工具</h1><h2 id="軟體安裝服務比較"><a href="#軟體安裝服務比較" class="headerlink" title="軟體安裝服務比較"></a>軟體安裝服務比較</h2><p>如果你有用過 Ubuntu 都會看到大家常用 <code>apt-get install</code> 這命令，這個就是我稱為的安裝服務工具。他可以很快速幫助你要安裝個套件。我今天要介紹 3 個，但我會以 winget 優先用，如果 <code>winget</code> 沒有套件再選其他兩個。<code>winget</code> 是微軟開發因此我才會優先用他。我會盡可能不去商店下載。</p>
+<p>正常來說 winget 預設鏡安裝了，如果你是 win10 都會安裝，如果指令找不到就用下方的方法。如果 <code>winget</code>有，那把 <code>scoop</code>安裝，<code>Chocolatey</code>就看你要挨裝嗎，我目前沒用到。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/windows/package-manager/winget/?WT.mc_id=DOP-MVP-37580">Winget</a><br>先到這裡<a target="_blank" rel="noopener" href="https://aka.ms/getwingetpreview">下載</a> ，檔案會是 <code>Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle</code>然後用這個指令安裝:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Add -AppPackage</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/install">Chocolatey</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(&#x27;http://internal/odata/repo/ChocolateyInstall.ps1&#x27;))</span><br></pre></td></tr></table></figure>
+
+<h2 id="安裝工具-1"><a href="#安裝工具-1" class="headerlink" title="安裝工具"></a>安裝工具</h2><p>以下都可以在商店搜尋下載和安裝，但我想用 <code>winget</code>方式比較快</p>
+<ul>
+<li>window terminal: <code>winget install Microsoft.WindowsTerminal</code></li>
+<li>powershell: <code>winget install Microsoft.Powershell</code></li>
+</ul>
+<h2 id="Oh-My-Posh-設定"><a href="#Oh-My-Posh-設定" class="headerlink" title="Oh-My-Posh 設定"></a>Oh-My-Posh 設定</h2><h3 id="Step-1-install-Nerd-Font"><a href="#Step-1-install-Nerd-Font" class="headerlink" title="Step 1 install Nerd Font"></a>Step 1 install Nerd Font</h3><p>請到以下載站下</p>
+<blockquote>
+<p><a href="https://github.com/ryanoasis/nerd-fonts">https://github.com/ryanoasis/nerd-fonts</a> &gt; <a target="_blank" rel="noopener" href="https://www.nerdfonts.com/font-downloads">https://www.nerdfonts.com/font-downloads</a></p>
+</blockquote>
+<p>下載完請把他解壓縮再把它安裝</p>
+<h3 id="Step2-把-WINDOW-TERMINAL-字體改成-NERD-FONT"><a href="#Step2-把-WINDOW-TERMINAL-字體改成-NERD-FONT" class="headerlink" title="Step2 把 WINDOW TERMINAL 字體改成 NERD FONT"></a>Step2 把 WINDOW TERMINAL 字體改成 NERD FONT</h3><p>把凱起 <code>終端機</code>把自行改成 剛剛下載 NERD FONT</p>
+<h3 id="Step3-安裝"><a href="#Step3-安裝" class="headerlink" title="Step3 安裝"></a>Step3 安裝</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#install  安裝</span><br><span class="line">winget install JanDeDobbeleer.OhMyPosh -s winget</span><br><span class="line"></span><br><span class="line">#upgrade 升級</span><br><span class="line">winget upgrade JanDeDobbeleer.OhMyPosh -s winget</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step4-啟動-OH-MY-POSH"><a href="#Step4-啟動-OH-MY-POSH" class="headerlink" title="Step4 啟動 OH-MY-POSH"></a>Step4 啟動 OH-MY-POSH</h3><p>請下這個指令會把你的終端機變成花麗，這是預設主題</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oh-my-posh init pwsh | invoke-expression</span><br></pre></td></tr></table></figure>
+
+<p>可以下這個指令看全部主體為置: <code>Get-PoshThemes</code> 或是有包含檔名 <code>Get-PoshThemes -List</code></p>
+<p>你可以自行換主題</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step5-設定-prompt"><a href="#Step5-設定-prompt" class="headerlink" title="Step5 設定 prompt"></a>Step5 設定 prompt</h3><p>上一步的方式只能暫時生效，如果開新的視窗會發現甚麼都沒變，我們要把剛剛下個指令寫進去 profile 裡面。</p>
+<p>PowerShell profile 不同班本 profile 放不一樣為置，5.X 版本是預設版本，7.X 視我們前門安裝:</p>
+<blockquote>
+<p>PS5.1: C:\Users\test\Documents\WindowsPowerShell<br>PS7.1: C:\Users\test\Documents\PowerShell</p>
+</blockquote>
+<p>你可以手動加 profile，但有更好的方式。請下這個指令會產生檔案:<code>New-Item -Path $PROFILE -Type File –Force</code></p>
+<p>接下來我們就來編輯次 profile，把剛剛加的指令加上去就可以，我們編輯: <code>notepad $profile</code> 就會幫我們開剛剛建立的 profile。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#generate powershell profile</span><br><span class="line">New-Item -Path $PROFILE -Type File –Force</span><br><span class="line">#modify profile</span><br><span class="line">notepad $profile</span><br></pre></td></tr></table></figure>
+
+<p>可以這樣加你的主體:</p>
+<blockquote>
+<p><code>$env</code>:預設路徑<br>你們會好奇為什麼 <code>$env</code>會知道預設 theme，因為 <code>env</code>是 powershell 環境變數，你可以下這個指令看$env所以的參數<code>ChildItem env:</code> 就會看到<code>$env:POSH_THEMES_PATH</code> 會有 theme 完整路徑。這個好處是你不用打那麼長一串。</p>
+</blockquote>
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/child_env.PNG" class="">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以用 url 或完整路徑</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#full path</span><br><span class="line">$themepath = &#x27;C:\Users\test\Documents\PowerShell\shanselman_v3-v2.json&#x27;</span><br><span class="line">oh-my-posh --init --shell pwsh --config $themepath | Invoke-Expression</span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">oh-my-posh init pwsh --config &#x27;https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/jandedobbeleer.omp.json&#x27; | Invoke-Expression</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以放在跟$profile 為置，用細麵指令</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$omp_config = Join-Path $PSScriptRoot &quot;.\theme.json&quot;</span><br><span class="line">oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step6-add-alias-or-function"><a href="#Step6-add-alias-or-function" class="headerlink" title="Step6 add alias or function"></a>Step6 add alias or function</h3><p>我們可以加一些 alias 用像 linux 一些指令放在$profile 裡面。所有的東西都會放在$profile 裡面，他每次開新 session 都會先去讀$profile。</p>
+<p>我先安裝以下 git and node:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#git</span><br><span class="line">winget install --id Git.Git -e --source winget</span><br><span class="line">#node</span><br><span class="line"> WINGET INSTALL OPENJS.NODEJS.ltS</span><br></pre></td></tr></table></figure>
+
+<p>以下是我的 <code>$profile</code> 有 alias 和加一些函數</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">Set-alias tt tree</span><br><span class="line">Set -Alias ll ls</span><br><span class="line">Set-Alias g git</span><br><span class="line">#Set alias vim nvim</span><br><span class="line">Set-Alias grep findstr</span><br><span class="line">Set-Alias tig &#x27;C:\Program Files\Git\usr\bin\tig.exe&#x27;</span><br><span class="line">Set-Alias less &#x27;C:\Program Files\Git\usr\bin\less.exe&#x27;</span><br><span class="line"></span><br><span class="line"># Ultilities (Optional)</span><br><span class="line">function which ($command) &#123;</span><br><span class="line">    Get-Command -Name $command -ErrorAction SilentlyContinue |</span><br><span class="line">        Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getenv&#123;</span><br><span class="line">Get-ChildItem env:</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function head &#123;</span><br><span class="line">  param($Path, $n = 10)</span><br><span class="line">  Get-Content $Path -Head $n</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function tail &#123;</span><br><span class="line">  param($Path, $n = 10)</span><br><span class="line">  Get-Content $Path -Tail $n</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function grep($regex, $dir) &#123;</span><br><span class="line">    if ( $dir ) &#123;</span><br><span class="line">        Get-ChildItem $dir | select-string $regex</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    $input | select-string $regex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function df &#123;</span><br><span class="line">    get-volume</span><br><span class="line">&#125;</span><br><span class="line">#get $env variable</span><br><span class="line">function getenv &#123;ChildItem env:&#125;</span><br><span class="line"></span><br><span class="line"># Git Shortcuts</span><br><span class="line">function gs &#123; git status &#125;</span><br><span class="line">function ga &#123; git add . &#125;</span><br><span class="line">function gc &#123; param($m) git commit -m &quot;$m&quot; &#125;</span><br><span class="line">function gp &#123; git push &#125;</span><br><span class="line">function g &#123; z Github &#125;</span><br><span class="line">function gcom &#123;</span><br><span class="line">    git add .</span><br><span class="line">    git commit -m &quot;$args&quot;</span><br><span class="line">&#125;</span><br><span class="line">function lazyg &#123;</span><br><span class="line">    git add .</span><br><span class="line">    git commit -m &quot;$args&quot;</span><br><span class="line">    git push</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># adding hosts shortcut</span><br><span class="line">function hosts &#123; notepad c:\windows\system32\drivers\etc\hosts &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上你看到有 80%有 linux 指令，有興趣可以玩看看。</p>
+<h1 id="Plugin-套件"><a href="#Plugin-套件" class="headerlink" title="Plugin 套件"></a>Plugin 套件</h1><p>這裡我會介紹套件，但我只介紹比較實用也大家用的</p>
+<h2 id="Terminal-Icons"><a href="#Terminal-Icons" class="headerlink" title="Terminal Icons"></a>Terminal Icons</h2><blockquote>
+<ul>
+<li>安裝</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Module -Name Terminal-Icons -Repository PSGallery -Force</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>匯入</li>
+</ul>
+<blockquote>
+<p><code>Import-Module Terminal-Icons</code></p>
+</blockquote>
+</blockquote>
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/terminal_icon.PNG" class="">
+
+<h2 id="psreadline-Autocompletion"><a href="#psreadline-Autocompletion" class="headerlink" title="psreadline(Autocompletion)"></a>psreadline(Autocompletion)</h2><p>這個套件很龐大，你們可以參考以下<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/powershell/module/psreadline/about/about_psreadline_functions?view=powershell-7.4">網站</a>有很多我並沒介紹</p>
+<blockquote>
+<ul>
+<li>安裝</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>匯入</li>
+</ul>
+<blockquote>
+<p><code>Import-Module PSReadLine</code></p>
+</blockquote>
+</blockquote>
+<p>以下是我放在我個 <code>$profile</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Set-PSReadLineOption -EditMode Windows</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br><span class="line">Set-PSReadLineOption -PredictionViewStyle ListView</span><br><span class="line">Set-PSReadLineKeyHandler -key Tab -Function Complete</span><br><span class="line">Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete</span><br><span class="line">Set-PSReadlineKeyHandler -Chord ctrl+x -Function ViExit</span><br><span class="line">Set-PSReadLineKeyHandler -Chord &#x27;Ctrl+d&#x27; -Function DeleteChar</span><br><span class="line">Set-PSReadlineKeyHandler -Chord ctrl+w -Function BackwardDeleteWord</span><br><span class="line">Set-PSReadlineKeyHandler -Chord ctrl+e -Function EndOfLine</span><br><span class="line">Set-PSReadlineKeyHandler -Chord ctrl+a -Function BeginningOfLine</span><br><span class="line">Set-PSReadLineKeyHandler -Key Alt+B -Function SelectShellBackwardWord</span><br><span class="line">Set-PSReadLineKeyHandler -Key Alt+F -Function SelectShellForwardWord</span><br><span class="line"></span><br><span class="line"># CaptureScreen is good for blog posts or emails showing a transaction</span><br><span class="line"># of what you did when asking for help or demonstrating a technique.</span><br><span class="line">#ctrl+c and ctrl+d  to copy terminal</span><br><span class="line">#ctrl+v to paste</span><br><span class="line">Set-PSReadLineKeyHandler -Chord &#x27;Ctrl+d,Ctrl+c&#x27; -Function CaptureScreen</span><br></pre></td></tr></table></figure>
+
+<p>這個望佔有很多功能可以加進去，有人寫好 powershell 你只要加進去就可以用，他可以自動加符號如 <code>()</code>,<code>&#39;&#39;</code>,<code>&quot;&quot;</code>,<code>&#123;&#125;</code>.<code>[]</code></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1">https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1</a></p>
+</blockquote>
+<p>你可以下這個指令來看 psreadline 的鍵和功能，上方有設新的鍵他也會 update，非常實用指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-PSReadLineKeyHandler</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/psreadline_key.PNG" class="">
+
+<h2 id="PSFzf-fuzzy-finder"><a href="#PSFzf-fuzzy-finder" class="headerlink" title="PSFzf (fuzzy finder)"></a>PSFzf (fuzzy finder)</h2><p>我捫其實是用在 powershell，因此需要安裝 PSFZF，他會把 FZF 包在裡面</p>
+<blockquote>
+<ul>
+<li>安裝</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scoop install fzf #install fzf</span><br><span class="line">Install-Module -Name PSFzf -Scope CurrentUser -Force #install psfzf</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>匯入</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Import-Module PSFzf</span><br><span class="line"># Override PSReadLine&#x27;s history search</span><br><span class="line">Set-PsFzfOption -PSReadlineChordProvider &#x27;Ctrl+f&#x27; -PSReadlineChordReverseHistory &#x27;Ctrl+r&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Ctrl+f</code>: 可以濫你歷史紀錄用的指令</li>
+<li><code>ctrl+r</code>: 搜尋目錄所有檔案</li>
+<li><code>Alt+c</code>: 可以進子目錄或目錄</li>
+</ul>
+<p>這個非常方便如果你要搜尋特別檔案就可以已用 <code>ctrl+r</code> 或是進入任何目錄也可以用 <code>atl+c</code>。</p>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><p>我們可以用調高度 fzf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#輸入指令，下次要用時還需要再輸入指令</span><br><span class="line">$(fzf --height 40% --reverse)</span><br><span class="line">#寫成函數 方面下次輸入函數名稱啟動功能</span><br><span class="line">function f2&#123;$(fzf --height 60% --layout=reverse --border)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你也可以把預設的參數改成你想要的高度:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$env:FZF_DEFAULT_OPTS=&#x27;--height 40% --layout=reverse --border&#x27;</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_layout.PNG" class="">
+
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p>可以看歡看檔案內容，不需要開啟</p>
+<blockquote>
+<p>我們需要先安裝 <code>bat</code>套件: ‵scoop install bat‵</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line">function ff&#123;</span><br><span class="line">nvim $(fzf --preview &#x27;bat --style=numbers --color=always --line-range :500 &#123;&#125;&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/fzf_preview.PNG" class="">
+
+<p>可以用上面方式也可以開啟指定的文字 textedior，如 <code>notepad</code> <code>vi</code> <code>vim</code> <code>neovim</code> <code>nano</code> 等等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">notepad $(fzf --preview=&#x27;cat &#123;&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Search-syntax"><a href="#Search-syntax" class="headerlink" title="Search syntax"></a>Search syntax</h3><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#39;wild</code></td>
+<td>Items that include wild</td>
+</tr>
+<tr>
+<td><code>!^music</code></td>
+<td>Items that do not start with music</td>
+</tr>
+<tr>
+<td><code>!.mp3$</code></td>
+<td>Items that do not end with .mp3</td>
+</tr>
+<tr>
+<td><code>!test</code></td>
+<td>Items that do not include test</td>
+</tr>
+<tr>
+<td><code>^music</code></td>
+<td>Items that start with music</td>
+</tr>
+<tr>
+<td><code>.mp3$</code></td>
+<td>Items that end with .mp3</td>
+</tr>
+</tbody></table>
+<h3 id="衝突-ALT-c"><a href="#衝突-ALT-c" class="headerlink" title="衝突 ALT+c"></a>衝突 ALT+c</h3><p>如果你用 <code>Set-PSReadLineOption -EditMode emac</code> <code>alt+c</code> 就可能會無法用因為他跟 fzf alt+c 有衝突。</p>
+<p>如何解決這問題，有兩個方法，一個是把 emac 改成 window 模式或是移除 EditMode。第二方法用下面指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#access directory</span><br><span class="line">Get-ChildItem . -Recurse -Attributes Directory | Invoke-Fzf | Set-Location</span><br><span class="line"></span><br><span class="line">#edit file, please change your text edior 可以直接修該檔案，用你想要文字編輯器如NOTPAD</span><br><span class="line">Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % &#123; notepad $_ &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我建議大家如果享用把他寫成函數，這樣下指令就會執行他如下面方式，你只要下 <code>FzfNav</code>就會執行跟 ALT+c 一樣效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function FzfNav &#123; Get-ChildItem . -Recurse -Attributes Directory | Invoke-Fzf | Set-Location &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="fd"><a href="#fd" class="headerlink" title="fd"></a>fd</h3><p>如果你想樣把預設的 fzf find 用成 fd 或 ag，可以用下面方式。 FD 和 ag 又是另外搜尋套件比 find 還快。如果你是用 linux，fzf 是用 find 在幫你搜尋。</p>
+<p>我在我不多說如何用 ag 和 fd，有機會再寫一章關於他們。</p>
+<p>他有一個好處如果你不想要搜巡當案落資料夾可以把他寫進 <code>.ignore</code>檔案或 <code>.gitignore</code>，他就會忽略這檔案<br>你也可以用剛剛上面有用到你 search syntax <code>!</code> 不忽略。</p>
+<blockquote>
+<ul>
+<li>安裝</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># fd安 裝</span><br><span class="line">#scoop</span><br><span class="line">scoop install fd</span><br><span class="line">#winget方式</span><br><span class="line">winget install sharkdp.fd</span><br><span class="line"></span><br><span class="line">#ag 安裝</span><br><span class="line">winget install &quot;The Silver Searcher&quot;</span><br></pre></td></tr></table></figure>
+
+<p>更多關於 <a href="https://github.com/sharkdp/fd">fd</a> <a href="https://github.com/ggreer/the_silver_searcher">az</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#add fd to fzf as default</span><br><span class="line"></span><br><span class="line"># exclude .git</span><br><span class="line">$env:FZF_DEFAULT_COMMAND = &#x27;fd --type file --follow --exclude .git&#x27;</span><br><span class="line">#include hidden files, exclude .git</span><br><span class="line">$env:FZF_DEFAULT_COMMAND = &#x27;fd --type file --follow --hidden --exclude .git&#x27;</span><br><span class="line"></span><br><span class="line">#add ag to fzf as default</span><br><span class="line">$env:FZF_DEFAULT_COMMAND=&quot;ag -l --hidden --ignore .git&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>fd</code>:搜尋檔案或目錄，跟 <code>find</code> <code>locate</code> 差不多但比它們還快<br><code>ag</code>:搜尋檔案內容</p>
+</blockquote>
+<h2 id="Z-or-zoxide-directory-jumper"><a href="#Z-or-zoxide-directory-jumper" class="headerlink" title="Z or zoxide, directory jumper"></a>Z or zoxide, directory jumper</h2><p>他跟 cd 指令很像，他會把你剛剛用 <code>cd</code>打的路徑記錄起來，下次你就可以用 <code>z</code> 打剛剛最後目錄就可以。列如:<br><code>cd /home/user/test</code><br><code>z test</code></p>
+<blockquote>
+<ul>
+<li>安裝</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Module -Name Z –Force</span><br></pre></td></tr></table></figure>
+
+<h2 id="fastfetch"><a href="#fastfetch" class="headerlink" title="fastfetch"></a>fastfetch</h2><p>果果你想要顯示你電腦想關資訊，可以用這個套件<br>可以看下方連結看更多訊息:</p>
+<blockquote>
+<p><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a> &gt; <a href="https://github.com/beucismis/awesome-fetch">awesome-getch</a> 很多類似相關特件</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#generate config 產生config檔案</span><br><span class="line">fastfetch --gen-config</span><br><span class="line"># 為置: window: C:\Users\test\.config\fastfetch\ config.jsonc</span><br><span class="line">#load customer cfg:</span><br><span class="line">fastfetch --load-config /path/to/config_file</span><br><span class="line"># example: fastfetch --load-config .\aa.jsonc</span><br><span class="line"></span><br><span class="line">#SHOW ONLY HARDWARE: 電腦硬體相關</span><br><span class="line">fastfetch -c hardware</span><br><span class="line"></span><br><span class="line">#PRINT LOGOS:</span><br><span class="line">fastfetch --print-logos</span><br><span class="line"></span><br><span class="line">#USE LOGO:</span><br><span class="line">fastfetch --logo sparky</span><br><span class="line">#print all logo:</span><br><span class="line">fastfetch --print-logos</span><br><span class="line">#USE CERTAIN COLOR :</span><br><span class="line">fastfetch --color blue</span><br><span class="line">#COLORS 1-9, 5 BLINKING:</span><br><span class="line">fastfetch --color 5</span><br><span class="line">#HELP - BUNCH OF OPTIONS:</span><br><span class="line">fastfetch --help</span><br><span class="line">#All filesytem paths can be:</span><br><span class="line">fastfetch --list-data-paths</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://github.com/fastfetch-cli/fastfetch/tree/dev/presets">還有更多範例可以參考:</a></p>
+</blockquote>
+<h1 id="終端機相關設定"><a href="#終端機相關設定" class="headerlink" title="終端機相關設定"></a>終端機相關設定</h1><h2 id="反白文字自動復製"><a href="#反白文字自動復製" class="headerlink" title="反白文字自動復製"></a>反白文字自動復製</h2><p>我們可以只要選擇反白文字會幫我們自己復製</p>
+<p>我們需要在終端機 settings.json 做設定，可以按此鑑開啟檔案 <code>ctrl+shift+,</code></p>
+<blockquote>
+<p>方法 1: terminal settings.json 檔案裡面 profile 加</p>
+<blockquote>
+<p><code>copyonselect=true</code></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>方法 2:也可以把這兩行 function 加進$profile</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You can also automatic add into porfile</span><br><span class="line">function cpy &#123; Set-Clipboard $args[0] &#125;</span><br><span class="line">function pst &#123; Get-Clipboard &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="複製多行文字或程式會跳出提示"><a href="#複製多行文字或程式會跳出提示" class="headerlink" title="複製多行文字或程式會跳出提示"></a>複製多行文字或程式會跳出提示</h2><blockquote>
+<p>terminal settings.json 檔案，profile 加</p>
+<blockquote>
+<p><code>Multipastingwarming=false</code></p>
+</blockquote>
+</blockquote>
+<h2 id="把-powershell-版本在終端機隱藏"><a href="#把-powershell-版本在終端機隱藏" class="headerlink" title="把 powershell 版本在終端機隱藏"></a>把 powershell 版本在終端機隱藏</h2><p>請開啟終端機的設定，選 powershell，點 command line 或命令列，加 <code>-nologo</code> 加進去，如下面:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Users\test\AppData\Local\Microsoft\WindowsApps\Microsoft.PowerShell_8wekyb3d8bbwe\pwsh.exe&quot; -nologo</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/terminal_hidden.png" class="">
+
+<h1 id="window-相關命令"><a href="#window-相關命令" class="headerlink" title="window 相關命令"></a>window 相關命令</h1><h2 id="winget"><a href="#winget" class="headerlink" title="winget"></a>winget</h2><ul>
+<li>版本 winget version:<code>winget –version</code></li>
+<li>搜尋套件 Search pkg: <code>winget search &lt;packagname&gt;</code></li>
+<li>安裝套件 Install pkg: <code>winget install &lt;packagname&gt; </code></li>
+</ul>
+<h2 id="scoop"><a href="#scoop" class="headerlink" title="scoop"></a>scoop</h2><ul>
+<li>安裝多個套件: <code>scoop install curl sudo jq</code></li>
+<li>檢查已安裝本機:<code>scoop list</code></li>
+<li>套件資訊 作者等: <code>Scoop info &lt;package&gt;</code></li>
+<li>套件移除: <code>Scoop uninstall &lt;package&gt; </code>, <code>-p</code> cfg 也刪</li>
+<li>更新所有套件: <code>Scoop update *</code></li>
+</ul>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>我們來做一些總結設定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#Step1: install  安裝</span><br><span class="line">winget install JanDeDobbeleer.OhMyPosh -s winget</span><br><span class="line">#upgrade 升級</span><br><span class="line">winget upgrade JanDeDobbeleer.OhMyPosh -s winget</span><br><span class="line"># Step2 安裝nerd font, 把終端機改成powershell 也順便把font 改成nerd font</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#Step3 啟動 預設主題</span><br><span class="line">oh-my-posh init pwsh | invoke-expression</span><br><span class="line">#改你要個主題，可以用</span><br><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br><span class="line"></span><br><span class="line">#Step4建立prompt/profile</span><br><span class="line">New-Item -Path $PROFILE -Type File –Force</span><br><span class="line"></span><br><span class="line">#  修改 $profile</span><br><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\iterm2.omp.json&quot; | Invoke-Expression</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Step5 匯入套件</span><br><span class="line">Import-Module Terminal-Icons</span><br><span class="line">Import-Module PSReadLine</span><br><span class="line">Set-PSReadLineOption -EditMode Windows</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br><span class="line">Set-PSReadLineOption -PredictionViewStyle ListView</span><br><span class="line"></span><br><span class="line">Import-Module PSFzf</span><br><span class="line"># Override PSReadLine&#x27;s history search</span><br><span class="line">Set-PsFzfOption -PSReadlineChordProvider &#x27;Ctrl+f&#x27; -PSReadlineChordReverseHistory &#x27;Ctrl+r&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#其他指令</span><br><span class="line">Get-PoshThemes #顯示所有主題</span><br><span class="line">Get-PoshThemes –List #顯示所有主體的檔名</span><br><span class="line"></span><br><span class="line">Get-ChildItem env: #列出 $env</span><br><span class="line">Get-PSReadLineKeyHandler #顯示psreadline</span><br><span class="line">#終端機熱鑑</span><br><span class="line">ctrl+shift+, =&gt; 開啟therminal settings.json</span><br><span class="line">ctrl+shift+p =&gt;show all hotkey</span><br></pre></td></tr></table></figure>
+
+<p>我建立其他主體如果你不喜歡可以到此處看我用 segement 建立主體<a href="https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/Theme_customize">segment 客製主體</a>。可以參考我下面有標示不同主題和名稱:</p>
+<img src="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/segment_name.png" class="">
+
+<p>我有寫一個自動化有機會可以來這下載就不用手動安裝，來此<a href="https://github.com/chenchih/Env_Setup_Note/tree/master/Terminal/ohmyposh/automation_ps_script">連結下載</a> ，請用這個 powershell script <code>setup_testing_automation_me.ps1</code></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=MA_gIbs6P1c">Will 保哥 YT 影片</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2021/11/24/PowerShell-prompt-with-Oh-My-Posh-and-Windows-Terminal">Will 保哥 設定教學</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal">SCOTT HANSELMAN blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5-aK2_WwrmM&t=63s">devaslife YT 影片教學</a></li>
+<li><a href="https://github.com/craftzdog/dotfiles-public">devaslife git</a></li>
+<li><a href="https://github.com/ChrisTitusTech/powershell-profile/tree/main">ChrisTitusTech-automation config</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/">ohmyposh</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget doc</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/powershell/module/psreadline/get-psreadlinekeyhandler?view=powershell-7.4">psreadline doc</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nerdfonts.com/">nerdfont</a></li>
+<li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/PowerShell/PSReadLine/master/PSReadLine/SamplePSReadLineProfile.ps1">psrealine fucntion</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/chenchih/37c0907a9ac00bd1c24e410d6cb4e112">my gist profile</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/" title="Terminal-oh-my-posh">https://github.com/chenchih/2024/06/17/20240617_Terminal-oh-my-posh/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/Terminal/" rel="tag"># Terminal</a>
+              <a href="/hexo-demo2022/tags/Window/" rel="tag"># Window</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2023/04/14/20230414_RegularExpression-Python/" rel="prev" title="RegularExpression-Python">
+                  <i class="fa fa-chevron-left"></i> RegularExpression-Python
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2024/06/26/20240626-virtual-environment/" rel="next" title="Virtual Environment">
+                  Virtual Environment <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

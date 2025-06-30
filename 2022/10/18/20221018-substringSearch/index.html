@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。 split() 方式我的 string 是:  st&#x3D;&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps),">
+<meta property="og:type" content="article">
+<meta property="og:title" content="substringSearchg檔案內容搜尋相關關鍵字">
+<meta property="og:url" content="https://github.com/chenchih/2022/10/18/20221018-substringSearch/index.html">
+<meta property="og:site_name" content="Chen-Chih Blog">
+<meta property="og:description" content="今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。 split() 方式我的 string 是:  st&#x3D;&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps),">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/azewIA8.png">
+<meta property="article:published_time" content="2022-10-18T09:44:27.000Z">
+<meta property="article:modified_time" content="2025-06-30T00:02:06.482Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="fileIO">
+<meta property="article:tag" content="search">
+<meta property="article:tag" content="regExp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/azewIA8.png">
+
+
+<link rel="canonical" href="https://github.com/chenchih/2022/10/18/20221018-substringSearch/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/chenchih/2022/10/18/20221018-substringSearch/","path":"2022/10/18/20221018-substringSearch/","title":"substringSearchg檔案內容搜尋相關關鍵字"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>substringSearchg檔案內容搜尋相關關鍵字 | Chen-Chih Blog - Tech Note</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Note</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#split-%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">split() 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-expression"><span class="nav-number">2.</span> <span class="nav-text">Regular expression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1-%E6%8A%93%E5%8F%96%E6%99%82%E9%96%93%E6%88%96%E6%98%AF%E6%95%B8%E5%AD%97"><span class="nav-number">2.1.</span> <span class="nav-text">Step 1 抓取時間或是數字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2-%E6%8A%93%E5%8F%96%E6%97%A5%E6%9C%9F%E5%92%8C-TPUT-%E7%9B%B4%E5%92%8C%E5%85%B6%E4%BB%96%E7%9B%B4"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2 抓取日期和 TPUT 直和其他直</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#re-search-%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">re.search()方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-findall-%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.2.</span> <span class="nav-text">re.findall() 方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-search-and-re-sub-%E6%96%B9%E5%BC%8F-%E6%9C%80%E5%A5%BD%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.3.</span> <span class="nav-text">re.search and re.sub() 方式 (最好方法)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-search"><span class="nav-number">2.2.4.</span> <span class="nav-text">re.search()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-3-%E6%8A%8A%E7%9B%B4%E5%8A%A0%E9%80%B2-list-%E5%86%8D%E5%8D%B0%E5%87%BA%E4%BE%86%E6%88%96%E5%AF%AB%E9%80%B2%E6%AA%94%E6%A1%88"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3 把直加進 list 再印出來或寫進檔案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#For-Loop-%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.2.</span> <span class="nav-text">For Loop 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enumerate-%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.3.</span> <span class="nav-text">Enumerate 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-zip-%E6%9C%80%E5%A5%BD%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.4.</span> <span class="nav-text">用 zip 最好方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">完整程式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-4-%E8%BD%89%E6%88%90-excel"><span class="nav-number">2.5.</span> <span class="nav-text">Step 4 轉成 excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E5%8F%A6%E5%A4%96%E4%BE%8B%E5%AD%90"><span class="nav-number">2.6.</span> <span class="nav-text">補充另外例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-number">3.</span> <span class="nav-text">Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Case1-Layer2-SIngleUE-Datetime-and-Ingress-Tput"><span class="nav-number">3.1.</span> <span class="nav-text">Case1 Layer2-SIngleUE Datetime and Ingress Tput</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case2-Layer2-SIngleUE-other-value"><span class="nav-number">3.2.</span> <span class="nav-text">Case2 Layer2-SIngleUE other value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case3-Layer2-Multiply-UE"><span class="nav-number">3.3.</span> <span class="nav-text">Case3 Layer2-Multiply UE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case4-PDCP"><span class="nav-number">3.4.</span> <span class="nav-text">Case4 PDCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%8A%E5%A4%9A%E5%80%8B%E6%AA%94%E6%A1%88%E5%92%8C%E5%86%8D%E4%B8%80%E8%B5%B7"><span class="nav-number">3.5.</span> <span class="nav-text">把多個檔案和再一起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#excel"><span class="nav-number">3.6.</span> <span class="nav-text">excel</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">5.</span> <span class="nav-text">reference:</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://github.com/chenchih/2022/10/18/20221018-substringSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="substringSearchg檔案內容搜尋相關關鍵字 | Chen-Chih Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          substringSearchg檔案內容搜尋相關關鍵字
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。</p>
+<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的 string 是:</p>
+<blockquote>
+<p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
+</blockquote>
+<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和 <code>(Mbps)</code>移除，可以用下面方式:</p>
+<ul>
+<li>Step1: 宣告我的 string</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Step2 抓取時間直</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateStr = st.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">print(dateStr) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>20221013.162853.788442</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Step3 抓取 TPUT 直<br>這裡會用到 <code>spit</code>和 <code>strip</code><br><code>spit</code>是把字源切開，切完只留下 Tput，會發現有空白，因此在後面加 <code>strip</code>把空白移除就可以。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#一次把所有東西spit切掉</span><br><span class="line">Tput = st.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">#如果不喜歡可以用下面一個一切</span><br><span class="line">print(Tput) # 0.010799</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>0.010799</p>
+</blockquote>
+</blockquote>
+<p>想說明以下，我很懶不想一個一個切，因為不想宣告多的變數，所以一次把他切。如果妳想一個一 個用可以用這樣方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">subString = st.split(&quot; DL- ingress traffic:&quot;, 1)[1]</span><br><span class="line">TPUT=subString.split(&#x27;,&#x27;)[0]</span><br><span class="line">TPUT=TPUT.split(&#x27;(&#x27;)[0]</span><br></pre></td></tr></table></figure>
+
+<p>以上的方法很簡單的方法，但是這種方法很不好因為如果整個索引改變了我們程式就會壞了。我現在都是用 split，他就是用我們的索引在切。還有一個問題就是程是不乾靜，因此如果有更好方法避免用此方法。下面我會用 regular expression 方法呈現出我們要找的直。</p>
+<h2 id="Regular-expression"><a href="#Regular-expression" class="headerlink" title="Regular expression"></a>Regular expression</h2><p>Regular Expression 也好用，下面只教如何抓取時間。 以下我會介紹紹不同的例子抓取相關字串 string</p>
+<p>我們需要 <code>import re</code></p>
+<p><strong>Regular expression method</strong> 有以下的方式可以用:</p>
+<ul>
+<li>match()</li>
+<li>search()</li>
+<li>findall()</li>
+<li>finditer()<br>|</li>
+</ul>
+<p>reference: <a target="_blank" rel="noopener" href="https://cheatography.com/davechild/cheat-sheets/regular-expressions/">https://cheatography.com/davechild/cheat-sheets/regular-expressions/</a></p>
+<h3 id="Step-1-抓取時間或是數字"><a href="#Step-1-抓取時間或是數字" class="headerlink" title="Step 1 抓取時間或是數字"></a>Step 1 抓取時間或是數字</h3><p>繼續從上面字串的例子，用不同 regular expression 方法。</p>
+<ul>
+<li>Example1: 時間</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">s = &quot;list[20221013.162853.788442]&quot;</span><br><span class="line">m = re.search(r&quot;\[([0-9.]+)\]&quot;, s)</span><br><span class="line">print(m.group(1)) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>20221013.162853.788442</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Example2:<br>我們也可以下這樣:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">regex = re.compile(r&#x27;[2]\d&#123;7&#125;\.\d&#123;6&#125;\.\d&#123;6&#125;&#x27;) #&#x27;[2] start with 2</span><br><span class="line">match = regex.search(string)</span><br><span class="line">print(match.group(0)) #20221018.165317.401606</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Example3:<br><code>([12]\d&#123;3&#125;-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))</code></li>
+</ul>
+<p>如果有<strong>文字</strong>可以這樣用，我在 stackoverflow 看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;alpha.Customer[cus_Y4o9qMEZAugtnW] ...&quot;</span><br><span class="line">m = re.search(r&quot;\[([A-Za-z0-9_]+)\]&quot;, s)</span><br><span class="line">print(m.group(1) ) #cus_Y4o9qMEZAugtnW</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>cus_Y4o9qMEZAugtnW</p>
+</blockquote>
+</blockquote>
+<h3 id="Step-2-抓取日期和-TPUT-直和其他直"><a href="#Step-2-抓取日期和-TPUT-直和其他直" class="headerlink" title="Step 2 抓取日期和 TPUT 直和其他直"></a>Step 2 抓取日期和 TPUT 直和其他直</h3><h4 id="re-search-方式"><a href="#re-search-方式" class="headerlink" title="re.search()方式"></a>re.search()方式</h4><p>抓取時間和 TPUT 的直:</p>
+<blockquote>
+<p><code>re.search(r&#39;\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+)&#39;, string)</code></p>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>20221018.165317.401606</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tput&#x3D; 0.000091 Mbps, Mcs&#x3D; 9.0(Sigma&#x3D; 0.0), RbNum&#x3D; 1.4, ReTxRatio&#x3D; 33.3, Layers&#x3D; 1.0, PdschBler&#x3D; 0.0, nonWPdschBler&#x3D; 33.3</td>
+</tr>
+</tbody></table>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">string = &quot;[20221018.165317.401606][info]:[DL- UE[ 0]: Tput= 0.000091 Mbps, Mcs= 9.0(Sigma= 0.0), RbNum= 1.4, ReTxRatio= 33.3, Layers= 1.0, PdschBler= 0.0, nonWPdschBler= 33.3]&quot;</span><br><span class="line">m1 = re.search(r&#x27;\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+)&#x27;, string)</span><br><span class="line">#group(1) =&gt; 20221018.165317.401606</span><br><span class="line">#group(2) =&gt; Value=    0.000091 Mbps, Mcs=  4.0(Sigma= 0.0), Num=   1.4</span><br><span class="line">print(m1.group(2))</span><br><span class="line">print(m1.group(1),&#x27;\nTPUT:&#x27;, newstr[1], &#x27;\nMcs&#x27;,newstr[4].split(&#x27;(&#x27;)[0],&#x27;\nRb&#x27;,newstr[7].split(&#x27;,&#x27;)[0])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+<blockquote>
+<p>#20221018.165317.401606<br>#TPUT: 0.000091<br>#Mcs 9.0<br>#Rb 1.4</p>
+</blockquote>
+</blockquote>
+<h4 id="re-findall-方式"><a href="#re-findall-方式" class="headerlink" title="re.findall() 方式"></a>re.findall() 方式</h4><p>抓取 <code>數字.數字</code>相關的直: 會把原先的日期切掉，無法抓日期會有問題</p>
+<blockquote>
+<p><code>re.findall(r&quot;[0-9]*\.[0-9]+&quot;, string)</code></p>
+<blockquote>
+<p>[‘20221018.165317’, ‘.401606’, ‘0.000091’, ‘9.0’, ‘0.0’, ‘1.4’, ‘33.3’, ‘1.0’, ‘0.0’, ‘33.3’]</p>
+</blockquote>
+</blockquote>
+<p>你們會好氣為什麼我要用 <code>newstr=search[2:-1]</code> ，我的目的在這裡主要是又取所有直，如果們有時間會被抓取下來。你有發現我取的直都是 X.X 的直，所以所有府和他的都會抓取。時間日期也會但是時間格式有 3 對，最後一段不會被抓取，因此在這裡我們不需要日期才把索引從 <code>[2:-1]</code>，<code>-1</code>最到最後索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m2=re.findall(r&quot;[0-9]*\.[0-9]+&quot;, string)</span><br><span class="line">newstr=m2[2:-1] #split time with value</span><br><span class="line">print(newstr)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>[‘0.000091’, ‘9.0’, ‘0.0’, ‘1.4’, ‘33.3’, ‘1.0’, ‘0.0’]</p>
+</blockquote>
+</blockquote>
+<h4 id="re-search-and-re-sub-方式-最好方法"><a href="#re-search-and-re-sub-方式-最好方法" class="headerlink" title="re.search and re.sub() 方式 (最好方法)"></a>re.search and re.sub() 方式 (最好方法)</h4><p><code>re.sub()</code>:取代參數<br>在這個例子我會做以下的事情：</p>
+<ul>
+<li>移除 <code>()</code> <code>[]</code> : 用 <code>re.sub(&quot;[\(\[].*?[\)\]]&quot;, &quot;&quot;, string)</code></li>
+<li>移除 <code>()</code>: <code>re.sub(&quot;[\(].*?[\)]&quot;, &quot;&quot;, string)</code></li>
+<li>移除 <code>,</code>:use <code>replace</code></li>
+<li><code>split()</code>: 轉成 list</li>
+<li><code>re.split(&#39;,|:&#39;)</code>: 兩個條件</li>
+</ul>
+<blockquote>
+<p>‘re.search(r’[(\d+.\d+.\d+)].*?(Tput&#x3D;[^]]+)’, string)’<br>output:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>20221018.165317.401606</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tput&#x3D; 0.000091 Mbps, Mcs&#x3D; 9.0(Sigma&#x3D; 0.0), RbNum&#x3D; 1.4, ReTxRatio&#x3D; 33.3, Layers&#x3D; 1.0, PdschBler&#x3D; 0.0, nonWPdschBler&#x3D; 33.3</td>
+</tr>
+</tbody></table>
+<ul>
+<li>把()或[]取代空白<blockquote>
+<p><code>re.sub(&quot;[\(\[].*?[\)\]]&quot;, &quot;&quot;</code></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m3 = re.search(r&#x27;\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+)&#x27;, string)</span><br><span class="line">#&#x27;Tput= 0.000091 Mbps, Mcs= 9.0(Sigma= 0.0), RbNum= 1.4, ReTxRatio= 33.3, Layers= 1.0, PdschBler= 0.0, nonWPdschBler= 33.3&#x27;</span><br><span class="line">#remove () [] for ((Sigma= 0.0)), 移除ˇ多個空白，把</span><br><span class="line">m3New= re.sub(&quot;[\(\[].*?[\)\]]&quot;, &quot;&quot;,m3.group(3)).replace(&#x27;,&#x27;,&#x27;&#x27;).split() #convert to list</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>[‘Tput&#x3D;’, ‘0.000091’, ‘Mbps,’, ‘Mcs&#x3D;’, ‘9.0,’, ‘RbNum&#x3D;’, ‘1.4,’, ‘ReTxRatio&#x3D;’, ‘33.3,’, ‘Layers&#x3D;’, ‘1.0,’, ‘PdschBler&#x3D;’, ‘0.0,’, ‘nonWPdschBler&#x3D;’, ‘33.3’]</p>
+</blockquote>
+</blockquote>
+<p>我們可以找相關字串，就把後面的直給我們(非常推薦這這個方式)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def getelement(li, element):</span><br><span class="line">    ind = li.index(element)</span><br><span class="line">    return li[ind+1]</span><br><span class="line"></span><br><span class="line"># get next element</span><br><span class="line">print(getelement(m3New, &#x27;Tput=&#x27;),&#x27; &#x27;, getelement(m3New, &#x27;RbNum=&#x27;), &#x27;&#x27;, getelement(m3New, &#x27;Mcs=&#x27;))</span><br><span class="line"># 0.000091   1.4  9.0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p><code>0.000091   1.4  9.0</code></p>
+</blockquote>
+</blockquote>
+<h4 id="re-search"><a href="#re-search" class="headerlink" title="re.search()"></a>re.search()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m4=re.search(r&quot;^\[([\d\.]+).+Tput= ([\d\.]+).+Mcs= ([\d\.]+).+RbNum= ([\d.]+).+ReTxRatio= ([\d\.]+).+.&quot;, string)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>20221018.165317.401606</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.000091</td>
+</tr>
+<tr>
+<td>3</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.4</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h3 id="Step-3-把直加進-list-再印出來或寫進檔案"><a href="#Step-3-把直加進-list-再印出來或寫進檔案" class="headerlink" title="Step 3 把直加進 list 再印出來或寫進檔案"></a>Step 3 把直加進 list 再印出來或寫進檔案</h3><p>我們幫剛才用 regular expression 找相關的字串，現在我們要把我們的直丟進 list 裡面，再印出來或寫出來等等都可以做到。我們有不同做法:</p>
+<h4 id="基本方式"><a href="#基本方式" class="headerlink" title="基本方式"></a>基本方式</h4><p>如果你有 <code>6column</code>請把下面%6 改你有幾個 column。</p>
+<ul>
+<li>print result 把 list 裡面抓取資料列印出來</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cycle = 0</span><br><span class="line"></span><br><span class="line">    for element in result:</span><br><span class="line">        cycle += 1</span><br><span class="line">        #print(element, end=&quot;&quot;)</span><br><span class="line"></span><br><span class="line">        print(element, end=&quot; &quot;)</span><br><span class="line">        if cycle % 6 == 0:</span><br><span class="line">            print(&quot;&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write into text file 把 list 裡面抓取資料寫進檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#checkfile()</span><br><span class="line">cycle = 0</span><br><span class="line">#    with open(&quot;result.txt&quot;, &quot;a+&quot;) as f:</span><br><span class="line">    with open(filename, &quot;a&quot;) as f:</span><br><span class="line"></span><br><span class="line">        cycle += 1</span><br><span class="line">        for element in result:</span><br><span class="line">            #print(element+ &quot; &quot;)</span><br><span class="line">            f.write(element+ &quot; &quot;)</span><br><span class="line">        f.write(&quot;\n&quot;)</span><br><span class="line">        #f.write()</span><br></pre></td></tr></table></figure>
+
+<h4 id="For-Loop-方法"><a href="#For-Loop-方法" class="headerlink" title="For Loop 方法"></a>For Loop 方法</h4><ul>
+<li>List Comprehensions 簡短<br>下面方法是我要印時間和 Tput 直，只有欄，因此我就用 <code>%2</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>List compensation 轉成基本 for loop</li>
+</ul>
+<p>以面的方式如果你不習慣用 Comprehensions 可以用下面方式，這是一般 <code>for loop</code>，如果你不喜歡用 List Comprehensions，可以用下面方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">temp = []</span><br><span class="line">for c in range(0, len(results)):</span><br><span class="line">    if c % 2 == 0:</span><br><span class="line">        temp.append(results[c:c+2])</span><br><span class="line"></span><br><span class="line">for i in temp:</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Enumerate-方法"><a href="#Enumerate-方法" class="headerlink" title="Enumerate 方法"></a>Enumerate 方法</h4><p><code>*list</code>，這是 python 新功能，他主要是你不用再用 <code>for回圈</code>把 list 讀出來，用 <code>*list</code>名稱就可以，非常方便</p>
+<ul>
+<li>print result 把 list 裡面抓取資料列印出來</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">results = [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;]</span><br><span class="line">for index, c in enumerate(results):</span><br><span class="line">    if index % 2 == 0:</span><br><span class="line">        print(*results[index:index + 2])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write into text file 把 list 裡面抓取資料寫進檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&#x27;output.txt&#x27;, &#x27;a&#x27;) as output:</span><br><span class="line">    results = [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;]</span><br><span class="line">    for index, c in enumerate(results):</span><br><span class="line">        if index % 2 == 0:</span><br><span class="line">            print(*results[index:index + 2], file=output)</span><br></pre></td></tr></table></figure>
+
+<h4 id="用-zip-最好方式"><a href="#用-zip-最好方式" class="headerlink" title="用 zip 最好方式"></a>用 zip 最好方式</h4><ul>
+<li>print result 把 list 裡面抓取資料列印出來</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">results = iter([&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;])</span><br><span class="line">for i in zip(results, results):</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Write into text file 把 list 裡面抓取資料寫進檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">results = iter([&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;])</span><br><span class="line">with open(&#x27;output.txt&#x27;, &#x27;a&#x27;) as output:</span><br><span class="line">    for i in zip(results, results):</span><br><span class="line">        print(*i, file=output)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>補充如果 list 是文字</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">results = [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;]</span><br><span class="line">for index in range(0, len(results), 2):</span><br><span class="line">    print(*results[index:index + 2])</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整程式"><a href="#完整程式" class="headerlink" title="完整程式"></a>完整程式</h3><p>我把切格方式加進 function，妳也可以不用加到 function。我再把它存進 list 裡面。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">givenString = &quot;DL- ingress traffic&quot;</span><br><span class="line">result = []</span><br><span class="line">#function spit time and tput value</span><br><span class="line">def timeparse(data):</span><br><span class="line">    datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">    Tput = data.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br><span class="line">    result.append(datestr)</span><br><span class="line">    result.append(Tput)</span><br><span class="line">    print(datestr, Tput)</span><br><span class="line">    #return datestr</span><br><span class="line"></span><br><span class="line">with open(&#x27;elog&#x27;, &#x27;r&#x27;) as filedata:</span><br><span class="line">    for line in filedata:</span><br><span class="line">        if givenString in line:</span><br><span class="line"></span><br><span class="line">             # Print the line, if the given string is found in the current line</span><br><span class="line">             #print(line)</span><br><span class="line">             timeparse(line)</span><br><span class="line">print (&quot;=&quot;*30)</span><br><span class="line">print(result)</span><br><span class="line">#把list 面東西印出來</span><br><span class="line">for i in [result[c:c+2] for c in range(0,len(result)) if c%2 == 0]:</span><br><span class="line">    print(*i)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Step-4-轉成-excel"><a href="#Step-4-轉成-excel" class="headerlink" title="Step 4 轉成 excel"></a>Step 4 轉成 excel</h3><p>在這我會用兩個不同 module 來寫入 excel，一個是 pandas，一個是 openpyxl。如果用 pandas，請兩個都要安裝，部穰會有問題。</p>
+<blockquote>
+<p>安裝:</p>
+<blockquote>
+<p>pip install openpyxl<br>pip install pandas</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>openpyxl<br>以下是改欄位大小: <code>sheet[0].column_dimensions[i].width = 2</code><br>文字大小: <code>sheet[0][&#39;A1&#39;].font = Font(size = 14, bold = True)</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl, string</span><br><span class="line">from openpyxl.utils import get_column_letter</span><br><span class="line">from openpyxl.styles import Font</span><br><span class="line"></span><br><span class="line">def excelconvertMAC(result):</span><br><span class="line">    f = open(result, &#x27;r+&#x27;)  # open text</span><br><span class="line">    #########if load excel file ########################</span><br><span class="line">    # excel=openpyxl.load_workbook(r&#x27;D:\\test\\test.xlsx&#x27;) #open excel</span><br><span class="line">    excel = openpyxl.Workbook()</span><br><span class="line">    sheet = excel.worksheets</span><br><span class="line">    line = f.readline();  # read text</span><br><span class="line">    while line:</span><br><span class="line">        #list123 = []</span><br><span class="line">        #list123 = line.split(sep=&#x27; &#x27;)  # convert,</span><br><span class="line">        list123 = line.split()  # convert</span><br><span class="line">        #remove below</span><br><span class="line">        #for i in range(0, len(list123)):  # remove space</span><br><span class="line">        #    list123[i] = list123[i].strip(&#x27;\n&#x27;)</span><br><span class="line">        #sheet[0].append(list123)  # write into excel</span><br><span class="line"></span><br><span class="line">        if list123[1] == &#x27;Tput&#x27;:</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line">        elif list123[2] == &#x27;RbNum&#x27;:</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line">        elif list123[3] == &#x27;MCS&#x27;:</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line">        elif list123[4] == &#x27;PdschBler&#x27;:</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line">        elif list123[5] == &#x27;nonWPdschBler&#x27;:</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line">        else:</span><br><span class="line">            list123[1] = float(list123[1])</span><br><span class="line">            list123[2] = float(list123[2])</span><br><span class="line">            list123[3] = float(list123[3])</span><br><span class="line">            list123[4] = float(list123[4])</span><br><span class="line">            list123[5] = float(list123[5])</span><br><span class="line">            sheet[0].append(list123)  # write into excel</span><br><span class="line"></span><br><span class="line">#adjust the column width</span><br><span class="line">        column = 1</span><br><span class="line">        while column &lt; 6:</span><br><span class="line">            i = get_column_letter(column)</span><br><span class="line">            #print(i)</span><br><span class="line">            sheet[0].column_dimensions[i].width = 25</span><br><span class="line"></span><br><span class="line">            column += 1</span><br><span class="line"></span><br><span class="line">        sheet[0][&#x27;A1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        sheet[0][&#x27;B1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        sheet[0][&#x27;C1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        sheet[0][&#x27;D1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        sheet[0][&#x27;E1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        sheet[0][&#x27;F1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        #debug use</span><br><span class="line">        #sheet1 = excel.worksheets[0]</span><br><span class="line">        #sheet1[&#x27;A1&#x27;] .font = Font(size = 24, bold = True)</span><br><span class="line">        #sheet1[&#x27;A1&#x27;] = &#x27;Hello Python, Hello Excel.&#x27;</span><br><span class="line">        line = f.readline()  # read next line</span><br><span class="line">    #excel.save(r&#x27;C:\MAC_add_Submission\MAC_List.xlsx&#x27;)</span><br><span class="line">    excel.save(&#x27;result.xlsx&#x27;)</span><br><span class="line">resultfilename=input(&quot;please enter your report txt file name: &quot;)</span><br><span class="line">#resultfilename=&quot;result.txt&quot;</span><br><span class="line">excelconvertMAC(resultfilename)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pandas</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">with open(&quot;result.txt&quot;, &quot;r&quot;) as file:</span><br><span class="line">    column_names = next(file).split()</span><br><span class="line">    df = pd.read_csv(file, sep=&quot; &quot;, names=column_names)</span><br><span class="line">df.to_excel(&quot;test.xlsx&quot;, index=False)</span><br><span class="line"></span><br><span class="line">writer = pd.ExcelWriter(&quot;test.xlsx&quot;, engine=&quot;xlsxwriter&quot;, )</span><br><span class="line">df.to_excel(writer, sheet_name=&quot;Data&quot;, index=False)</span><br><span class="line">sheet = writer.sheets[&quot;Data&quot;]</span><br><span class="line"></span><br><span class="line"># Set column widths (option)</span><br><span class="line">sheet.set_column(0, len(column_names)-1, 25)</span><br><span class="line"></span><br><span class="line">#st header&#x27;s header (option)</span><br><span class="line">header_format = writer.book.add_format(&#123;&#x27;bold&#x27;:True, &#x27;font_size&#x27;:14&#125;)</span><br><span class="line">for index, name in enumerate(column_names):</span><br><span class="line">    sheet.write(0, index, name, header_format)</span><br><span class="line"></span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+
+<h3 id="補充另外例子"><a href="#補充另外例子" class="headerlink" title="補充另外例子"></a>補充另外例子</h3><p>上面你們看到式如何抓取時間和相關 Tput 直。在這我想再分享另外一個直<br>今天我們有字串 string 為:</p>
+<blockquote>
+<p>string2&#x3D; <code>[20221110.112127.316856][info]:[PDCP DL- ingress traffic: 0.590000(Mbps), egress traffic: 0.000000(Mbps)]</code></p>
+</blockquote>
+<p>我們想要抓取 ingress traffic 的 <code>0.590000</code> egress traffic 的 <code>0.000000 </code></p>
+<ul>
+<li>re.search()方法<blockquote>
+<p><code>re.search(r&#39;(ingress [^(]+).+(egress [^(]+)&#39;,string2)</code></p>
+<blockquote>
+<p>output</p>
+<table>
+<thead>
+<tr>
+<th>group</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ingress traffic: 0.590000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>egress traffic: 0.000000</td>
+</tr>
+</tbody></table>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">searchtest=re.search(r&#x27;(ingress [^(]+).+(egress [^(]+)&#x27;,string2)</span><br><span class="line">test= searchtest.group(1)+&quot;, &quot;+ searchtest.group(2)</span><br><span class="line">#ingress traffic: 0.590000, egress traffic: 0.000000</span><br><span class="line">test1=test.replace(&quot;, &quot;, &quot;:&quot;).strip().split(&#x27;:&#x27;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+<blockquote>
+<p><code>[&#39;ingress traffic: 0.590000&#39;, &#39;egress traffic: 0.000000&#39;]</code></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>re.findall()方法</li>
+</ul>
+<p>他會回傳 list 裡面會包 tuple，如果想要全部都是 list 請用 <code>itertools</code>把他轉成 list</p>
+<blockquote>
+<p><code>list(itertools.chain(*findtest))</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">search2 = re.findall(r&#x27;^\[([\d\.]+).+ingress traffic: ([\d\.]+).+egress traffic: ([\d\.]+).+.&#x27;, string2)</span><br><span class="line">#[(&#x27;20221110.112127.316856&#x27;, &#x27;0.5900000&#x27;, &#x27;0.000000&#x27;)]</span><br><span class="line"></span><br><span class="line">#tuple convert to list tuple轉成list</span><br><span class="line">import itertools</span><br><span class="line">out = list(itertools.chain(*findtest))</span><br><span class="line">print(out)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output</p>
+<blockquote>
+<p><code>[&#39;ingress traffic: 0.590000&#39;, &#39;egress traffic: 0.000000&#39;]</code></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>指定給一個參數<blockquote>
+<p><code>re.search(r&#39;ingress traffic: ([\d\.]+).+ egress traffic: ([\d\.]+)&#39;,string2)</code></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">searchresult=re.search(r&#x27;ingress traffic: ([\d\.]+).+ egress traffic: ([\d\.]+)&#x27;,string2)</span><br><span class="line">ingress= searchresult.group(1)</span><br><span class="line">egress = searchresult.group(2)</span><br></pre></td></tr></table></figure>
+
+<p>或是用 <code>\s</code>空白方法(小寫 s 是空白，大寫 S 是沒空白)</p>
+<blockquote>
+<p><code>re.search(r&#39;(ingress traffic):\s+(\d+.\d+)&#39;,string2)</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ingress =re.search(r&#x27;(ingress traffic):\s+(\d+.\d+)&#x27;,string2)</span><br><span class="line">#ingress traffic: 0.590000</span><br><span class="line">egress =re.search(r&#x27;(egress traffic):\s+(\d+.\d+)&#x27;,string2)</span><br><span class="line">#egress traffic: 0.000000</span><br><span class="line">print(ingress.group(2), &quot; &quot;, egress.group(2))</span><br><span class="line">#0.590000  0.000000</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>re.split()</p>
+<blockquote>
+<p><code>newtest= re.split(&#39;: | * &#39;, string__)</code></p>
+<blockquote>
+<p>output:<br>[‘ingress’, ‘traffic’, ‘’, ‘0.000000,’, ‘egress’, ‘traffic’, ‘’, ‘0.000000’]</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><ul>
+<li>Log 介紹<br><img src="https://i.imgur.com/azewIA8.png"></li>
+</ul>
+<h3 id="Case1-Layer2-SIngleUE-Datetime-and-Ingress-Tput"><a href="#Case1-Layer2-SIngleUE-Datetime-and-Ingress-Tput" class="headerlink" title="Case1 Layer2-SIngleUE Datetime and Ingress Tput"></a>Case1 Layer2-SIngleUE Datetime and Ingress Tput</h3><p>其實這個例子跟上面的 Step1 一樣，只是我有修改一些東西</p>
+<ul>
+<li>讀 log 檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">elogfile=input(&quot;Please enter your elog file:&quot;)</span><br><span class="line">with open(elogfile, &#x27;r&#x27;) as filedata:</span><br><span class="line">    for line in filedata:</span><br><span class="line">        if givenString in line:</span><br><span class="line">             # Print the line, if the given string is found in the current line</span><br><span class="line">             #print(line.strip())</span><br><span class="line">             timeparse(line)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>抓取時間看 TPUT</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">Tput = data.split(&quot; DL- ingress traffic:&quot;, 1)[1].split(&#x27;,&#x27;)[0].split(&#x27;(&#x27;)[0].strip()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>寫進 list 和檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">result.clear()</span><br><span class="line">result.append(datestr)</span><br><span class="line">result.append(Tput)</span><br><span class="line">listprint() #write file =&gt;ok</span><br><span class="line">listprint2() #print =&gt;ok</span><br><span class="line">#write to file</span><br><span class="line">def listprint():</span><br><span class="line">    #checkfile()</span><br><span class="line">    cycle = 0</span><br><span class="line">    with open(filename, &quot;a&quot;) as f:</span><br><span class="line">        cycle += 1</span><br><span class="line">        for element in result:</span><br><span class="line">            #print(element+ &quot; &quot;)</span><br><span class="line">            f.write(element+ &quot; &quot;)</span><br><span class="line">        f.write(&quot;\n&quot;)</span><br><span class="line">#print</span><br><span class="line">def listprint2():</span><br><span class="line">    cycle = 0</span><br><span class="line">    for element in result:</span><br><span class="line">        cycle += 1</span><br><span class="line">        print(element, end=&quot; &quot;)</span><br><span class="line">        #print (&#x27;=&#x27;*30)</span><br><span class="line">        if cycle % 2 == 0:</span><br><span class="line">            print(&quot; &quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://github.com/chenchih/5G_automationLinux/tree/main/log_graph/FinalCode/Layer2/SingleUE/timedate_tputONLY">完整 code</a></p>
+</blockquote>
+<h3 id="Case2-Layer2-SIngleUE-other-value"><a href="#Case2-Layer2-SIngleUE-other-value" class="headerlink" title="Case2 Layer2-SIngleUE other value"></a>Case2 Layer2-SIngleUE other value</h3><ul>
+<li>選你要抓取哪個資料</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> accepted_strings = re.compile(r&quot;([DU]L\-\ UE(\[\s*(\d&#123;1,2&#125;)\])?)|both$&quot;)</span><br><span class="line">givenString = input(&quot;Please enter your search (Ex: DL- UE / UL- UE / UL- UE[ 0] / both:):&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>你可以選以下:</p>
+<blockquote>
+<p>基本的 DL: <code>DL- UE</code><br>基本的 UL: <code>UL- UE</code><br>兩個都抓 DL 和 UL: <code>both</code><br>特定的 ID: <code>UL- UE[ 0]</code> <code>UL- UE[ 10]</code> <code>UL- UE[10]</code><br>我們來看這個範例:</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">accepted_strings = re.compile(r&quot;([DU]L\-\ UE(\[\s*(\d&#123;1,2&#125;)\])?)|both$&quot;)</span><br><span class="line">print (accepted_strings.match(&quot;DL- UE&quot;))</span><br><span class="line">print (accepted_strings.match(&quot;UL- UE&quot;))</span><br><span class="line">print (accepted_strings.match(&quot;UL- UE[ 0]&quot;))</span><br><span class="line">print (accepted_strings.match(&quot;UL- UE[10]&quot;))</span><br><span class="line">print (accepted_strings.match(&quot;UL- UE[ 10]&quot;))</span><br><span class="line">#&lt;re.Match object; span=(0, 6), match=&#x27;DL- UE&#x27;&gt;</span><br><span class="line">#&lt;re.Match object; span=(0, 6), match=&#x27;UL- UE&#x27;&gt;</span><br><span class="line">#&lt;re.Match object; span=(0, 10), match=&#x27;UL- UE[ 0]&#x27;&gt;</span><br><span class="line">#&lt;re.Match object; span=(0, 10), match=&#x27;UL- UE[10]&#x27;&gt;</span><br><span class="line">#&lt;re.Match object; span=(0, 11), match=&#x27;UL- UE[ 10]&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可是如果你用 <code>accepted_strings = re.compile(r&quot;([DU]L\-\ UE(\[\ &#123;0,1&#125;(\d)\])?)|both$&quot;)</code></p>
+<p>後面兩筆會抓不到裡面的 ID，因為他只要有兩個數字都會抓不到，只也一個數字和空台才抓到，因此我們需要用上面的才會抓到面面不管幾個 1 或 2 位數或空空白。</p>
+<ul>
+<li>檢查和讀 log</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">if accepted_strings.match(givenString):</span><br><span class="line">    if givenString ==&quot;both&quot;:</span><br><span class="line">        UL = &#x27;UL- UE&#x27;</span><br><span class="line">        DL = &#x27;DL- UE&#x27;</span><br><span class="line">        writefile(&quot;UL&quot;)</span><br><span class="line">        ULDLprint(UL)</span><br><span class="line">        writefile(&quot;DL&quot;)</span><br><span class="line">        ULDLprint(DL)</span><br><span class="line">    else:</span><br><span class="line">        writefile(givenString)</span><br><span class="line">            with open(elogfileName, &#x27;r&#x27;) as filedata:</span><br><span class="line">                for line in filedata:</span><br><span class="line">                    if givenString in line:</span><br><span class="line">                         parse(line, givenString)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;Not found, please reenter correct option&quot;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>抓取時間和其他資料</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">search = re.search(r&#x27;\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+)&#x27;, data)</span><br><span class="line">m3New= re.sub(&quot;[\(\[].*?[\)\]]&quot;, &quot;&quot;,search.group(2)).replace(&#x27;,&#x27;,&#x27;&#x27;).strip().split()</span><br><span class="line">result.clear()</span><br><span class="line">givenString=ULDLstr</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>寫進 list 和檔案<br>當我們有抓取我要的資料時，他會是 list 的資料，這時我們要抓取他旁邊的數字的直。因此我有寫一個函數可以取旁邊的直再存進 list。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#取出字串旁邊的直，就可以要到取道我們要的直</span><br><span class="line">def getelement(li, element):</span><br><span class="line">    ind = li.index(element)</span><br><span class="line">    return li[ind+1]</span><br><span class="line"></span><br><span class="line">result.append(datestr)</span><br><span class="line">result.append(getelement(m3New, &#x27;Tput=&#x27;))</span><br><span class="line">result.append(getelement(m3New, &#x27;RbNum=&#x27;))</span><br><span class="line">result.append(getelement(m3New, &#x27;Mcs=&#x27;))</span><br><span class="line">result.append(getelement(m3New, bler1))</span><br><span class="line">result.append(getelement(m3New, bler2))</span><br><span class="line">listprint() #write file =&gt;ok</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>寫進檔案<br>把他寫進去跟上面 case1 一樣</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def listprint():</span><br><span class="line">    #checkfile()</span><br><span class="line">    cycle = 0</span><br><span class="line">    with open(filename, &quot;a&quot;) as f:</span><br><span class="line">        for element in result:</span><br><span class="line">            #print(element+ &quot; &quot;)</span><br><span class="line">            f.write(element+ &quot; &quot;)</span><br><span class="line">        f.write(&quot;\n&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/chenchih/5G_automationLinux/tree/main/log_graph/FinalCode/Layer2/SingleUE">完整 code</a></p>
+<h3 id="Case3-Layer2-Multiply-UE"><a href="#Case3-Layer2-Multiply-UE" class="headerlink" title="Case3 Layer2-Multiply UE"></a>Case3 Layer2-Multiply UE</h3><ul>
+<li>讀 log 檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">with open(elogfileName, &#x27;r&#x27;) as filedata:</span><br><span class="line">        for line in filedata:</span><br><span class="line">            #print(line)</span><br><span class="line">            if &quot;m&gt;&gt;&gt; DL-&quot; in  line:</span><br><span class="line">                if countDL == 0:</span><br><span class="line">                    emptywrite(&quot;DL&quot;)</span><br><span class="line">                    writefile(&quot;DL&quot;)</span><br><span class="line">                    countDL+=1</span><br><span class="line">                for nextline in filedata:</span><br><span class="line">                    if re.search(r&#x27;\[(\d+\.\d+\.\d+)\].*?(&gt;&gt;&gt; DL- Mcs=[^]]+)&#x27;, nextline):</span><br><span class="line">                        #print(line, nextline, end=&#x27;&#x27;)</span><br><span class="line">                        givenString=&quot;DL&quot;</span><br><span class="line">                        parse(line, givenString)</span><br><span class="line">                        parse_bler(nextline, givenString)</span><br><span class="line"></span><br><span class="line">                        break # so you can start looking for the first match again</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>抓取時間看 TPUT</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def parse(data, ULDLstr):</span><br><span class="line">    datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">    Tputvalue=re.search(r&#x27;(ingress [^(]+).+(egress [^(]+)&#x27;,data)</span><br><span class="line">    m3New= Tputvalue.group(1)+&quot;, &quot;+ Tputvalue.group(2)</span><br><span class="line">    m3New_1=m3New.replace(&quot;, &quot;, &quot;:&quot;).strip().split(&#x27;:&#x27;)</span><br><span class="line">    result.append(datestr)</span><br><span class="line">    result.append(getelement(m3New_1, &#x27;ingress traffic&#x27;).strip())</span><br><span class="line">    result.append(getelement(m3New_1, &#x27;egress traffic&#x27;).strip())</span><br><span class="line">def parse(data, ULDLstr):</span><br><span class="line">    blerresult = re.search(r&#x27;\[(\d+\.\d+\.\d+)\].*?(Mcs=[^]]+)&#x27;, data)</span><br><span class="line">    blerDL= re.sub(&quot;[\(\[].*?[\)\]]&quot;, &quot;&quot;,blerresult.group(2)).replace(&#x27;,&#x27;,&#x27;&#x27;).strip().split()</span><br><span class="line"></span><br><span class="line">    result.append(getelement(blerDL, &#x27;RbNum=&#x27;))</span><br><span class="line">    result.append(getelement(blerDL, &#x27;Mcs=&#x27;))</span><br><span class="line">    result.append(getelement(blerDL, bler1).strip())</span><br><span class="line">    result.append(getelement(blerDL, bler2).strip())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://github.com/chenchih/5G_automationLinux/tree/main/log_graph/FinalCode/Layer2/multiplyUe_average">完整 code</a></p>
+</blockquote>
+<h3 id="Case4-PDCP"><a href="#Case4-PDCP" class="headerlink" title="Case4 PDCP"></a>Case4 PDCP</h3><ul>
+<li>讀 log 檔案</li>
+<li>抓取時間看 TPUT</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">datestr = data.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">searchtest=re.search(r&#x27;(ingress [^(]+).+(egress [^(]+)&#x27;,data)</span><br><span class="line">m3New= searchtest.group(1)+&quot;, &quot;+ searchtest.group(2)</span><br><span class="line">    m3New_1=m3New.replace(&quot;, &quot;, &quot;:&quot;).strip().split(&#x27;:&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>寫進 list 和檔案<blockquote>
+<p><a href="https://github.com/chenchih/5G_automationLinux/tree/main/log_graph/FinalCode/PDCP">完整 code</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="把多個檔案和再一起"><a href="#把多個檔案和再一起" class="headerlink" title="把多個檔案和再一起"></a>把多個檔案和再一起</h3><ul>
+<li>方法一</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">directory = &quot;/path/to/files&quot;</span><br><span class="line"># Output file name</span><br><span class="line">output_file = &quot;merged.txt&quot;</span><br><span class="line"></span><br><span class="line"># Loop through all files in the directory and append their contents to the output file</span><br><span class="line">with open(output_file, &quot;w&quot;) as outfile:</span><br><span class="line">    for filename in os.listdir(directory):</span><br><span class="line">            if filename.startswith(&quot;elog_gnb_du_layer2&quot;):</span><br><span class="line">                with open(os.path.join(directory, filename), &quot;r&quot;) as infile:</span><br><span class="line">                    outfile.write(infile.read())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法二</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import glob</span><br><span class="line"></span><br><span class="line">file_pattern = &#x27;elog_gnb_du_layer2*&#x27;</span><br><span class="line">file_list = glob.glob(file_pattern)</span><br><span class="line"></span><br><span class="line">with open(&#x27;merged_file.txt&#x27;, &#x27;w&#x27;) as outfile:</span><br><span class="line">    for file in file_list:</span><br><span class="line">        with open(file, &#x27;r&#x27;) as infile:</span><br><span class="line">                outfile.write(infile.read())</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://github.com/chenchih/5G_automationLinux/blob/main/log_graph/FinalCode/Layer2/merge_multiply_elogfile.py">完整 code</a></p>
+</blockquote>
+<h3 id="excel"><a href="#excel" class="headerlink" title="excel"></a>excel</h3><p>其他方法請去我 github 看不同 excel 方式</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl, string</span><br><span class="line">from openpyxl.utils import get_column_letter</span><br><span class="line">from openpyxl.styles import Font</span><br><span class="line"></span><br><span class="line">def excelconvertMAC(result):</span><br><span class="line">    f = open(result, &#x27;r+&#x27;)  # open text</span><br><span class="line">    #########if load excel file ########################</span><br><span class="line">    # excel=openpyxl.load_workbook(r&#x27;D:\\test\\test.xlsx&#x27;) #open excel</span><br><span class="line">    excel = openpyxl.Workbook()</span><br><span class="line">    sheet = excel.worksheets</span><br><span class="line">    line = f.readline();  # read text</span><br><span class="line"></span><br><span class="line">    while line:</span><br><span class="line">        list123 = line.split()  # convert</span><br><span class="line">        if &quot;=&quot; in line:</span><br><span class="line">            pass</span><br><span class="line">        else:</span><br><span class="line">            if list123[1] == &#x27;Tput&#x27;:</span><br><span class="line">                sheet[0].append(list123)  # write into excel</span><br><span class="line">            elif list123[1] == &#x27;DL-Tput&#x27;:</span><br><span class="line">                #pass</span><br><span class="line">                sheet[0].append(list123)  # write into excel</span><br><span class="line">            elif list123[1] == &#x27;UL-Tput&#x27;:</span><br><span class="line">                #pass</span><br><span class="line">                sheet[0].append(list123)  # write into excel</span><br><span class="line">            else:</span><br><span class="line">                list123[1] = float(list123[1])</span><br><span class="line">                list123[2] = float(list123[2])</span><br><span class="line">                list123[3] = float(list123[3])</span><br><span class="line">                list123[4] = float(list123[4])</span><br><span class="line">                list123[5] = float(list123[5])</span><br><span class="line">                sheet[0].append(list123)  # write into excel</span><br><span class="line">                #excel cell&#x27;s font</span><br><span class="line">                sheet[0][&#x27;A1&#x27;] .font = Font(size = 14, bold = True)</span><br><span class="line">                sheet[0][&#x27;B1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">                sheet[0][&#x27;C1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">                sheet[0][&#x27;D1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">                sheet[0][&#x27;E1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">                sheet[0][&#x27;F1&#x27;].font = Font(size = 14, bold = True)</span><br><span class="line">        #adjust the column width</span><br><span class="line">        column = 1</span><br><span class="line">        while column &lt; 6:</span><br><span class="line">            i = get_column_letter(column)</span><br><span class="line">            #print(i)</span><br><span class="line">            sheet[0].column_dimensions[i].width = 25</span><br><span class="line"></span><br><span class="line">            column += 1</span><br><span class="line">        line = f.readline()  # read next line</span><br><span class="line">    excel.save(excelfilename+&#x27;.xlsx&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pandas</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">lists = &#123;&#125;</span><br><span class="line">current_key = None</span><br><span class="line">#with open (&#x27;test.txt&#x27;, &#x27;r&#x27;)as myfile:</span><br><span class="line">with open (resultfilename, &#x27;r&#x27;)as myfile:</span><br><span class="line">    readline=myfile.read().splitlines()</span><br><span class="line"></span><br><span class="line">    for line in readline:</span><br><span class="line">        #print(line)</span><br><span class="line">        if &quot;=&quot; in line:</span><br><span class="line">            current_key = line.strip(&quot;=&quot;)</span><br><span class="line"></span><br><span class="line">            lists[current_key] = []</span><br><span class="line">        else:</span><br><span class="line">            assert current_key is not None # there shouldn&#x27;t be data before a header</span><br><span class="line"></span><br><span class="line">            lists[current_key].append(line)</span><br></pre></td></tr></table></figure>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>以上是我再抓取檔案裡的資料想找相關字串會用到，我想信很多人會常用到此功能。可以到我 github 看完整 code。<br>我開發 3 個不同抓取資料，主要是要抓取資料不同，再把資料解成文字檔案，也可以轉成 excel。<br>github project: <a href="https://github.com/chenchih/5G_automationLinux/tree/main/log_graph">https://github.com/chenchih/5G_automationLinux/tree/main/log_graph</a></p>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>regular expression</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>re.findall(r&quot;[0-9]*\.[0-9]+&quot;, string)</code></td>
+<td>[‘20221018.165317’, ‘.401606’, ‘0.000091’, ‘9.0’, ‘0.0’, ‘1.4’, ‘33.3’, ‘1.0’, ‘0.0’, ‘33.3’]</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>re.search(r&#39;\[(\d+\.\d+\.\d+)\].*?(Tput=[^]]+), string)</code></td>
+<td><strong>group1:</strong> 20221018.165317.401606 <strong>group2:</strong> Tput&#x3D; 0.000091 Mbps, Mcs&#x3D; 9.0(Sigma&#x3D; 0.0), RbNum&#x3D; 1.4, ReTxRatio&#x3D; 33.3, Layers&#x3D; 1.0, PdschBler&#x3D; 0.0, nonWPdschBler&#x3D; 33.3</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>re.search(r&quot;^\[([\d\.]+).+Tput= ([\d\.]+).+Mcs= ([\d\.]+).+.&quot;, string)</code></td>
+<td><strong>group1:</strong> 20221018.165317.401606 <strong>group2:</strong> 0.000091 <strong>group3:</strong> 9.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>re.search(r&#39;(ingress [^(]+).+(egress [^(]+)&#39;,string2</code></td>
+<td><strong>group1:</strong> ingress traffic: 0.000000 <strong>group2:</strong> egress traffic: 0.000000</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>re.search(r&#39;(ingress traffic):\s+(\d+.\d+)&#39;,string2)</code></td>
+<td>[‘ingress’, ‘traffic’, ‘’, ‘0.000000,’, ‘egress’, ‘traffic’, ‘’, ‘0.000000’]</td>
+</tr>
+<tr>
+<td>6</td>
+<td>取時間直:<code>re.search(r&#39;[2]\d&#123;7&#125;\.\d&#123;6&#125;\.\d&#123;6&#125;&#39;,string) #&#39;[2] start with 2</code></td>
+<td><strong>group0:</strong> 20221018.165317.401606</td>
+</tr>
+<tr>
+<td>7</td>
+<td>取時間直 <code>re.search(r&#39;\[([0-9.]+)\]&#39;,string)</code></td>
+<td><strong>group0:</strong> 20221018.165317.401606</td>
+</tr>
+</tbody></table>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8569201/get-the-string-within-brackets-in-python">https://stackoverflow.com/questions/8569201/get-the-string-within-brackets-in-python</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rexegg.com/regex-quickstart.html">https://www.rexegg.com/regex-quickstart.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://python-tutorials.in/python-regular-expressions/">https://python-tutorials.in/python-regular-expressions/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://github.com/chenchih/2022/10/18/20221018-substringSearch/" title="substringSearchg檔案內容搜尋相關關鍵字">https://github.com/chenchih/2022/10/18/20221018-substringSearch/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/python/" rel="tag"># python</a>
+              <a href="/hexo-demo2022/tags/fileIO/" rel="tag"># fileIO</a>
+              <a href="/hexo-demo2022/tags/search/" rel="tag"># search</a>
+              <a href="/hexo-demo2022/tags/regExp/" rel="tag"># regExp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/" rel="prev" title="IO_ReadWriteFile_python">
+                  <i class="fa fa-chevron-left"></i> IO_ReadWriteFile_python
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2022/10/23/20221023-List/" rel="next" title="List and ZIP">
+                  List and ZIP <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
