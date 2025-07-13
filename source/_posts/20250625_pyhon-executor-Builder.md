@@ -22,7 +22,6 @@ categories:
 ```
 #simple convert
 pyinstaller your_script.py
-
 ```
 
 - Adding Icons:
@@ -31,8 +30,7 @@ pyinstaller your_script.py
 
 ```
 pyinstaller --onefile --icon=myicon.ico your_script.py
-
-``
+```
 
 > - [Icon URL](https://www.flaticon.com)
 > - [png to ico](https://convertio.co/zh)
@@ -40,7 +38,6 @@ pyinstaller --onefile --icon=myicon.ico your_script.py
 - 其他
 
 ```
-
 #Single File:
 pyinstaller --onefile your_script.py
 
@@ -52,20 +49,16 @@ pyinstaller --onefile --windowed your_script.py
 
 #Adding Data Files:
 pyinstaller --onefile --add-data "data_file.txt;." your_script.py
-
-````
+```
 
 ## Linux 環境也可以用
 
 如果你要在 linux 上面做一個執行當也可以:
 
-```python
-
+```
 #build to executable file
 pyinstaller --onefile script.py
 
 #run executable file
 ./dist/executfile
-
-
 ```
