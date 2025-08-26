@@ -3,10 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Chen-Chih Blog
-subtitle: "Tech Note"
-description: ""
+title: Chen-Chih Technical Blog
+subtitle: "Tech Notes & Tutorials"
+description: "A technical blog by Chen-Chih Lee, a Software QA Engineer specializing in network telecommunication. Find technical notes, tutorials, and insights on Python, Linux, and network engineering."
 keywords:
+  - QA Engineer
+  - Software QA
+  - Network Telecommunication
+  - Python
+  - Linux
+  - Chen-Chih Lee
+  - chenchih
 author: chenchih
 language: en #zh-TW
 timezone: Asia/Taipei

@@ -29,6 +29,7 @@ type: "about"
   - wifi
   - network security
 - Linux (ubuntu/RHEL/CentOS)
+- Development Environment: `venv`, `uv`
 
 ## Project
 
@@ -44,3 +45,6 @@ These are my URL page which I write blog on
 - [Medium](https://medium.com/jacklee26)
 - [Blogger](https://chenchih-tutorial.blogspot.com/)
 - [Gitpage](https://github.com/chenchih)
+- [Dev](https://dev.to/chenchih)
+
+You can search my name under google with keyword: `chenchih` or `chenchih git` or `chenchih qa` will have my social media or other link.
