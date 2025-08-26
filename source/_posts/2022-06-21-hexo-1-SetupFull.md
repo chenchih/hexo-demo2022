@@ -397,7 +397,8 @@ deploy:
 - github page 網址網域
 
 ```
-url: https://github.com/username
+#url: https://chenchih.github.io/hexo-demo2022
+url: https://chenchih.github.io/hexo-demo2022
 permalink: :year/:month/:day/:title/
 root: /
 ```
