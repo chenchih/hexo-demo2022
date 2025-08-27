@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Chen-Chih Technical Blog
+title: Chen-Chih Technical Note Blog
 subtitle: "Tech Notes & Tutorials"
-description: "A technical blog by Chen-Chih Lee, a Software QA Engineer specializing in network telecommunication. Find technical notes, tutorials, and insights on Python, Linux, and network engineering."
+description: "Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples."
 keywords:
   - QA Engineer
   - Software QA
