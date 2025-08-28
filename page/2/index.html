@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -210,6 +210,96 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/29/2022-11-29-MY-SQL-Basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/29/2022-11-29-MY-SQL-Basic/" class="post-title-link" itemprop="url">MY-SQL(Basic)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-29 10:52:35 / Modified: 18:23:37" itemprop="dateCreated datePublished" datetime="2022-11-29T10:52:35+08:00">2022-11-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>我想分享一些基本的DB(MYSQL)語法。之前面試有考不管是在Amazon，或Microsoft 都有考過我DB。我那時有準備筆記，但後來就不知跑哪。今天想在這篇寫關於SQL基本指令，有機會再寫高階的語法。</p>
+<p>我住前是用MYSQL的DB軟體，你們可以選用其他的如MogoDB, Microsoft SQL server，orlacle DB等等。基本上語法都差不多，我猜的</p>
+<ul>
+<li>Table: employee:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="SELECT-amp-FROM"><a href="#SELECT-amp-FROM" class="headerlink" title="SELECT &amp; FROM"></a>SELECT &amp; FROM</h2><h3 id="select-from"><a href="#select-from" class="headerlink" title="select * from"></a>select * from</h3><p>select 可以選擇要印那一欄，如果加<code>*</code>可以把所有內如印出來，以下是指令:</p>
+<blockquote>
+<p><code>select * from employee;</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Table: employee;</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">| id | Name  | Salary | DepartmentID |</span><br><span class="line">+----+-------+--------+--------------+</span><br><span class="line">|  1 | Joe   | 85000  | 1            |</span><br><span class="line">|  2 | Henry | 80000  | 2            |</span><br><span class="line">|  3 | Sam   | 60000  | 1            |</span><br><span class="line">|  4 | Max   | 90000  | 1            |</span><br><span class="line">|  5 | Janet | 69000  | 1            |</span><br><span class="line">|  6 | Randy | 85000  | 1            |</span><br><span class="line">+----+-------+--------+--------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="select-Name-指定欄位"><a href="#select-Name-指定欄位" class="headerlink" title="select Name 指定欄位"></a>select Name 指定欄位</h3><blockquote>
+<p><code>SELECT Name, Salary From Employee;</code></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/29/2022-11-29-MY-SQL-Basic/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1196,105 +1286,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/08/21/2022-08-21-codeTest-and-Interview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/08/21/2022-08-21-codeTest-and-Interview/" class="post-title-link" itemprop="url">codeTest_and_Interview</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-21 15:44:18" itemprop="dateCreated datePublished" datetime="2022-08-21T15:44:18+08:00">2022-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-20 11:33:36" itemprop="dateModified" datetime="2022-09-20T11:33:36+08:00">2022-09-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/interview/" itemprop="url" rel="index"><span itemprop="name">interview</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Interview-Code-Test"><a href="#Interview-Code-Test" class="headerlink" title="Interview Code Test"></a>Interview Code Test</h2><p>I am sharing some Code Test during my Interview, and also some practice Code example.<br>今天分享我一些Live Coding 面試問題，還有一些刷題的問題。</p>
-<h2 id="Amazon-Live-Code"><a href="#Amazon-Live-Code" class="headerlink" title="Amazon Live Code"></a>Amazon Live Code</h2><h3 id="Q1-read-file-into-datastucture-and-search-like-logfile"><a href="#Q1-read-file-into-datastucture-and-search-like-logfile" class="headerlink" title="Q1. read file into datastucture and search like logfile"></a>Q1. read file into datastucture and search like logfile</h3><p>If we have a log.txt, as below, you need to and search specfic string, like cat.</p>
-<ul>
-<li>log.txt<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 cat</span><br><span class="line">2 lion</span><br><span class="line">3 apple</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Answer-1-list"><a href="#Answer-1-list" class="headerlink" title="Answer 1: list"></a>Answer 1: list</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;log.txt&quot;, &quot;r&quot;) as textfile:</span><br><span class="line">   lines = textfile.readlines()</span><br><span class="line">for i in lines:</span><br><span class="line">    sli = i.split(&#x27; &#x27;)</span><br><span class="line">    #print(sli)</span><br><span class="line">    if &quot;cat&quot; in sli:</span><br><span class="line">        print(sli[0], sli[-1])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Answer2-using-dictionary"><a href="#Answer2-using-dictionary" class="headerlink" title="Answer2: using dictionary"></a>Answer2: using dictionary</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">d=&#123;&#125;</span><br><span class="line">with open(&quot;log.txt&quot;, &quot;r&quot;) as textfile:</span><br><span class="line">   #lines = textfile.readlines()</span><br><span class="line">#skip \n</span><br><span class="line">   lines = textfile.read().splitlines()</span><br><span class="line">   #print(lines)   </span><br><span class="line">for i in lines:</span><br><span class="line">    #sli = i.split(&#x27; &#x27;)    </span><br><span class="line">    (key,val)=i.split(&quot; &quot;)</span><br><span class="line">    d[int(key)]=val</span><br><span class="line">   # print(key,&quot;&quot;,val)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/08/21/2022-08-21-codeTest-and-Interview/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

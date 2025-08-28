@@ -38,7 +38,7 @@
 <meta property="og:description" content="今天想分享如何用 python 轉 exe，也就是說如果你把你的 python 檔案轉成 exe 放在其他電腦就可以執行。這個好處就是你不用在其他電腦安裝 python 或其他 library，就可以用。 Install Pyinstaller這有很多方法和套件可以用，但我都用 pyinstaller  安裝 pyinstaller: pip install pyinstaller  pyinst">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-25T10:35:53.000Z">
-<meta property="article:modified_time" content="2025-06-26T01:56:22.250Z">
+<meta property="article:modified_time" content="2025-08-28T07:11:49.895Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Pyinstaller"><span class="nav-number">1.</span> <span class="nav-text">Install Pyinstaller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyinstaller-%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">pyinstaller 用法</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Pyinstaller"><span class="nav-number">1.</span> <span class="nav-text">Install Pyinstaller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyinstaller-%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">pyinstaller 用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-%E7%92%B0%E5%A2%83%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">Linux 環境也可以用</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -144,7 +144,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -155,7 +155,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-26 09:56:22" itemprop="dateModified" datetime="2025-06-26T09:56:22+08:00">2025-06-26</time>
+      <time title="Modified: 2025-08-28 15:11:49" itemprop="dateModified" datetime="2025-08-28T15:11:49+08:00">2025-08-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -283,25 +283,27 @@
 <h2 id="pyinstaller-用法"><a href="#pyinstaller-用法" class="headerlink" title="pyinstaller 用法"></a>pyinstaller 用法</h2><ul>
 <li>基本用法</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#simple convert</span><br><span class="line">pyinstaller your_script.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#simple convert</span><br><span class="line">pyinstaller your_script.py</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Adding Icons:</li>
 </ul>
 <p>可以在下面連結下載 ico 也可以用，下載會是 <code>.png</code>檔案，需要轉成 <code>.ico</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller --onefile --icon=myicon.ico your_script.py</span><br><span class="line"></span><br><span class="line">``</span><br><span class="line"></span><br><span class="line">&gt; - [Icon URL](https://www.flaticon.com)</span><br><span class="line">&gt; - [png to ico](https://convertio.co/zh)</span><br><span class="line"></span><br><span class="line">- 其他</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller --onefile --icon=myicon.ico your_script.py</span><br></pre></td></tr></table></figure>
 
-<p>#Single File:<br>pyinstaller –onefile your_script.py</p>
-<p>#Adding Icons:<br>pyinstaller –onefile –icon&#x3D;myicon.ico your_script.py</p>
-<p>#no console window:<br>pyinstaller –onefile –windowed your_script.py</p>
-<p>#Adding Data Files:<br>pyinstaller –onefile –add-data “data_file.txt;.” your_script.py</p>
-<pre><code>
-## Linux 環境也可以用
+<blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.flaticon.com/">Icon URL</a></li>
+<li><a target="_blank" rel="noopener" href="https://convertio.co/zh">png to ico</a></li>
+</ul>
+</blockquote>
+<ul>
+<li>其他</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#Single File:</span><br><span class="line">pyinstaller --onefile your_script.py</span><br><span class="line"></span><br><span class="line">#Adding Icons:</span><br><span class="line">pyinstaller --onefile --icon=myicon.ico your_script.py</span><br><span class="line"></span><br><span class="line">#no console window:</span><br><span class="line">pyinstaller --onefile --windowed your_script.py</span><br><span class="line"></span><br><span class="line">#Adding Data Files:</span><br><span class="line">pyinstaller --onefile --add-data &quot;data_file.txt;.&quot; your_script.py</span><br></pre></td></tr></table></figure>
 
-如果你要在 linux 上面做一個執行當也可以:
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#build to executable file</span></span><br><span class="line">pyinstaller --onefile script.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#run executable file</span></span><br><span class="line">./dist/executfile</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</code></pre>
+<h2 id="Linux-環境也可以用"><a href="#Linux-環境也可以用" class="headerlink" title="Linux 環境也可以用"></a>Linux 環境也可以用</h2><p>如果你要在 linux 上面做一個執行當也可以:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#build to executable file</span></span><br><span class="line">pyinstaller --onefile script.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#run executable file</span></span><br><span class="line">./dist/executfile</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -340,6 +342,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/08/28/20250828_ngix-docker/" rel="next" title="20250828_ngix_docker">
+                  20250828_ngix_docker <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
