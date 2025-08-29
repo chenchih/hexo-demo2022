@@ -47,4 +47,4 @@ These are my URL page which I write blog on
 - [Gitpage](https://github.com/chenchih)
 - [Dev](https://dev.to/chenchih)
 
-You can search my name under google with keyword: `chenchih` or `chenchih git` or `chenchih qa` will have my social media or other link.
+You can search my name under google with keyword: `chenchih lee` or `chenchih git` or `chenchih qa` will have my social media or other link.
