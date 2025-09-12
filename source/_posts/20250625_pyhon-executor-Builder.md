@@ -55,7 +55,8 @@ pyinstaller --onefile --add-data "data_file.txt;." your_script.py
 
 如果你要在 linux 上面做一個執行當也可以:
 
-```
+
+```python
 #build to executable file
 pyinstaller --onefile script.py
 

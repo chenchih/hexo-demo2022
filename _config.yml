@@ -3,19 +3,26 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Chen-Chih Blog
-subtitle: "Tech Note"
-description: ""
+title: Chen-Chih Technical Note Blog
+subtitle: "Tech Notes & Tutorials"
+description: "Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples."
 keywords:
+  - QA Engineer
+  - Software QA
+  - Network Telecommunication
+  - Python
+  - Linux
+  - Chen-Chih Lee
+  - chenchih
 author: chenchih
 language: en #zh-TW
 timezone: Asia/Taipei
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://github.com/chenchih/
+url: https://chenchih.github.io/hexo-demo2022
 permalink: :year/:month/:day/:title/
-root: /hexo-demo2022
+root: /hexo-demo2022/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
