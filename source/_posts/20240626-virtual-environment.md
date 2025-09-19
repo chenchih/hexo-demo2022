@@ -5,6 +5,7 @@ tags:
   - python
   - virtualenv
   - jupyter-notebook
+  - Development
 categories:
   - python
 ---
