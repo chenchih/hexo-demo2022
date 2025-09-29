@@ -30,12 +30,12 @@
   gtag('config', 'c');
 </script>
 
-    <meta name="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    <meta name="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chen-Chih Technical Note Blog">
 <meta property="og:url" content="https://chenchih.github.io/page/3/index.html">
 <meta property="og:site_name" content="Chen-Chih Technical Note Blog">
-<meta property="og:description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+<meta property="og:description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="QA Engineer">
@@ -45,6 +45,7 @@
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Chen-Chih Lee">
 <meta property="article:tag" content="chenchih">
+<meta property="article:tag" content="chen-chih">
 <meta name="twitter:card" content="summary">
 
 
@@ -141,24 +142,24 @@
     <img class="site-author-image" itemprop="image" alt="chenchih"
       src="/hexo-demo2022/images/profile.jpeg">
   <p class="site-author-name" itemprop="name">chenchih</p>
-  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -219,6 +220,437 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/23/20221123-pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/23/20221123-pandas/" class="post-title-link" itemprop="url">pandas</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-23 11:49:42" itemprop="dateCreated datePublished" datetime="2022-11-23T11:49:42+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Pandas-筆記"><a href="#Pandas-筆記" class="headerlink" title="Pandas 筆記"></a>Pandas 筆記</h1><p>今天我想分享我學的 pandas 筆記，我覺得對於分大數據很有幫助，他有點像 mysql。請先下載 module 或 package:pip install pandas&#96;</p>
+<h2 id="Part1-基本語法"><a href="#Part1-基本語法" class="headerlink" title="Part1 基本語法"></a>Part1 基本語法</h2><h3 id="連線-CSV-檔案"><a href="#連線-CSV-檔案" class="headerlink" title="連線 CSV 檔案"></a>連線 CSV 檔案</h3><p>可以去 github 找相關 csv 檔案，然後去 raw 檔案做連線</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">url = &quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><br><span class="line">tips = pd.read_csv(url)</span><br><span class="line"></span><br><span class="line">print(tips)</span><br></pre></td></tr></table></figure>
+
+<p>pandas 會回傳 DataFrame 格式。<code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code><br>下面是印出所有資料表內容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">     total_bill   tip     sex smoker   day    time  size</span><br><span class="line">0         16.99  1.01  Female     No   Sun  Dinner     2</span><br><span class="line">1         10.34  1.66    Male     No   Sun  Dinner     3</span><br><span class="line">2         21.01  3.50    Male     No   Sun  Dinner     3</span><br><span class="line">3         23.68  3.31    Male     No   Sun  Dinner     2</span><br><span class="line">4         24.59  3.61  Female     No   Sun  Dinner     4</span><br><span class="line">..          ...   ...     ...    ...   ...     ...   ...</span><br><span class="line">239       29.03  5.92    Male     No   Sat  Dinner     3</span><br><span class="line">240       27.18  2.00  Female    Yes   Sat  Dinner     2</span><br><span class="line">241       22.67  2.00    Male    Yes   Sat  Dinner     2</span><br><span class="line">242       17.82  1.75    Male     No   Sat  Dinner     2</span><br><span class="line">243       18.78  3.00  Female     No  Thur  Dinner     2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Head-and-Tail"><a href="#Head-and-Tail" class="headerlink" title="Head and Tail"></a>Head and Tail</h3><ul>
+<li><code>head(N)</code>: 是查前面 N 筆資料</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/23/20221123-pandas/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/10/23/20221023_Excel-ReadWrite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/" class="post-title-link" itemprop="url">Excel_ReadWrite</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-23 11:58:07" itemprop="dateCreated datePublished" datetime="2022-10-23T11:58:07+08:00">2022-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Create-empty-Excel-File"><a href="#Create-empty-Excel-File" class="headerlink" title="Create empty Excel File"></a>Create empty Excel File</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
+<h2 id="Create-Sheet工作表的"><a href="#Create-Sheet工作表的" class="headerlink" title="Create Sheet工作表的"></a>Create Sheet工作表的</h2><h3 id="Create-Empty-Sheet-新增工作"><a href="#Create-Empty-Sheet-新增工作" class="headerlink" title="Create Empty Sheet 新增工作"></a>Create Empty Sheet 新增工作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.Workbook()</span><br><span class="line">wb.create_sheet(&quot;Sheet1&quot;, 0) </span><br><span class="line">wb.create_sheet(&quot;Sheet2&quot;, 1)</span><br><span class="line">wb.save(fn)</span><br></pre></td></tr></table></figure>
+<h3 id="Read-Excel-Sheet-讀取excel檔案每個工作表的名稱"><a href="#Read-Excel-Sheet-讀取excel檔案每個工作表的名稱" class="headerlink" title="Read Excel Sheet 讀取excel檔案每個工作表的名稱"></a>Read Excel Sheet 讀取excel檔案每個工作表的名稱</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import openpyxl</span><br><span class="line">fn = &#x27;new_excel.xlsx&#x27;</span><br><span class="line">wb = openpyxl.load_workbook(fn)</span><br><span class="line">print(wb.sheetnames)</span><br><span class="line">print(wb.active)</span><br><span class="line">print(wb.active.title)</span><br></pre></td></tr></table></figure>
+
+<p>output: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Sheet1&#x27;, &#x27;Sheet2&#x27;, &#x27;Sheet&#x27;]</span><br><span class="line">&lt;Worksheet &quot;Sheet1&quot;&gt;</span><br><span class="line">Sheet1</span><br></pre></td></tr></table></figure>
+
+<h3 id="edit-Name-of-worksheet-修改工作表名稱"><a href="#edit-Name-of-worksheet-修改工作表名稱" class="headerlink" title="edit Name of worksheet 修改工作表名稱"></a>edit Name of worksheet 修改工作表名稱</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/10/23/20221023-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/23/20221023-List/" class="post-title-link" itemprop="url">List and ZIP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-23 11:34:35" itemprop="dateCreated datePublished" datetime="2022-10-23T11:34:35+08:00">2022-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="list-列印"><a href="#list-列印" class="headerlink" title="list 列印"></a>list 列印</h2><p>這裡會包含以下內內容:</p>
+<ul>
+<li>基本讀 list 搭配 <code>for</code></li>
+<li><code>*</code>list (快速讀 list 不需要用到 <code>for</code> loop)</li>
+<li>N 筆後換</li>
+<li>轉換 list 到字串(搭配 join)</li>
+<li><code>enumerate</code> 方法</li>
+<li>Method:<ul>
+<li>split</li>
+<li>slice</li>
+<li>copy</li>
+<li>zip</li>
+<li>轉換 list 理的 tuple 到 list</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用的方式印-list-內容"><a href="#常用的方式印-list-內容" class="headerlink" title="常用的方式印 list 內容"></a>常用的方式印 list 內容</h3><p>list : <code>list = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;]</code></p>
+<p>我們可以用以下方法:</p>
+<h4 id="for-loop"><a href="#for-loop" class="headerlink" title="- for loop"></a>- <code>for</code> loop</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list= [1,2,3]</span><br><span class="line">for i in list:</span><br><span class="line">    print(i, end=&quot; &quot;) #</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>output:</code></p>
+<blockquote>
+<p>1 2 3</p>
+</blockquote>
+</blockquote>
+<h4 id="list-不需要-for-loop-，可以-unpack-list"><a href="#list-不需要-for-loop-，可以-unpack-list" class="headerlink" title="- *list: 不需要 for loop ，可以 unpack list"></a>- <code>*</code>list: 不需要 for loop ，可以 unpack list</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/23/20221023-List/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/10/18/20221018-substringSearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/10/18/20221018-substringSearch/" class="post-title-link" itemprop="url">substringSearchg檔案內容搜尋相關關鍵字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。</p>
+<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的 string 是:</p>
+<blockquote>
+<p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
+</blockquote>
+<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和 <code>(Mbps)</code>移除，可以用下面方式:</p>
+<ul>
+<li>Step1: 宣告我的 string</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Step2 抓取時間直</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateStr = st.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">print(dateStr) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>20221013.162853.788442</p>
+</blockquote>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/08/21/20221023_FileReadWriteFile/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +660,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -382,7 +814,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -481,7 +913,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -602,7 +1034,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -629,7 +1061,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+      <time title="Modified: 2025-09-29 10:18:07" itemprop="dateModified" datetime="2025-09-29T10:18:07+08:00">2025-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -651,16 +1083,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>今天我想分享如何用linux shell script 語法。<br>我們需要加這個在script裡面，然後檔案改成<code>.sh</code></p>
+          <p>今天我想分享如何用linux shell script 語法。<br>我們需要加這個在script裡面，然後檔案改成 <code>.sh</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>How to execute script<blockquote>
+<li>How to execute script</li>
+</ul>
+<blockquote>
 <p><code>chmod 777 myscript.sh</code><br><code>./myscript.sh</code></p>
 </blockquote>
-</li>
-</ul>
 <h2 id="1-variable"><a href="#1-variable" class="headerlink" title="1. variable"></a>1. variable</h2><h3 id="define-variable"><a href="#define-variable" class="headerlink" title="define variable"></a>define variable</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text1=Hello</span><br><span class="line">name=CC</span><br><span class="line">echo $text1 $name</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>output:</p>
 <blockquote>
@@ -671,12 +1104,6 @@
 <p>read variable</p>
 <blockquote>
 <p>read a</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>read vairable without skip new line: </p>
-<blockquote>
-<p>read -p “Your Options: “ option</p>
 </blockquote>
 </blockquote>
           <!--noindex-->
@@ -721,7 +1148,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -748,7 +1175,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+      <time title="Modified: 2025-09-29 11:09:16" itemprop="dateModified" datetime="2025-09-29T11:09:16+08:00">2025-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -821,7 +1248,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -910,486 +1337,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-JS-BasicCode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/" class="post-title-link" itemprop="url">JS Basic Code 基本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-30 07:59:48" itemprop="dateCreated datePublished" datetime="2022-07-30T07:59:48+08:00">2022-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="JS基本須知道"><a href="#JS基本須知道" class="headerlink" title="JS基本須知道"></a>JS基本須知道</h2><h3 id="How-to-run-JS"><a href="#How-to-run-JS" class="headerlink" title="How to run JS"></a>How to run JS</h3><ul>
-<li><p>Browser- inspect</p>
-<ul>
-<li><p>Method1:</p>
-<blockquote>
-<p>Go to inspect &gt; console</p>
-</blockquote>
-</li>
-<li><p>Method 2:</p>
-<blockquote>
-<p>inspect&gt; sources&gt; snipperts&gt; create js file</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>NodeJS environment</p>
-<blockquote>
-<p>寫 <code>XXX.js</code>&#x2F;&#x2F;CREATE JS file</p>
-<blockquote>
-<p><code>node XXX.js</code> &#x2F;&#x2F;run .js file using node</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h3 id="adding-comment"><a href="#adding-comment" class="headerlink" title="adding comment"></a>adding comment</h3><p><code>//</code> single line comment<br><code>/**/</code>: multiply line comment</p>
-<h3 id="顯示-print"><a href="#顯示-print" class="headerlink" title="顯示 print"></a>顯示 print</h3><ul>
-<li><code>console.log()</code> 顯示在console</li>
-<li><code>alert()</code> 跳出顯示</li>
-<li><code>document.write(&quot;\&lt;h1&gt;hello &lt;br\/&gt;&quot;)</code></li>
-</ul>
-<h2 id="JS-基本語法-Part-1"><a href="#JS-基本語法-Part-1" class="headerlink" title="JS　 基本語法- Part 1"></a>JS　 基本語法- Part 1</h2><h3 id="１-declare-variable-宣告變數"><a href="#１-declare-variable-宣告變數" class="headerlink" title="１. declare variable 宣告變數"></a>１. declare variable 宣告變數</h3><ul>
-<li><code>let</code> (新)可以取代var<blockquote>
-<p>ex:</p>
-<blockquote>
-<p><code>let myName= &quot;chenchih&quot;</code><br><code>console.log(myName)</code></p>
-</blockquote>
-</blockquote>
-</li>
-<li><code>var</code></li>
-<li><code>const</code><blockquote>
-<p>must be inital and not able to change<br>不被修改變數。如果不想被人修改</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const test= &quot;heloo&quot;</span><br><span class="line">test=&quot;world&quot;</span><br><span class="line">console.log(test) //error</span><br></pre></td></tr></table></figure></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-Markup/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/" class="post-title-link" itemprop="url">Markdown 指令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-03 11:23:24" itemprop="dateCreated datePublished" datetime="2022-07-03T11:23:24+08:00">2022-07-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天我想寫關於 <code>Markdown</code>相關指令。想信大家都會常用MD或是markdown。</p>
-<h2 id="字體效果"><a href="#字體效果" class="headerlink" title="字體效果"></a>字體效果</h2><p><em>斜體字</em> &#x3D;&#x3D;&gt; <code>*文字*</code><br><strong>粗體字</strong>  &#x3D;&#x3D;&gt; <code>**文字**</code><br><em><strong>斜粗體</strong></em>  &#x3D;&#x3D;&gt; <code>***文字***</code><br><del>刪除線strikethrough</del>  &#x3D;&#x3D;&gt; <code>~~文字~~</code><br><em>斜體2</em>  &#x3D;&#x3D;&gt; <code>_文字_</code><br><strong>斜粗2</strong>  &#x3D;&#x3D;&gt; <code>__文字__</code><br>正常^上標^ &#x3D;&#x3D;&gt;  <code>文字^string1^</code><br>正常<del>下標</del> &#x3D;&#x3D;&gt;  <code>文字~string1~</code><br>++底線++  &#x3D;&#x3D;&gt;  <code>++文字++</code><br>&#x3D;&#x3D;螢光標記&#x3D;&#x3D;  &#x3D;&#x3D;&gt; <code>==文字==</code></p>
-<h2 id="color顏色"><a href="#color顏色" class="headerlink" title="color顏色"></a>color顏色</h2><ul>
-<li><font color="red">color</font> &#x3D;&#x3D;&gt; <code>&lt;font color=&quot;red&quot;&gt;text &lt;/font&gt;</code></li>
-<li><mark style="background-color: #FFFF00">Highlighted text</mark> &#x3D;&gt; <code>&lt;mark style=&quot;background-color: #FFFF00&quot;&gt;Highlighted text&lt;/mark&gt;</code><blockquote>
-<p>change mark or span&#x2F;div</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Font-Size-大小"><a href="#Font-Size-大小" class="headerlink" title="Font Size 大小"></a>Font Size 大小</h2><ul>
-<li><font size="5">  <strong>HTML</strong></font>  &#x3D;&#x3D;&gt; <code>&lt;font size=5&gt;  **HTML**&lt;/font&gt; </code></li>
-</ul>
-<h2 id="Horizontal-Rules"><a href="#Horizontal-Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h2><hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">***</span><br><span class="line">___</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/03/2022-07-03-zsh_ohmysh_setting/" class="post-title-link" itemprop="url">UBUNTU-Zsh + Oh My Zsh + Powerlevel10k</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-03 09:00:18" itemprop="dateCreated datePublished" datetime="2022-07-03T09:00:18+08:00">2022-07-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到<code>zsh</code> 和 <code>ohmysh</code>。</p>
-<p>本篇文章會安裝以下套件：</p>
-<ul>
-<li>ubuntu 安裝和設定 <ul>
-<li>基本套件: <code>zsh</code> <code>git</code> <code>wget</code> <code>curl</code></li>
-<li><code>ohymysh</code>套件</li>
-<li>shell 設定</li>
-<li><code>Oh My Zsh</code> 安裝，主題設定</li>
-<li>安裝<code>Powerlevel10k</code> 主題，不然會怪怪</li>
-</ul>
-</li>
-</ul>
-<h2 id="更新-ubuntu-套件"><a href="#更新-ubuntu-套件" class="headerlink" title="更新 ubuntu 套件"></a>更新 ubuntu 套件</h2><p><code>$ sudo apt-get update</code></p>
-<h2 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h2><h3 id="檢查我們目前支援的shells"><a href="#檢查我們目前支援的shells" class="headerlink" title="檢查我們目前支援的shells"></a>檢查我們目前支援的shells</h3><blockquote>
-<p>目前支援的shells<br><code>$cat /etc/shells</code></p>
-</blockquote>
-<p><img src="https://i.imgur.com/SGzosrt.png" alt="zsh-after"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-zsh_ohmysh_setting/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/30/2022-06-21-hexo2_SetupShort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/30/2022-06-21-hexo2_SetupShort/" class="post-title-link" itemprop="url">Hexo + GitHub Pages 架設個人網誌-簡易版-2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-30 20:34:18" itemprop="dateCreated datePublished" datetime="2022-06-30T20:34:18+08:00">2022-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在這篇教學，我想要分享HEXO簡易版本。我在之前有寫ㄧ篇是關於Hexo完整篇，文章太長。如果你不想看那一篇可以看這一篇。在這一篇，我只會分享一些基本指令。</p>
-<h2 id="安裝-git"><a href="#安裝-git" class="headerlink" title="安裝 git"></a>安裝 git</h2><p>可以到官網下載<a target="_blank" rel="noopener" href="https://git-scm.com/">git</a>:，或是你是Linux&#x2F;MAC，可以輸入命令方式來安裝如下：</p>
-<ul>
-<li><p>Linux (Ubuntu, Debian)：</p>
-<blockquote>
-<p><code>$ sudo apt-get install git-core</code></p>
-</blockquote>
-</li>
-<li><p>Linux (Fedora, Red Hat, CentOS)</p>
-<blockquote>
-<p><code>sudo yum install git-core</code></p>
-</blockquote>
-</li>
-<li><p>mac 安裝:</p>
-<blockquote>
-<p><code>brew install git</code></p>
-</blockquote>
-</li>
-</ul>
-<h2 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h2><h3 id="先安裝-node-js"><a href="#先安裝-node-js" class="headerlink" title="先安裝 node.js"></a>先安裝 node.js</h3><p>可以到官網下載<a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a>，或是你是Linux&#x2F;MAC，可以輸入命令方式來安裝如下：</p>
-<ul>
-<li>MAC: <blockquote>
-<p><code>$ brew update</code><br><code>$ brew install node</code></p>
-</blockquote>
-</li>
-<li>Linux(ubuntu)<blockquote>
-<p><code>$ sudo apt-get install -y nodejs</code></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="再安裝-Hexo"><a href="#再安裝-Hexo" class="headerlink" title="再安裝 Hexo"></a>再安裝 Hexo</h3><p><code>$ npm install -g hexo-cli     # -g 全域安裝</code></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/30/2022-06-21-hexo2_SetupShort/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/hexo-demo2022/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><a class="page-number" href="/hexo-demo2022/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="extend next" rel="next" href="/hexo-demo2022/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/hexo-demo2022/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><a class="page-number" href="/hexo-demo2022/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/hexo-demo2022/page/4/">4</a><a class="page-number" href="/hexo-demo2022/page/5/">5</a><a class="extend next" rel="next" href="/hexo-demo2022/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
