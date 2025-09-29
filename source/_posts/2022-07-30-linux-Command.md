@@ -50,3 +50,35 @@ workgroup = WORKGROUP
 map to guest = bad user
 EOF
 ```
+
+## Write and Modify File
+There are some shortcut key need to know using `vi` linux edit tool, which often use for edit file. Some people might use `nano`, `nvim`, or `vim` ; this is use for often vim. 
+
+- Jump to specific line: `ctrl+G` + `line`
+- search string: 
+  - `/` or `?`
+   - search next match string: `n`
+- save file:
+    - `wq` or `x!`: save and exit 
+    - `q!`: exit without saving
+- string select(visual mode): `ctrl+v`  select cursor反白選取文字 
+  - copy: `y`
+  - cut: `d`
+  - paste: `p`
+  - undo: `u`
+
+## modify file with advance tool
+
+### replace string from a file
+
+-  Find and replace string to file
+```
+sed  -i 's/oldstring/newstring/g' xxx.txt
+```
+- Search string, and replace with new string and value
+Search `TddConfigCommon.PatternType = TDD2` and change value like `P1` or `P2`
+```
+#change 
+sed -i "/TddConfigCommon.PatternType = /c\TddConfigCommon.PatternType = P1" /home/test/Desktop/5GScript/confChange.txt
+```
+###

@@ -4,41 +4,56 @@ date: 2022-07-31 08:07:57
 tags: 
 - linux 
 - bash
+- automation
 categories:
-- linux 
+- linux
 ---
 今天我想分享如何用linux shell script 語法。
-我們需要加這個在script裡面，然後檔案改成`.sh`
+我們需要加這個在script裡面，然後檔案改成 `.sh`
 
 ```
 #! /bin/bash
 ```
 
 - How to execute script
+
 > `chmod 777 myscript.sh`
 > `./myscript.sh`
 
-## 1. variable 
+## 1. variable
+
 ### define variable
+
 ```
 text1=Hello
 name=CC
 echo $text1 $name
 ```
+
 > output:
+>
 >> Hello CC
+>>
 
 ### read and echo variable
-> read variable
->> read a
 
-> read vairable without skip new line: 
+> read variable
+>
+>> read a
+>>
+
+> read vairable without skip new line:
+>
 >> read -p "Your Options: " option
+>>
 
 > echo without new line
->> echo -n "message" 
+>
+>> echo -n "message"
+>>
 
-#### example: 
+#### example:
+
 ```
 echo "======================IPERF==================="
 echo "1) "
@@ -48,14 +63,18 @@ echo "============================="
 echo -n "Choice:"
 read choice
 ```
+
 ### expression
+
 > `var=$((3+9))`
 > `echo $var`
+>
 >> output:
->>　12
+>> 　12
+>>
 
+- example
 
-- example 
 ```
 echo "Enter a numner"
 read a
@@ -68,8 +87,10 @@ sum=$((a+b))
 
 ## 2. condition
 
-### if elif else 
+### if elif else
+
 #### Syntax
+
 ```
 if [[ condition ]]
 then
@@ -82,9 +103,12 @@ fi
 ```
 
 > check file empty
+>
 >> `if [[ -z "$tftp_dir" ]]`
+>>
 
 #### example
+
 ```
 read x
 read y
@@ -102,14 +126,18 @@ fi
 ```
 
 ## 3. Loop
+
 ### for loop
+
 #### loop number
+
 ```
 for i in {1..5}
 do
     echo $i
 done
 ```
+
 #### Looping with strings
 
 ```
@@ -120,7 +148,9 @@ done
 ```
 
 ### while loop
+
 #### adding 1 ~100
+
 ```
 #!/bin/bash
 i=1
@@ -130,7 +160,7 @@ while [[ $i -le 10 ]] ; do
 done
 ```
 
-###  get arguments for scripts
+### get arguments for scripts
 
 ```
 #!/bin/bash

@@ -5,7 +5,7 @@
 # Site
 title: Chen-Chih Technical Note Blog
 subtitle: "Tech Notes & Tutorials"
-description: "Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples."
+description: "Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes."
 keywords:
   - QA Engineer
   - Software QA
@@ -14,6 +14,7 @@ keywords:
   - Linux
   - Chen-Chih Lee
   - chenchih
+  - chen-chih
 author: chenchih
 language: en #zh-TW
 timezone: Asia/Taipei
