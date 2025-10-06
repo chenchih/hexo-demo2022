@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -211,6 +211,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2025/10/05/20251005-PythonCommonCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2025/10/05/20251005-PythonCommonCode/" class="post-title-link" itemprop="url">Basic easy  useful python code</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-05 10:35:31 / Modified: 11:19:00" itemprop="dateCreated datePublished" datetime="2025-10-05T10:35:31+08:00">2025-10-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>This post would like to share some of the commonly use code can be easier use, you can think of cheatsheet for basic python code. This allow you to copy the code if you want to use it.<br>這篇筆記只想分享一些基本或常用到的程式可以用，，可以想成懶人包。</p>
+<h1 id="Basic-Code"><a href="#Basic-Code" class="headerlink" title="Basic Code"></a>Basic Code</h1><h2 id="Exception-capture-Error-on-code"><a href="#Exception-capture-Error-on-code" class="headerlink" title="Exception capture Error on code"></a>Exception capture Error on code</h2><p>If you every had some experience to write code to do specfic cacultion like division of 0 and when print it will occcur Error. To not show the Error, we can use the try and exception related code. </p>
+<blockquote>
+<p><strong>source:</strong> <a target="_blank" rel="noopener" href="https://www.youtube.com/@Cod1ngTogether/shorts">Youtube:@Cod1ngTogether</a></p>
+</blockquote>
+<ul>
+<li>Error Occur <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num1= 10</span><br><span class="line">num2= 0</span><br><span class="line">result = num1/num2</span><br><span class="line">print(result) #ZeroDivisionError: division by zero</span><br></pre></td></tr></table></figure>
+it will occur Error like below:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">File &quot;C:\new\basic_ex\try_expection.py&quot;, line 11</span><br><span class="line">    except exception e:</span><br><span class="line">                     ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>Soluttion:</strong> for this code is to add try and exception</p>
+<ul>
+<li>Try exception<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    num1= 10</span><br><span class="line">    num2= 0</span><br><span class="line">    result = num1/num2</span><br><span class="line">    print(result) #ZeroDivisionError: division by zero</span><br><span class="line">#catch ZeroDivisionError error</span><br><span class="line">except ZeroDivisionError:</span><br><span class="line">    print(&#x27;Error: not able to divide by zero, please try again thanks!!!&#x27;)</span><br><span class="line"></span><br><span class="line">#catch every error it occur</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(f&quot;Error ocurred:&#123;e&#125;&quot;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p><strong>output:</strong> <code>Error: not able to divide by zero, please try again thanks!!!</code></p>
+</blockquote>
+<ul>
+<li>Real world case use function<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def readFile(filename):</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        with open(filename, &quot;r&quot;) as file:</span><br><span class="line">            content= file.read()</span><br><span class="line">    except FileNotFoundError:</span><br><span class="line">        print(&#x27;File not found!!! Help you create one....&#x27;)</span><br><span class="line">        with open(&quot;missingfile.txt&quot;, &quot;w&quot;) as file:</span><br><span class="line">            content= &quot;Hello World&quot;</span><br><span class="line">            file.write(content)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;File Read successfully&quot;)</span><br><span class="line">        return content</span><br><span class="line">    finally:</span><br><span class="line">        print(&quot;Closing FIle&quot;)</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    filename= input(&#x27;Your filename(ex test.txt): &#x27;)</span><br><span class="line">    content= readFile(filename)</span><br><span class="line">    print(content)</span><br></pre></td></tr></table></figure></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2025/10/05/20251005-PythonCommonCode/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1124,115 +1228,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2025/01/06/20250106_update-python-jupyter/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2024/11/28/20241128_Rename_and_List_file_example/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2024/11/28/20241128_Rename_and_List_file_example/" class="post-title-link" itemprop="url">Rename_and_List_file_example 列出檔案目錄和如重新立名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-11-28 15:16:40" itemprop="dateCreated datePublished" datetime="2024-11-28T15:16:40+08:00">2024-11-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/example/" itemprop="url" rel="index"><span itemprop="name">example</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天我想分享關於目錄和檔案相關範例，如重新立名，出檔案，我會用很多方式呈現出來。</p>
-<h2 id="List-current-directory-目錄利出檔案"><a href="#List-current-directory-目錄利出檔案" class="headerlink" title="List current directory 目錄利出檔案"></a>List current directory 目錄利出檔案</h2><h3 id="list-your-file-in-current-directory-目錄列出檔案"><a href="#list-your-file-in-current-directory-目錄列出檔案" class="headerlink" title="list your file in current directory 目錄列出檔案"></a>list your file in current directory 目錄列出檔案</h3><p>我們常在 linux 和 window 都會用 ‵ls‵ 或　‵dir‵ 來列出我們目錄底下所有檔案。 可以用 <code>os.listdir()</code> 就可以利出所有目錄和檔案</p>
-<blockquote>
-<p>目前目錄下: <code>os.listdir()</code></p>
-<p>指定位置: <code>os.listdir(path)</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">for file in os.listdir():</span><br><span class="line">    print(file)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>output:</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">counter.py</span><br><span class="line">elogfile</span><br><span class="line">elogfile.txt</span><br><span class="line">elogfile2</span><br><span class="line">elogfile2.txt</span><br><span class="line">list_file.py</span><br><span class="line">logchecking.py</span><br><span class="line">logchecking_rename.py</span><br></pre></td></tr></table></figure>
-
-<h3 id="filter-specific-file-or-file-type-篩選檔名"><a href="#filter-specific-file-or-file-type-篩選檔名" class="headerlink" title="filter specific file or file type 篩選檔名"></a>filter specific file or file type 篩選檔名</h3><p>有幾個方式可以用，如果要指定檔案類型 我們可以用: <code>startswith()</code> 或 <code>endswith()</code>.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2024/11/28/20241128_Rename_and_List_file_example/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

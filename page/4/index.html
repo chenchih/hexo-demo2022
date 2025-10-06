@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -211,6 +211,112 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-Print/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/30/2022-07-30-Print/" class="post-title-link" itemprop="url">Python Print</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 08:05:22" itemprop="dateCreated datePublished" datetime="2022-07-30T08:05:22+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-Print"><a href="#1-Print" class="headerlink" title="1. Print"></a>1. Print</h2><h3 id="Ex1-Print-Basic-Interger-and-String"><a href="#Ex1-Print-Basic-Interger-and-String" class="headerlink" title="Ex1 Print Basic Interger and String"></a>Ex1 Print Basic Interger and String</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_name= &quot;hello&quot;</span><br><span class="line">num_value= 999</span><br><span class="line">print(f&quot;str value is &#123;str_name&#125;, and number is &#123;num_value&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p><code>str value is hello, and number is 999</code></p>
+</blockquote>
+</blockquote>
+<h2 id="formatting-OLD"><a href="#formatting-OLD" class="headerlink" title="%-formatting-OLD"></a>%-formatting-OLD</h2><h3 id="Example-1-Print-String-with-Operator"><a href="#Example-1-Print-String-with-Operator" class="headerlink" title="Example 1 Print String with % Operator"></a>Example 1 Print String with <code>%</code> Operator</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text = &#x27;world&#x27;</span><br><span class="line">print(&quot;hello &quot; + text)</span><br><span class="line">print(&#x27;hello %s&#x27; % text)</span><br><span class="line"></span><br><span class="line">name = &quot;Test&quot;</span><br><span class="line">num = 100</span><br><span class="line">print(&quot;Hello, %s. My num is  %s.&quot; % (name, num))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p><code>hello world</code><br><code>hello world</code><br><code>Hello, Test. You are 100.</code></p>
+</blockquote>
+</blockquote>
+<h2 id="3-str-format-NEW"><a href="#3-str-format-NEW" class="headerlink" title="3. str.format()- NEW"></a>3. str.format()- NEW</h2><p>str.format() 是對 %-formatting 的改進，可以用函式呼叫語法，可以通過 format() 方法對被轉換為字串的物件</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-Print/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1298,112 +1404,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/06/21/2022-06-21-%5BCSS-Layout%5D_Flexbox/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/17/2022-06-17-Git-Basic-Command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/17/2022-06-17-Git-Basic-Command/" class="post-title-link" itemprop="url">Git Basic Command</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-17T00:00:00+08:00">2022-06-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天我想在這文章中介紹最常用到的 git 指令。我會介紹我最常用到的指令有：</p>
-<ul>
-<li>git init</li>
-<li>git add .</li>
-<li>git commit -m “message”</li>
-<li>git push<br>以上是我最常用到的。我還想介紹一些關於 git remote 等指令。</li>
-</ul>
-<h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><h3 id="1-git-init-初始化-git"><a href="#1-git-init-初始化-git" class="headerlink" title="1. git init 初始化 git"></a>1. git init 初始化 git</h3><p>Step1: 建立一個資料夾如：<code>$mkdir test</code></p>
-<p>Step2: 進去目錄 <code>cd test</code></p>
-<p>Step3: 執行 <code>git init</code>就會初始化 git。如果你下 <code>ls-al</code>就可以看所有資料，會有一個 <code>.git</code> 隱藏檔</p>
-<h3 id="2-git-add-把檔案進索引-index"><a href="#2-git-add-把檔案進索引-index" class="headerlink" title="2. git add 把檔案進索引 index"></a>2. git add 把檔案進索引 index</h3><p>Step1: 建立檔案 <code>touch hello.py</code><br>Step2: 編輯檔案</p>
-<ul>
-<li>(linux) vim hello.py</li>
-<li>(window) notepad hello.py<br>就加 <code>print(&quot;hello world&quot;)</code><br>Step3: 把檔案加進索引 <code>git add .</code><br>Step4: 看 git status <code>git status</code><br>他會顯示 stage</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/17/2022-06-17-Git-Basic-Command/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

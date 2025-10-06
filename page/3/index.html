@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -211,6 +211,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/23/20221123-Function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/11/23/20221123-Function/" class="post-title-link" itemprop="url">Function or Method</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-23 16:17:19" itemprop="dateCreated datePublished" datetime="2022-11-23T16:17:19+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>python 有很多不同 function，因此我想在這篇寫所有 funtion 我會用到。我指的 function 不是傳 function，而是一些 libary function</p>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h2 id="Datetime-時間"><a href="#Datetime-時間" class="headerlink" title="Datetime 時間"></a>Datetime 時間</h2><h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><h4 id="程式跑的時間"><a href="#程式跑的時間" class="headerlink" title="程式跑的時間"></a>程式跑的時間</h4><p>如果計算程式袍多就可以用這方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"># starting time</span><br><span class="line">start = time.time()</span><br><span class="line"># your code</span><br><span class="line">for i in range(1,60):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">#endtime</span><br><span class="line">end = time.time()</span><br><span class="line">runtime=end - start</span><br><span class="line">print(&quot; Runtime of the program is &#123;runtime:%.8f&#125;&quot;)</span><br><span class="line">print(f&quot;Runtime of the program is &#123;runtime:.5f&#125;&quot;)</span><br><span class="line">#or</span><br><span class="line">print(f&quot;Runtime of the program is &#123;(end - start):.5f&#125;&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h3><h4 id="今天日期"><a href="#今天日期" class="headerlink" title="今天日期"></a>今天日期</h4><ul>
+<li>date.today 取今天日期</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/11/23/20221123-Function/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1209,112 +1307,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-linux-Command/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-Print/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/07/30/2022-07-30-Print/" class="post-title-link" itemprop="url">Python Print</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-07-30 08:05:22" itemprop="dateCreated datePublished" datetime="2022-07-30T08:05:22+08:00">2022-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="1-Print"><a href="#1-Print" class="headerlink" title="1. Print"></a>1. Print</h2><h3 id="Ex1-Print-Basic-Interger-and-String"><a href="#Ex1-Print-Basic-Interger-and-String" class="headerlink" title="Ex1 Print Basic Interger and String"></a>Ex1 Print Basic Interger and String</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_name= &quot;hello&quot;</span><br><span class="line">num_value= 999</span><br><span class="line">print(f&quot;str value is &#123;str_name&#125;, and number is &#123;num_value&#125;&quot;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>output:</strong></p>
-<blockquote>
-<p><code>str value is hello, and number is 999</code></p>
-</blockquote>
-</blockquote>
-<h2 id="formatting-OLD"><a href="#formatting-OLD" class="headerlink" title="%-formatting-OLD"></a>%-formatting-OLD</h2><h3 id="Example-1-Print-String-with-Operator"><a href="#Example-1-Print-String-with-Operator" class="headerlink" title="Example 1 Print String with % Operator"></a>Example 1 Print String with <code>%</code> Operator</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text = &#x27;world&#x27;</span><br><span class="line">print(&quot;hello &quot; + text)</span><br><span class="line">print(&#x27;hello %s&#x27; % text)</span><br><span class="line"></span><br><span class="line">name = &quot;Test&quot;</span><br><span class="line">num = 100</span><br><span class="line">print(&quot;Hello, %s. My num is  %s.&quot; % (name, num))</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>output:</strong></p>
-<blockquote>
-<p><code>hello world</code><br><code>hello world</code><br><code>Hello, Test. You are 100.</code></p>
-</blockquote>
-</blockquote>
-<h2 id="3-str-format-NEW"><a href="#3-str-format-NEW" class="headerlink" title="3. str.format()- NEW"></a>3. str.format()- NEW</h2><p>str.format() 是對 %-formatting 的改進，可以用函式呼叫語法，可以通過 format() 方法對被轉換為字串的物件</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-Print/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

@@ -1,3 +1,4 @@
+https://chenchih.github.io/2025/10/05/20251005-PythonCommonCode/
 https://chenchih.github.io/2022/07/30/2022-07-30-linux-Command/
 https://chenchih.github.io/2025/09/28/20250928-Network-Note/
 https://chenchih.github.io/2024/06/17/20240617_Terminal-oh-my-posh/
@@ -83,6 +84,7 @@ https://chenchih.github.io/tags/productive/
 https://chenchih.github.io/tags/automation/
 https://chenchih.github.io/tags/Development/
 https://chenchih.github.io/tags/ssh/
+https://chenchih.github.io/tags/usefulCode/
 https://chenchih.github.io/categories/WebDev/
 https://chenchih.github.io/categories/devtool/
 https://chenchih.github.io/categories/Hexo/

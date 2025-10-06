@@ -148,7 +148,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -159,7 +159,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -211,6 +211,115 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2024/11/28/20241128_Rename_and_List_file_example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2024/11/28/20241128_Rename_and_List_file_example/" class="post-title-link" itemprop="url">Rename_and_List_file_example 列出檔案目錄和如重新立名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-11-28 15:16:40" itemprop="dateCreated datePublished" datetime="2024-11-28T15:16:40+08:00">2024-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/example/" itemprop="url" rel="index"><span itemprop="name">example</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天我想分享關於目錄和檔案相關範例，如重新立名，出檔案，我會用很多方式呈現出來。</p>
+<h2 id="List-current-directory-目錄利出檔案"><a href="#List-current-directory-目錄利出檔案" class="headerlink" title="List current directory 目錄利出檔案"></a>List current directory 目錄利出檔案</h2><h3 id="list-your-file-in-current-directory-目錄列出檔案"><a href="#list-your-file-in-current-directory-目錄列出檔案" class="headerlink" title="list your file in current directory 目錄列出檔案"></a>list your file in current directory 目錄列出檔案</h3><p>我們常在 linux 和 window 都會用 ‵ls‵ 或　‵dir‵ 來列出我們目錄底下所有檔案。 可以用 <code>os.listdir()</code> 就可以利出所有目錄和檔案</p>
+<blockquote>
+<p>目前目錄下: <code>os.listdir()</code></p>
+<p>指定位置: <code>os.listdir(path)</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">for file in os.listdir():</span><br><span class="line">    print(file)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">counter.py</span><br><span class="line">elogfile</span><br><span class="line">elogfile.txt</span><br><span class="line">elogfile2</span><br><span class="line">elogfile2.txt</span><br><span class="line">list_file.py</span><br><span class="line">logchecking.py</span><br><span class="line">logchecking_rename.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="filter-specific-file-or-file-type-篩選檔名"><a href="#filter-specific-file-or-file-type-篩選檔名" class="headerlink" title="filter specific file or file type 篩選檔名"></a>filter specific file or file type 篩選檔名</h3><p>有幾個方式可以用，如果要指定檔案類型 我們可以用: <code>startswith()</code> 或 <code>endswith()</code>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2024/11/28/20241128_Rename_and_List_file_example/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1169,104 +1278,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/11/24/20221124-tuple/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/23/20221123-Function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/11/23/20221123-Function/" class="post-title-link" itemprop="url">Function or Method</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-23 16:17:19" itemprop="dateCreated datePublished" datetime="2022-11-23T16:17:19+08:00">2022-11-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-30 08:02:06" itemprop="dateModified" datetime="2025-06-30T08:02:06+08:00">2025-06-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>python 有很多不同 function，因此我想在這篇寫所有 funtion 我會用到。我指的 function 不是傳 function，而是一些 libary function</p>
-<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><h2 id="Datetime-時間"><a href="#Datetime-時間" class="headerlink" title="Datetime 時間"></a>Datetime 時間</h2><h3 id="time"><a href="#time" class="headerlink" title="time"></a>time</h3><h4 id="程式跑的時間"><a href="#程式跑的時間" class="headerlink" title="程式跑的時間"></a>程式跑的時間</h4><p>如果計算程式袍多就可以用這方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line"># starting time</span><br><span class="line">start = time.time()</span><br><span class="line"># your code</span><br><span class="line">for i in range(1,60):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">#endtime</span><br><span class="line">end = time.time()</span><br><span class="line">runtime=end - start</span><br><span class="line">print(&quot; Runtime of the program is &#123;runtime:%.8f&#125;&quot;)</span><br><span class="line">print(f&quot;Runtime of the program is &#123;runtime:.5f&#125;&quot;)</span><br><span class="line">#or</span><br><span class="line">print(f&quot;Runtime of the program is &#123;(end - start):.5f&#125;&quot;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h3><h4 id="今天日期"><a href="#今天日期" class="headerlink" title="今天日期"></a>今天日期</h4><ul>
-<li>date.today 取今天日期</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/11/23/20221123-Function/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
