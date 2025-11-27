@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天想分享我用 Rassberry PI5 架 ACS Server，如果你知道 ACS Server 是甚麼，可以看我如何架。ACS Auto Configure server，類似遠端的工具可以看到你的通訊產品的狀況如上線時間，reboot,更新 FW 等等  Note:  For English Note please refer to my github note link   Raspb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rassberry Genie ACS">
+<meta property="og:url" content="https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="今天想分享我用 Rassberry PI5 架 ACS Server，如果你知道 ACS Server 是甚麼，可以看我如何架。ACS Auto Configure server，類似遠端的工具可以看到你的通訊產品的狀況如上線時間，reboot,更新 FW 等等  Note:  For English Note please refer to my github note link   Raspb">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/checkOS.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/modelType.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/CPUType.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/genie_automatic.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/secretkey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/activate.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/acs_online.PNG">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/upgrade_image.PNG">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/upload_fw.PNG">
+<meta property="article:published_time" content="2025-09-13T01:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-15T09:20:25.174Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/checkOS.png">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/","path":"2025/09/13/20250913_PI5-GenieACS/","title":"Rassberry Genie ACS"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Rassberry Genie ACS | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Raspberry-PI-Model"><span class="nav-number">1.</span> <span class="nav-text">Raspberry PI Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-Ubuntu-Version"><span class="nav-number">1.1.</span> <span class="nav-text">Check Ubuntu Version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-Kernel"><span class="nav-number">1.2.</span> <span class="nav-text">Check Kernel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#check-Raspberry-Model"><span class="nav-number">1.3.</span> <span class="nav-text">check Raspberry Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-CPU-type"><span class="nav-number">1.4.</span> <span class="nav-text">Check CPU type</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-Genie-ACS"><span class="nav-number">2.</span> <span class="nav-text">Install Genie ACS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-and-Install-nodejs"><span class="nav-number">2.1.</span> <span class="nav-text">Download and Install nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MogoDB-GPG-Key"><span class="nav-number">2.2.1.</span> <span class="nav-text">MogoDB GPG Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mongodb-%E4%B8%8B%E8%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">Mongodb 下載</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-mogodb"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">安裝 mogodb</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%95%9F%E5%8B%95-mongod"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">啟動 mongod</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GenieACS"><span class="nav-number">2.3.</span> <span class="nav-text">GenieACS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89-x2F-%E5%AE%89%E8%A3%9D"><span class="nav-number">2.4.</span> <span class="nav-text">下載&#x2F;安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GenieACS-%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.5.</span> <span class="nav-text">GenieACS 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#genieacs-env"><span class="nav-number">2.5.1.</span> <span class="nav-text">genieacs.env</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%AC%8A%E9%99%90"><span class="nav-number">2.5.2.</span> <span class="nav-text">修改權限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0-jwt-secret"><span class="nav-number">2.5.3.</span> <span class="nav-text">加 jwt secret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-log-%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">2.5.4.</span> <span class="nav-text">建立 log 資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-genieacs-systemd-unit"><span class="nav-number">2.5.5.</span> <span class="nav-text">修改 genieacs systemd unit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#genieacs-cwmp"><span class="nav-number">2.5.5.1.</span> <span class="nav-text">genieacs-cwmp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#genieacs-fs"><span class="nav-number">2.5.5.2.</span> <span class="nav-text">genieacs-fs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#genieacs-ui"><span class="nav-number">2.5.5.3.</span> <span class="nav-text">genieacs-ui</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logroate"><span class="nav-number">2.5.6.</span> <span class="nav-text">logroate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%9F%E5%8B%95%E6%9C%8D%E5%8B%99"><span class="nav-number">2.5.7.</span> <span class="nav-text">啟動服務</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPE-%E8%A8%AD%E5%AE%9A-ACS"><span class="nav-number">3.</span> <span class="nav-text">CPE 設定 ACS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GenieACS-%E7%B6%B2%E9%A0%81%E5%95%9F%E5%8B%95"><span class="nav-number">3.1.</span> <span class="nav-text">GenieACS 網頁啟動</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPE-%E8%A8%BB%E5%86%8A-ACS-server"><span class="nav-number">3.2.</span> <span class="nav-text">CPE 註冊 ACS server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FW-%E5%8D%87%E7%B4%9A%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.3.</span> <span class="nav-text">FW 升級設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5-image-%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.3.1.</span> <span class="nav-text">加入 image 設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACS-%E5%8D%87%E7%B4%9A-CPEFW"><span class="nav-number">3.3.2.</span> <span class="nav-text">ACS 升級 CPEFW</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Rassberry Genie ACS | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rassberry Genie ACS
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-13 09:00:00" itemprop="dateCreated datePublished" datetime="2025-09-13T09:00:00+08:00">2025-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-15 17:20:25" itemprop="dateModified" datetime="2025-09-15T17:20:25+08:00">2025-09-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天想分享我用 Rassberry PI5 架 ACS Server，如果你知道 ACS Server 是甚麼，可以看我如何架。ACS Auto Configure server，類似遠端的工具可以看到你的通訊產品的狀況如上線時間，reboot,更新 FW 等等</p>
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>For English Note please refer to my <a target="_blank" rel="noopener" href="https://github.com/chenchih/Env_Setup_Note/tree/master/Linux_SetEnv/GenieACS">github note link</a></p>
+</blockquote>
+</blockquote>
+<h1 id="Raspberry-PI-Model"><a href="#Raspberry-PI-Model" class="headerlink" title="Raspberry PI Model"></a>Raspberry PI Model</h1><h2 id="Check-Ubuntu-Version"><a href="#Check-Ubuntu-Version" class="headerlink" title="Check Ubuntu Version"></a>Check Ubuntu Version</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/checkOS.png" class="">
+
+<h2 id="Check-Kernel"><a href="#Check-Kernel" class="headerlink" title="Check Kernel"></a>Check Kernel</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -ar</span><br></pre></td></tr></table></figure>
+
+<h2 id="check-Raspberry-Model"><a href="#check-Raspberry-Model" class="headerlink" title="check Raspberry Model"></a>check Raspberry Model</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/device-tree/model</span><br><span class="line">#or</span><br><span class="line">cat /proc/cpuinfo | grep &#x27;Model&#x27;</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/modelType.png" class="">
+
+<h2 id="Check-CPU-type"><a href="#Check-CPU-type" class="headerlink" title="Check CPU type"></a>Check CPU type</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lscpu</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/CPUType.png" class="">
+
+<h1 id="Install-Genie-ACS"><a href="#Install-Genie-ACS" class="headerlink" title="Install Genie ACS"></a>Install Genie ACS</h1><p>我有寫自動化可以自行幫你架，如果有興趣可以到這<a target="_blank" rel="noopener" href="https://github.com/chenchih/Env_Setup_Note/blob/master/Linux_SetEnv/GenieACS/genie_acs_new.sh">連結</a>.</p>
+<p>這是整個架構圖</p>
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/genie_automatic.png" class="">
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>以下我都是以<strong>ubuntu 24.04&#x2F;25.04</strong> 為主，但如果你是用<strong>20.04 我下面會提示說明他是 20.04</strong></p>
+</blockquote>
+</blockquote>
+<h2 id="Download-and-Install-nodejs"><a href="#Download-and-Install-nodejs" class="headerlink" title="Download and Install nodejs"></a>Download and Install nodejs</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh</span><br><span class="line">sudo bash nodesource_setup.sh</span><br><span class="line">sudo apt install nodejs</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h3 id="MogoDB-GPG-Key"><a href="#MogoDB-GPG-Key" class="headerlink" title="MogoDB GPG Key"></a>MogoDB GPG Key</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#update</span><br><span class="line">sudo apt update</span><br><span class="line">#install curl</span><br><span class="line">sudo apt install gnupg curl -y</span><br><span class="line">#use curl to download MongoDB</span><br><span class="line">curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \ sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg \ --dearmor</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mongodb-下載"><a href="#Mongodb-下載" class="headerlink" title="Mongodb 下載"></a>Mongodb 下載</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#add the url into sources.list</span><br><span class="line">echo &quot;deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list</span><br><span class="line">#update</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>如果是 20.04 請用下面方式因為是 SSL1.1</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install mongodb-org</span><br><span class="line">sudo systemctl start mongod.service</span><br><span class="line">sudo systemctl status mongod</span><br><span class="line">sudo systemctl enable mongod</span><br><span class="line">mongo --eval &#x27;db.runCommand(&#123; connectionStatus: 1 &#125;)&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="安裝-mogodb"><a href="#安裝-mogodb" class="headerlink" title="安裝 mogodb"></a>安裝 mogodb</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Install MongoDB</span><br><span class="line">sudo apt install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<h4 id="啟動-mongod"><a href="#啟動-mongod" class="headerlink" title="啟動 mongod"></a>啟動 mongod</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Start and Enable the MongoDB Service</span><br><span class="line">sudo systemctl start mongod</span><br><span class="line">sudo systemctl enable mongod</span><br><span class="line">sudo systemctl status mongod</span><br></pre></td></tr></table></figure>
+
+<h2 id="GenieACS"><a href="#GenieACS" class="headerlink" title="GenieACS"></a>GenieACS</h2><p>一下是修改 genieacs 檔案</p>
+<h2 id="下載-x2F-安裝"><a href="#下載-x2F-安裝" class="headerlink" title="下載&#x2F;安裝"></a>下載&#x2F;安裝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nodejs npm</span><br><span class="line"></span><br><span class="line">sudo npm install -g genieacs@1.2.13</span><br><span class="line">sudo useradd --system --no-create-home --user-group genieacs</span><br><span class="line"></span><br><span class="line">mkdir /opt/genieacs</span><br><span class="line">mkdir /opt/genieacs/ext</span><br><span class="line">chown genieacs:genieacs /opt/genieacs/ext</span><br></pre></td></tr></table></figure>
+
+<h2 id="GenieACS-設定"><a href="#GenieACS-設定" class="headerlink" title="GenieACS 設定"></a>GenieACS 設定</h2><h3 id="genieacs-env"><a href="#genieacs-env" class="headerlink" title="genieacs.env"></a>genieacs.env</h3><blockquote>
+<p>請修改 genieacs 檔: <code>vi /opt/genieacs/genieacs.env</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GENIEACS_CWMP_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-cwmp-access.log</span><br><span class="line">GENIEACS_NBI_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-nbi-access.log</span><br><span class="line">GENIEACS_FS_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-fs-access.log</span><br><span class="line">GENIEACS_UI_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-ui-access.log</span><br><span class="line">GENIEACS_DEBUG_FILE=/var/log/genieacs/genieacs-debug.yaml</span><br><span class="line">NODE_OPTIONS=--enable-source-maps</span><br><span class="line">GENIEACS_EXT_DIR=/opt/genieacs/ext</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改權限"><a href="#修改權限" class="headerlink" title="修改權限"></a>修改權限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown genieacs:genieacs /opt/genieacs/genieacs.env</span><br><span class="line">sudo chmod 600 /opt/genieacs/genieacs.env</span><br></pre></td></tr></table></figure>
+
+<h3 id="加-jwt-secret"><a href="#加-jwt-secret" class="headerlink" title="加 jwt secret"></a>加 jwt secret</h3><p>如果你沒有加上 jwt secret 會出現在下面問題:</p>
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/secretkey.png" class="">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -e &quot;console.log(\&quot;GENIEACS_UI_JWT_SECRET=\&quot; + require(&#x27;crypto&#x27;).randomBytes(128).toString(&#x27;hex&#x27;))&quot; &gt;&gt; /opt/genieacs/genieacs.env</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立-log-資料夾"><a href="#建立-log-資料夾" class="headerlink" title="建立 log 資料夾"></a>建立 log 資料夾</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/log/genieacs</span><br><span class="line">chown genieacs:genieacs /var/log/genieacs</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-genieacs-systemd-unit"><a href="#修改-genieacs-systemd-unit" class="headerlink" title="修改 genieacs systemd unit"></a>修改 genieacs systemd unit</h3><h4 id="genieacs-cwmp"><a href="#genieacs-cwmp" class="headerlink" title="genieacs-cwmp"></a>genieacs-cwmp</h4><p>看檔案在哪: <code>which genieacs-cwmp</code></p>
+<p>修改檔案: <code>sudo systemctl edit --force --full genieacs-cwmp</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=GenieACS CWMP</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=genieacs</span><br><span class="line">EnvironmentFile=/opt/genieacs/genieacs.env</span><br><span class="line">ExecStart=/usr/local/bin/genieacs-cwmp</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>如果 Ubuntu 20.04 修改成</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/genieacs-cwmp</span><br></pre></td></tr></table></figure>
+
+<h4 id="genieacs-fs"><a href="#genieacs-fs" class="headerlink" title="genieacs-fs"></a>genieacs-fs</h4><p>看檔案在哪: <code>which genieacs-fs</code></p>
+<p>修改檔案: <code>sudo systemctl edit --force --full genieacs-fs</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=GenieACS FS</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=genieacs</span><br><span class="line">EnvironmentFile=/opt/genieacs/genieacs.env</span><br><span class="line">ExecStart =/usr/local/bin/genieacs-fs</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>如果 Ubuntu 20.04 修改成</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/genieacs-fs</span><br></pre></td></tr></table></figure>
+
+<h4 id="genieacs-ui"><a href="#genieacs-ui" class="headerlink" title="genieacs-ui"></a>genieacs-ui</h4><p>看檔案在哪: <code>which  genieacs-ui</code></p>
+<p>修改檔案: <code>sudo systemctl edit --force --full genieacs-ui</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=GenieACS UI</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=genieacs</span><br><span class="line">EnvironmentFile=/opt/genieacs/genieacs.env</span><br><span class="line">ExecStart=/usr/local/bin/genieacs-ui</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p>如果 Ubuntu 20.04 修改成</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/genieacs-ui</span><br></pre></td></tr></table></figure>
+
+<h3 id="logroate"><a href="#logroate" class="headerlink" title="logroate"></a>logroate</h3><p>修改檔案: <code>nano /etc/logrotate.d/genieacs</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/var/log/genieacs/*.log /var/log/genieacs/*.yaml &#123;</span><br><span class="line">    daily</span><br><span class="line">    rotate 30</span><br><span class="line">    compress</span><br><span class="line">    delaycompress</span><br><span class="line">    dateext</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="啟動服務"><a href="#啟動服務" class="headerlink" title="啟動服務"></a>啟動服務</h3><p>設定做完可以啟動服務看有沒有問題</p>
+<ul>
+<li>啟動服務</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable genieacs-cwmp</span><br><span class="line">sudo systemctl start genieacs-cwmp</span><br><span class="line">sudo systemctl status genieacs-cwmp</span><br><span class="line"></span><br><span class="line">sudo systemctl enable genieacs-nbi</span><br><span class="line">sudo systemctl start genieacs-nbi</span><br><span class="line">sudo systemctl status genieacs-nbi</span><br><span class="line"></span><br><span class="line">sudo systemctl enable genieacs-fs</span><br><span class="line">sudo systemctl start genieacs-fs</span><br><span class="line">sudo systemctl status genieacs-fs</span><br><span class="line"></span><br><span class="line">sudo systemctl enable genieacs-ui</span><br><span class="line">sudo systemctl start genieacs-ui</span><br><span class="line">sudo systemctl status genieacs-ui</span><br></pre></td></tr></table></figure>
+
+<h1 id="CPE-設定-ACS"><a href="#CPE-設定-ACS" class="headerlink" title="CPE 設定 ACS"></a>CPE 設定 ACS</h1><h2 id="GenieACS-網頁啟動"><a href="#GenieACS-網頁啟動" class="headerlink" title="GenieACS 網頁啟動"></a>GenieACS 網頁啟動</h2><p>如果上面沒問題可以開啟網頁 <a target="_blank" rel="noopener" href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a> 或 http:&#x2F;&#x2F;&lt;本地 IP&gt;:3000 就會出現 genieacs 網頁，請點如圖連結來啟動她</p>
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/activate.png" class="">
+
+<h2 id="CPE-註冊-ACS-server"><a href="#CPE-註冊-ACS-server" class="headerlink" title="CPE 註冊 ACS server"></a>CPE 註冊 ACS server</h2><p>每加 CPE 用指令位置不一樣，就類似下面這樣。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setvalue Device.ManagementServer.URL=&quot;http://172.21.201.111:7547&quot;</span><br><span class="line">setvalue Device.ManagementServer.ConnectionRequestUsername=&quot;admin&quot;</span><br><span class="line">setvalue Device.ManagementServer.ConnectionRequestPassword=&quot;admin&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/acs_online.PNG" class="">
+
+<h2 id="FW-升級設定"><a href="#FW-升級設定" class="headerlink" title="FW 升級設定"></a>FW 升級設定</h2><p>我們可以透過 ACS 做升級，但需要做一些設定如如下</p>
+<h3 id="加入-image-設定"><a href="#加入-image-設定" class="headerlink" title="加入 image 設定"></a>加入 image 設定</h3><ul>
+<li>Step 1: 點去 Devices</li>
+<li>Step 2: 檢查 CPE 的 OUI, Product Class 複製</li>
+<li>Step 3: 點進 <code>Admin</code></li>
+<li>Step 4: 選 <code>Files</code>，選<code>1.Firmware Upgrade Image</code> 把剛剛複製的資訊把它輸入或貼上去</li>
+<li>Step 5: 上傳你要的 image 上去</li>
+</ul>
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/upgrade_image.PNG" class="">
+
+<h3 id="ACS-升級-CPEFW"><a href="#ACS-升級-CPEFW" class="headerlink" title="ACS 升級 CPEFW"></a>ACS 升級 CPEFW</h3><p>上面有做 FW 設定，現在我們可以做 CPE 升級</p>
+<ul>
+<li>Step 1: 點去 Devices</li>
+<li>Step 2: 勾選取你要生的 CPE</li>
+<li>Step 3: 點 push</li>
+<li>Step 4: 選取你要升的 image</li>
+<li>Step 5: 點 queue 再點 commit</li>
+</ul>
+<p>可以看下面圖片:</p>
+<img src="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/upload_fw.PNG" class="">
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.genieacs.com/en/latest/installation-guide.html#install-genieacs">https://docs.genieacs.com/en/latest/installation-guide.html#install-genieacs</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/" title="Rassberry Genie ACS">https://chenchih.github.io/2025/09/13/20250913_PI5-GenieACS/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/linux/" rel="tag"># linux</a>
+              <a href="/hexo-demo2022/tags/network/" rel="tag"># network</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/08/28/20250828_ngix-docker/" rel="prev" title="Setup Ngix and docker">
+                  <i class="fa fa-chevron-left"></i> Setup Ngix and docker
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/14/20250914_sshkey/" rel="next" title="SSH利用Key登入">
+                  SSH利用Key登入 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="我想大家都知道 SSH 是什麼，也很多人應該已經會用 SSH Key 可以免輸入密碼就可以 SSH 登入。我想信大家用 github 應該都會用，但我今天不是要用 github 我要用 ubuntu 當作 SERVER, window 當做 client. 其實做法是一樣，github server 當作我自己 ubuntu server。 很多時候你用 github 可能一些 server 上運">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH利用Key登入">
+<meta property="og:url" content="https://chenchih.github.io/2025/09/14/20250914_sshkey/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="我想大家都知道 SSH 是什麼，也很多人應該已經會用 SSH Key 可以免輸入密碼就可以 SSH 登入。我想信大家用 github 應該都會用，但我今天不是要用 github 我要用 ubuntu 當作 SERVER, window 當做 client. 其實做法是一樣，github server 當作我自己 ubuntu server。 很多時候你用 github 可能一些 server 上運">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/Case1_diagram_generate.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/case1_keygen_window.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/case1_publickey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/case1_copypublickey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/compare_publickey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/edit_sshd_config_desktop.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/login_key_desktop.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/ssh_config_storedata.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/Case2_diagram_generate.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/dump_publickey.PNG">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/generateserver_connection.PNG">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/putty_error.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/puttyloadprivate.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/saveputtyprivatekey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/loginsuccess.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_setprivatekey.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_login.png">
+<meta property="article:published_time" content="2025-09-14T02:45:25.000Z">
+<meta property="article:modified_time" content="2025-09-15T01:41:24.017Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="remote">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/Case1_diagram_generate.png">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2025/09/14/20250914_sshkey/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2025/09/14/20250914_sshkey/","path":"2025/09/14/20250914_sshkey/","title":"SSH利用Key登入"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SSH利用Key登入 | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#client-%E5%BB%BA-Key"><span class="nav-number">1.</span> <span class="nav-text">client 建 Key</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-%E5%BB%BA%E7%AB%8B-Key"><span class="nav-number">1.1.</span> <span class="nav-text">Step1: 建立 Key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RSA-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">RSA 加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ED25519-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">ED25519 加密算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-%E6%AA%A2%E6%9F%A5%E7%9C%8B-key-%E4%B9%9F%E5%BB%BA%E6%88%90%E5%8A%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Step2: 檢查看 key 也建成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-%E6%8A%8A%E5%85%AC%E9%91%B0%E5%82%B3%E5%88%B0-Server"><span class="nav-number">1.3.</span> <span class="nav-text">Step3 把公鑰傳到 Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Server-%E4%BF%AE%E6%94%B9-sshd-config-%E7%94%A8-key-%E7%99%BB%E5%85%A5"><span class="nav-number">1.4.</span> <span class="nav-text">Step 4 Server 修改 sshd config 用 key 登入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-Remote-SSH-to-server"><span class="nav-number">1.5.</span> <span class="nav-text">Step 5 Remote SSH to server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-ssh-config"><span class="nav-number">1.5.1.</span> <span class="nav-text">Create ssh config</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Server-%E5%BB%BA%E7%AB%8B-Key"><span class="nav-number">2.</span> <span class="nav-text">Server 建立 Key</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-Server-%E7%AB%AF%E5%BB%BA%E7%AB%8B-key"><span class="nav-number">2.1.</span> <span class="nav-text">Step1: Server 端建立 key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-%E6%8A%8A-public-key-%E5%B0%8E%E5%85%A5-authorized-keys"><span class="nav-number">2.2.</span> <span class="nav-text">Step2: 把 public key 導入 authorized_keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E8%A8%AD%E5%AE%9A%E6%AC%8A%E9%99%90"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3 設定權限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-SSH-%E9%87%8D%E5%95%9F"><span class="nav-number">2.4.</span> <span class="nav-text">Step4 SSH 重啟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-%E6%8A%8A%E4%BD%A0%E7%9A%84-private-key-%E8%A4%87%E8%A3%BD%E5%88%B0%E6%9C%AC%E7%AB%AF"><span class="nav-number">2.5.</span> <span class="nav-text">Step5 把你的 private key 複製到本端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-SSH-%E9%80%A3%E7%B7%9A"><span class="nav-number">2.6.</span> <span class="nav-text">Step 6 SSH 連線</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B7%A5%E5%85%B7-putty-x2F-terateam"><span class="nav-number">3.</span> <span class="nav-text">第三方工具 putty&#x2F;terateam</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Putty"><span class="nav-number">3.1.</span> <span class="nav-text">Putty</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E9%96%8B%E5%95%9F-PuTTYgen-exe"><span class="nav-number">3.1.1.</span> <span class="nav-text">Step1 開啟 PuTTYgen.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E9%81%B8%E5%8F%96%E4%BD%A0%E7%9A%84-private-key"><span class="nav-number">3.1.2.</span> <span class="nav-text">Step2 選取你的 private key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-Save-putty-private-key-format"><span class="nav-number">3.1.3.</span> <span class="nav-text">Step3 Save putty private key format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4-putty-%E9%81%B8%E5%8F%96%E4%BD%A0%E5%89%9B%E5%89%9B%E5%AD%98%E7%9A%84-ppk-%E6%AA%94%E6%A1%88"><span class="nav-number">3.1.4.</span> <span class="nav-text">Step4 putty 選取你剛剛存的 ppk 檔案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TeraTeam"><span class="nav-number">3.2.</span> <span class="nav-text">TeraTeam</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E9%96%8B%E5%95%9F-terateam"><span class="nav-number">3.2.1.</span> <span class="nav-text">Step1: 開啟 terateam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E9%81%B8%E5%8F%96-private-KEY-%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.2.2.</span> <span class="nav-text">Step2: 選取 private KEY 設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-SSH-%E9%80%A3%E7%B7%9A"><span class="nav-number">3.2.3.</span> <span class="nav-text">Step3 SSH 連線</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2025/09/14/20250914_sshkey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SSH利用Key登入 | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSH利用Key登入
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-14 10:45:25" itemprop="dateCreated datePublished" datetime="2025-09-14T10:45:25+08:00">2025-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-15 09:41:24" itemprop="dateModified" datetime="2025-09-15T09:41:24+08:00">2025-09-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>我想大家都知道 SSH 是什麼，也很多人應該已經會用 SSH Key 可以免輸入密碼就可以 SSH 登入。我想信大家用 github 應該都會用，但我今天不是要用 github 我要用 ubuntu 當作 SERVER, window 當做 client. 其實做法是一樣，github server 當作我自己 ubuntu server。</p>
+<p>很多時候你用 github 可能一些 server 上運作可能你不太知道背後的運動是如何，今天可以介由者個範例可以理解更多以真實 server</p>
+<p>請務必先安裝 openssh 能用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>公鑰跟私鑰是一組，這樣才可以連線，他們會做連結<ul>
+<li>Private Key 私鑰: 要存在你自己電腦</li>
+<li>Public Key 私鑰: 要放在本地端要連到 Sever。</li>
+</ul>
+</li>
+</ul>
+<h1 id="client-建-Key"><a href="#client-建-Key" class="headerlink" title="client 建 Key"></a>client 建 Key</h1><p>這個方式是最常用的方式，就跟 github 一樣，本地端會建 private 和 public key，然後把 public key 傳到 server 上面並加入 Server 上的 <code>~/.ssh/authorized_keys</code> 檔案中。）</p>
+<p>以這個範例我本地端(Local&#x2F;Client)要用 SSH 遠端到 Server 端，我需要把我的公鑰(public key)傳到 Server 這樣私鑰做連線會跟 Server 公鑰比對，是同一組就會連線。</p>
+<ul>
+<li>在 SSH 連線中，Client 會先產生一組公鑰（public key）和私鑰（private key）。</li>
+<li>公鑰會放到 Server 上，而私鑰只保留在 Client。</li>
+</ul>
+<p>當 Client 嘗試連線時，會使用<strong>私鑰（private key）來進行驗證</strong>，而 Server 會利用它儲存的<strong>公鑰來驗證 Client 的私鑰</strong>是否正確，確認是<strong>同一對金鑰後</strong>，即可成功連線，我下面我教如何做到。</p>
+<blockquote>
+<p>環境:</p>
+<blockquote>
+<ul>
+<li>Local PC: <code>window</code></li>
+<li>Server PC: <code>Ubuntu</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<p>這是一個基本架構，我 Client 是用 Window 當做範例，你也可以用 Linux 當作範例，指令會不一樣，我會提供。</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/Case1_diagram_generate.png" class="">
+
+<h2 id="Step1-建立-Key"><a href="#Step1-建立-Key" class="headerlink" title="Step1: 建立 Key"></a>Step1: 建立 Key</h2><p>請檢查 home 資料夾有沒有 <code>.ssh</code>資料夾，如果沒有請建立因為<br>在本地建 Key 會產生公鑰跟私鑰 key 可以用下面方式建立 key，下面看你哪一個金鑰。</p>
+<p>建立 SSH，正常有安裝 SSH 應該會有:</p>
+<ul>
+<li>Linux: <code>mkdir -p ~/.ssh</code></li>
+<li>window: <code>mkdir &quot;$HOME\.ssh&quot;</code></li>
+</ul>
+<p>可以建立 KEY 方法或看下面有不同方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/case1_keygen_window.png" class="">
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<blockquote>
+<p><strong><code>-C &quot;your_email@example.com&quot; </code></strong>: 可以註解意思可以選部用填也沒關係<br><strong>Enter file in which to save the key:</strong> 直接按 Enter 鑑就用預設，或輸入你想改檔名<br><strong>Enter passphrase</strong>: 如果不輸入按 Enter 就是沒設密碼。</p>
+</blockquote>
+</blockquote>
+<h3 id="RSA-加密算法"><a href="#RSA-加密算法" class="headerlink" title="RSA 加密算法"></a>RSA 加密算法</h3><p>優點：通用、相容性最好<br>缺點：金鑰越長，速度越慢；2048-bit 現在略嫌不夠安全<br>類型：非對稱加密（老牌）<br>金鑰長度：建議用 4096 bits</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure>
+
+<h3 id="ED25519-加密算法"><a href="#ED25519-加密算法" class="headerlink" title="ED25519 加密算法"></a>ED25519 加密算法</h3><p>優點：小、快、安全性高<br>缺點：在舊系統（非常老）可能不支援</p>
+<p>你也可以用下面比較加密比較強，可以建議用下面這個。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step2-檢查看-key-也建成功"><a href="#Step2-檢查看-key-也建成功" class="headerlink" title="Step2: 檢查看 key 也建成功"></a>Step2: 檢查看 key 也建成功</h2><p>請用 <code>ls</code> 會發生會建立公鑰跟私鑰，如果你上面沒改檔名稱他會用 Default:</p>
+<ul>
+<li><code>id_rsa</code>: 私鑰 private key</li>
+<li><code>id_rsa.pub</code>: 公鑰 public key</li>
+</ul>
+<p>如果你是用 ED25519 加密算法檔名會是 <code>id_ed25519</code></p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/case1_publickey.png" class="">
+
+<h2 id="Step3-把公鑰傳到-Server"><a href="#Step3-把公鑰傳到-Server" class="headerlink" title="Step3 把公鑰傳到 Server"></a>Step3 把公鑰傳到 Server</h2><p>我們要把本機端產生的 Public key 內容，加入到 Server 上的 <code>~/.ssh/authorized_keys</code> 檔案裡。 如果是手動處理，可以把公鑰檔（例如 id_rsa.pub）裡的內容複製出來，貼到 Server 的 authorized_keys 檔案中。</p>
+<p>我們用這個指令把本機端產生的 Public key 內容，傳到 Server。你會發現傳上 Server 他已經是用 <code>authorized_keys</code>，請看下面途更清楚:</p>
+<ul>
+<li>window 方式傳到 server (window method transfer public key to server)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type %USERPROFILE%\.ssh\id_rsa.pub | ssh chenchih@192.168.1.103 &quot;cat &gt;&gt; .ssh/authorized_keys&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Linux 方式傳到 server (Linux method transfer public key to server)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i id_rsa.pub root@192.168.1.103</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/case1_copypublickey.png" class="">
+
+<p>你可以比對 local 端的 id_rsa.pub 跟 server 上的 pubic key <code>authorized_keys</code> 是一致:</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/compare_publickey.png" class="">
+
+<h2 id="Step-4-Server-修改-sshd-config-用-key-登入"><a href="#Step-4-Server-修改-sshd-config-用-key-登入" class="headerlink" title="Step 4 Server 修改 sshd config 用 key 登入"></a>Step 4 Server 修改 sshd config 用 key 登入</h2><p>我們需要在 ubuntu <code>sshd_config</code> (ssh config 檔案) 密碼用 Key 來登入，預設他是用密碼登入。如果將來你想改成用密碼登入也是這樣做。</p>
+<blockquote>
+<p>修改檔案 modify file: <code>nano /etc/ssh/sshd_config</code></p>
+</blockquote>
+<p>請把 <code>#PasswordAuthentication no </code> 的 <code>#</code> 移除掉如下面。Default 是 用密碼登入 <code>PasswordAuthentication yes</code> 跟 <code>#PasswordAuthentication no</code> 是一樣意思就是 login as password</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config #edit sshd_config</span><br><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
+
+<p>請重啟 ssh server(restart ssh server)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/edit_sshd_config_desktop.png" class="">
+
+<h2 id="Step-5-Remote-SSH-to-server"><a href="#Step-5-Remote-SSH-to-server" class="headerlink" title="Step 5 Remote SSH to server"></a>Step 5 Remote SSH to server</h2><p>現在我們可以在本地端用 SSH 連到 Server 不需要密碼，但是注意只能用 terminal or 終端機。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@hostname</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/login_key_desktop.png" class="">
+
+<h3 id="Create-ssh-config"><a href="#Create-ssh-config" class="headerlink" title="Create ssh config"></a>Create ssh config</h3><p>如果你有很多台 server，也就是說很多帳號，密碼等等要記，如果之前用過第三方工具如 Putty tera term 等等，他們有功能可以存這些設定。其實可以在本機端建立 ssh config，把這些資料放進去，就有一樣效果。</p>
+<p>在本機端建立一個 <code>.ssh/config</code> 然後把你個 Server 相關帳號和 Host 放進去如下面。Host 可以隨便改你想要的名稱，這就會是你要登入用的名稱。我是用 test，所以我就會用 <code>ssh test</code> remote 到 server 上，很方便。如果你有很多台，這分常實用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host test</span><br><span class="line">    HostName 192.168.1.103</span><br><span class="line">    User ServeraccountName</span><br><span class="line">    Compression yes</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/ssh_config_storedata.png" class="">
+
+<h1 id="Server-建立-Key"><a href="#Server-建立-Key" class="headerlink" title="Server 建立 Key"></a>Server 建立 Key</h1><p>放面的範例是最常用，但如果你用在 server 建 key，你就要把你的 private key 給對方，這種情況比較少會有人這樣用。這種方式比較多是用在系統上，如 router 等產品為了資安相關設定就會這樣做。那些產品都會有網頁，有些客戶不希望用密碼登入，因此就會這樣用。他會在她系統上建 public and private key，然後會給你 private key，你就可以透過他的 private key 連進它的系統，但你連進去也看無法看到 SSH 那一層。</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/Case2_diagram_generate.png" class="">
+
+<h2 id="Step1-Server-端建立-key"><a href="#Step1-Server-端建立-key" class="headerlink" title="Step1: Server 端建立 key"></a>Step1: Server 端建立 key</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step2-把-public-key-導入-authorized-keys"><a href="#Step2-把-public-key-導入-authorized-keys" class="headerlink" title="Step2: 把 public key 導入 authorized_keys"></a>Step2: 把 public key 導入 authorized_keys</h2><p>你只要是要讓對方連近來，就需要把 public key 改成 <code>authorized_keys</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/dump_publickey.PNG" class="">
+
+<h2 id="Step-3-設定權限"><a href="#Step-3-設定權限" class="headerlink" title="Step 3 設定權限"></a>Step 3 設定權限</h2><p>個人覺得好像不需要做，可以 SKIP，如果不能連再來設，但我還是提以下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 /home/chenchih/.ssh</span><br><span class="line">chmod 600 /home/chenchih/.ssh/authorized_keys</span><br><span class="line">chmod 600 /home/chenchih/.ssh/id_rsa   # Only if you copied id_rsa there</span><br><span class="line">chmod 644 /home/chenchih/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>如果你用 root 身分修改上面權限，請登出 root 然後下一般帳戶的權限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R chenchih:chenchih /home/chenchih/.ssh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step4-SSH-重啟"><a href="#Step4-SSH-重啟" class="headerlink" title="Step4 SSH 重啟"></a>Step4 SSH 重啟</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart sshd</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step5-把你的-private-key-複製到本端"><a href="#Step5-把你的-private-key-複製到本端" class="headerlink" title="Step5 把你的 private key 複製到本端"></a>Step5 把你的 private key 複製到本端</h2><p>你有多方式可以做:</p>
+<ul>
+<li>複製 id_rsa 檔案 (FTP, SMB 等等)，放在本端 <code>.ssh</code>目錄</li>
+<li>複製 id_rsa 檔案內容，在本端 <code>.ssh</code>目錄下建立檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#server(server)</span><br><span class="line">cat id_rsa #copy private key</span><br><span class="line">#local side</span><br><span class="line">touch id_rsa</span><br><span class="line">vi id_rsa #paste the private key content</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step-6-SSH-連線"><a href="#Step-6-SSH-連線" class="headerlink" title="Step 6 SSH 連線"></a>Step 6 SSH 連線</h2><p>這些做完就可以做連線</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/generateserver_connection.PNG" class="">
+
+<h1 id="第三方工具-putty-x2F-terateam"><a href="#第三方工具-putty-x2F-terateam" class="headerlink" title="第三方工具 putty&#x2F;terateam"></a>第三方工具 putty&#x2F;terateam</h1><p>上面方式都是用終端機，現在這裡我們要用第三方工具，我想信如果你們紀錄 log 或跑長時間等等可能都會用到第三方工具，但是如果要用 key 登入可能要做這些設定。它們的 key 檔案跟上面不太一樣。你也可以把登入改成密碼。接下來我來教如何用 putty and terateam 用 key login。我的範例會以本端的 public key 為主，也就是案例 1 位主，因為比較常用</p>
+<h2 id="Putty"><a href="#Putty" class="headerlink" title="Putty"></a>Putty</h2><p>請自行安裝 Putty，一定要安裝不可以用簡易版本或免安裝版本，我要用到 <code>PuTTYgen.exe</code>這個工具，如果你安裝就會把這個也安裝進去</p>
+<p>如果你登入選對的 public key 會出現這樣錯誤訊息 <code>No support authernication methods available</code></p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/putty_error.png" class="">
+
+<h3 id="Step1-開啟-PuTTYgen-exe"><a href="#Step1-開啟-PuTTYgen-exe" class="headerlink" title="Step1 開啟 PuTTYgen.exe"></a>Step1 開啟 PuTTYgen.exe</h3><p>他會在 putty.exe 一樣目錄 <code>C:\Program Files\PuTTY\</code></p>
+<h3 id="Step2-選取你的-private-key"><a href="#Step2-選取你的-private-key" class="headerlink" title="Step2 選取你的 private key"></a>Step2 選取你的 private key</h3><p>請照下面照片做</p>
+<p>如果你建 key 時有設定密碼，就不會出現圖片地 4 步</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/puttyloadprivate.png" class="">
+
+<h3 id="Step3-Save-putty-private-key-format"><a href="#Step3-Save-putty-private-key-format" class="headerlink" title="Step3 Save putty private key format"></a>Step3 Save putty private key format</h3><p>putty 有自己的 private key 格式，檔案會是 <code>.ppk</code>，請照下面照片做</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/saveputtyprivatekey.png" class="">
+
+<h3 id="Step4-putty-選取你剛剛存的-ppk-檔案"><a href="#Step4-putty-選取你剛剛存的-ppk-檔案" class="headerlink" title="Step4 putty 選取你剛剛存的 ppk 檔案"></a>Step4 putty 選取你剛剛存的 ppk 檔案</h3><p>請照下面照片做，做完就可以連線</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/loginsuccess.png" class="">
+
+<h2 id="TeraTeam"><a href="#TeraTeam" class="headerlink" title="TeraTeam"></a>TeraTeam</h2><h3 id="Step1-開啟-terateam"><a href="#Step1-開啟-terateam" class="headerlink" title="Step1: 開啟 terateam"></a>Step1: 開啟 terateam</h3><p>請點選 setup&gt;ssh authentication&gt;</p>
+<h3 id="Step2-選取-private-KEY-設定"><a href="#Step2-選取-private-KEY-設定" class="headerlink" title="Step2: 選取 private KEY 設定"></a>Step2: 選取 private KEY 設定</h3><p>請照下面圖選取 private key</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_setprivatekey.png" class="">
+
+<h3 id="Step3-SSH-連線"><a href="#Step3-SSH-連線" class="headerlink" title="Step3 SSH 連線"></a>Step3 SSH 連線</h3><p>我在我的 private key 有設定密碼，所以會跳出要我輸入密碼。如果你沒設定就不會跳出來</p>
+<img src="/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_login.png" class="">
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/generate-setup-ssh-key-ubuntu">https://phoenixnap.com/kb/generate-setup-ssh-key-ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@natlee_/ubuntu-%E8%88%87-windows-%E4%BD%BF%E7%94%A8-ssh-%E9%87%91%E9%91%B0%E5%BF%AB%E9%80%9F%E7%99%BB%E5%85%A5%E7%9A%84%E6%96%B9%E6%B3%95-823a8b0211e3">https://medium.com/@natlee_/ubuntu-%E8%88%87-windows-%E4%BD%BF%E7%94%A8-ssh-%E9%87%91%E9%91%B0%E5%BF%AB%E9%80%9F%E7%99%BB%E5%85%A5%E7%9A%84%E6%96%B9%E6%B3%95-823a8b0211e3</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cloudpanel.io/tutorial/set-up-ssh-keys-on-ubuntu-20-04/">https://www.cloudpanel.io/tutorial/set-up-ssh-keys-on-ubuntu-20-04/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ia86qxIajCM">https://www.youtube.com/watch?v=ia86qxIajCM</a></li>
+<li><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login">https://askubuntu.com/questions/46930/how-can-i-set-up-password-less-ssh-login</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2025/09/14/20250914_sshkey/" title="SSH利用Key登入">https://chenchih.github.io/2025/09/14/20250914_sshkey/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/linux/" rel="tag"># linux</a>
+              <a href="/hexo-demo2022/tags/remote/" rel="tag"># remote</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/13/20250913_PI5-GenieACS/" rel="prev" title="Rassberry Genie ACS">
+                  <i class="fa fa-chevron-left"></i> Rassberry Genie ACS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/15/20250915-UV/" rel="next" title="20250915_UV">
+                  20250915_UV <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

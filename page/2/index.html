@@ -33,7 +33,7 @@
     <meta name="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chen-Chih Technical Note Blog">
-<meta property="og:url" content="https://chenchih.github.io/hexo-demo2022/page/2/index.html">
+<meta property="og:url" content="https://chenchih.github.io/page/2/index.html">
 <meta property="og:site_name" content="Chen-Chih Technical Note Blog">
 <meta property="og:description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
 <meta property="og:locale" content="en_US">
@@ -48,7 +48,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://chenchih.github.io/hexo-demo2022/page/2/">
+<link rel="canonical" href="https://chenchih.github.io/page/2/">
 
 
 
@@ -147,7 +147,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -158,7 +158,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -219,7 +219,243 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/29/2022-11-29-MY-SQL-Basic/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2024/06/17/20240617_Terminal-oh-my-posh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/" class="post-title-link" itemprop="url">Terminal-oh-my-posh</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-06-17 14:34:35" itemprop="dateCreated datePublished" datetime="2024-06-17T14:34:35+08:00">2024-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-06-26 11:52:07" itemprop="dateModified" datetime="2024-06-26T11:52:07+08:00">2024-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Terminal/" itemprop="url" rel="index"><span itemprop="name">Terminal</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天想要來分享如何在 window 上面設定像 Linux 或 Mac 相關花麗等冬端機 terminal，和以些 linux 不錯的指令。如果你們有用過 Linux，在用 window 很不習慣，尤其是指令。今天想分享如何用 Oh-my-posh 在 window 上面可以跟 Linux 的 Oh-my-zsh 有依樣效果。Window 是用在 powershell 上，他有支援很多 <code>shell</code> <code>bash</code> <code>zsh</code> <code>powershell</code> <code>fish</code>等等。我有寫一篇比較完整，在<a target="_blank" rel="noopener" href="https://medium.com/jacklee26/setup-fancy-terminal-using-ohmyposh-9f0ce00948bf?source=collection_home---4------0-----------------------">Medium</a> 因此今天會寫簡短方法。</p>
+<h1 id="安裝工具"><a href="#安裝工具" class="headerlink" title="安裝工具"></a>安裝工具</h1><h2 id="軟體安裝服務比較"><a href="#軟體安裝服務比較" class="headerlink" title="軟體安裝服務比較"></a>軟體安裝服務比較</h2><p>如果你有用過 Ubuntu 都會看到大家常用 <code>apt-get install</code> 這命令，這個就是我稱為的安裝服務工具。他可以很快速幫助你要安裝個套件。我今天要介紹 3 個，但我會以 winget 優先用，如果 <code>winget</code> 沒有套件再選其他兩個。<code>winget</code> 是微軟開發因此我才會優先用他。我會盡可能不去商店下載。</p>
+<p>正常來說 winget 預設鏡安裝了，如果你是 win10 都會安裝，如果指令找不到就用下方的方法。如果 <code>winget</code>有，那把 <code>scoop</code>安裝，<code>Chocolatey</code>就看你要挨裝嗎，我目前沒用到。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/windows/package-manager/winget/?WT.mc_id=DOP-MVP-37580">Winget</a><br>先到這裡<a target="_blank" rel="noopener" href="https://aka.ms/getwingetpreview">下載</a> ，檔案會是 <code>Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle</code>然後用這個指令安裝:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Add -AppPackage</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://scoop.sh/">Scoop</a>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/install">Chocolatey</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2024/06/17/20240617_Terminal-oh-my-posh/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2023/04/14/20230414_RegularExpression-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2023/04/14/20230414_RegularExpression-Python/" class="post-title-link" itemprop="url">RegularExpression-Python</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-14 16:35:18" itemprop="dateCreated datePublished" datetime="2023-04-14T16:35:18+08:00">2023-04-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-11-28 14:26:57" itemprop="dateModified" datetime="2024-11-28T14:26:57+08:00">2024-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天有想在這裡分享 Regular Expression，這也是大家不想碰到的，可就是一個很復雜的就越耗用。<br>我也沒有很勵害，但之前開發自動化，用很多。因此想藉由這編文章來寫下我所寫道的筆記和參考很多教學。</p>
+<p>在介紹之前我們在 python 都會用到 re 或是 rex ，但在這我只會分享用 re，也就是要 <code>import re</code>，不然不能用。</p>
+<h2 id="常用的-req-module"><a href="#常用的-req-module" class="headerlink" title="常用的 req module"></a>常用的 req module</h2><table>
+<thead>
+<tr>
+<th align="left">Module</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">match</td>
+<td align="left">Determine if the RE matches at the beginning of the string.</td>
+</tr>
+<tr>
+<td align="left">search</td>
+<td align="left">Scan through a string, looking for any location where this RE matches</td>
+</tr>
+<tr>
+<td align="left">findall</td>
+<td align="left">Find all substrings where the RE matches, and returns them as a list.</td>
+</tr>
+<tr>
+<td align="left">finditer</td>
+<td align="left">Find all substrings where the RE matches, and returns them as an iterator.</td>
+</tr>
+</tbody></table>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">text =&#x27;https://chenchih.page , Author is ChenChih&#x27;</span><br><span class="line">pattern=re.compile(&#x27;Chenchih&#x27;,re.I)</span><br><span class="line">print(pattern.match(text)) #None</span><br><span class="line">print(pattern.search(text).group()) #chenchih</span><br><span class="line">print(pattern.findall(text)) #[&#x27;chenchih&#x27;, &#x27;ChenChih&#x27;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>None<br><code>cheenchih</code> &gt; &gt; <code>[&#39;chenchih&#39;, &#39;ChenChih&#39;]</code></p>
+</blockquote>
+</blockquote>
+<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3><blockquote>
+<p>This function matches a regular expression pattern at the beginning of a string. If the pattern is found, it returns a match object, otherwise, it returns None.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">teststring=&quot;123abc456789abc123ABC&quot;</span><br><span class="line">pattern=re.compile(r&quot;abc&quot;)</span><br><span class="line">match=pattern.match(teststring)</span><br><span class="line">print(match)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2023/04/14/20230414_RegularExpression-Python/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/29/2022-11-29-MY-SQL-Basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -309,7 +545,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/24/20221124-set/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/24/20221124-set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -423,7 +659,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/24/20221124-dictionary/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/24/20221124-dictionary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -533,7 +769,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/24/20221124-tuple/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/24/20221124-tuple/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -633,7 +869,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/23/20221123-Function/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/23/20221123-Function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -731,7 +967,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/11/23/20221123-pandas/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/11/23/20221123-pandas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -832,7 +1068,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/10/23/20221023_Excel-ReadWrite/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/10/23/20221023_Excel-ReadWrite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -931,7 +1167,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/10/23/20221023-List/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/10/23/20221023-List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -1019,273 +1255,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/hexo-demo2022/2022/10/23/20221023-List/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/10/18/20221018-substringSearch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/10/18/20221018-substringSearch/" class="post-title-link" itemprop="url">substringSearchg檔案內容搜尋相關關鍵字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-18 17:44:27" itemprop="dateCreated datePublished" datetime="2022-10-18T17:44:27+08:00">2022-10-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-19 14:41:32" itemprop="dateModified" datetime="2023-04-19T14:41:32+08:00">2023-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天分享如何搜尋字串裡面的 substring 或如果有檔案(log)想找相關字來做分析。</p>
-<h2 id="split-方式"><a href="#split-方式" class="headerlink" title="split() 方式"></a>split() 方式</h2><p>我的 string 是:</p>
-<blockquote>
-<p><code>st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</code></p>
-</blockquote>
-<p>我想抓出<strong>時間</strong>和<strong>TPUT</strong>的直，如:<br><code>[20221013.162853.788442]</code> 和 <code>0.010799(Mbps)</code> 同時要把 <code>[]</code> 和 <code>(Mbps)</code>移除，可以用下面方式:</p>
-<ul>
-<li>Step1: 宣告我的 string</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">st=&quot;[20221013.162853.788442][info]:[[40;32m&gt;&gt;&gt; DL- ingress traffic: 0.010799(Mbps), egress traffic: 0.087016(Mbps), ReTx: 0.000220(Mbps)[0m]&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Step2 抓取時間直</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dateStr = st.split(&#x27;[&#x27;, 1)[1].split(&#x27;]&#x27;)[0]</span><br><span class="line">print(dateStr) #20221013.162853.788442</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>output:</p>
-<blockquote>
-<p>20221013.162853.788442</p>
-</blockquote>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/10/18/20221018-substringSearch/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/" class="post-title-link" itemprop="url">IO_ReadWriteFile_python</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-21 15:45:05" itemprop="dateCreated datePublished" datetime="2022-08-21T15:45:05+08:00">2022-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 08:59:41" itemprop="dateModified" datetime="2022-11-22T08:59:41+08:00">2022-11-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Open-Read-Write-File"><a href="#Open-Read-Write-File" class="headerlink" title="Open Read Write File"></a>Open Read Write File</h2><blockquote>
-<p>open syntax:　</p>
-<blockquote>
-<p><code>open( file, mode, encoding=&quot;utf-8&quot;)</code></p>
-</blockquote>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">mode 字串</th>
-<th align="left">說明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">r</td>
-<td align="left">Read only <code>讀取模式</code> ( 預設 )</td>
-</tr>
-<tr>
-<td align="left">r+</td>
-<td align="left">Read and write</td>
-</tr>
-<tr>
-<td align="left">w</td>
-<td align="left">Write only 寫入模式，<code>檔案若存在，會清空內容再寫入</code>； 若檔案不存在，則建立新檔開啟寫入</td>
-</tr>
-<tr>
-<td align="left">w+</td>
-<td align="left">write+read</td>
-</tr>
-<tr>
-<td align="left">a</td>
-<td align="left">Append only 附加模式，若<code>檔案存在，則寫入內容</code>會附加至檔 案尾端</td>
-</tr>
-<tr>
-<td align="left">a+</td>
-<td align="left">Append and Read (‘a+’)</td>
-</tr>
-</tbody></table>
-<h3 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h3><table>
-<thead>
-<tr>
-<th align="left">讀取方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">read( )</td>
-<td align="left">一次讀取檔案所有的內容，回傳為字串</td>
-</tr>
-<tr>
-<td align="left">readline( )</td>
-<td align="left">只讀取一行內容</td>
-</tr>
-<tr>
-<td align="left">readlines( )</td>
-<td align="left">將所有檔案內容，每行讀入回傳為串列</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileObj = open(&quot;路徑檔名&quot; , &quot;r&quot;, encoding=&quot;utf-8&quot;) </span><br><span class="line">content = fileObj.read( ) </span><br><span class="line">fileObj.close( )</span><br></pre></td></tr></table></figure>
-
-<h3 id="Write"><a href="#Write" class="headerlink" title="Write"></a>Write</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fileObj = open(&quot;路徑檔名&quot; , &quot;w&quot;, encoding=&quot;utf-8&quot;)</span><br><span class="line">fileObj.write(輸出資料)</span><br><span class="line">fileObj.close( ) </span><br></pre></td></tr></table></figure>
-
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><h3 id="Ex1-read-file-and-print"><a href="#Ex1-read-file-and-print" class="headerlink" title="Ex1. read file and print"></a>Ex1. read file and print</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/08/21/20221023_FileReadWriteFile/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
