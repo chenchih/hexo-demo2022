@@ -231,3 +231,62 @@ read sourcePath
 destinationPath="/home/nrgnb/Downloads/"
 sshpass -p 'nr@Gnb' scp $sourcePath $sshhostname:$destinationPath
 ```
+
+## Ping command
+
+### Ping with timestamp
+
+- Linux
+```
+$ ping linuxbuzz.com | while read pong; do echo "$(date): $pong"; done
+```
+
+Add into shell script
+```
+#!/bin/bash
+#Script will continuously ping NFS VIP and capture timestamp
+DIR=/var/tmp/nfs-ping-pong
+if [ -d $DIR ]
+then
+    echo "Directory Exists"
+else
+    mkdir -p $DIR
+fi
+
+ping 10.8.3.102 | while read pong; do echo "$(date): $pong" >> $DIR/nfs-ping-$(date +%Y-%m-%d)
+```
+> Reference: 
+>> https://www.linuxbuzz.com/enable-timestamp-linux-ping-command
+
+- PowerShell
+```
+ping.exe -t <IP> | Foreach{"{0} - {1}" -f (Get-Date -f "yyyyMMdd HH:mm:ss"),$_} 
+#or
+ping.exe -t 8.8.8.8 | ForEach {"{0} - {1}" -f (Get-Date), $_}
+```
+
+## CPU Busy
+
+You can either use:
+- method1
+```
+for i in 1 2 3 4; do while : ; do : ; done & done
+```
+- method2
+```
+sha1sum /dev/zero &
+```
+kill process: `kill sha1sum`
+
+
+- Script:
+```
+#!/bin/bash
+while :; do :; done
+```
+Change permission: `chmod +x cpu_load.sh`
+Run Script: `./cpu_load.sh &`
+
+> Reference: 
+>> https://dev.to/abstractmusa/how-to-simulate-high-cpu-usage-on-aws-ubuntu-instances-for-testing-and-performance-optimization-1f5f
+>> https://superuser.com/questions/443406/how-can-i-produce-high-cpu-load-on-a-linux-server
