@@ -30,12 +30,12 @@
   gtag('config', 'c');
 </script>
 
-    <meta name="description" content="前言今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到zsh 和 ohmysh。 本篇文章會安裝以下套件：  ubuntu 安裝和設定  基本套件: zsh git wget curl ohymysh套件 shell 設定 Oh My Zsh 安裝，主題設定 安裝Powerlevel10k 主題，不然會怪怪    更新 ubuntu 套件$ sudo apt-get u">
+    <meta name="description" content="前言今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到 zsh 和 ohmysh。 本篇文章會安裝以下套件：  ubuntu 安裝和設定 基本套件: zsh git wget curl ohymysh套件 shell 設定 Oh My Zsh 安裝，主題設定 安裝 Powerlevel10k 主題，不然會怪怪    更新 ubuntu 套件$ sudo apt-get">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UBUNTU-Zsh + Oh My Zsh + Powerlevel10k">
-<meta property="og:url" content="https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/index.html">
+<meta property="og:title" content="Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu)">
+<meta property="og:url" content="https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/index.html">
 <meta property="og:site_name" content="Chen-Chih Technical Note Blog">
-<meta property="og:description" content="前言今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到zsh 和 ohmysh。 本篇文章會安裝以下套件：  ubuntu 安裝和設定  基本套件: zsh git wget curl ohymysh套件 shell 設定 Oh My Zsh 安裝，主題設定 安裝Powerlevel10k 主題，不然會怪怪    更新 ubuntu 套件$ sudo apt-get u">
+<meta property="og:description" content="前言今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到 zsh 和 ohmysh。 本篇文章會安裝以下套件：  ubuntu 安裝和設定 基本套件: zsh git wget curl ohymysh套件 shell 設定 Oh My Zsh 安裝，主題設定 安裝 Powerlevel10k 主題，不然會怪怪    更新 ubuntu 套件$ sudo apt-get">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/SGzosrt.png">
 <meta property="og:image" content="https://i.imgur.com/shjh3uG.png">
@@ -46,21 +46,23 @@
 <meta property="og:image" content="https://i.imgur.com/hF7mZqB.png">
 <meta property="og:image" content="https://i.imgur.com/ZmWOCGk.png">
 <meta property="article:published_time" content="2022-07-03T01:00:18.000Z">
-<meta property="article:modified_time" content="2022-08-05T01:47:35.101Z">
+<meta property="article:modified_time" content="2025-09-29T23:51:12.681Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="zsh">
+<meta property="article:tag" content="Terminal">
+<meta property="article:tag" content="productive">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/SGzosrt.png">
 
 
-<link rel="canonical" href="https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/">
+<link rel="canonical" href="https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/","path":"2022/07/03/2022-07-03-zsh_ohmysh_setting/","title":"UBUNTU-Zsh + Oh My Zsh + Powerlevel10k"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/","path":"2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/","title":"Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>UBUNTU-Zsh + Oh My Zsh + Powerlevel10k | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+<title>Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu) | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
   
 
 
@@ -147,24 +149,24 @@
     <img class="site-author-image" itemprop="image" alt="chenchih"
       src="/hexo-demo2022/images/profile.jpeg">
   <p class="site-author-name" itemprop="name">chenchih</p>
-  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -226,7 +228,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
@@ -235,16 +237,16 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="UBUNTU-Zsh + Oh My Zsh + Powerlevel10k | Chen-Chih Technical Note Blog">
+      <meta itemprop="name" content="Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu) | Chen-Chih Technical Note Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          UBUNTU-Zsh + Oh My Zsh + Powerlevel10k
+          Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu)
         </h1>
 
         <div class="post-meta-container">
@@ -262,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+      <time title="Modified: 2025-09-30 07:51:12" itemprop="dateModified" datetime="2025-09-30T07:51:12+08:00">2025-09-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,15 +290,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到<code>zsh</code> 和 <code>ohmysh</code>。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到 <code>zsh</code> 和 <code>ohmysh</code>。</p>
 <p>本篇文章會安裝以下套件：</p>
 <ul>
-<li>ubuntu 安裝和設定 <ul>
+<li>ubuntu 安裝和設定<ul>
 <li>基本套件: <code>zsh</code> <code>git</code> <code>wget</code> <code>curl</code></li>
 <li><code>ohymysh</code>套件</li>
 <li>shell 設定</li>
 <li><code>Oh My Zsh</code> 安裝，主題設定</li>
-<li>安裝<code>Powerlevel10k</code> 主題，不然會怪怪</li>
+<li>安裝 <code>Powerlevel10k</code> 主題，不然會怪怪</li>
 </ul>
 </li>
 </ul>
@@ -306,7 +308,7 @@
 </blockquote>
 <p><img src="https://i.imgur.com/SGzosrt.png" alt="zsh-after"></p>
 <blockquote>
-<p>目前用的shells </p>
+<p>目前用的shells</p>
 <blockquote>
 <p><code>$ echo $shells</code></p>
 </blockquote>
@@ -314,43 +316,47 @@
 <h3 id="安裝必要的套件"><a href="#安裝必要的套件" class="headerlink" title="安裝必要的套件"></a>安裝必要的套件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安裝 git 套件</span><br><span class="line">$sudo apt-get install git -y</span><br><span class="line"></span><br><span class="line">#install zsh 套件</span><br><span class="line">$sudo apt-get install zsh -y</span><br></pre></td></tr></table></figure>
 
 <h2 id="檢查我們目前支援的shells-1"><a href="#檢查我們目前支援的shells-1" class="headerlink" title="檢查我們目前支援的shells"></a>檢查我們目前支援的shells</h2><blockquote>
-<p>目前支援的shells </p>
+<p>目前支援的shells</p>
 <blockquote>
 <p><code>$cat /etc/shells</code></p>
 </blockquote>
 </blockquote>
 <p><img src="https://i.imgur.com/shjh3uG.png" alt="zsh-after"></p>
 <blockquote>
-<p>目前用的shells </p>
+<p>目前用的shells</p>
 <blockquote>
 <p><code>$ echo $shells</code></p>
 </blockquote>
 </blockquote>
 <p><img src="https://i.imgur.com/1OtykFv.png" alt="shell"></p>
-<h2 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝　oh-my-zsh"></a>安裝　oh-my-zsh</h2><p>Ubuntu 已經有安裝<code>wget</code>，你可以選擇用<code>wget</code>或<code>curl</code>方式來安裝<code>oh-my-zsh</code>。<br>如果你電腦沒安裝可以用下面指令，會把兩套下載工具的套件安裝。</p>
+<h2 id="安裝-oh-my-zsh"><a href="#安裝-oh-my-zsh" class="headerlink" title="安裝　oh-my-zsh"></a>安裝　oh-my-zsh</h2><p>Ubuntu 已經有安裝 <code>wget</code>，你可以選擇用 <code>wget</code>或 <code>curl</code>方式來安裝 <code>oh-my-zsh</code>。<br>如果你電腦沒安裝可以用下面指令，會把兩套下載工具的套件安裝。</p>
 <ul>
-<li><p>curl 和wget </p>
+<li>curl 和wget</li>
+</ul>
 <blockquote>
 <p><code>$ sudo apt install wget git curl vim -y</code></p>
 </blockquote>
-</li>
-<li><p>下面是安裝oh-my-zsh方法：</p>
-</li>
+<ul>
+<li>下面是安裝oh-my-zsh方法：</li>
 </ul>
 <h3 id="curl"><a href="#curl" class="headerlink" title="- curl"></a>- curl</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># via curl</span><br><span class="line">$sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
 <p>or</p>
 <h3 id="wget"><a href="#wget" class="headerlink" title="- wget"></a>- wget</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#via wget</span><br><span class="line">$sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.imgur.com/aSImOnn.png" alt="ohmyzsh"></p>
 <h2 id="oh-my-zsh-配置修改"><a href="#oh-my-zsh-配置修改" class="headerlink" title="oh-my-zsh 配置修改"></a>oh-my-zsh 配置修改</h2><h3 id="修改SHELL預設default設定"><a href="#修改SHELL預設default設定" class="headerlink" title="修改SHELL預設default設定"></a>修改SHELL預設default設定</h3><ul>
-<li>方法 1: <blockquote>
+<li>方法 1:</li>
+</ul>
+<blockquote>
 <p><code>$chsh -s /bin/zsh</code></p>
 </blockquote>
-</li>
-<li>方法 2: <blockquote>
+<ul>
+<li>方法 2:</li>
+</ul>
+<blockquote>
 <p><code>chsh -s $(which zsh)</code></p>
 </blockquote>
-</li>
-</ul>
 <h3 id="登出或是重開機"><a href="#登出或是重開機" class="headerlink" title="登出或是重開機"></a>登出或是重開機</h3><p>然後把電腦登出再登入或是重開機，再次開啟 Terminal 就可以看到自動進入 oh-my-zsh 了，此時開啟會如下圖：</p>
 <h3 id="主題下載"><a href="#主題下載" class="headerlink" title="主題下載"></a>主題下載</h3><ul>
 <li>我們可以到<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes">官方</a>提供的主題 中挑選喜歡的主題。</li>
@@ -359,17 +365,20 @@
 <h4 id="下載-bullet-train"><a href="#下載-bullet-train" class="headerlink" title="下載 bullet-train"></a>下載 bullet-train</h4><ul>
 <li><p>有兩方法可以下載：</p>
 <ul>
-<li>git clone 方法 <blockquote>
+<li>git clone 方法</li>
+</ul>
+<blockquote>
 <p><code>git clone https://github.com/caiogondim/bullet-train.zsh.git</code></p>
 </blockquote>
-</li>
+<ul>
 <li>網頁下載 方法</li>
 </ul>
 </li>
-<li><p>下載完會有出現<code>bullet-train.zsh-theme</code>，把他方進 <code>~/.oh-my-zsh/themes</code>資料夾</p>
+<li><p>下載完會有出現 <code>bullet-train.zsh-theme</code>，把他方進 <code>~/.oh-my-zsh/themes</code>資料夾</p>
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">cd downloads</span><br><span class="line">#download bullet-train theme</span><br><span class="line">git clone https://github.com/caiogondim/bullet-train.zsh.git</span><br><span class="line"># cd to directory</span><br><span class="line">cd bullet-train.zsh</span><br><span class="line"># move the file to ohmyzsh theme folder</span><br><span class="line">mv bullet-train.zsh .~/.oh-my-zsh/themes</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.imgur.com/VUwf4MU.png" alt="clone-bullet"></p>
 <h3 id="主題修改"><a href="#主題修改" class="headerlink" title="主題修改"></a>主題修改</h3><h3 id="檢查themes"><a href="#檢查themes" class="headerlink" title="檢查themes"></a>檢查themes</h3><p><img src="https://i.imgur.com/yIxezj6.png" alt="checktheme"></p>
 <h4 id="修改-zshrc"><a href="#修改-zshrc" class="headerlink" title="修改 ~/.zshrc"></a>修改 <code>~/.zshrc</code></h4><p><code>$sudo nano  ~/.zshrc</code><br>or<br><code>$sudo gedit  ~/.zshrc</code></p>
@@ -378,10 +387,12 @@
 </blockquote>
 <h4 id="重啟-therminal"><a href="#重啟-therminal" class="headerlink" title="重啟 therminal"></a>重啟 therminal</h4><ul>
 <li>重啟 therminal<br>你會發現格式怪怪的，亂碼。我們需要下載 powerline</li>
-<li>下載 powerline<blockquote>
+<li>下載 powerline</li>
+</ul>
+<blockquote>
 <p><code>$ sudo apt-get install powerline</code><br><code>$ sudo apt-get install fonts-powerline</code></p>
 </blockquote>
-</li>
+<ul>
 <li>重啟 therminal<br><img src="https://i.imgur.com/ZmWOCGk.png" alt="bulletetheme"></li>
 </ul>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
@@ -406,7 +417,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/" title="UBUNTU-Zsh + Oh My Zsh + Powerlevel10k">https://chenchih.github.io/2022/07/03/2022-07-03-zsh_ohmysh_setting/</a>
+      <a href="https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/" title="Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu)">https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -416,6 +427,8 @@
 
           <div class="post-tags">
               <a href="/hexo-demo2022/tags/zsh/" rel="tag"># zsh</a>
+              <a href="/hexo-demo2022/tags/Terminal/" rel="tag"># Terminal</a>
+              <a href="/hexo-demo2022/tags/productive/" rel="tag"># productive</a>
           </div>
 
         
@@ -450,7 +463,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

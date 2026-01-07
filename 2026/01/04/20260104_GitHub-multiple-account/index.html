@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="Setup Multiply Github account via SSH1. Generate separate SSH keys12345# personal accountssh-keygen -t ed25519 -C &quot;email@personal_mail.com&quot; -f ~&#x2F;.ssh&#x2F;id_personal#work accountssh-keygen -t ed">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub_multiple_account">
+<meta property="og:url" content="https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="Setup Multiply Github account via SSH1. Generate separate SSH keys12345# personal accountssh-keygen -t ed25519 -C &quot;email@personal_mail.com&quot; -f ~&#x2F;.ssh&#x2F;id_personal#work accountssh-keygen -t ed">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-04T00:29:34.000Z">
+<meta property="article:modified_time" content="2026-01-05T03:43:07.849Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="ssh">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/","path":"2026/01/04/20260104_GitHub-multiple-account/","title":"GitHub_multiple_account"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>GitHub_multiple_account | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Setup-Multiply-Github-account-via-SSH"><span class="nav-number">1.</span> <span class="nav-text">Setup Multiply Github account via SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Generate-separate-SSH-keys"><span class="nav-number">1.1.</span> <span class="nav-text">1. Generate separate SSH keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Add-public-keys-to-GitHub"><span class="nav-number">1.2.</span> <span class="nav-text">2. Add public keys to GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Registering-the-new-SSH-Keys-with-the-ssh-agent"><span class="nav-number">1.3.</span> <span class="nav-text">3. Registering the new SSH Keys with the ssh-agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-confgiure-ssh-by-create-SSH-config-File"><span class="nav-number">1.4.</span> <span class="nav-text">4. confgiure ssh by create SSH config File</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-test-ssh-work"><span class="nav-number">1.5.</span> <span class="nav-text">5. test ssh work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-clone-use-correct-ssh-host"><span class="nav-number">1.6.</span> <span class="nav-text">6.  clone use correct ssh host</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Git-identity-per-repo-optional"><span class="nav-number">1.7.</span> <span class="nav-text">7. Git identity per repo(optional)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Seperate-Directory-for-github"><span class="nav-number">2.</span> <span class="nav-text">Create Seperate Directory for github</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-configure-git-global-config"><span class="nav-number">2.1.</span> <span class="nav-text">1. configure git global config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Personal-Code-personal-gitconfig"><span class="nav-number">2.2.</span> <span class="nav-text">2. Personal ~Code&#x2F;personal&#x2F;.gitconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-work-Code-work-gitconfig"><span class="nav-number">2.3.</span> <span class="nav-text">3. work ~Code&#x2F;work&#x2F;.gitconfig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Check-and-verify"><span class="nav-number">2.4.</span> <span class="nav-text">4. Check and verify</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">3.</span> <span class="nav-text">reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="GitHub_multiple_account | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GitHub_multiple_account
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-01-04 08:29:34" itemprop="dateCreated datePublished" datetime="2026-01-04T08:29:34+08:00">2026-01-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-01-05 11:43:07" itemprop="dateModified" datetime="2026-01-05T11:43:07+08:00">2026-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Setup-Multiply-Github-account-via-SSH"><a href="#Setup-Multiply-Github-account-via-SSH" class="headerlink" title="Setup Multiply Github account via SSH"></a>Setup Multiply Github account via SSH</h1><h2 id="1-Generate-separate-SSH-keys"><a href="#1-Generate-separate-SSH-keys" class="headerlink" title="1. Generate separate SSH keys"></a>1. Generate separate SSH keys</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># personal account</span><br><span class="line">ssh-keygen -t ed25519 -C &quot;email@personal_mail.com&quot; -f ~/.ssh/id_personal</span><br><span class="line"></span><br><span class="line">#work account</span><br><span class="line">ssh-keygen -t ed25519 -C  &quot;email@work_mail.com&quot;  -f  ~/.ssh/id_rsa_work_user1</span><br></pre></td></tr></table></figure>
+<p>it will generate file private and public:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh/id_personal</span><br><span class="line">~/.ssh/id_personal.pub</span><br><span class="line">~/.ssh/id_rsa_work_user1</span><br><span class="line">~/.ssh/id_rsa_work_user1.pub</span><br></pre></td></tr></table></figure>
+<h2 id="2-Add-public-keys-to-GitHub"><a href="#2-Add-public-keys-to-GitHub" class="headerlink" title="2. Add public keys to GitHub"></a>2. Add public keys to GitHub</h2><ol>
+<li>GitHub → Settings</li>
+<li>SSH and GPG keys</li>
+<li>New SSH key</li>
+<li>Paste the <code>.pub</code> file content</li>
+</ol>
+<h2 id="3-Registering-the-new-SSH-Keys-with-the-ssh-agent"><a href="#3-Registering-the-new-SSH-Keys-with-the-ssh-agent" class="headerlink" title="3. Registering the new SSH Keys with the ssh-agent"></a>3. Registering the new SSH Keys with the ssh-agent</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br><span class="line">ssh-add ~/.ssh/id_personal</span><br><span class="line">ssh-add ~/.ssh/id_rsa_work_user1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>List key: <code>ssh-add -l</code></li>
+<li>刪除則使用: <code>ssh add -d ~/.ssh/id_personal</code></li>
+<li>刪除全部: <code>ssh-add -D</code></li>
+</ul>
+<h2 id="4-confgiure-ssh-by-create-SSH-config-File"><a href="#4-confgiure-ssh-by-create-SSH-config-File" class="headerlink" title="4. confgiure ssh by create SSH config File"></a>4. confgiure ssh by create SSH config File</h2><ul>
+<li><p>create ssh config<br>Edit config file</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.ssh/config</span><br></pre></td></tr></table></figure>
+<p>or manually create it</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh/</span><br><span class="line">touch config           // Creates the file if not exists</span><br><span class="line">code config            // Opens the file in VS code, use any editor</span><br></pre></td></tr></table></figure></li>
+<li><p>change permission: <code>chmod 600 ~/.ssh/config</code></p>
+</li>
+<li><p>Edit config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Personal account, - the default config</span><br><span class="line">Host github-personal</span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   IdentityFile ~/.ssh/id_personal</span><br><span class="line">   IdentitiesOnly yes</span><br><span class="line"># Work account-1</span><br><span class="line">Host github-work  </span><br><span class="line">   HostName github.com</span><br><span class="line">   User git</span><br><span class="line">   IdentityFile ~/.ssh/id_rsa_work_user1</span><br><span class="line">   IdentitiesOnly yes</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>Note:<br>IdentitiesOnly yes: Use only this key, no guessing. prevents SSH from trying the wrong keys</p>
+<h2 id="5-test-ssh-work"><a href="#5-test-ssh-work" class="headerlink" title="5. test ssh work"></a>5. test ssh work</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github-work  </span><br><span class="line">ssh -T git@github-personal </span><br></pre></td></tr></table></figure>
+<h2 id="6-clone-use-correct-ssh-host"><a href="#6-clone-use-correct-ssh-host" class="headerlink" title="6.  clone use correct ssh host"></a>6.  clone use correct ssh host</h2><p>When git clone you need to change it’s hostname from <code>git@github</code> to setting you se in <code>.ssh/config</code> this distinguish multiply account.  </p>
+<p>If i was to git clone my repo like below picture which github gave URL <code>git@github.com:jakccl/helloTest.git</code> need to change to <code>git@github-personal</code>. If you only have one account then you can use what github gave <code>git@github.com</code></p>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#work</span><br><span class="line">git clone git@github-work:username/repo.git </span><br><span class="line">#personal</span><br><span class="line">git clone git@github-personal:username/repo.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-Git-identity-per-repo-optional"><a href="#7-Git-identity-per-repo-optional" class="headerlink" title="7. Git identity per repo(optional)"></a>7. Git identity per repo(optional)</h2><ul>
+<li><p>global</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">  name = Jak Lee</span><br><span class="line">  email = personal@gmail.com</span><br></pre></td></tr></table></figure></li>
+<li><p>Personal</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd project</span><br><span class="line">git config user.name &quot;Jak Lee&quot;</span><br><span class="line">git config user.email &quot;personal@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>work</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd project2</span><br><span class="line">git config user.name &quot;Jak Lee&quot;</span><br><span class="line">git config user.email &quot;work@company.com&quot;</span><br></pre></td></tr></table></figure>
+<p>Note:<br>These settings are stored in  <code>project1/.git/config</code> and <code>project2/.git/config</code><br>They override global <code>~/.gitconfig</code> for that repo</p>
+</li>
+<li><p>check: <code>git config --get user.email</code></p>
+</li>
+</ul>
+<p>A better way might be seperate folder for work and personal.</p>
+<h1 id="Create-Seperate-Directory-for-github"><a href="#Create-Seperate-Directory-for-github" class="headerlink" title="Create Seperate Directory for github"></a>Create Seperate Directory for github</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/Code/</span><br><span class="line">├── personal/    # 個人專案</span><br><span class="line">└── work/        # 工作專案</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-configure-git-global-config"><a href="#1-configure-git-global-config" class="headerlink" title="1. configure git global config"></a>1. configure git global config</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[user]</span><br><span class="line">    name = Your Default Name</span><br><span class="line">    email = default@example.com</span><br><span class="line"></span><br><span class="line"># 個人專案</span><br><span class="line">[includeIf &quot;gitdir/i:~/Code/personal/&quot;]</span><br><span class="line">    path = ~/Code/personal/.gitconfig</span><br><span class="line"></span><br><span class="line"># 工作專案  </span><br><span class="line">[includeIf &quot;gitdir/i:~/Code/work/&quot;]</span><br><span class="line">    path = ~/Code/work/.gitconfig</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Personal-Code-personal-gitconfig"><a href="#2-Personal-Code-personal-gitconfig" class="headerlink" title="2. Personal ~Code/personal/.gitconfig"></a>2. Personal <code>~Code/personal/.gitconfig</code></h2><p>~Code&#x2F;personal&#x2F;.gitconfig</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">  name = CC</span><br><span class="line">  email = personal@gmail.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-work-Code-work-gitconfig"><a href="#3-work-Code-work-gitconfig" class="headerlink" title="3. work ~Code/work/.gitconfig"></a>3. work <code>~Code/work/.gitconfig</code></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">  name = CC</span><br><span class="line">  email = work@company.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Check-and-verify"><a href="#4-Check-and-verify" class="headerlink" title="4. Check and verify"></a>4. Check and verify</h2><ul>
+<li><p>check config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --show-origin --get user.email</span><br><span class="line">git config --show-origin --get user.name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>other git command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 修正 remote URL 為 SSH</span><br><span class="line">git remote set-url origin git@&lt;你剛才設定的 SSH Host 名稱&gt;:&lt;Github 用戶名稱&gt;/&lt;Repo 名稱&gt;.git</span><br><span class="line"></span><br><span class="line"># 確認配置自動套用</span><br><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line"></span><br><span class="line"># 檢查目前專案設定</span><br><span class="line">git config --local --list</span><br><span class="line"></span><br><span class="line"># 確認 remote URL  </span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"># 測試 SSH 連線</span><br><span class="line">ssh -T github.com-personal</span><br><span class="line">ssh -T github.com-work</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=cm68GCEcBXU&amp;t=34s">https://www.youtube.com/watch?v=cm68GCEcBXU&amp;t=34s</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/">https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/</a></li>
+<li><a target="_blank" rel="noopener" href="https://zsl0621.cc/ripgit/pro/git-github-multi-account">https://zsl0621.cc/ripgit/pro/git-github-multi-account</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/" title="GitHub_multiple_account">https://chenchih.github.io/2026/01/04/20260104_GitHub-multiple-account/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/github/" rel="tag"># github</a>
+              <a href="/hexo-demo2022/tags/ssh/" rel="tag"># ssh</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/10/11/20251011-Wireshark/" rel="prev" title="How to use Wireshark and tip">
+                  <i class="fa fa-chevron-left"></i> How to use Wireshark and tip
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2026/01/04/20260104-SSH-Tool/" rel="next" title="SSH Remote Tool">
+                  SSH Remote Tool <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

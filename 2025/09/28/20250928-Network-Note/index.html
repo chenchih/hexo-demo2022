@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="This is my network note which record different linux and debug command Debug Using toolNmap port scan Scan port can use either:  nc -vz: quick, lightweight probe (good for QA spot checks).nmap: more d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network Note For Debug">
+<meta property="og:url" content="https://chenchih.github.io/2025/09/28/20250928-Network-Note/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="This is my network note which record different linux and debug command Debug Using toolNmap port scan Scan port can use either:  nc -vz: quick, lightweight probe (good for QA spot checks).nmap: more d">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/nc_scanport.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/ftp_connection.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/tcp_dump_traffic.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/curl_ver.png">
+<meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/curl_ftp.png">
+<meta property="article:published_time" content="2025-09-28T09:41:37.000Z">
+<meta property="article:modified_time" content="2026-01-05T03:46:05.778Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/28/20250928-Network-Note/nc_scanport.png">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2025/09/28/20250928-Network-Note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2025/09/28/20250928-Network-Note/","path":"2025/09/28/20250928-Network-Note/","title":"Network Note For Debug"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Network Note For Debug | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Debug-Using-tool"><span class="nav-number">1.</span> <span class="nav-text">Debug Using tool</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nmap-port-scan"><span class="nav-number">1.1.</span> <span class="nav-text">Nmap port scan</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netcat-scan-and-send-traffic"><span class="nav-number">1.2.</span> <span class="nav-text">Netcat: scan and send traffic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scan-if-a-port-is-open-like-nmap"><span class="nav-number">1.2.1.</span> <span class="nav-text">Scan if a port is open like nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Send-traffic"><span class="nav-number">1.2.2.</span> <span class="nav-text">Send traffic</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#send-http"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">send http</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Send-ftp"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Send ftp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server-as-listen"><span class="nav-number">1.2.3.</span> <span class="nav-text">Run server as listen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-file-transer"><span class="nav-number">1.2.4.</span> <span class="nav-text">Quick file transer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpdump-capture-packet"><span class="nav-number">1.3.</span> <span class="nav-text">tcpdump capture packet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Capture-packet-for-21-ftp"><span class="nav-number">1.3.1.</span> <span class="nav-text">Capture packet for 21 ftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Save-traffic-as-packet"><span class="nav-number">1.3.2.</span> <span class="nav-text">Save traffic as packet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Curl"><span class="nav-number">1.4.</span> <span class="nav-text">Curl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Curl-webpage"><span class="nav-number">1.4.1.</span> <span class="nav-text">Curl webpage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fetch-a-file-and-store-in-a-local-file-o-option"><span class="nav-number">1.4.2.</span> <span class="nav-text">Fetch a file and store in a local file [-o option]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Curl-ftp-connection"><span class="nav-number">1.4.3.</span> <span class="nav-text">Curl ftp connection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tftp"><span class="nav-number">1.5.</span> <span class="nav-text">tftp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp-upload-download-file"><span class="nav-number">1.6.</span> <span class="nav-text">scp upload download file</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scp"><span class="nav-number">1.6.1.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using-sshpass-without-type-password"><span class="nav-number">1.6.2.</span> <span class="nav-text">using sshpass without type password</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ping-command"><span class="nav-number">1.7.</span> <span class="nav-text">Ping command</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ping-with-timestamp"><span class="nav-number">1.7.1.</span> <span class="nav-text">Ping with timestamp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-Busy"><span class="nav-number">1.8.</span> <span class="nav-text">CPU Busy</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2025/09/28/20250928-Network-Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Network Note For Debug | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Network Note For Debug
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-28 17:41:37" itemprop="dateCreated datePublished" datetime="2025-09-28T17:41:37+08:00">2025-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-01-05 11:46:05" itemprop="dateModified" datetime="2026-01-05T11:46:05+08:00">2026-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/DebugNote/" itemprop="url" rel="index"><span itemprop="name">DebugNote</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>This is my network note which record different linux and debug command</p>
+<h1 id="Debug-Using-tool"><a href="#Debug-Using-tool" class="headerlink" title="Debug Using tool"></a>Debug Using tool</h1><h2 id="Nmap-port-scan"><a href="#Nmap-port-scan" class="headerlink" title="Nmap port scan"></a>Nmap port scan</h2><blockquote>
+<p><strong>Scan port can use either:</strong></p>
+<blockquote>
+<p><code>nc -vz</code>: quick, lightweight probe (good for QA spot checks).<br><code>nmap</code>: more detailed: can scan ranges, detect service versions, OS fingerprints, etc.</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn -p 21 172.21.201.16</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Scan port option:</strong></p>
+<blockquote>
+<p><code>-Pn</code>: don’t ping first (treat host as alive)<br><code>-p 21</code>: scan only port 21</p>
+</blockquote>
+</blockquote>
+<h2 id="Netcat-scan-and-send-traffic"><a href="#Netcat-scan-and-send-traffic" class="headerlink" title="Netcat: scan and send traffic"></a>Netcat: scan and send traffic</h2><p>The <code>nc</code> command allow you to debug like send a small traffic or scan port just like <code>nmap</code></p>
+<h3 id="Scan-if-a-port-is-open-like-nmap"><a href="#Scan-if-a-port-is-open-like-nmap" class="headerlink" title="Scan if a port is open like nmap"></a>Scan if a port is open like nmap</h3><blockquote>
+<p>Syntax: <code>nc -vz ip-add port</code></p>
+<blockquote>
+<p><code>-v</code>: verbose<br><code>-z</code>: just scan for listening service (don’t send data)</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>scan http</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -vz 172.21.201.250 8080</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scan ftp</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -vz 172.21.201.250 21 #ftp</span><br></pre></td></tr></table></figure>
+
+<p>Output tells you if the port is open, closed, or filtered.</p>
+<img src="/hexo-demo2022/2025/09/28/20250928-Network-Note/nc_scanport.png" class="">
+
+<h3 id="Send-traffic"><a href="#Send-traffic" class="headerlink" title="Send traffic"></a>Send traffic</h3><p>If DUT <strong>NOT support</strong> <code>FTP</code> related command, when you want to debug field side issue, to make sure traffic is working or not. You can only use <code>http</code> , or <code>ftp</code> related potocol to verify it. Since use remote like ssh to debug, so the only method is use the <code>nc</code> command to check traffic work or not under ssh.</p>
+<p>If you want to verify traffic you have to first run nf command on local pc, and use tcpdump on field side ssh server to make sure you pass traffic really psss. I</p>
+<p>Environment might look like this:</p>
+<p>CPE(send traffic ex: <code>nf</code>) &lt;——&gt;(Lan) CPE (Wan)&lt;——-&gt;Internet&lt;——–&gt;SSH field Router(tcpdump)</p>
+<h4 id="send-http"><a href="#send-http" class="headerlink" title="send http"></a>send http</h4><p>Netcat will try to connect to host 172.21.201.250 on TCP port 8080</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 172.21.201.250 8080</span><br></pre></td></tr></table></figure>
+
+<p>If <strong>something is listening</strong> there (like a web server), the connection <strong>opens</strong> and anything you type will be sent to it.<br>If <strong>nothing is listening</strong>, you’ll get a <strong>timeout</strong> or connection refused, aslo mean netrwork unreachable</p>
+<h4 id="Send-ftp"><a href="#Send-ftp" class="headerlink" title="Send ftp"></a>Send ftp</h4><p>I can use this command below to make ftp connection</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc Ftp-IPaddress 21</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/28/20250928-Network-Note/ftp_connection.png" class="">
+
+<h3 id="Run-server-as-listen"><a href="#Run-server-as-listen" class="headerlink" title="Run server as listen"></a>Run server as listen</h3><ul>
+<li>Host 1 as listen server</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -p 9090</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<blockquote>
+<p>Listens on TCP port 8080.<br>Any client that connects can send&#x2F;receive text.</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Host 2 connect and send traffic</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc &lt;Host 1 IP&gt; 9090</span><br></pre></td></tr></table></figure>
+
+<h3 id="Quick-file-transer"><a href="#Quick-file-transer" class="headerlink" title="Quick file transer"></a>Quick file transer</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># on Receiver</span><br><span class="line">nc -l -p 9000 &gt; file.txt</span><br><span class="line"># On sender:</span><br><span class="line">nc &lt;IP&gt; 9000 &lt; file.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="tcpdump-capture-packet"><a href="#tcpdump-capture-packet" class="headerlink" title="tcpdump capture packet"></a>tcpdump capture packet</h2><p>In the top we use the <code>nc</code> command to send traffic, you also need to see the packet flow to make sure it really pass.</p>
+<blockquote>
+<p>TCP 3 hand shake: <code>syn</code>-&gt;<code>syn/ack</code> -&gt; <code>Ack</code></p>
+</blockquote>
+<p>If the traffic really make connection success then your packet should see the three flow</p>
+<h3 id="Capture-packet-for-21-ftp"><a href="#Capture-packet-for-21-ftp" class="headerlink" title="Capture packet for 21 ftp"></a>Capture packet for 21 ftp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i eth4_v0 -nn port 21</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/28/20250928-Network-Note/tcp_dump_traffic.png" class="">
+
+<h3 id="Save-traffic-as-packet"><a href="#Save-traffic-as-packet" class="headerlink" title="Save traffic as packet"></a>Save traffic as packet</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i eth1.1035 -s 0 -w /tmp/ap.pcap &amp;</span><br><span class="line"></span><br><span class="line">tcpdump -i br-lan.960 -s 0 -w /tmp/AP_vlan960.pcap &amp;</span><br><span class="line"></span><br><span class="line">tcpdump -i rax0 -s 0 -w /tmp/sta.pcap &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Curl"><a href="#Curl" class="headerlink" title="Curl"></a>Curl</h2><p>Some DuT uses a light weight curl, which mean not support ftp or other feature. You can use <code>curl --version</code> to check.</p>
+<img src="/hexo-demo2022/2025/09/28/20250928-Network-Note/curl_ver.png" class="">
+
+<p>This mean even though you don;t have a ftp installed in your system, but you can use curl, however this version curl don’t even support ftp.</p>
+<p>To use ftp right now is you need to use the <code>nf</code> command</p>
+<h3 id="Curl-webpage"><a href="#Curl-webpage" class="headerlink" title="Curl webpage"></a>Curl webpage</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost/test1234/test.html</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fetch-a-file-and-store-in-a-local-file-o-option"><a href="#Fetch-a-file-and-store-in-a-local-file-o-option" class="headerlink" title="Fetch a file and store in a local file [-o option]"></a>Fetch a file and store in a local file [-o option]</h3><blockquote>
+<p><strong>Syntax:</strong> <code>curl -o [name of output] [url name]</code></p>
+<blockquote>
+<p><code>o</code>: is rename another file</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o test.html http://127.0.0.1/tt.html #download and rename to test.html</span><br><span class="line">curl -o filename.tar.gz http://filename-4.0.1.tar.gz # download and rename</span><br></pre></td></tr></table></figure>
+
+<h3 id="Curl-ftp-connection"><a href="#Curl-ftp-connection" class="headerlink" title="Curl ftp connection"></a>Curl ftp connection</h3><ul>
+<li>username and password connection</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -u user:pass ftp://192.168.1.163/</span><br></pre></td></tr></table></figure>
+
+<img src="/hexo-demo2022/2025/09/28/20250928-Network-Note/curl_ftp.png" class="">
+
+<ul>
+<li>Download anonymous account</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -u anonymous:anonymous -O http://192.168.3.181/iperfcommand.txt</span><br><span class="line">curl -u anonymous:anonymous -O ftp://192.168.3.181/iperfcommand.txt</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>upload</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -u anonymous:anonymous -T [file name] [url]</span><br><span class="line">curl -u anonymous:anonymous -T test.html  ftp://192.168.3.181/</span><br><span class="line">multiple file upload:</span><br><span class="line">curl -u anonymous:anonymous -T &#123;file1,file2&#125;  ftp://192.168.3.181/</span><br></pre></td></tr></table></figure>
+
+<h2 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h2><ul>
+<li>linux or console</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#upload to lcoal side from console</span><br><span class="line">tftp -l wan0-cap.pcap -p 192.168.5.104</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>window tftp might look different</li>
+</ul>
+<blockquote>
+<p><strong>Syntax:</strong> <code>tftp -i [IP ADD] [PUT|GET][ FILE NAME]</code></p>
+<blockquote>
+<p><code>-g</code>: get file<br><code>-r</code>: remote<br><code>-p</code>: put file<br><code>-l</code>: loca</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#download</span><br><span class="line">tftp -i 192.168.1.55 PUT TLV43.cfg</span><br><span class="line">#upload</span><br><span class="line">tftp -i 192.168.1.55 GET TLV43.cfg</span><br></pre></td></tr></table></figure>
+
+<h2 id="scp-upload-download-file"><a href="#scp-upload-download-file" class="headerlink" title="scp upload download file"></a>scp upload download file</h2><h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#upload</span><br><span class="line">scp filename username@192.188.4.21:/home/nrgnb/Downloads/</span><br><span class="line">#download</span><br><span class="line">scp username@host/var/gnb/log/collect/20220805.163658.log.tgz .</span><br></pre></td></tr></table></figure>
+
+<h3 id="using-sshpass-without-type-password"><a href="#using-sshpass-without-type-password" class="headerlink" title="using sshpass without type password"></a>using sshpass without type password</h3><p><code>sshpass</code> bypass the interactive password prompt for <code>scp</code> (and <code>ssh</code>).</p>
+<blockquote>
+<p>install: apt install sshpass</p>
+</blockquote>
+<blockquote>
+<p><strong>syntax:</strong>: <code>sshpass -p &#39;server passw&#39;  scp &lt;filename or path&gt; &lt;sshhostname&gt;:&lt;destinationPath&gt;</code></p>
+</blockquote>
+<ul>
+<li>Example</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p &#x27;nr@Gnb&#x27; scp l1app-0809 nrgnb@192.188.4.21:/home/nrgnb/Downloads/</span><br><span class="line">sshpass -p scp nrgnb@192.188.4.21:/home/nrgnb/Desktop/chenchihFile/flow.pcapng .</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>script</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sshhostname=&quot;nrgnb@192.188.4.21&quot;</span><br><span class="line">echo -n &quot;enter your local file name (source): &quot;</span><br><span class="line">read sourcePath</span><br><span class="line">destinationPath=&quot;/home/nrgnb/Downloads/&quot;</span><br><span class="line">sshpass -p &#x27;nr@Gnb&#x27; scp $sourcePath $sshhostname:$destinationPath</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ping-command"><a href="#Ping-command" class="headerlink" title="Ping command"></a>Ping command</h2><h3 id="Ping-with-timestamp"><a href="#Ping-with-timestamp" class="headerlink" title="Ping with timestamp"></a>Ping with timestamp</h3><ul>
+<li>Linux</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ping linuxbuzz.com | while read pong; do echo &quot;$(date): $pong&quot;; done</span><br></pre></td></tr></table></figure>
+
+<p>Add into shell script</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#Script will continuously ping NFS VIP and capture timestamp</span><br><span class="line">DIR=/var/tmp/nfs-ping-pong</span><br><span class="line">if [ -d $DIR ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;Directory Exists&quot;</span><br><span class="line">else</span><br><span class="line">    mkdir -p $DIR</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">ping 10.8.3.102 | while read pong; do echo &quot;$(date): $pong&quot; &gt;&gt; $DIR/nfs-ping-$(date +%Y-%m-%d)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Reference:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.linuxbuzz.com/enable-timestamp-linux-ping-command">https://www.linuxbuzz.com/enable-timestamp-linux-ping-command</a></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>PowerShell</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping.exe -t &lt;IP&gt; | Foreach&#123;&quot;&#123;0&#125; - &#123;1&#125;&quot; -f (Get-Date -f &quot;yyyyMMdd HH:mm:ss&quot;),$_&#125;</span><br><span class="line">#or</span><br><span class="line">ping.exe -t 8.8.8.8 | ForEach &#123;&quot;&#123;0&#125; - &#123;1&#125;&quot; -f (Get-Date), $_&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CPU-Busy"><a href="#CPU-Busy" class="headerlink" title="CPU Busy"></a>CPU Busy</h2><p>You can either use:</p>
+<ul>
+<li>method1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in 1 2 3 4; do while : ; do : ; done &amp; done</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>method2</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sha1sum /dev/zero &amp;</span><br></pre></td></tr></table></figure>
+
+<p>kill process: <code>kill sha1sum</code></p>
+<ul>
+<li>Script:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">while :; do :; done</span><br></pre></td></tr></table></figure>
+
+<p>Change permission: <code>chmod +x cpu_load.sh</code><br>Run Script: <code>./cpu_load.sh &amp;</code></p>
+<blockquote>
+<p>Reference:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://dev.to/abstractmusa/how-to-simulate-high-cpu-usage-on-aws-ubuntu-instances-for-testing-and-performance-optimization-1f5f">https://dev.to/abstractmusa/how-to-simulate-high-cpu-usage-on-aws-ubuntu-instances-for-testing-and-performance-optimization-1f5f</a> &gt;&gt; <a target="_blank" rel="noopener" href="https://superuser.com/questions/443406/how-can-i-produce-high-cpu-load-on-a-linux-server">https://superuser.com/questions/443406/how-can-i-produce-high-cpu-load-on-a-linux-server</a></p>
+</blockquote>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2025/09/28/20250928-Network-Note/" title="Network Note For Debug">https://chenchih.github.io/2025/09/28/20250928-Network-Note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/network/" rel="tag"># network</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/28/20250928-Network-Script/" rel="prev" title="Network automatic Script for testing">
+                  <i class="fa fa-chevron-left"></i> Network automatic Script for testing
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/10/05/20251005-PythonCommonCode/" rel="next" title="Basic easy  useful python code">
+                  Basic easy  useful python code <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

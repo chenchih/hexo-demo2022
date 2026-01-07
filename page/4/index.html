@@ -30,12 +30,12 @@
   gtag('config', 'c');
 </script>
 
-    <meta name="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+    <meta name="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chen-Chih Technical Note Blog">
 <meta property="og:url" content="https://chenchih.github.io/page/4/index.html">
 <meta property="og:site_name" content="Chen-Chih Technical Note Blog">
-<meta property="og:description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+<meta property="og:description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="QA Engineer">
@@ -45,6 +45,7 @@
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Chen-Chih Lee">
 <meta property="article:tag" content="chenchih">
+<meta property="article:tag" content="chen-chih">
 <meta name="twitter:card" content="summary">
 
 
@@ -141,24 +142,24 @@
     <img class="site-author-image" itemprop="image" alt="chenchih"
       src="/hexo-demo2022/images/profile.jpeg">
   <p class="site-author-name" itemprop="name">chenchih</p>
-  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -219,6 +220,902 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/08/21/2022-08-21-codeTest-and-Interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/08/21/2022-08-21-codeTest-and-Interview/" class="post-title-link" itemprop="url">codeTest_and_Interview</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-21 15:44:18" itemprop="dateCreated datePublished" datetime="2022-08-21T15:44:18+08:00">2022-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-20 11:33:36" itemprop="dateModified" datetime="2022-09-20T11:33:36+08:00">2022-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/interview/" itemprop="url" rel="index"><span itemprop="name">interview</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Interview-Code-Test"><a href="#Interview-Code-Test" class="headerlink" title="Interview Code Test"></a>Interview Code Test</h2><p>I am sharing some Code Test during my Interview, and also some practice Code example.<br>今天分享我一些Live Coding 面試問題，還有一些刷題的問題。</p>
+<h2 id="Amazon-Live-Code"><a href="#Amazon-Live-Code" class="headerlink" title="Amazon Live Code"></a>Amazon Live Code</h2><h3 id="Q1-read-file-into-datastucture-and-search-like-logfile"><a href="#Q1-read-file-into-datastucture-and-search-like-logfile" class="headerlink" title="Q1. read file into datastucture and search like logfile"></a>Q1. read file into datastucture and search like logfile</h3><p>If we have a log.txt, as below, you need to and search specfic string, like cat.</p>
+<ul>
+<li>log.txt<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 cat</span><br><span class="line">2 lion</span><br><span class="line">3 apple</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Answer-1-list"><a href="#Answer-1-list" class="headerlink" title="Answer 1: list"></a>Answer 1: list</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;log.txt&quot;, &quot;r&quot;) as textfile:</span><br><span class="line">   lines = textfile.readlines()</span><br><span class="line">for i in lines:</span><br><span class="line">    sli = i.split(&#x27; &#x27;)</span><br><span class="line">    #print(sli)</span><br><span class="line">    if &quot;cat&quot; in sli:</span><br><span class="line">        print(sli[0], sli[-1])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Answer2-using-dictionary"><a href="#Answer2-using-dictionary" class="headerlink" title="Answer2: using dictionary"></a>Answer2: using dictionary</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">d=&#123;&#125;</span><br><span class="line">with open(&quot;log.txt&quot;, &quot;r&quot;) as textfile:</span><br><span class="line">   #lines = textfile.readlines()</span><br><span class="line">#skip \n</span><br><span class="line">   lines = textfile.read().splitlines()</span><br><span class="line">   #print(lines)   </span><br><span class="line">for i in lines:</span><br><span class="line">    #sli = i.split(&#x27; &#x27;)    </span><br><span class="line">    (key,val)=i.split(&quot; &quot;)</span><br><span class="line">    d[int(key)]=val</span><br><span class="line">   # print(key,&quot;&quot;,val)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/08/21/2022-08-21-codeTest-and-Interview/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/08/11/2022-08-11-JS-Advance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/08/11/2022-08-11-JS-Advance/" class="post-title-link" itemprop="url">JS Advance</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-11 13:00:48" itemprop="dateCreated datePublished" datetime="2022-08-11T13:00:48+08:00">2022-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Advance-JS"><a href="#Advance-JS" class="headerlink" title="Advance JS"></a>Advance JS</h2><h3 id="構造函數constructor-Function"><a href="#構造函數constructor-Function" class="headerlink" title="構造函數constructor Function"></a>構造函數constructor Function</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function createCard(initName)&#123;</span><br><span class="line">this.name=initName</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const a1 = new createCard(&quot;Ma&quot;)</span><br><span class="line">const a2 = new createCard(&quot;Ma2&quot;)</span><br><span class="line">const a3 = new createCard(&quot;Ma3&quot;)</span><br><span class="line">const a4 = new createCard(&quot;Ma4&quot;)</span><br><span class="line">const a5 = new createCard(&quot;Ma5&quot;)</span><br><span class="line">console.log(a1)</span><br><span class="line">console.log(a2)</span><br><span class="line">console.log(a3)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output</strong></p>
+<blockquote>
+<p>createCard { name: ‘Ma’ }<br>createCard { name: ‘Ma2’ }<br>createCard { name: ‘Ma3’ }</p>
+</blockquote>
+</blockquote>
+<h3 id="array-function-gt"><a href="#array-function-gt" class="headerlink" title="array function =&gt;"></a>array function <code>=&gt;</code></h3><p>In ES6 there is a new function called array function, which you can write shorter function.</p>
+<blockquote>
+<p>Before ES6</p>
+<blockquote>
+<p>function hello(){}</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>after ES6</p>
+<blockquote>
+<p>let hello &#x3D; function (){}<br>shorthand<br>let hello &#x3D; () &#x3D;&gt;{}</p>
+</blockquote>
+</blockquote>
+<h4 id="function-without-passing-paramter"><a href="#function-without-passing-paramter" class="headerlink" title="function without passing paramter"></a>function without passing paramter</h4><blockquote>
+<p>Before ES6 (normal function)</p>
+<blockquote>
+<p>ex: function hello(){}</p>
+</blockquote>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/08/11/2022-08-11-JS-Advance/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/31/2022-07-31-linux-bash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/31/2022-07-31-linux-bash/" class="post-title-link" itemprop="url">Linux Bash Script</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-31 08:07:57" itemprop="dateCreated datePublished" datetime="2022-07-31T08:07:57+08:00">2022-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-30 07:51:12" itemprop="dateModified" datetime="2025-09-30T07:51:12+08:00">2025-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天我想分享如何用linux shell script 語法。<br>我們需要加這個在script裡面，然後檔案改成 <code>.sh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>How to execute script</li>
+</ul>
+<blockquote>
+<p><code>chmod 777 myscript.sh</code><br><code>./myscript.sh</code></p>
+</blockquote>
+<h2 id="1-variable"><a href="#1-variable" class="headerlink" title="1. variable"></a>1. variable</h2><h3 id="define-variable"><a href="#define-variable" class="headerlink" title="define variable"></a>define variable</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text1=Hello</span><br><span class="line">name=CC</span><br><span class="line">echo $text1 $name</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output:</p>
+<blockquote>
+<p>Hello CC</p>
+</blockquote>
+</blockquote>
+<h3 id="read-and-echo-variable"><a href="#read-and-echo-variable" class="headerlink" title="read and echo variable"></a>read and echo variable</h3><blockquote>
+<p>read variable</p>
+<blockquote>
+<p>read a</p>
+</blockquote>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/31/2022-07-31-linux-bash/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-linux-Command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/30/2022-07-30-linux-Command/" class="post-title-link" itemprop="url">Linux Command</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 08:07:57" itemprop="dateCreated datePublished" datetime="2022-07-30T08:07:57+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-30 07:51:12" itemprop="dateModified" datetime="2025-09-30T07:51:12+08:00">2025-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h2><h3 id="Method-1-put-your-alias-in-alias-pofile"><a href="#Method-1-put-your-alias-in-alias-pofile" class="headerlink" title="Method 1: put your alias in .alias_pofile"></a>Method 1: put your alias in <code>.alias_pofile</code></h3><p>Recommend use this file, will not destory <code>.bashrc</code> file. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">touch .alias_pofile</span><br></pre></td></tr></table></figure>
+<h3 id="Method-2-edit-bashrc"><a href="#Method-2-edit-bashrc" class="headerlink" title="Method 2: edit .bashrc"></a>Method 2: edit <code>.bashrc</code></h3><p>This method need to reboot to take effect</p>
+<h2 id="change-directory"><a href="#change-directory" class="headerlink" title="change directory"></a>change directory</h2><h3 id="change-folder-or-directory"><a href="#change-folder-or-directory" class="headerlink" title="change folder or directory"></a>change folder or directory</h3><p><code>cd</code> : change directory to home <code>~</code> directory<br><code>cd folder</code>: change to specific directory</p>
+<h3 id="change-upper-directory"><a href="#change-upper-directory" class="headerlink" title="change upper directory"></a>change upper directory</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-linux-Command/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-Print/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/30/2022-07-30-Print/" class="post-title-link" itemprop="url">Python Print</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 08:05:22" itemprop="dateCreated datePublished" datetime="2022-07-30T08:05:22+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-23 16:31:56" itemprop="dateModified" datetime="2022-11-23T16:31:56+08:00">2022-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-Print"><a href="#1-Print" class="headerlink" title="1. Print"></a>1. Print</h2><h3 id="Ex1-Print-Basic-Interger-and-String"><a href="#Ex1-Print-Basic-Interger-and-String" class="headerlink" title="Ex1 Print Basic Interger and String"></a>Ex1 Print Basic Interger and String</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_name= &quot;hello&quot;</span><br><span class="line">num_value= 999</span><br><span class="line">print(f&quot;str value is &#123;str_name&#125;, and number is &#123;num_value&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p><code>str value is hello, and number is 999</code></p>
+</blockquote>
+</blockquote>
+<h2 id="formatting-OLD"><a href="#formatting-OLD" class="headerlink" title="%-formatting-OLD"></a>%-formatting-OLD</h2><h3 id="Example-1-Print-String-with-Operator"><a href="#Example-1-Print-String-with-Operator" class="headerlink" title="Example 1 Print String with % Operator"></a>Example 1 Print String with <code>%</code> Operator</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">text = &#x27;world&#x27;</span><br><span class="line">print(&quot;hello &quot; + text)</span><br><span class="line">print(&#x27;hello %s&#x27; % text)</span><br><span class="line"></span><br><span class="line">name = &quot;Test&quot;</span><br><span class="line">num = 100</span><br><span class="line">print(&quot;Hello, %s. My num is  %s.&quot; % (name, num))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>output:</strong></p>
+<blockquote>
+<p><code>hello world</code><br><code>hello world</code><br><code>Hello, Test. You are 100.</code></p>
+</blockquote>
+</blockquote>
+<h2 id="3-str-format-NEW"><a href="#3-str-format-NEW" class="headerlink" title="3. str.format()- NEW"></a>3. str.format()- NEW</h2><p>str.format() 是對 %-formatting 的改進，可以用函式呼叫語法，可以通過 format() 方法對被轉換為字串的物件</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-Print/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/30/2022-07-30-JS-BasicCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/" class="post-title-link" itemprop="url">JS Basic Code 基本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-30 07:59:48" itemprop="dateCreated datePublished" datetime="2022-07-30T07:59:48+08:00">2022-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/WebDev/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="JS基本須知道"><a href="#JS基本須知道" class="headerlink" title="JS基本須知道"></a>JS基本須知道</h2><h3 id="How-to-run-JS"><a href="#How-to-run-JS" class="headerlink" title="How to run JS"></a>How to run JS</h3><ul>
+<li><p>Browser- inspect</p>
+<ul>
+<li><p>Method1:</p>
+<blockquote>
+<p>Go to inspect &gt; console</p>
+</blockquote>
+</li>
+<li><p>Method 2:</p>
+<blockquote>
+<p>inspect&gt; sources&gt; snipperts&gt; create js file</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>NodeJS environment</p>
+<blockquote>
+<p>寫 <code>XXX.js</code>&#x2F;&#x2F;CREATE JS file</p>
+<blockquote>
+<p><code>node XXX.js</code> &#x2F;&#x2F;run .js file using node</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="adding-comment"><a href="#adding-comment" class="headerlink" title="adding comment"></a>adding comment</h3><p><code>//</code> single line comment<br><code>/**/</code>: multiply line comment</p>
+<h3 id="顯示-print"><a href="#顯示-print" class="headerlink" title="顯示 print"></a>顯示 print</h3><ul>
+<li><code>console.log()</code> 顯示在console</li>
+<li><code>alert()</code> 跳出顯示</li>
+<li><code>document.write(&quot;\&lt;h1&gt;hello &lt;br\/&gt;&quot;)</code></li>
+</ul>
+<h2 id="JS-基本語法-Part-1"><a href="#JS-基本語法-Part-1" class="headerlink" title="JS　 基本語法- Part 1"></a>JS　 基本語法- Part 1</h2><h3 id="１-declare-variable-宣告變數"><a href="#１-declare-variable-宣告變數" class="headerlink" title="１. declare variable 宣告變數"></a>１. declare variable 宣告變數</h3><ul>
+<li><code>let</code> (新)可以取代var<blockquote>
+<p>ex:</p>
+<blockquote>
+<p><code>let myName= &quot;chenchih&quot;</code><br><code>console.log(myName)</code></p>
+</blockquote>
+</blockquote>
+</li>
+<li><code>var</code></li>
+<li><code>const</code><blockquote>
+<p>must be inital and not able to change<br>不被修改變數。如果不想被人修改</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const test= &quot;heloo&quot;</span><br><span class="line">test=&quot;world&quot;</span><br><span class="line">console.log(test) //error</span><br></pre></td></tr></table></figure></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/30/2022-07-30-JS-BasicCode/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-Markup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/" class="post-title-link" itemprop="url">Markdown 指令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-03 11:23:24" itemprop="dateCreated datePublished" datetime="2022-07-03T11:23:24+08:00">2022-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>今天我想寫關於 <code>Markdown</code>相關指令。想信大家都會常用MD或是markdown。</p>
+<h2 id="字體效果"><a href="#字體效果" class="headerlink" title="字體效果"></a>字體效果</h2><p><em>斜體字</em> &#x3D;&#x3D;&gt; <code>*文字*</code><br><strong>粗體字</strong>  &#x3D;&#x3D;&gt; <code>**文字**</code><br><em><strong>斜粗體</strong></em>  &#x3D;&#x3D;&gt; <code>***文字***</code><br><del>刪除線strikethrough</del>  &#x3D;&#x3D;&gt; <code>~~文字~~</code><br><em>斜體2</em>  &#x3D;&#x3D;&gt; <code>_文字_</code><br><strong>斜粗2</strong>  &#x3D;&#x3D;&gt; <code>__文字__</code><br>正常^上標^ &#x3D;&#x3D;&gt;  <code>文字^string1^</code><br>正常<del>下標</del> &#x3D;&#x3D;&gt;  <code>文字~string1~</code><br>++底線++  &#x3D;&#x3D;&gt;  <code>++文字++</code><br>&#x3D;&#x3D;螢光標記&#x3D;&#x3D;  &#x3D;&#x3D;&gt; <code>==文字==</code></p>
+<h2 id="color顏色"><a href="#color顏色" class="headerlink" title="color顏色"></a>color顏色</h2><ul>
+<li><font color="red">color</font> &#x3D;&#x3D;&gt; <code>&lt;font color=&quot;red&quot;&gt;text &lt;/font&gt;</code></li>
+<li><mark style="background-color: #FFFF00">Highlighted text</mark> &#x3D;&gt; <code>&lt;mark style=&quot;background-color: #FFFF00&quot;&gt;Highlighted text&lt;/mark&gt;</code><blockquote>
+<p>change mark or span&#x2F;div</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Font-Size-大小"><a href="#Font-Size-大小" class="headerlink" title="Font Size 大小"></a>Font Size 大小</h2><ul>
+<li><font size="5">  <strong>HTML</strong></font>  &#x3D;&#x3D;&gt; <code>&lt;font size=5&gt;  **HTML**&lt;/font&gt; </code></li>
+</ul>
+<h2 id="Horizontal-Rules"><a href="#Horizontal-Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h2><hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">***</span><br><span class="line">___</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-Markup/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/hexo-demo2022/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/" class="post-title-link" itemprop="url">Terminal-oh-my-zsh+ Powerlevel10k (Ubuntu)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-07-03 09:00:18" itemprop="dateCreated datePublished" datetime="2022-07-03T09:00:18+08:00">2022-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-30 07:51:12" itemprop="dateModified" datetime="2025-09-30T07:51:12+08:00">2025-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/linux/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天天想分享如何在terminal或終端機變成更有效率或是更美化。我們需要用到 <code>zsh</code> 和 <code>ohmysh</code>。</p>
+<p>本篇文章會安裝以下套件：</p>
+<ul>
+<li>ubuntu 安裝和設定<ul>
+<li>基本套件: <code>zsh</code> <code>git</code> <code>wget</code> <code>curl</code></li>
+<li><code>ohymysh</code>套件</li>
+<li>shell 設定</li>
+<li><code>Oh My Zsh</code> 安裝，主題設定</li>
+<li>安裝 <code>Powerlevel10k</code> 主題，不然會怪怪</li>
+</ul>
+</li>
+</ul>
+<h2 id="更新-ubuntu-套件"><a href="#更新-ubuntu-套件" class="headerlink" title="更新 ubuntu 套件"></a>更新 ubuntu 套件</h2><p><code>$ sudo apt-get update</code></p>
+<h2 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h2><h3 id="檢查我們目前支援的shells"><a href="#檢查我們目前支援的shells" class="headerlink" title="檢查我們目前支援的shells"></a>檢查我們目前支援的shells</h3><blockquote>
+<p>目前支援的shells<br><code>$cat /etc/shells</code></p>
+</blockquote>
+<p><img src="https://i.imgur.com/SGzosrt.png" alt="zsh-after"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo-demo2022/2022/07/03/2022-07-03-Terminal-oh-my-zsh_Ubuntu/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/30/2022-06-21-hexo2_SetupShort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +1125,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -350,7 +1247,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -436,985 +1333,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/25/2022-06-25-remotedesktop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/25/2022-06-25-remotedesktop/" class="post-title-link" itemprop="url">無密碼-遠端桌面連線和分享網路磁碟</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-25 08:06:54" itemprop="dateCreated datePublished" datetime="2022-06-25T08:06:54+08:00">2022-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/window/" itemprop="url" rel="index"><span itemprop="name">window</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="遠端桌面連線"><a href="#遠端桌面連線" class="headerlink" title="遠端桌面連線"></a>遠端桌面連線</h2><p>我想分享如何設定<strong>無密碼</strong>，也可以做遠端桌面連線。正常都是我們電腦帳號如果設定無密碼但又想做遠端，需要作揖些設定。</p>
-<h3 id="Step1-請在鍵盤輸入window-r"><a href="#Step1-請在鍵盤輸入window-r" class="headerlink" title="Step1: 請在鍵盤輸入window + r"></a>Step1: 請在鍵盤輸入<code>window + r</code></h3><h3 id="Step2-請輸入gpedit-msc"><a href="#Step2-請輸入gpedit-msc" class="headerlink" title="Step2: 請輸入gpedit.msc"></a>Step2: 請輸入<code>gpedit.msc</code></h3><h3 id="Step3-disable-Limit-account-use-of-blank-password-to-enable-blank-password"><a href="#Step3-disable-Limit-account-use-of-blank-password-to-enable-blank-password" class="headerlink" title="Step3: disable Limit account use of blank password, to enable blank password"></a>Step3: disable Limit account use of blank password, to enable blank password</h3><p><img src="https://i.imgur.com/TSEfiQi.png" alt="blank password"></p>
-<h2 id="網路磁碟分享"><a href="#網路磁碟分享" class="headerlink" title="網路磁碟分享"></a>網路磁碟分享</h2><p>我想分享如何設定<strong>無密碼</strong>，也可以做網路磁碟分享，這樣可以共享資料夾。</p>
-<h3 id="Step1-建立一個資料夾"><a href="#Step1-建立一個資料夾" class="headerlink" title="Step1: 建立一個資料夾"></a>Step1: 建立一個資料夾</h3><h3 id="Step2-把資料夾設定權限"><a href="#Step2-把資料夾設定權限" class="headerlink" title="Step2: 把資料夾設定權限"></a>Step2: 把資料夾設定權限</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/25/2022-06-25-remotedesktop/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/24/2022-06-24-Emmet-VSCode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/24/2022-06-24-Emmet-VSCode/" class="post-title-link" itemprop="url">Emmet 指令and VSCode</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-24 20:23:24" itemprop="dateCreated datePublished" datetime="2022-06-24T20:23:24+08:00">2022-06-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h1><p>我想分享一些最常用到的<code>Emmet</code>和<code>VScode</code>相關指令。如果會<code>Emmet</code>我們可以提高我們在編寫<code>HTML</code>的時間。我們不需要打麼長的與法。</p>
-<h2 id="1-html初始结構"><a href="#1-html初始结構" class="headerlink" title="1. html初始结構"></a>1. html初始结構</h2><blockquote>
-<p>指令:<code>！</code> &#x3D;&gt;tab or enter</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-CSS連結"><a href="#2-CSS連結" class="headerlink" title="2. CSS連結"></a>2. CSS連結</h2><blockquote>
-<p>指令: <code>link:css</code> &#x3D;&gt;tab or enter<br>在<head>裡面加</head></p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-隱式TAG-id（-）-class（-）"><a href="#3-隱式TAG-id（-）-class（-）" class="headerlink" title="3.隱式TAG , id（#）,class（.）"></a>3.隱式TAG , id（#）,class（.）</h2><ul>
-<li><h3 id="div-tag-name"><a href="#div-tag-name" class="headerlink" title="div tag:.name"></a>div tag:<code>.name</code></h3><blockquote>
-<p>指令: <code>.test</code></p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="list-tag"><a href="#list-tag" class="headerlink" title="list tag:"></a>list tag:</h3><blockquote>
-<p>指令: <code>ul&gt;.test$*3</code></p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;test1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;test2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;test3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><h3 id="id指令："><a href="#id指令：" class="headerlink" title="id指令：#"></a>id指令：<code>#</code></h3><blockquote>
-<p><strong>Ｓyntax:</strong><code>div.idname</code></p>
-<blockquote>
-<p>指令:<code>div#test</code></p>
-</blockquote>
-</blockquote>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><h3 id="class指令"><a href="#class指令" class="headerlink" title="class指令."></a>class指令<code>.</code></h3><blockquote>
-<p><strong>Ｓyntax:</strong> <code>div.classname</code></p>
-<blockquote>
-<p>指令:<code>div.test</code></p>
-</blockquote>
-</blockquote>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;test&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="em-和-span"><a href="#em-和-span" class="headerlink" title="em 和 span :"></a>em 和 span :</h3><blockquote>
-<p><strong>Ｓyntax:</strong><code>tag&gt;.class</code></p>
-<blockquote>
-<p>指令:<code>em&gt;.class</code></p>
-</blockquote>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><h3 id="表格-table"><a href="#表格-table" class="headerlink" title="表格 table"></a>表格 table</h3><blockquote>
-<p>指令:<code>table&gt;.row&gt;.col</code> </p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><h3 id="option"><a href="#option" class="headerlink" title="option"></a>option</h3><blockquote>
-<p><strong>Ｓyntax:</strong> <code>select&gt;classname</code></p>
-<blockquote>
-<p>指令:<code>select&gt;.test$*5</code> </p>
-</blockquote>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">class</span>=<span class="string">&quot;test1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">class</span>=<span class="string">&quot;test2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">class</span>=<span class="string">&quot;test3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">class</span>=<span class="string">&quot;test4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">class</span>=<span class="string">&quot;test5&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/24/2022-06-24-Emmet-VSCode/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/21/2022-06-21-hexo-1-SetupFull/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/21/2022-06-21-hexo-1-SetupFull/" class="post-title-link" itemprop="url">Hexo + GitHub Pages 架設個人網誌-完整版-1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-21 20:34:18" itemprop="dateCreated datePublished" datetime="2022-06-21T20:34:18+08:00">2022-06-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-08-26 16:46:40" itemprop="dateModified" datetime="2025-08-26T16:46:40+08:00">2025-08-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>＃ 如何使用 Hexo + GitHub Pages 架設個人網誌</p>
-<h2 id="什麼是-Hexo？"><a href="#什麼是-Hexo？" class="headerlink" title="什麼是 Hexo？"></a>什麼是 Hexo？</h2><ul>
-<li>HEXO 是一套 <code>Static Site Generators(SSG)</code>網誌框架工具，只要把建立和編寫 <code>markdown</code>就可以變成轉成靜態網頁。一般都用在架自己的部捼洛客，不用花很多時間設計排版等等。目前最有名的 SSG 有包括: <strong>Hexo(node.js 語言)<strong>，</strong>HUGO(go 語言)<strong>，</strong>Jekyll(ruby 語言)</strong> 等等。</li>
-<li>其實就是一個基於 <code>Node.js</code> 開發的網誌框架。具有下列幾項<strong>特點</strong>：<ul>
-<li>NODE.JS</li>
-<li>能夠支援 <strong>Markdown</strong> 語法解析文章，並透過主題渲染靜態檔案</li>
-<li>具有豐富的<strong>外掛套件</strong></li>
-<li>支援一鍵部署到 <strong>GitHub Pages</strong> 或 <strong>Heroku</strong> 等支援靜態網頁的空間</li>
-</ul>
-</li>
-</ul>
-<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="安裝需要工具"><a href="#安裝需要工具" class="headerlink" title="安裝需要工具"></a>安裝需要工具</h3><p>在開始安裝 Hexo 之前，必須先在電腦安裝下列工具:</p>
-<ul>
-<li><h4 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a><a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a></h4>npm 來安裝所需的套件。你可以把 npm 當作是 linux 的 <code>apt</code> 或 <code>yum</code>。他主要是幫我們安裝 JS 等套件。</li>
-</ul>
-<blockquote>
-<ul>
-<li>Linux (Ubuntu, Debian)：<blockquote>
-<p><code>sudo apt-get install -y nodejs</code></p>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li><h4 id="git"><a href="#git" class="headerlink" title="git"></a><a target="_blank" rel="noopener" href="https://git-scm.com/">git</a></h4>是專們做版本控制的工具。外面有多版本控制，我選用 github，因為他比較多人用，還有他有 GitHub Page 可以幫我們架設網站，又是免費。window 可以用這個 git-bash 來下載<a target="_blank" rel="noopener" href="https://gitforwindows.org/">git-for-window</a></li>
-</ul>
-<blockquote>
-<ul>
-<li>Linux (Ubuntu, Debian)：<blockquote>
-<p><code>$ sudo apt-get install git-core</code></p>
-</blockquote>
-</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/21/2022-06-21-hexo-1-SetupFull/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/21/2022-06-21-[CSS-Layout]_Flexbox/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/21/2022-06-21-%5BCSS-Layout%5D_Flexbox/" class="post-title-link" itemprop="url">CSS LAYOUT - Flexbox</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-21 20:33:42" itemprop="dateCreated datePublished" datetime="2022-06-21T20:33:42+08:00">2022-06-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-23 11:15:58" itemprop="dateModified" datetime="2022-08-23T11:15:58+08:00">2022-08-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Flex-Layout-排版-CSS-格線佈局"><a href="#Flex-Layout-排版-CSS-格線佈局" class="headerlink" title="Flex Layout 排版 (CSS 格線佈局)"></a>Flex Layout 排版 (CSS 格線佈局)</h1><p>CSS排版有很多不同的排版工具，今天我想介紹FlexBox，也可以叫做flexible。Flexbox 是屬於one dimention ，也就去說你只有一個軸，你不是選擇用row or colomn。我會介紹以下的內容：</p>
-<ul>
-<li>父元素&#x2F;容器属性：<ul>
-<li>flex-direction: <ul>
-<li>row (default)</li>
-<li>row-reverse </li>
-<li>column</li>
-<li>column-reverse</li>
-</ul>
-</li>
-<li>flex container(display): <ul>
-<li>flex </li>
-<li>inline-flex</li>
-</ul>
-</li>
-<li>flex-wrap: <ul>
-<li>wrap</li>
-<li>nowrap (default)</li>
-</ul>
-</li>
-<li>justify-content<ul>
-<li>flex-start</li>
-<li>flex-end</li>
-<li>center</li>
-<li>space-around</li>
-<li>space-between</li>
-<li>space-evenly</li>
-</ul>
-</li>
-<li>align-item<ul>
-<li>stretch</li>
-<li>lex-start</li>
-<li>flex-end</li>
-<li>center</li>
-</ul>
-</li>
-<li>Align-Content<ul>
-<li>flex-start</li>
-<li>flex-end</li>
-<li>stretch</li>
-<li>space-around</li>
-<li>space-between</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Flex 內元件屬性&#x2F;子元素：<ul>
-<li>flex-item:<ul>
-<li>flex-grow</li>
-<li>flex-shrink</li>
-<li>flex-basis</li>
-<li>flex (縮寫)</li>
-</ul>
-</li>
-<li>order</li>
-<li>align-self</li>
-</ul>
-</li>
-</ul>
-<h2 id="part-1-基本FLEX相關知識"><a href="#part-1-基本FLEX相關知識" class="headerlink" title="part 1 基本FLEX相關知識"></a>part 1 基本FLEX相關知識</h2><p>FlexBox 就是flexible Box，顧名思義就是彈性的盒子。早期我們在排版都是用float，但用起來沒有FlexBox好用。我們有幾個CSS layout，如<code>float</code>,<code>display</code>,<code>Positioning</code>, <code>Flexbox</code>, and <code>grid</code>等等。</p>
-<h3 id="Container-and-items-的差別"><a href="#Container-and-items-的差別" class="headerlink" title="Container and items 的差別"></a>Container and items 的差別</h3><ul>
-<li><strong><code>Container</code>:</strong> 就是<code>外容器</code>，你也可以想成它是盒子的外面，或是我喜歡稱他為Parent容器。</li>
-<li><strong><code>Items</code>:</strong> 就是<code>內容器</code>，你也可以想成它是盒子的裡面，或是我喜歡稱他為Child容器。<br>我們來看一下圖你們更了解，這兩個差別:外面綠色就是container(外容器)，裡面橘色就是items()內容器)</li>
-</ul>
-<p><img src="https://i.imgur.com/zqn2Yrl.png"></p>
-<p>這非常重要，這樣你才知道要用那一個容器的元屬性，然後也很好去記，卻步用去蓓背他。</p>
-<h3 id="AXIS軸"><a href="#AXIS軸" class="headerlink" title="AXIS軸"></a>AXIS軸</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/21/2022-06-21-%5BCSS-Layout%5D_Flexbox/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/17/2022-06-17-Git-Basic-Command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/17/2022-06-17-Git-Basic-Command/" class="post-title-link" itemprop="url">Git Basic Command</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-17T00:00:00+08:00">2022-06-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-06-25 08:23:27" itemprop="dateModified" datetime="2025-06-25T08:23:27+08:00">2025-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/devtool/" itemprop="url" rel="index"><span itemprop="name">devtool</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>今天我想在這文章中介紹最常用到的 git 指令。我會介紹我最常用到的指令有：</p>
-<ul>
-<li>git init</li>
-<li>git add .</li>
-<li>git commit -m “message”</li>
-<li>git push<br>以上是我最常用到的。我還想介紹一些關於 git remote 等指令。</li>
-</ul>
-<h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><h3 id="1-git-init-初始化-git"><a href="#1-git-init-初始化-git" class="headerlink" title="1. git init 初始化 git"></a>1. git init 初始化 git</h3><p>Step1: 建立一個資料夾如：<code>$mkdir test</code></p>
-<p>Step2: 進去目錄 <code>cd test</code></p>
-<p>Step3: 執行 <code>git init</code>就會初始化 git。如果你下 <code>ls-al</code>就可以看所有資料，會有一個 <code>.git</code> 隱藏檔</p>
-<h3 id="2-git-add-把檔案進索引-index"><a href="#2-git-add-把檔案進索引-index" class="headerlink" title="2. git add 把檔案進索引 index"></a>2. git add 把檔案進索引 index</h3><p>Step1: 建立檔案 <code>touch hello.py</code><br>Step2: 編輯檔案</p>
-<ul>
-<li>(linux) vim hello.py</li>
-<li>(window) notepad hello.py<br>就加 <code>print(&quot;hello world&quot;)</code><br>Step3: 把檔案加進索引 <code>git add .</code><br>Step4: 看 git status <code>git status</code><br>他會顯示 stage</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/17/2022-06-17-Git-Basic-Command/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/11/2022-06-11-[CSS-Layout]_GRID/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/11/2022-06-11-%5BCSS-Layout%5D_GRID/" class="post-title-link" itemprop="url">CSS LAYOUT - GRID 介紹</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-11 09:52:52" itemprop="dateCreated datePublished" datetime="2022-06-11T09:52:52+08:00">2022-06-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-17 15:47:50" itemprop="dateModified" datetime="2022-11-17T15:47:50+08:00">2022-11-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/" itemprop="url" rel="index"><span itemprop="name">WebDev</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/hexo-demo2022/categories/WebDev/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="GRID-Layout-排版-CSS-格線佈局"><a href="#GRID-Layout-排版-CSS-格線佈局" class="headerlink" title="GRID Layout 排版 (CSS 格線佈局)"></a>GRID Layout 排版 (CSS 格線佈局)</h1><ul>
-<li>現在我們在做網頁排版，最流行都是用 <code>GRID</code> and <code>Flex</code>。想要分享<code>GRID</code>相關設定和用法，在早期都是用<code>position</code> 或<code>float</code>等等來做排版。</li>
-<li><code>GRID</code> 是二維CSS格線排版(row <code>and</code> colulmn)，反之<code>Flex</code>只能選用一維(row <code>or</code> colulmn)。</li>
-</ul>
-<hr>
-<blockquote>
-<p>以下是所有<font color="red"><code>GRID</code> Properties </font>，我整理好分類，這樣才懂或記。如果有學會或用過<code>GRID</code>，會更好理解。</p>
-</blockquote>
-<ul>
-<li>Grid Container(parent Properties)<ul>
-<li>1.display (enable grid propertis 啟動GRID)</li>
-<li>2.grid-template<ul>
-<li>grid-template-column </li>
-<li>grid-template-row </li>
-<li>grid-template</li>
-<li>grid-template-areas</li>
-</ul>
-</li>
-<li>3.grid-auto-flow<ul>
-<li>grid-auto-column</li>
-<li>grid-auto-rows</li>
-<li>grid-auto-flow</li>
-</ul>
-<p> 	    </p>
-</li>
-<li>4.gap <ul>
-<li>column-gap</li>
-<li>row-gap</li>
-<li>gap</li>
-</ul>
-</li>
-<li>5.Alignment &amp; Spacing<ul>
-<li>within grid cell<ul>
-<li>justify-items</li>
-<li>align-items</li>
-<li>place-items</li>
-</ul>
-</li>
-<li>within grid container<ul>
-<li>justify-content</li>
-<li>align-content</li>
-<li>place-content</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Grid item(Child Properties)<ul>
-<li>Grid-column-start</li>
-<li>Grid-column-end</li>
-<li>Grid-row-start</li>
-<li>Grid-row-end</li>
-<li>Grid-column (shorthand)</li>
-<li>Grid-row (shorthand)</li>
-</ul>
-</li>
-<li>Alignment item within Cell<ul>
-<li>Justify-self: alignment along the row axis</li>
-<li>Align-self: alignment along the column axis</li>
-<li>Place-self: shorthand for <align-self> <justify-self></justify-self></align-self></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="Part-1-GRID-架構-Structure-amp-Terminology"><a href="#Part-1-GRID-架構-Structure-amp-Terminology" class="headerlink" title="Part 1: GRID 架構 Structure &amp; Terminology"></a>Part 1: GRID 架構 Structure &amp; Terminology</h2><h3 id="Container-和-Items-差別："><a href="#Container-和-Items-差別：" class="headerlink" title="Container 和 Items 差別："></a>Container 和 Items 差別：</h3><blockquote>
-<p><code>Grid Container</code>: 盒子的最外層Parent<br><code>Grid items</code>: 盒子內層Children<br>其實跟Flex一樣，都需要有container and items</p>
-</blockquote>
-<p><img src="https://i.imgur.com/g882pUK.png" alt="container and items of GRID"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/11/2022-06-11-%5BCSS-Layout%5D_GRID/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/06/05/2022-6-5-hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/06/05/2022-6-5-hello-world/" class="post-title-link" itemprop="url">Hello World@@@@</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-05 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-05T00:00:00+08:00">2022-06-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/06/05/2022-6-5-hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2022/04/01/2022-4-1-hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
-      <meta itemprop="name" content="chenchih">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/hexo-demo2022/2022/04/01/2022-4-1-hello-world/" class="post-title-link" itemprop="url">Hello World@@@@</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-04-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-01T00:00:00+08:00">2022-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-05 09:47:35" itemprop="dateModified" datetime="2022-08-05T09:47:35+08:00">2022-08-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo-demo2022/2022/04/01/2022-4-1-hello-world/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="space">&hellip;</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/hexo-demo2022/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/hexo-demo2022/">1</a><span class="space">&hellip;</span><a class="page-number" href="/hexo-demo2022/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/hexo-demo2022/page/5/">5</a><a class="extend next" rel="next" href="/hexo-demo2022/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -1426,7 +1346,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

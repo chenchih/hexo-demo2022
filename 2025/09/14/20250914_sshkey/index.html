@@ -55,10 +55,11 @@
 <meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_setprivatekey.png">
 <meta property="og:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/terateam_login.png">
 <meta property="article:published_time" content="2025-09-14T02:45:25.000Z">
-<meta property="article:modified_time" content="2025-09-15T01:41:24.017Z">
+<meta property="article:modified_time" content="2025-09-16T05:32:06.779Z">
 <meta property="article:author" content="chenchih">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="remote">
+<meta property="article:tag" content="ssh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://chenchih.github.io/hexo-demo2022/2025/09/14/20250914_sshkey/Case1_diagram_generate.png">
 
@@ -157,24 +158,24 @@
     <img class="site-author-image" itemprop="image" alt="chenchih"
       src="/hexo-demo2022/images/profile.jpeg">
   <p class="site-author-name" itemprop="name">chenchih</p>
-  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.</div>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/hexo-demo2022/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/hexo-demo2022/categories/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/hexo-demo2022/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -245,7 +246,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Chen-Chih Technical Note Blog">
-      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing QA, 5G, Python, Linux, and telecom testing notes. A space for tutorials, insights, and practical examples.">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -272,7 +273,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-09-15 09:41:24" itemprop="dateModified" datetime="2025-09-15T09:41:24+08:00">2025-09-15</time>
+      <time title="Modified: 2025-09-16 13:32:06" itemprop="dateModified" datetime="2025-09-16T13:32:06+08:00">2025-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -401,6 +402,9 @@
 
 <img src="/hexo-demo2022/2025/09/14/20250914_sshkey/ssh_config_storedata.png" class="">
 
+<p>如果你有不想指定不同 Key 可以這樣加<code>IdentityFile</code> 如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host window</span><br><span class="line">    HostName 192.168.1.103</span><br><span class="line">    User ServeraccountName</span><br><span class="line">    IdentityFile ~/.ssh/realname_rsa</span><br><span class="line">    Compression yes</span><br><span class="line"></span><br><span class="line">Host ubuntu</span><br><span class="line">    HostName 192.168.1.105</span><br><span class="line">    User ServeraccountName</span><br><span class="line">    IdentityFile ~/.ssh/realname_rsa_ubuntu</span><br><span class="line">    Compression yes</span><br></pre></td></tr></table></figure>
+
 <h1 id="Server-建立-Key"><a href="#Server-建立-Key" class="headerlink" title="Server 建立 Key"></a>Server 建立 Key</h1><p>放面的範例是最常用，但如果你用在 server 建 key，你就要把你的 private key 給對方，這種情況比較少會有人這樣用。這種方式比較多是用在系統上，如 router 等產品為了資安相關設定就會這樣做。那些產品都會有網頁，有些客戶不希望用密碼登入，因此就會這樣用。他會在她系統上建 public and private key，然後會給你 private key，你就可以透過他的 private key 連進它的系統，但你連進去也看無法看到 SSH 那一層。</p>
 <img src="/hexo-demo2022/2025/09/14/20250914_sshkey/Case2_diagram_generate.png" class="">
 
@@ -487,6 +491,7 @@
           <div class="post-tags">
               <a href="/hexo-demo2022/tags/linux/" rel="tag"># linux</a>
               <a href="/hexo-demo2022/tags/remote/" rel="tag"># remote</a>
+              <a href="/hexo-demo2022/tags/ssh/" rel="tag"># ssh</a>
           </div>
 
         
@@ -498,8 +503,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/hexo-demo2022/2025/09/15/20250915-UV/" rel="next" title="20250915_UV">
-                  20250915_UV <i class="fa fa-chevron-right"></i>
+                <a href="/hexo-demo2022/2025/09/15/20250915-UV/" rel="next" title="UV Python Management">
+                  UV Python Management <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -521,7 +526,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

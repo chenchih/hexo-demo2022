@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="今天想要分享 WIFI 筆記跟，工具，和 CLI 指令 Capture Wireless OTA Beacon不同平台有不同抓法，我在這用 Linux 分享，因為它是免費也最簡單用。如果你有 MAC 那是最簡單方式，甚麼都不用安裝你需要有 wireshark。 There’re many type of tool you can use to cpature, but I’m going to u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20260105_Wirless Note">
+<meta property="og:url" content="https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="今天想要分享 WIFI 筆記跟，工具，和 CLI 指令 Capture Wireless OTA Beacon不同平台有不同抓法，我在這用 Linux 分享，因為它是免費也最簡單用。如果你有 MAC 那是最簡單方式，甚麼都不用安裝你需要有 wireshark。 There’re many type of tool you can use to cpature, but I’m going to u">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-05T08:55:37.000Z">
+<meta property="article:modified_time" content="2026-01-07T05:43:44.242Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="wifi">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/","path":"2026/01/05/20260105-Wirless_Note/","title":"20260105_Wirless Note"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>20260105_Wirless Note | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Capture-Wireless-OTA-Beacon"><span class="nav-number">1.</span> <span class="nav-text">Capture Wireless OTA Beacon</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-Install-airmon-ng"><span class="nav-number">1.1.</span> <span class="nav-text">Step1 Install airmon-ng</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Check-your-Wirless-interface"><span class="nav-number">1.2.</span> <span class="nav-text">Step2 Check your Wirless interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-Run-command"><span class="nav-number">1.3.</span> <span class="nav-text">Step3 Run command</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-Wireshark"><span class="nav-number">1.4.</span> <span class="nav-text">Step4 Wireshark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Wireless-Command"><span class="nav-number">2.</span> <span class="nav-text">Wireless Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List-saved-SSID"><span class="nav-number">2.1.</span> <span class="nav-text">List saved SSID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Show-Password"><span class="nav-number">2.2.</span> <span class="nav-text">Show Password</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scan-all-ssid"><span class="nav-number">2.3.</span> <span class="nav-text">Scan all ssid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-a-connection-to-SSID"><span class="nav-number">2.4.</span> <span class="nav-text">Make a connection to SSID</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Time-Connected-window"><span class="nav-number">2.4.1.</span> <span class="nav-text">First Time Connected (window)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Create-a-ssid-xml-file-ex-WIFI-CAK9XRN-xml"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Step 1 : Create a ssid.xml file (ex: WIFI-CAK9XRN.xml)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-Create-xml-file-with-interface"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">Step 2: Create xml file with interface</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step3-connect-ssid"><span class="nav-number">2.4.1.3.</span> <span class="nav-text">Step3 connect ssid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Export-your-profile"><span class="nav-number">2.4.1.4.</span> <span class="nav-text">Export your profile</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#connect-status"><span class="nav-number">2.5.</span> <span class="nav-text">connect status</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forget-Network-SSID"><span class="nav-number">2.6.</span> <span class="nav-text">Forget Network (SSID)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discconect-your-SSID"><span class="nav-number">2.7.</span> <span class="nav-text">Discconect your SSID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wifi-Summary"><span class="nav-number">2.8.</span> <span class="nav-text">Wifi Summary:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Window"><span class="nav-number">2.8.1.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-number">2.8.2.</span> <span class="nav-text">Linux</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.9.</span> <span class="nav-text">Reference:</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="20260105_Wirless Note | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20260105_Wirless Note
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-01-05 16:55:37" itemprop="dateCreated datePublished" datetime="2026-01-05T16:55:37+08:00">2026-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-01-07 13:43:44" itemprop="dateModified" datetime="2026-01-07T13:43:44+08:00">2026-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/DebugNote/" itemprop="url" rel="index"><span itemprop="name">DebugNote</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天想要分享 WIFI 筆記跟，工具，和 CLI 指令</p>
+<h1 id="Capture-Wireless-OTA-Beacon"><a href="#Capture-Wireless-OTA-Beacon" class="headerlink" title="Capture Wireless OTA Beacon"></a>Capture Wireless OTA Beacon</h1><p>不同平台有不同抓法，我在這用 Linux 分享，因為它是免費也最簡單用。如果你有 MAC 那是最簡單方式，甚麼都不用安裝你需要有 wireshark。</p>
+<p>There’re many type of tool you can use to cpature, but I’m going to use the most easiest way to capture Wireless Beacon Packet OTA(AIR) packet. I will be using Linux which is free and easy to setup. If you have MAC then it’s more easy no need to install any tool, just need a wireshark then you can capture.</p>
+<h2 id="Step1-Install-airmon-ng"><a href="#Step1-Install-airmon-ng" class="headerlink" title="Step1 Install airmon-ng"></a>Step1 Install airmon-ng</h2><p>Linux Distribution: Ubuntu</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install airmon-ng</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step2-Check-your-Wirless-interface"><a href="#Step2-Check-your-Wirless-interface" class="headerlink" title="Step2 Check your Wirless interface"></a>Step2 Check your Wirless interface</h2><p>Please noted down your wirless interface ex: <code>wlan0</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig #to list all interface</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step3-Run-command"><a href="#Step3-Run-command" class="headerlink" title="Step3 Run command"></a>Step3 Run command</h2><p>Please check your wirless current channel to capture else you’re not able to capture. You can use tool like insider, or GUI to check current channel</p>
+<ul>
+<li>Capture</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo airmon-ng check kill</span><br><span class="line">sudo airmon-ng start &lt;wlan&gt; #your wirless interface</span><br><span class="line">sudo iw dev &lt;wlan&gt;mon set channel &lt;channel&gt;</span><br></pre></td></tr></table></figure>
+
+<p>For example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo airmon-ng start wlan0</span><br><span class="line">sudo iw dev wlan0mon set channel 36</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Wireshark</li>
+</ul>
+<p>You can filter your wireless backhaul or wifi interface for easy to debug or find the correct packet with below command, just paste the command into below wireshark picture the place where I mark red on it.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wlan host &lt;MAC address&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>Finish Capture:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo airmon-ng stop &lt;wlan&gt;mon</span><br><span class="line">sudo systemctl restart NetworkManager</span><br></pre></td></tr></table></figure>
+
+<h2 id="Step4-Wireshark"><a href="#Step4-Wireshark" class="headerlink" title="Step4 Wireshark"></a>Step4 Wireshark</h2><p>When you’re capture overnight or overweekend, you need to set a special setting, else you disk might be full when capturing it.</p>
+
+
+<p>Please enable <code>ring biffer</code> it will overwrite file after X size, in my example I set afer 200MB with 10 file, which total to 2GB. This mean after 10 file, the next time it will overwrite the first one.</p>
+<h1 id="Wireless-Command"><a href="#Wireless-Command" class="headerlink" title="Wireless Command"></a>Wireless Command</h1><p>I like to show you how to use wireless command to check current SSID around, or password you ever connected and forget. Please Noted the password is only able to check you ever type in password. You’re not able to hack on any ssid password with command. The command is just for some productively without using mouse to connect.</p>
+<p>However you can still hack ssid password by other security tool, which I am not going to cover here, you can search on internet if you’re interested.</p>
+<p>I will show you window and linux command some how they are different. This is useful especially if you remote to server or server does not contain UI interface.</p>
+<h2 id="List-saved-SSID"><a href="#List-saved-SSID" class="headerlink" title="List saved SSID"></a>List saved SSID</h2><p>This allow to list all the SSID you have ever connected before which mean you ever type in the password and connected.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#window</span><br><span class="line">netsh wlan show profile</span><br><span class="line"></span><br><span class="line">#linux</span><br><span class="line">nmcli connection show</span><br></pre></td></tr></table></figure>
+
+<h2 id="Show-Password"><a href="#Show-Password" class="headerlink" title="Show Password"></a>Show Password</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#window</span><br><span class="line">netsh wlan show profile name=&quot;ssidname&quot; key=clear</span><br><span class="line"></span><br><span class="line">#linux</span><br><span class="line">sudo nmcli connection show &quot;My Home WiFi&quot; | grep psk</span><br></pre></td></tr></table></figure>
+
+<h2 id="Scan-all-ssid"><a href="#Scan-all-ssid" class="headerlink" title="Scan all ssid"></a>Scan all ssid</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#window</span><br><span class="line">netsh wlan show networks</span><br><span class="line">#linux</span><br><span class="line">nmcli device wifi list</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Show More detail infor (Window)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan show networks mode=bssid</span><br></pre></td></tr></table></figure>
+
+<h2 id="Make-a-connection-to-SSID"><a href="#Make-a-connection-to-SSID" class="headerlink" title="Make a connection to SSID"></a>Make a connection to SSID</h2><p>In previous command you check available SSID you can use, now you need to make a connection</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#linux</span><br><span class="line">ncli device wifi connect &quot;ssidname&quot; password &lt;ssidPassword&gt;</span><br><span class="line"></span><br><span class="line">#window</span><br><span class="line">netsh wlan connect name=&quot;ssidname&quot;</span><br></pre></td></tr></table></figure>
+
+<p>For window there if you connect first time, then follow below step. If you used to connected, then you above. In window to connected SSID need to have a profile file.</p>
+<h3 id="First-Time-Connected-window"><a href="#First-Time-Connected-window" class="headerlink" title="First Time Connected (window)"></a>First Time Connected (window)</h3><p>There’re several step to do before connecting only with window OS</p>
+<h4 id="Step-1-Create-a-ssid-xml-file-ex-WIFI-CAK9XRN-xml"><a href="#Step-1-Create-a-ssid-xml-file-ex-WIFI-CAK9XRN-xml" class="headerlink" title="Step 1 : Create a ssid.xml file (ex: WIFI-CAK9XRN.xml)"></a>Step 1 : Create a <code>ssid.xml</code> file (ex: <code>WIFI-CAK9XRN.xml</code>)</h4><p>Please replace <code>&#123;&#125;</code> the string of your ssid, and password.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;WLANProfile xmlns=&quot;http://www.microsoft.com/networking/WLAN/profile/v1&quot;&gt;</span><br><span class="line">    &lt;name&gt;&#123;SSID&#125;&lt;/name&gt;</span><br><span class="line">    &lt;SSIDConfig&gt;</span><br><span class="line">        &lt;SSID&gt;</span><br><span class="line">            &lt;name&gt;&#123;SSID&#125;&lt;/name&gt;</span><br><span class="line">        &lt;/SSID&gt;</span><br><span class="line">    &lt;/SSIDConfig&gt;</span><br><span class="line">    &lt;connectionType&gt;ESS&lt;/connectionType&gt;</span><br><span class="line">    &lt;connectionMode&gt;auto&lt;/connectionMode&gt;</span><br><span class="line">    &lt;MSM&gt;</span><br><span class="line">        &lt;security&gt;</span><br><span class="line">            &lt;authEncryption&gt;</span><br><span class="line">                &lt;authentication&gt;WPA2PSK&lt;/authentication&gt;</span><br><span class="line">                &lt;encryption&gt;AES&lt;/encryption&gt;</span><br><span class="line">                &lt;useOneX&gt;false&lt;/useOneX&gt;</span><br><span class="line">            &lt;/authEncryption&gt;</span><br><span class="line">            &lt;sharedKey&gt;</span><br><span class="line">                &lt;keyType&gt;passPhrase&lt;/keyType&gt;</span><br><span class="line">                &lt;protected&gt;false&lt;/protected&gt;</span><br><span class="line">                &lt;keyMaterial&gt;&#123;password&#125;&lt;/keyMaterial&gt;</span><br><span class="line">            &lt;/sharedKey&gt;</span><br><span class="line">        &lt;/security&gt;</span><br><span class="line">    &lt;/MSM&gt;</span><br><span class="line">    &lt;MacRandomization xmlns=&quot;http://www.microsoft.com/networking/WLAN/profile/v3&quot;&gt;</span><br><span class="line">        &lt;enableRandomization&gt;false&lt;/enableRandomization&gt;</span><br><span class="line">    &lt;/MacRandomization&gt;</span><br><span class="line">&lt;/WLANProfile&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step-2-Create-xml-file-with-interface"><a href="#Step-2-Create-xml-file-with-interface" class="headerlink" title="Step 2: Create xml file with interface"></a>Step 2: Create xml file with interface</h4><p>Let Create a profile with file you create in previous step, and you Wirless interface.</p>
+<p>If you don’t know your itnerface please use <code>netsh wlan show interfaces</code> to check which interface your wan is.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan add profile filename=&quot;.\WIFI-CAK9XRN.xml&quot; interface=&quot;Wi-Fi&quot;</span><br></pre></td></tr></table></figure>
+
+<p>You can show profile again, it should display the profile you create</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan show profile</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note:</strong> If you modify your <code>.xml</code> file, you need to remove the profile, else it will not apply</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan delete profile name=&quot;SSID&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3-connect-ssid"><a href="#Step3-connect-ssid" class="headerlink" title="Step3 connect ssid"></a>Step3 connect ssid</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan connect name=&quot;WIFI-CAK9XRN&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Export-your-profile"><a href="#Export-your-profile" class="headerlink" title="Export your profile"></a>Export your profile</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#export all your profile (this is all saved network)</span><br><span class="line">netsh wlan export profile key=clear</span><br><span class="line"></span><br><span class="line">#export specfic profile</span><br><span class="line">netsh wlan export profile name=profile name</span><br></pre></td></tr></table></figure>
+
+<h2 id="connect-status"><a href="#connect-status" class="headerlink" title="connect status"></a>connect status</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#linux</span><br><span class="line">nmcli dev status</span><br><span class="line"></span><br><span class="line">#window</span><br><span class="line">netsh wlan show interfaces</span><br></pre></td></tr></table></figure>
+
+<h2 id="Forget-Network-SSID"><a href="#Forget-Network-SSID" class="headerlink" title="Forget Network (SSID)"></a>Forget Network (SSID)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#Linux</span><br><span class="line">sudo nmcli connection delete &quot;&lt;CONNECTION_NAME ex: WIFI-CAK9XRN&gt;&quot;</span><br><span class="line"></span><br><span class="line">#Window</span><br><span class="line">netsh wlan delete profile name=&quot;&lt;CONNECTION_NAME&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Discconect-your-SSID"><a href="#Discconect-your-SSID" class="headerlink" title="Discconect your SSID"></a>Discconect your SSID</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#linux</span><br><span class="line">nmcli device disconnect &lt;interface Name ex: wlan0&gt;</span><br><span class="line"></span><br><span class="line">#window</span><br><span class="line">netsh wlan disconnect</span><br></pre></td></tr></table></figure>
+
+<p>Alternative you can use</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nmcli connection down &lt;CONNECTION_NAME&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wifi-Summary"><a href="#Wifi-Summary" class="headerlink" title="Wifi Summary:"></a>Wifi Summary:</h2><p>Window is much complicated on setting, Linux is much easier, so I will list commonly use command</p>
+<h3 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># get your ssid password</span><br><span class="line">netsh wlan show profile name=&quot;&lt;SSID Network Name&gt;&quot; key=clear</span><br><span class="line"></span><br><span class="line">#show your profile</span><br><span class="line">netsh wlan show profie</span><br><span class="line"></span><br><span class="line"># connect SSID</span><br><span class="line">netsh wlan connect name=&quot;&lt;SSID Network Name&gt;&quot;</span><br><span class="line"></span><br><span class="line"># connected status</span><br><span class="line"></span><br><span class="line"># Forget SSID network</span><br><span class="line">netsh wlan delete profile name=&quot;&lt;SSID Network Name&gt;&quot;</span><br><span class="line"></span><br><span class="line"># disconnect Wirless</span><br><span class="line">nmcli device disconnect</span><br><span class="line"></span><br><span class="line"># add profile the file contain ssid and password</span><br><span class="line">netsh wlan add profile filename=&lt;WirlessFIle.xml&gt; interface=&lt;WIFI Interface&gt;</span><br><span class="line"></span><br><span class="line"># delete profile</span><br><span class="line">sudo nmcli connection delete &lt;SSID Ntwork Name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># get your ssid password</span><br><span class="line">sudo nmcli connection show &quot;My Home WiFi&quot; | grep psk</span><br><span class="line"></span><br><span class="line"># show all ssid</span><br><span class="line">nmcli device wifi list</span><br><span class="line"></span><br><span class="line"># connect ssid</span><br><span class="line">ncli device wifi connect &quot;ssidname&quot; password &lt;ssidPassword&gt;</span><br><span class="line"></span><br><span class="line"># connected status</span><br><span class="line">nmcli dev status</span><br><span class="line"></span><br><span class="line"># Forget SSID network</span><br><span class="line">netsh wlan delete profile name=&lt;SSID Network Name&gt;</span><br><span class="line"># disconnect Wirless</span><br><span class="line">nmcli device disconnect &lt;interface Name ex: wlan0</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.serverwatch.com/guides/netsh-commands/">https://www.serverwatch.com/guides/netsh-commands/</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42887760/article/details/104343451">https://blog.csdn.net/qq_42887760/article/details/104343451</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/" title="20260105_Wirless Note">https://chenchih.github.io/2026/01/05/20260105-Wirless_Note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/network/" rel="tag"># network</a>
+              <a href="/hexo-demo2022/tags/wifi/" rel="tag"># wifi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2026/01/04/20260104-SSH-Tool/" rel="prev" title="SSH Remote Tool">
+                  <i class="fa fa-chevron-left"></i> SSH Remote Tool
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

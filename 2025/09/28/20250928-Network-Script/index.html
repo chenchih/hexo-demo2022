@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-demo2022/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-demo2022/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-demo2022/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-demo2022/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/hexo-demo2022/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chenchih.github.io","root":"/hexo-demo2022/","images":"/hexo-demo2022/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/hexo-demo2022/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-229669517-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'c');
+</script>
+
+    <meta name="description" content="This is the automatic script which i will be using on debug or reproduce issue like stability test for Network. Shell ScriptThis script will be added inside console, keep running and logged log.  synt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network automatic Script for testing">
+<meta property="og:url" content="https://chenchih.github.io/2025/09/28/20250928-Network-Script/index.html">
+<meta property="og:site_name" content="Chen-Chih Technical Note Blog">
+<meta property="og:description" content="This is the automatic script which i will be using on debug or reproduce issue like stability test for Network. Shell ScriptThis script will be added inside console, keep running and logged log.  synt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-28T09:24:39.000Z">
+<meta property="article:modified_time" content="2025-09-29T23:51:12.702Z">
+<meta property="article:author" content="chenchih">
+<meta property="article:tag" content="network">
+<meta property="article:tag" content="automation">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chenchih.github.io/2025/09/28/20250928-Network-Script/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chenchih.github.io/2025/09/28/20250928-Network-Script/","path":"2025/09/28/20250928-Network-Script/","title":"Network automatic Script for testing"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Network automatic Script for testing | Chen-Chih Technical Note Blog - Tech Notes & Tutorials</title>
+  
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/hexo-demo2022/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/hexo-demo2022/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chen-Chih Technical Note Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Notes & Tutorials</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/hexo-demo2022/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/hexo-demo2022/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/hexo-demo2022/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/hexo-demo2022/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/hexo-demo2022/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-Script"><span class="nav-number">1.</span> <span class="nav-text">Shell Script</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-top-evey-60-second-and-logf-file"><span class="nav-number">1.1.</span> <span class="nav-text">Read top evey 60 second and logf file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-bbu-status-every-10-second"><span class="nav-number">1.2.</span> <span class="nav-text">check bbu status every 10 second</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TTL-Macro-Script"><span class="nav-number">2.</span> <span class="nav-text">TTL Macro Script</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-stability-and-run-some-system-command"><span class="nav-number">2.1.</span> <span class="nav-text">Run stability and run some system command</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-scipt-on-system"><span class="nav-number">3.</span> <span class="nav-text">Other scipt on system</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-script-acs-server-clean-log"><span class="nav-number">3.1.</span> <span class="nav-text">shell script: acs server clean log</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chenchih"
+      src="/hexo-demo2022/images/profile.jpeg">
+  <p class="site-author-name" itemprop="name">chenchih</p>
+  <div class="site-description" itemprop="description">Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/hexo-demo2022/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/hexo-demo2022/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/hexo-demo2022/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chenchih" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jacklee26@gmail.com" title="E-Mail → mailto:jacklee26@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jacklee26" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/chenchih" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;chenchih" rel="noopener" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://medium.com/jacklee26" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;jacklee26" rel="noopener" target="_blank"><i class="fab fa-medium-m fa-fw"></i>Medium</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://dev.to/chenchih" title="Dev → https:&#x2F;&#x2F;dev.to&#x2F;chenchih" rel="noopener" target="_blank"><i class="fa-brands fa-dev fa-fw"></i>Dev</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chenchih.github.io/2025/09/28/20250928-Network-Script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo-demo2022/images/profile.jpeg">
+      <meta itemprop="name" content="chenchih">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="Chen-Chih Lee’s technical blog sharing Network, Python, Linux, and some testing notes.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Network automatic Script for testing | Chen-Chih Technical Note Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Network automatic Script for testing
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-28 17:24:39" itemprop="dateCreated datePublished" datetime="2025-09-28T17:24:39+08:00">2025-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-30 07:51:12" itemprop="dateModified" datetime="2025-09-30T07:51:12+08:00">2025-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/hexo-demo2022/categories/Network/DebugNote/" itemprop="url" rel="index"><span itemprop="name">DebugNote</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>This is the automatic script which i will be using on debug or reproduce issue like stability test for Network.</p>
+<h2 id="Shell-Script"><a href="#Shell-Script" class="headerlink" title="Shell Script"></a>Shell Script</h2><p>This script will be added inside console, keep running and logged log. </p>
+<p>syntax of bashscript: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">   echo &quot;Polling EthPhy Status !&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    sleep 1 ;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Read-top-evey-60-second-and-logf-file"><a href="#Read-top-evey-60-second-and-logf-file" class="headerlink" title="Read top evey 60 second and logf file"></a>Read top evey 60 second and logf file</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while true; do</span><br><span class="line">  date</span><br><span class="line">  free</span><br><span class="line">  top -b -n1 | head -15</span><br><span class="line">  sleep 60</span><br><span class="line">done &gt;&gt; /tmp/memlog.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="check-bbu-status-every-10-second"><a href="#check-bbu-status-every-10-second" class="headerlink" title="check bbu status every 10 second"></a>check bbu status every 10 second</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">htx_pcd_app -a start -r BATTERY_HOST</span><br><span class="line">while [ 1 ];</span><br><span class="line">do</span><br><span class="line">        date</span><br><span class="line">        echo &quot;####################&quot;</span><br><span class="line">        battery_host -m 1 -s</span><br><span class="line">        echo &quot;###################&quot;</span><br><span class="line">        echo &quot;&quot;</span><br><span class="line">        echo &quot;================&quot;</span><br><span class="line">        uci show bbu -c /var/tmp</span><br><span class="line">        echo &quot;================&quot;</span><br><span class="line">        sleep 10</span><br><span class="line">        echo &quot;&quot;</span><br><span class="line">        echo &quot;&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h2 id="TTL-Macro-Script"><a href="#TTL-Macro-Script" class="headerlink" title="TTL Macro Script"></a>TTL Macro Script</h2><p>This is use when connect DUT to console, it will run command and record the log </p>
+<h3 id="Run-stability-and-run-some-system-command"><a href="#Run-stability-and-run-some-system-command" class="headerlink" title="Run stability and run some system command"></a>Run stability and run some system command</h3><p>In this script will run this command below to check is there any memory leak or high cpu. The purpose of this test is to verify Ipv6 drop, and acs will also not get ipv6 global after IP drop</p>
+<ul>
+<li>get acs ipv6 parameter: <code> tr69_trigger getvalues Device.PPP.Interface.1.IPv6CP</code></li>
+<li>ip address: <code>ifconfig</code></li>
+<li>get free memory: <code>free -m</code></li>
+<li>ps: <code>ps</code></li>
+<li>top: <code>top -b -n1 | head -15</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">:START</span><br><span class="line">;sendln &#x27;date&#x27;</span><br><span class="line">pause 2</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">sendln &#x27;echo &quot;-----------------------------------&quot;&#x27;</span><br><span class="line">;sendln &#x27;ifconfig&#x27;</span><br><span class="line">pause 10</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">sendln &#x27; tr69_trigger getvalues Device.PPP.Interface.1.IPv6CP&#x27;</span><br><span class="line">pause 60</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">;sendln &#x27;echo &quot;System Memory (free -m)&quot;&#x27;</span><br><span class="line">;sendln &#x27;free -m&#x27;</span><br><span class="line">;pause 5</span><br><span class="line">;sendln &#x27;&#x27;</span><br><span class="line">;sendln &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">;sendln &#x27;echo &quot;ps&quot;&#x27;</span><br><span class="line">;sendln &#x27;ps&#x27;</span><br><span class="line">;pause 30</span><br><span class="line">;sendln &#x27;&#x27;</span><br><span class="line">;sendln &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">;sendln &#x27;echo &quot;top&quot;&#x27;</span><br><span class="line">;sendln &#x27;top -b -n1 | head -15&#x27;</span><br><span class="line">;pause 60</span><br><span class="line">sendln &#x27;echo &quot;-----------------------------------&quot;&#x27;</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">sendln &#x27;&#x27;</span><br><span class="line">goto START</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Other-scipt-on-system"><a href="#Other-scipt-on-system" class="headerlink" title="Other scipt on system"></a>Other scipt on system</h2><h3 id="shell-script-acs-server-clean-log"><a href="#shell-script-acs-server-clean-log" class="headerlink" title="shell script: acs server clean log"></a>shell script: acs server clean log</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#chenchih 04/01/2021</span><br><span class="line">#!/bin/bash</span><br><span class="line">#3touch hhhhh.txt</span><br><span class="line">#read -p &quot;Please enter your log bane:&quot; filename</span><br><span class="line">echo &quot;storage space&quot;</span><br><span class="line">df -h</span><br><span class="line">locationlog=&quot;/opt/jboss/server/default/log&quot;</span><br><span class="line">cd $locationlog</span><br><span class="line">ls</span><br><span class="line">echo -n &quot;Please enter your log name you want to delete:(ex:2021-03-01): &quot; </span><br><span class="line">read filename</span><br><span class="line">rm -f server.log.$filename*</span><br><span class="line">echo &quot;===================deleted================&quot;</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chenchih
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chenchih.github.io/2025/09/28/20250928-Network-Script/" title="Network automatic Script for testing">https://chenchih.github.io/2025/09/28/20250928-Network-Script/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/hexo-demo2022/tags/network/" rel="tag"># network</a>
+              <a href="/hexo-demo2022/tags/automation/" rel="tag"># automation</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/25/20250925-Terminal-oh-my-zsh-Mac/" rel="prev" title="20250925_Terminal-oh-my-zsh_Mac">
+                  <i class="fa fa-chevron-left"></i> 20250925_Terminal-oh-my-zsh_Mac
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/hexo-demo2022/2025/09/28/20250928-Network-Note/" rel="next" title="Network Note For Debug">
+                  Network Note For Debug <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chenchih</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/hexo-demo2022/js/comments.js"></script><script src="/hexo-demo2022/js/utils.js"></script><script src="/hexo-demo2022/js/motion.js"></script><script src="/hexo-demo2022/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
